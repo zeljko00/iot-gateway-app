@@ -1,9 +1,9 @@
 {
-    "username":"gprincip",
-    "password":"28061914",
+   "username":"gprincip44",
+    "password":"280619145",
     "fuel_level_limit": 20,
     "temp_interval": 30,
     "weight_interval": 30,
-    "server_url":"",
-    "sigup_interval": 5
+    "server_url":"http://localhost:8080/iot-cloud-platform",
+    "auth_interval": 5
 }
