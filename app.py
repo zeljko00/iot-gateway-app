@@ -32,8 +32,40 @@ def signup_periodically(username,password,server_time_format,url,interval):
         time.sleep(interval)
     return jwt
 
+#iot data aggregation and forwarding to cloud
+def collect_temperature_data(interval,queue, url, jwt, time_format):
+    while True:
+        data=[]
+        while not queue.empty():
+            data.append(queue.get())
+        # send request to Cloud only if there is availaable data
+        line = ""
+        for i in data:
+            line += str(i.value)+"  "
+        print("Temperature data read from queue: ", line)
+        if len(data)>0:
+            # if data is not sent to cloud, it is returned to queue
+            if not data_service.handle_temperature_data(data,url,jwt,time_format):
+                for i in data:
+                    queue.put(i)
+        time.sleep(interval)
 
-
+def collect_load_data(interval,queue, url, jwt, time_format):
+    while True:
+        data=[]
+        while not queue.empty():
+            data.append(queue.get())
+        # send request to Cloud only if there is available data
+        line=""
+        for i in data:
+            line+=str(i.value)+"  "
+        print("Load data read from queue: ",line)
+        if len(data)>0:
+            # if data is not sent to cloud, it is returned to queue
+            if not data_service.handle_load_data(data,url,jwt,time_format):
+                for i in data:
+                    queue.put(i)
+        time.sleep(interval)
 
 def main():
     # stubs
@@ -53,6 +85,12 @@ def main():
             jwt=signup_periodically(config[username_label],config[password_label],config[server_time_format],config[server_url]+"/auth/signup",config[auth_interval])
         # now JWT required for Cloud platform auth is stored in jwt var
         print(jwt)
+        # temperature data handling
+        temperature_data_handler = Process(target=collect_temperature_data, args=(config[temp_interval],temp_data,config[server_url]+"/data/temp",jwt,config[time_format]))
+        temperature_data_handler.start()
+        load_data_handler = Process(target=collect_load_data, args=(
+        config[load_interval], load_data, config[server_url] + "/data/load", jwt, config[time_format]))
+        load_data_handler.start()
 
     else:
         print("Can't read app config file!")
