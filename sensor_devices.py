@@ -17,16 +17,21 @@ interval="period"
 max="max_val"
 min="min_val"
 conf_file_path="sensor_conf.json"
+time_format="%d.%m.%Y.  %H:%M:%S"
+celzius="C"
+kg="kg"
+liter="l"
+
 class Sensor_data:
-    def __init__(self, data, time):
-        self.data = data
+    def __init__(self, value, time, unit):
+        self.value = value
         self.time = time
+        self.unit = unit
 
+#stub
 
-# class SensorConfData:
-#     def __init__(self):
 # period = measuring interval in sec, min_val/max_val = min/max measured value
-def measure_temperature_periodically(period, min_val, max_val):
+def measure_temperature_periodically(period, min_val, max_val,stub):
     print("Temperature sensor conf: interval={}s , min={}˚C , max={}C".format(period, min_val,max_val))
     print("------------------------------------------------------")
     # prevent division by zero
@@ -42,14 +47,16 @@ def measure_temperature_periodically(period, min_val, max_val):
         time.sleep(period)
         # create object representing data
         measured_value = Sensor_data(data[counter % values_count],
-                                    time.strftime("%d.%m.%Y.  %H:%M:%S", time.localtime()))
+                                    time.strftime(time_format, time.localtime()),celzius)
         # send data to iot gateway
-        print("Engine temperature: {:.2f}^C  ---  {}".format(measured_value.data, measured_value.time))
+        # print("Engine temperature: {:.2f}°C  ---  {}".format(measured_value.data, measured_value.time))
+        #testing
+        stub.put(measured_value)
         counter += 1
 
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
-def measure_weight_randomly(min_t, max_t, min_val, max_val):
+def measure_weight_randomly(min_t, max_t, min_val, max_val,stub):
     print("Arm sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
     print("------------------------------------------------------")
     # parameter validation
@@ -67,15 +74,17 @@ def measure_weight_randomly(min_t, max_t, min_val, max_val):
         time.sleep(round(intervals[counter % values_count]))
         # create object representing data
         measured_value = Sensor_data(data[counter % values_count],
-                                    time.strftime("%d.%m.%Y.  %H:%M:%S", time.localtime()))
+                                    time.strftime(time_format, time.localtime()),kg)
         # send data to iot gateway
-        print("Load weight: {:.2f}kg  ---  {}".format(measured_value.data, measured_value.time))
+        # print("Load weight: {:.2f}kg  ---  {}".format(measured_value.data, measured_value.time))
+        #testing
+        stub.put(measured_value)
         counter += 1
 
 
 # period = measuring interval , capacity = fuel tank capacity , refill = fuel tank refill probability (0-1)
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
-def measure_fuel_periodically(period, capacity, consumption, efficiency, refill):
+def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,stub):
     print("Fuel sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".format(period,capacity,consumption,efficiency,refill))
     print("------------------------------------------------------")
     # parameter validation
@@ -93,7 +102,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill)
         time.sleep(period)
         # fuel tank is filling
         if refilling:
-            value = capacity
+            value = random.randint(round(value), round(capacity))
             refilling = False
         else:
             # deciding whether fuel tank should be refilled based on refill probability
@@ -106,10 +115,11 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill)
                 value = 0
                 refilling = True
         # create object representing data
-        measured_value = Sensor_data(value, time.strftime("%d.%m.%Y.  %H:%M:%S", time.localtime()))
+        measured_value = Sensor_data(value, time.strftime(time_format, time.localtime()),liter)
         # send data to iot gateway
-        print("Fuel level: {:.2f}l  ---  {}".format(measured_value.data, measured_value.time))
-
+        # print("Fuel level: {:.2f}l  ---  {}".format(measured_value.data, measured_value.time))
+        #testing
+        stub.put(measured_value)
 
 # read sensor conf data
 def read_conf():
@@ -140,7 +150,23 @@ def sensors_devices():
 def main():
     for sensor in sensors_devices():
         sensor.start()
+        time.sleep(0.2)
 
+def test(temp,load,fuel):
+    conf_data = read_conf()
+    temperature_sensor = Process(target=measure_temperature_periodically, args=(
+    conf_data[temp_sensor][interval], conf_data[temp_sensor][min], conf_data[temp_sensor][max],temp))
+    excavator_arm_sensor = Process(target=measure_weight_randomly, args=(
+    conf_data[arm_sensor][arm_min_t], conf_data[arm_sensor][arm_max_t], conf_data[arm_sensor][min],
+    conf_data[arm_sensor][max],load))
+    fuel_level_sensor = Process(target=measure_fuel_periodically, args=(
+    conf_data[fuel_sensor][interval], conf_data[fuel_sensor][fuel_capacity], conf_data[fuel_sensor][fuel_consumption],
+    conf_data[fuel_sensor][fuel_efficiency], conf_data[fuel_sensor][fuel_refill],fuel))
+    temperature_sensor.start()
+    time.sleep(0.2)
+    excavator_arm_sensor.start()
+    time.sleep(0.2)
+    fuel_level_sensor.start()
 
 if __name__ == '__main__':
     main()
