@@ -1,5 +1,5 @@
 {
-   "username":"gprincip22",
+   "username":"gprincip33",
     "password":"28061914",
     "fuel_level_limit": 20,
     "temp_interval": 20,
@@ -7,5 +7,6 @@
     "server_url":"http://localhost:8080/iot-cloud-platform",
     "auth_interval": 5,
     "server_time_format": "dd.MM.yyyy HH:mm:ss",
-    "time_format":"%d.%m.%Y %H:%M:%S"
+    "time_format":"%d.%m.%Y %H:%M:%S",
+    "api_key": "bazinga00"
 }

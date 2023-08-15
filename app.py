@@ -15,6 +15,7 @@ server_time_format="server_time_format"
 fuel_level_limit="fuel_level_limit"
 temp_interval="temp_interval"
 load_interval="load_interval"
+api_key="api_key"
 
 # reading app configuration from json file
 def read_conf():
@@ -25,10 +26,10 @@ def read_conf():
     except:
         return None
 #periodically requesting device signup, returns received jwt
-def signup_periodically(username,password,server_time_format,url,interval):
+def signup_periodically(key,username,password,server_time_format,url,interval):
     jwt=None
     while jwt==None:
-        jwt=auth.register(username,password,server_time_format,url)
+        jwt=auth.register(key,username,password,server_time_format,url)
         time.sleep(interval)
     return jwt
 
@@ -82,7 +83,7 @@ def main():
         jwt=auth.login(config[username_label],config[password_label],config[server_url]+"/auth/login")
         #if failed, periodically request signup
         if jwt==None:
-            jwt=signup_periodically(config[username_label],config[password_label],config[server_time_format],config[server_url]+"/auth/signup",config[auth_interval])
+            jwt=signup_periodically(config[api_key],config[username_label],config[password_label],config[server_time_format],config[server_url]+"/auth/signup",config[auth_interval])
         # now JWT required for Cloud platform auth is stored in jwt var
         print(jwt)
         # temperature data handling
