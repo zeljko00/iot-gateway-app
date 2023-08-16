@@ -27,7 +27,7 @@ def login(username,password,url):
 def register(key, username, password, time_format, url):
     try:
         login_req = requests.post(url, params={"username": username, "password": password, "time_format": time_format},
-                                  headers={"Authorization": key})
+                                headers={"Authorization": key})
         # print("Signup status: ",login_req.status_code)
         # print("Signup response: ",login_req.text)
         if login_req.status_code == 200:

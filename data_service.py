@@ -52,3 +52,5 @@ def handle_load_data(data, url, jwt, time_format):
             errorLogger.error("Arm load Cloud service cant be reached!")
             return False
 
+
+
