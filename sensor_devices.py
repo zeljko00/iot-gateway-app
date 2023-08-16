@@ -3,6 +3,11 @@ import random
 import numpy
 import json
 from multiprocessing import Process, Event
+import logging.config
+
+logging.config.fileConfig('logging.conf')
+infoLogger = logging.getLogger('customInfoLogger')
+errorLogger = logging.getLogger('customErrorLogger')
 
 temp_sensor = "temp_sensor"
 arm_sensor = "arm_sensor"
@@ -136,6 +141,7 @@ def read_conf():
         conf_file = open(conf_file_path)
         data = json.load(conf_file)
     except:
+        errorLogger.critical("Using default config! Can't read sensor config file - ", conf_file_path, " !")
         data = {temp_sensor: {interval: 5, min: -10, max: 100},
                 arm_sensor: {arm_min_t: 10, arm_max_t: 100, min: 0, max: 800},
                 fuel_sensor: {interval: 5, fuel_capacity: 300, fuel_consumption: 3000, fuel_efficiency: 0.6,
@@ -172,17 +178,20 @@ def main():
     load_flag = Event()
     fuel_flag = Event()
     sensors = sensors_devices(temp_flag, load_flag, fuel_flag)
+    infoLogger.info("Sensor system started!")
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
     # waiting for shutdown signal
     input("Press ENTER to stop the app!")
+    infoLogger.info("Sensor system shutting down! Please wait")
     # shutting down sensor processes
     temp_flag.set()
     load_flag.set()
     fuel_flag.set()
     for sensor in sensors:
         sensor.join()
+    infoLogger.info("Sensor system shutdown!")
 
 
 def test(temp,load,fuel):

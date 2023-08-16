@@ -1,5 +1,9 @@
 import requests
 import base64
+import logging.config
+
+logging.config.fileConfig('logging.conf')
+errorLogger = logging.getLogger('customErrorLogger')
 
 
 def login(username,password,url):
@@ -12,8 +16,10 @@ def login(username,password,url):
         if login_req.status_code == 200:
             return login_req.text
         else:
+            errorLogger.error("Problem with auth Cloud service! - Http status code: ", login_req.status_code)
             return None
     except:
+        errorLogger.error("Authentication Cloud service cant be reached!")
         return None
 
 
@@ -27,6 +33,8 @@ def register(key, username, password, time_format, url):
         if login_req.status_code == 200:
             return login_req.text
         else:
+            errorLogger.error("Problem with auth Cloud service! - Http status code: ", login_req.status_code)
             return None
     except:
+        errorLogger.error("Authentication Cloud service cant be reached!")
         return None

@@ -1,11 +1,15 @@
 import json
 import auth
 import time
+import logging.config
 from multiprocessing import Process, Queue, Event, Value
 
 import sensor_devices
 import data_service
 
+logging.config.fileConfig('logging.conf')
+infoLogger = logging.getLogger('customInfoLogger')
+errorLogger = logging.getLogger('customErrorLogger')
 
 conf_path = "app_conf.json"
 username_label = "username"
@@ -27,6 +31,7 @@ def read_conf():
         conf = json.load(conf_file)
         return conf
     except:
+        errorLogger.critical("Cant read app configuration file - ", conf_path, " !")
         return None
 
 
@@ -55,6 +60,9 @@ def collect_temperature_data(interval, queue, url, jwt, time_pattern, flag):
             if not data_service.handle_temperature_data(data, url, jwt, time_pattern):
                 for i in data:
                     queue.put(i)
+
+        else:
+            infoLogger.warning("There is no temperature sensor data to handle!")
         time.sleep(interval)
     print("Temperature data handler shutdown!")
 
@@ -74,6 +82,8 @@ def collect_load_data(interval, queue, url, jwt, time_pattern, flag):
             if not data_service.handle_load_data(data, url, jwt, time_pattern):
                 for i in data:
                     queue.put(i)
+        else:
+            infoLogger.warning("There is no arm load sensor data to handle!")
         time.sleep(interval)
     print("Arm load data handler shutdown!")
 
@@ -89,6 +99,7 @@ def main():
     config = read_conf()
     # if config is read successfully, start app logic
     if config is not None:
+        infoLogger.info("IoT Gateway app started!")
         # iot cloud platform login
         jwt = auth.login(config[username_label], config[password_label], config[server_url] + "/auth/login")
         # if failed, periodically request signup
@@ -114,12 +125,14 @@ def main():
         load_data_handler.start()
         # waiting for shutdown signal
         input("Press ENTER to stop the app!")
+        infoLogger.info("IoT Gateway app shutting down! Please wait")
         # shutting down handler processes
         temp_handler_flag.set()
         load_handler_flag.set()
         temperature_data_handler.join()
         load_data_handler.join()
 
+        infoLogger.info("IoT Gateway app shutdown!")
     else:
         print("Can't read app config file!")
 
