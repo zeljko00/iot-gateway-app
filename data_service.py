@@ -53,4 +53,19 @@ def handle_load_data(data, url, jwt, time_format):
             return False
 
 
-
+# aggregating fuel level data and forwarding to Cloud service
+def handle_fuel_data(data, url, jwt, time_format):
+    time_value = time.strftime(time_format, time.localtime())
+    # request payload
+    payload = {"value": data.value, "time": time_value, "unit": data.unit}
+    print("Fuel data to send: ", str(payload))
+    try:
+        post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
+        if post_req.status_code == 200:
+            return True
+        else:
+            errorLogger.error("Problem with fuel Cloud service! - Http status code: ", post_req.status_code)
+            return False
+    except:
+        errorLogger.error("Fuel Cloud service cant be reached!")
+        return False
