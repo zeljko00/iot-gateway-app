@@ -5,6 +5,7 @@ import logging.config
 from multiprocessing import Process, Queue, Event, Value
 
 import sensor_devices
+import stats_service
 import data_service
 
 logging.config.fileConfig('logging.conf')
@@ -45,7 +46,8 @@ def signup_periodically(key, username, password, time_pattern, url, interval):
 
 
 # iot data aggregation and forwarding to cloud
-def collect_temperature_data(interval, queue, url, jwt, time_pattern, flag):
+def collect_temperature_data(interval, queue, url, jwt, time_pattern, flag, stats_queue):
+    stats = stats_service.Stats()
     while not flag.is_set():
         data = []
         while not queue.empty():
@@ -60,14 +62,17 @@ def collect_temperature_data(interval, queue, url, jwt, time_pattern, flag):
             if not data_service.handle_temperature_data(data, url, jwt, time_pattern):
                 for i in data:
                     queue.put(i)
-
+            else:
+                stats.update_data(len(data) * 4, 4, 1)
         else:
             infoLogger.warning("There is no temperature sensor data to handle!")
         time.sleep(interval)
+    stats_queue.put(stats)
     print("Temperature data handler shutdown!")
 
 
-def collect_load_data(interval, queue, url, jwt, time_pattern, flag):
+def collect_load_data(interval, queue, url, jwt, time_pattern, flag, stats_queue):
+    stats = stats_service.Stats()
     while not flag.is_set():
         data = []
         while not queue.empty():
@@ -82,9 +87,12 @@ def collect_load_data(interval, queue, url, jwt, time_pattern, flag):
             if not data_service.handle_load_data(data, url, jwt, time_pattern):
                 for i in data:
                     queue.put(i)
+            else:
+                stats.update_data(len(data) * 4, 4, 1)
         else:
             infoLogger.warning("There is no arm load sensor data to handle!")
         time.sleep(interval)
+    stats_queue.put(stats)
     print("Arm load data handler shutdown!")
 
 
@@ -109,6 +117,14 @@ def main():
                                       config[auth_interval])
         # now JWT required for Cloud platform auth is stored in jwt var
         print(jwt)
+        # starting stats monitoring
+        # using shared memory Queue objects for returning stats data from processes
+        stats = stats_service.OverallStats(config[server_url] + "/stats", jwt, config[time_format])
+        temp_stats_queue = Queue()
+        load_stats_queue = Queue()
+        fuel_stats_queue = Queue()
+        print("Initial stats:")
+        print(stats)
         # flags are used for stopping data handlers on app shutdown
         temp_handler_flag = Event()
         load_handler_flag = Event()
@@ -117,12 +133,15 @@ def main():
         temperature_data_handler = Process(target=collect_temperature_data, args=(config[temp_interval], temp_data,
                                                                                   config[server_url] + "/data/temp",
                                                                                   jwt, config[time_format],
-                                                                                  temp_handler_flag))
+                                                                                  temp_handler_flag, temp_stats_queue))
         temperature_data_handler.start()
         load_data_handler = Process(target=collect_load_data, args=(config[load_interval], load_data,
                                                                     config[server_url] + "/data/load", jwt,
-                                                                    config[time_format], load_handler_flag))
+                                                                    config[time_format], load_handler_flag,
+                                                                    load_stats_queue))
         load_data_handler.start()
+        # just for testing purposes
+        fuel_stats_queue.put(stats_service.Stats())
         # waiting for shutdown signal
         input("Press ENTER to stop the app!")
         infoLogger.info("IoT Gateway app shutting down! Please wait")
@@ -131,6 +150,9 @@ def main():
         load_handler_flag.set()
         temperature_data_handler.join()
         load_data_handler.join()
+        print("Temp data requests final: ", stats.tempDataRequests)
+        stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
+        stats.send_stats()
 
         infoLogger.info("IoT Gateway app shutdown!")
     else:
