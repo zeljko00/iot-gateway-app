@@ -35,6 +35,12 @@ temp_topic="sensors/temperature"
 load_topic="sensors/arm-load"
 fuel_topic="sensors/fuel-level"
 
+# def on_connect_handler(client, userdata, flags, rc,props):
+#     if rc==0:
+#         print("connected OK Returned code=",rc)
+#     else:
+#         print("Bad connection Returned code=",rc)
+#     print(client.is_connected())
 
 # period = measuring interval in sec, min_val/max_val = min/max measured value
 def measure_temperature_periodically(period, min_val, max_val, broker_address, broker_port, flag):
@@ -47,6 +53,7 @@ def measure_temperature_periodically(period, min_val, max_val, broker_address, b
     # initializing mqtt client
     client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.connect(broker_address, port=broker_port, keepalive=period*3)
+    client.loop_start()
     # provide sensor with data for 7 days
     values_count = round(7 * 24 * 60 * 60 / period)
     data = numpy.random.uniform(min_val, max_val, values_count)
@@ -58,11 +65,12 @@ def measure_temperature_periodically(period, min_val, max_val, broker_address, b
         while not client.is_connected():
             errorLogger.error("Temperature sensor lost connection to MQTT broker!")
             client.reconnect()
+            time.sleep(0.1)
         try:
             # send data to MQTT broker
             client.publish(temp_topic, str(data[counter % values_count])+"#"+str(time.strftime(time_format, time.localtime()))+"#"+celzius)
         except:
-            errorLogger.error("Temperature sensor can't connect to MQTT broker!")
+            errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
         counter += 1
     client.disconnect()
     print("Temperature sensor shutdown!")
@@ -80,6 +88,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     # initializing mqtt client
     client = mqtt.Client(client_id="arm-load-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.connect(broker_address, port=broker_port, keepalive=max_t*3)
+    client.loop_start()
     # provide sensor with data for at least 7 days
     values_count = round(7 * 24 * 60 * 60 / min_t)
     intervals = numpy.random.uniform(min_t, max_t, values_count)
@@ -92,11 +101,12 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
         while not client.is_connected():
             errorLogger.error("Arm load sensor lost connection to MQTT broker!")
             client.reconnect()
+            time.sleep(0.1)
         try:
             # send data to MQTT broker
             client.publish(load_topic, str(data[counter % values_count])+"#"+str(time.strftime(time_format, time.localtime()))+"#"+kg)
         except:
-            errorLogger.error("Arm load sensor can't connect to MQTT broker!")
+            errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
         counter += 1
     client.disconnect()
     print("Arm load sensor shutdown!")
@@ -115,6 +125,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     # initializing mqtt client
     client = mqtt.Client(client_id="fuel-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.connect(broker_address, port=broker_port, keepalive=period*3)
+    client.loop_start()
     # at first fuel tank is randomly filled
     value = random.randint(round(capacity / 2), round(capacity))
     # constant for scaling consumption per hour to per second
@@ -133,7 +144,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             # amount of consumed fuel is determined based on fuel consumption, time elapsed
             # from previous measuring and machine state (on/of)
             consumed = period * consumption * scale * (1 + 1 - efficiency)
-            value -= consumed;
+            value -= consumed
             if value <= 0:
                 value = 0
                 refilling = True
@@ -141,12 +152,13 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
         while not client.is_connected():
             errorLogger.error("Fuel level sensor lost connection to MQTT broker!")
             client.reconnect()
+            time.sleep(0.1)
         try:
             # send data to MQTT broker
             client.publish(fuel_topic,
                            str(value) + "#" + str(time.strftime(time_format, time.localtime())) + "#" + liter)
         except:
-            errorLogger.error("Fuel level sensor can't connect to MQTT broker!")
+            errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
     client.disconnect()
     print("Fuel level sensor shutdown!")
 
@@ -207,6 +219,7 @@ def main():
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
+    time.sleep(0.3)
     # waiting for shutdown signal
     input("Press ENTER to stop the app!")
     infoLogger.info("Sensor system shutting down! Please wait")
@@ -220,5 +233,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-

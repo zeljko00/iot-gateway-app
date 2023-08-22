@@ -143,6 +143,7 @@ def main():
         # just for testing purposes
         fuel_stats_queue.put(stats_service.Stats())
         # waiting for shutdown signal
+        time.sleep(0.3)
         input("Press ENTER to stop the app!")
         infoLogger.info("IoT Gateway app shutting down! Please wait")
         # shutting down handler processes
@@ -153,7 +154,6 @@ def main():
         print("Temp data requests final: ", stats.tempDataRequests)
         stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
         stats.send_stats()
-
         infoLogger.info("IoT Gateway app shutdown!")
     else:
         print("Can't read app config file!")
