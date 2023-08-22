@@ -16,5 +16,9 @@
         "consumption": 3000,
         "efficiency": 0.6,
         "refill": 0.02
+    },
+    "mqtt_broker": {
+        "address": "localhost",
+        "port": 1883
     }
 }
