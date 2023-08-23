@@ -23,7 +23,7 @@ interval = "period"
 max = "max_val"
 min = "min_val"
 conf_file_path = "sensor_conf.json"
-time_format = "%d.%m.%Y.  %H:%M:%S"
+time_format = "%d.%m.%Y %H:%M:%S"
 celzius = "C"
 kg = "kg"
 liter = "l"
@@ -34,6 +34,7 @@ transport_protocol="tcp"
 temp_topic="sensors/temperature"
 load_topic="sensors/arm-load"
 fuel_topic="sensors/fuel-level"
+data_pattern="[ value={} , time={} , unit={} ]"
 
 def on_connect_temp_sensor(client, userdata, flags, rc,props):
     if rc == 0:
@@ -86,8 +87,9 @@ def measure_temperature_periodically(period, min_val, max_val, broker_address, b
             client.reconnect()
             time.sleep(0.1)
         try:
+            print(data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),celzius))
             # send data to MQTT broker
-            client.publish(temp_topic, str(data[counter % values_count])+"#"+str(time.strftime(time_format, time.localtime()))+"#"+celzius)
+            client.publish(temp_topic, data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),celzius))
         except:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
         counter += 1
@@ -129,8 +131,10 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             client.reconnect()
             time.sleep(0.1)
         try:
+            print(data_pattern.format(str(data[counter % values_count]),
+                                      str(time.strftime(time_format, time.localtime())), kg))
             # send data to MQTT broker
-            client.publish(load_topic, str(data[counter % values_count])+"#"+str(time.strftime(time_format, time.localtime()))+"#"+kg)
+            client.publish(load_topic, data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg))
         except:
             errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
         counter += 1
@@ -187,9 +191,11 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             client.reconnect()
             time.sleep(0.1)
         try:
+            print(data_pattern.format(str(value),
+                                      str(time.strftime(time_format, time.localtime())), liter))
             # send data to MQTT broker
             client.publish(fuel_topic,
-                           str(value) + "#" + str(time.strftime(time_format, time.localtime())) + "#" + liter)
+                           data_pattern.format(str(value),str(time.strftime(time_format, time.localtime())),liter))
         except:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
     client.disconnect()

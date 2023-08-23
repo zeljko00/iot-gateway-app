@@ -5,15 +5,24 @@ import logging.config
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
 
+data_pattern="[ value={} , time={} , unit={} ]"
 
 # aggregating temperature data and forwarding to Cloud service
 def handle_temperature_data(data, url, jwt, time_format):
     # data aggregation
     data_sum = 0.0
     for item in data:
-        data_sum += item.value
+        try:
+            tokens=item.split(" ")
+            data_sum += float(tokens[1].split("=")[1])
+        except:
+            errorLogger.error("Invalid temperature data format! - "+item)
     time_value = time.strftime(time_format, time.localtime())
-    unit = data[0].unit
+    unit="unknown"
+    try:
+        unit = data[0].split(" ")[6].split("=")[1]
+    except:
+        errorLogger.error("Invalid temperature data format! - "+data[0])
     # request payload
     payload = {"value": (data_sum / len(data)), "time": time_value, "unit": unit}
     print("Aggregated temp data: ", str(payload))
@@ -34,38 +43,64 @@ def handle_load_data(data, url, jwt, time_format):
     # data aggregation
     data_sum = 0.0
     for item in data:
-        data_sum += item.value
-    time_value = time.strftime(time_format, time.localtime())
-    unit = data[0].unit
-    if data_sum > 0:
-        # request payload
-        payload = {"value": data_sum, "time": time_value, "unit": unit}
-        print("Aggregated load data: ", str(payload))
         try:
-            post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-            if post_req.status_code == 200:
-                return True
-            else:
-                errorLogger.error("Problem with arm load Cloud service! - Http status code: ", post_req.status_code)
-                return False
+            tokens = item.split(" ")
+            data_sum += float(tokens[1].split("=")[1])
         except:
-            errorLogger.error("Arm load Cloud service cant be reached!")
-            return False
-
-
-# aggregating fuel level data and forwarding to Cloud service
-def handle_fuel_data(data, url, jwt, time_format):
+            errorLogger.error("Invalid load data format! - "+ item)
     time_value = time.strftime(time_format, time.localtime())
+    unit = "unknown"
+    try:
+        unit = data[0].split(" ")[6].split("=")[1]
+    except:
+        errorLogger.error("Invalid load data format! - "+data[0])
     # request payload
-    payload = {"value": data.value, "time": time_value, "unit": data.unit}
-    print("Fuel data to send: ", str(payload))
+    payload = {"value": data_sum, "time": time_value, "unit": unit}
+    print("Aggregated load data: ", str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         if post_req.status_code == 200:
             return True
         else:
-            errorLogger.error("Problem with fuel Cloud service! - Http status code: ", post_req.status_code)
+            errorLogger.error("Problem with arm load Cloud service! - Http status code: ", post_req.status_code)
             return False
     except:
-        errorLogger.error("Fuel Cloud service cant be reached!")
+        errorLogger.error("Arm load Cloud service cant be reached!")
+        return False
+
+
+# aggregating fuel level data and forwarding to Cloud service
+# return value True means that there was request sent to cloud service
+def handle_fuel_data(data,limit, url, jwt, time_format):
+    try:
+        tokens = data.split(" ")
+        value=float(tokens[1].split("=")[1])
+        if value<=limit:
+            unit = "unknown"
+            try:
+                print(tokens)
+                unit = tokens[6].split("=")[1]
+            except:
+                errorLogger.error("Invalid fuel data format! - " + data)
+            time_value = time.strftime(time_format, time.localtime())
+            # request payload
+            payload = {"value": value, "time": time_value, "unit": unit}
+            print("Aggregated fuel data: ", str(payload))
+            try:
+                post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
+                if post_req.status_code == 200:
+                    return True
+                else:
+                    errorLogger.error("Problem with fuel Cloud service! - Http status code: ", post_req.status_code)
+                    return False
+            except:
+                errorLogger.error("Fuel Cloud service cant be reached!")
+            return False
+        else:
+            print("Didn't send: "+data)
+            # data is handled but is not sent because fuel level is over the limit
+            return False
+    except:
+        errorLogger.error("Invalid fuel data format! - " + data)
+        # data can not be parsed, trying again to parse it and send in next iteration is redundant
         return False
