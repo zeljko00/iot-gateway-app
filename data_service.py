@@ -5,7 +5,10 @@ import logging.config
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
 
-data_pattern="[ value={} , time={} , unit={} ]"
+data_pattern = "[ value={} , time={} , unit={} ]"
+http_not_found = 404
+http_ok = 200
+http_no_content = 204
 
 # aggregating temperature data and forwarding to Cloud service
 def handle_temperature_data(data, url, jwt, time_format):
@@ -28,14 +31,12 @@ def handle_temperature_data(data, url, jwt, time_format):
     print("Aggregated temp data: ", str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code == 200:
-            return True
-        else:
-            errorLogger.error("Problem with temperature Cloud service! - Http status code: ", post_req.status_code)
-            return False
+        if post_req.status_code != http_ok:
+            errorLogger.error("Problem with temperature Cloud service! - Http status code: "+ str(post_req.status_code))
+        return post_req.status_code
     except:
         errorLogger.error("Temperature Cloud service cant be reached!")
-        return False
+        return http_not_found
 
 
 # aggregating arm load data and forwarding to Cloud service
@@ -59,19 +60,17 @@ def handle_load_data(data, url, jwt, time_format):
     print("Aggregated load data: ", str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code == 200:
-            return True
-        else:
-            errorLogger.error("Problem with arm load Cloud service! - Http status code: ", post_req.status_code)
-            return False
+        if post_req.status_code != http_ok:
+            errorLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
+        return post_req.status_code
     except:
         errorLogger.error("Arm load Cloud service cant be reached!")
-        return False
+        return http_not_found
 
 
 # aggregating fuel level data and forwarding to Cloud service
 # return value True means that there was request sent to cloud service
-def handle_fuel_data(data,limit, url, jwt, time_format):
+def handle_fuel_data(data, limit, url, jwt, time_format):
     try:
         tokens = data.split(" ")
         value=float(tokens[1].split("=")[1])
@@ -88,19 +87,16 @@ def handle_fuel_data(data,limit, url, jwt, time_format):
             print("Aggregated fuel data: ", str(payload))
             try:
                 post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-                if post_req.status_code == 200:
-                    return True
-                else:
-                    errorLogger.error("Problem with fuel Cloud service! - Http status code: ", post_req.status_code)
-                    return False
+                if post_req.status_code != http_ok:
+                    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
+                return post_req.status_code
             except:
                 errorLogger.error("Fuel Cloud service cant be reached!")
-            return False
+                return http_not_found
         else:
-            print("Didn't send: "+data)
             # data is handled but is not sent because fuel level is over the limit
-            return False
+            return http_no_content
     except:
         errorLogger.error("Invalid fuel data format! - " + data)
         # data can not be parsed, trying again to parse it and send in next iteration is redundant
-        return False
+        return http_no_content
