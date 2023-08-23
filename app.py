@@ -1,11 +1,11 @@
 import json
 import auth
 import time
+import sys
 import logging.config
 import paho.mqtt.client as mqtt
-from multiprocessing import Process, Queue, Event, Value
-
-import sensor_devices
+from multiprocessing import Process, Queue, Event
+from threading import Thread
 import stats_service
 import data_service
 
@@ -35,7 +35,6 @@ http_unauthorized = 401
 http_ok = 200
 http_no_content = 204
 
-
 # reading app configuration from json file
 def read_conf():
     try:
@@ -47,6 +46,7 @@ def read_conf():
         return None
 
 
+
 # periodically requesting device signup, returns received jwt
 def signup_periodically(key, username, password, time_pattern, url, interval):
     jwt = None
@@ -55,6 +55,15 @@ def signup_periodically(key, username, password, time_pattern, url, interval):
         time.sleep(interval)
     return jwt
 
+def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
+    # waiting for shutdown signal
+    input("Press ENTER to stop the app!")
+    infoLogger.info("IoT Gateway app shutting down! Please wait")
+    # shutting down handler processes
+    temp_handler_flag.set()
+    load_handler_flag.set()
+    fuel_handler_flag.set()
+    print("Shutdown controller stoped!")
 def on_connect_temp_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Temperature data handler successfully established connection with MQTT broker!")
@@ -242,6 +251,10 @@ def main():
             temp_handler_flag = Event()
             load_handler_flag = Event()
             fuel_handler_flag = Event()
+            # shutdown thread
+            shutdown_controller_worker = Thread(target=shutdown_controller,
+                                                args=(temp_handler_flag, load_handler_flag, fuel_handler_flag))
+            shutdown_controller_worker.start()
             # data handling workers
             temperature_data_handler = Process(target=collect_temperature_data, args=(config[temp_interval],
                                                                                       config[server_url] + "/data/temp",
@@ -265,19 +278,11 @@ def main():
                                                                         config[mqtt_broker][port],
                                                                         fuel_handler_flag, fuel_stats_queue,))
             fuel_data_handler.start()
-            # # waiting for shutdown signal
-            # print(input("Press ENTER to stop the app!"))
-            # infoLogger.info("IoT Gateway app shutting down! Please wait")
-            # # shutting down handler processes
-            # temp_handler_flag.set()
-            # load_handler_flag.set()
-            # fuel_handler_flag.set()
             temperature_data_handler.join()
             load_data_handler.join()
             fuel_data_handler.join()
             stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
             stats.send_stats()
-
             # checking jwt, if jwt has expired  app will restart
             jwt_code=auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
             if jwt_code == http_ok:
@@ -289,6 +294,7 @@ def main():
                 print("Restarting!")
         else:
             print("Can't read app config file!")
+    print("shutdown!")
 
 
 if __name__ == '__main__':

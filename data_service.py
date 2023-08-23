@@ -77,7 +77,6 @@ def handle_fuel_data(data, limit, url, jwt, time_format):
         if value<=limit:
             unit = "unknown"
             try:
-                print(tokens)
                 unit = tokens[6].split("=")[1]
             except:
                 errorLogger.error("Invalid fuel data format! - " + data)
