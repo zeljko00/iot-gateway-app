@@ -108,6 +108,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
         except:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
     client.disconnect()
+    infoLogger.info("Temperature sensor shutdown!")
     print("Temperature sensor shutdown!")
 
 
@@ -153,6 +154,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
         counter += 1
     client.disconnect()
+    infoLogger.info("Arm load sensor shutdown!")
     print("Arm load sensor shutdown!")
 
 
@@ -213,7 +215,9 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
         except:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
     client.disconnect()
+    infoLogger.info("Fuel level sensor shutdown!")
     print("Fuel level sensor shutdown!")
+
 
 
 # read sensor conf data
@@ -229,11 +233,7 @@ def read_conf():
                 fuel_sensor: {interval: 5, fuel_capacity: 300, fuel_consumption: 3000, fuel_efficiency: 0.6,
                               fuel_refill: 0.02},
                 mqtt_broker: { address: "localhost", port:1883}}
-    finally:
-        print("Sensors config:")
-        print(data)
-        print("------------------------------------------------------")
-        return data
+    return data
 
 
 # creating sensor processes
@@ -269,6 +269,7 @@ def main():
     fuel_flag = Event()
     sensors = sensors_devices(temp_flag, load_flag, fuel_flag)
     infoLogger.info("Sensor system started!")
+    print("Sensor system started!")
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
@@ -282,6 +283,7 @@ def main():
     for sensor in sensors:
         sensor.join()
     infoLogger.info("Sensor system shutdown!")
+    print("Sensor system shutdown!")
 
 if __name__ == '__main__':
     main()

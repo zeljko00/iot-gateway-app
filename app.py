@@ -1,7 +1,6 @@
 import json
 import auth
 import time
-import sys
 import logging.config
 import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
@@ -59,6 +58,7 @@ def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
     # waiting for shutdown signal
     input("Press ENTER to stop the app!")
     infoLogger.info("IoT Gateway app shutting down! Please wait")
+    print("IoT Gateway app shutting down! Please wait")
     # shutting down handler processes
     temp_handler_flag.set()
     load_handler_flag.set()
@@ -232,6 +232,7 @@ def main():
         # if config is read successfully, start app logic
         if config is not None:
             infoLogger.info("IoT Gateway app started!")
+            print("IoT Gateway app started!")
             # iot cloud platform login
             jwt = auth.login(config[username_label], config[password_label], config[server_url] + "/auth/login")
             # if failed, periodically request signup
@@ -288,13 +289,13 @@ def main():
             if jwt_code == http_ok:
                 reset = False
                 infoLogger.info("IoT Gateway app shutdown!")
+                print("IoT Gateway app shutdown!")
             else:
                 reset = True
                 infoLogger.info("IoT Gateway app restart!")
-                print("Restarting!")
+                print("IoT Gateway app restart!")
         else:
             print("Can't read app config file!")
-    print("shutdown!")
 
 
 if __name__ == '__main__':
