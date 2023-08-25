@@ -1,25 +1,14 @@
-2023-08-23 21:19:22,630 - ERROR - Authentication Cloud service cant be reached!
-2023-08-23 21:19:24,994 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:29,995 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:34,993 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:39,993 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:42,852 - ERROR - Temperature Cloud service cant be reached!
-2023-08-23 21:19:42,855 - ERROR - Arm load Cloud service cant be reached!
-2023-08-23 21:19:44,994 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:49,994 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:54,997 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:19:59,995 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:02,857 - ERROR - Temperature Cloud service cant be reached!
-2023-08-23 21:20:02,859 - ERROR - Arm load Cloud service cant be reached!
-2023-08-23 21:20:05,000 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:09,995 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:14,997 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:19,998 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:22,860 - ERROR - Temperature Cloud service cant be reached!
-2023-08-23 21:20:22,863 - ERROR - Arm load Cloud service cant be reached!
-2023-08-23 21:20:24,997 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:29,999 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:20:34,997 - ERROR - Fuel Cloud service cant be reached!
-2023-08-23 21:22:44,804 - ERROR - Temperature sensor lost connection to MQTT broker!
-2023-08-23 21:22:44,929 - ERROR - Arm load sensor lost connection to MQTT broker!
-2023-08-23 21:22:45,004 - ERROR - Fuel level sensor lost connection to MQTT broker!
+2023-08-24 21:28:34,953 - ERROR - Authentication Cloud service cant be reached!
+2023-08-24 21:30:04,566 - ERROR - Authentication Cloud service cant be reached!
+2023-08-24 21:30:07,849 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:12,849 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:17,849 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:22,850 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:24,783 - ERROR - Temperature Cloud service cant be reached!
+2023-08-24 21:30:24,783 - ERROR - Arm load Cloud service cant be reached!
+2023-08-24 21:30:27,852 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:32,850 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:30:37,850 - ERROR - Fuel Cloud service cant be reached!
+2023-08-24 21:35:42,685 - ERROR - Temperature sensor lost connection to MQTT broker!
+2023-08-24 21:35:42,867 - ERROR - Fuel level sensor lost connection to MQTT broker!
+2023-08-24 21:35:50,786 - ERROR - Arm load sensor lost connection to MQTT broker!

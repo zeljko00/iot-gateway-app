@@ -11,6 +11,8 @@
  "api_key": "bazinga00",
  "mqtt_broker": {
   "address": "localhost",
-  "port": 1883
+  "port": 1883,
+  "username": "iot-device",
+  "password": "10060509"
  }
 }

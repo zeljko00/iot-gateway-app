@@ -21,6 +21,8 @@ fuel_capacity = "capacity"
 fuel_efficiency = "efficiency"
 fuel_refill = "refill"
 interval = "period"
+mqtt_user = "username"
+mqtt_password = "password"
 max = "max_val"
 min = "min_val"
 avg= "avg_val"
@@ -58,7 +60,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc,props):
         errorLogger.error("Fuel sensor failed to establish connection with MQTT broker!")
 
 # period = measuring interval in sec, min_val/max_val = min/max measured value
-def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port, flag):
+def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag):
     print("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val,avg_val))
     print("------------------------------------------------------")
     # prevent division by zero
@@ -67,6 +69,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     period = abs(round(period))
     # initializing mqtt client
     client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect=on_connect_temp_sensor
     client.on_publish=on_publish
     while not client.is_connected():
@@ -116,7 +119,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
 
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
-def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, flag):
+def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
     print("Arm sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
     print("------------------------------------------------------")
     # parameter validation
@@ -126,6 +129,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     max_t = abs(round(max_t))
     # initializing mqtt client
     client = mqtt.Client(client_id="arm-load-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect = on_connect_load_sensor
     client.on_publish = on_publish
     while not client.is_connected():
@@ -166,7 +170,8 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
 
 # period = measuring interval , capacity = fuel tank capacity , refill = fuel tank refill probability (0-1)
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
-def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port, flag):
+def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
+                              mqtt_username, mqtt_pass, flag):
     print("Fuel sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
           format(period, capacity, consumption, efficiency, refill))
     print("------------------------------------------------------")
@@ -176,6 +181,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     period = abs(round(period))
     # initializing mqtt client
     client = mqtt.Client(client_id="fuel-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect = on_connect_fuel_sensor
     client.on_publish = on_publish
     while not client.is_connected():
@@ -241,7 +247,7 @@ def read_conf():
                 arm_sensor: {arm_min_t: 10, arm_max_t: 100, min: 0, max: 800},
                 fuel_sensor: {interval: 5, fuel_capacity: 300, fuel_consumption: 3000, fuel_efficiency: 0.6,
                               fuel_refill: 0.02},
-                mqtt_broker: { address: "localhost", port:1883}}
+                mqtt_broker: { address: "localhost", port:1883, mqtt_user: "iot-device", mqtt_password: "password"}}
     return data
 
 
@@ -253,6 +259,8 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
                                                                                 conf_data[temp_sensor][avg],
                                                                                 conf_data[mqtt_broker][address],
                                                                                 conf_data[mqtt_broker][port],
+                                                                                conf_data[mqtt_broker][mqtt_user],
+                                                                                conf_data[mqtt_broker][mqtt_password],
                                                                                 temp_flag, ))
     excavator_arm_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
                                                                        conf_data[arm_sensor][arm_max_t],
@@ -260,6 +268,8 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
                                                                        conf_data[arm_sensor][max],
                                                                        conf_data[mqtt_broker][address],
                                                                        conf_data[mqtt_broker][port],
+                                                                       conf_data[mqtt_broker][mqtt_user],
+                                                                       conf_data[mqtt_broker][mqtt_password],
                                                                        load_flag,))
     fuel_level_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
                                                                         conf_data[fuel_sensor][fuel_capacity],
@@ -268,6 +278,8 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
                                                                         conf_data[fuel_sensor][fuel_refill],
                                                                         conf_data[mqtt_broker][address],
                                                                         conf_data[mqtt_broker][port],
+                                                                        conf_data[mqtt_broker][mqtt_user],
+                                                                        conf_data[mqtt_broker][mqtt_password],
                                                                         fuel_flag,))
     return [temperature_sensor, excavator_arm_sensor, fuel_level_sensor]
 

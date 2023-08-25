@@ -1,0 +1,7 @@
+2023-08-24 21:49:19,957 - INFO - Sensor system started!
+2023-08-24 21:49:19,961 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-08-24 21:49:19,970 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-08-24 21:49:20,063 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-08-24 21:49:20,077 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-08-24 21:49:20,165 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-08-24 21:49:20,179 - INFO - Fuel sensor successfully established connection with MQTT broker!

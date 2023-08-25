@@ -13,8 +13,8 @@ infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 
 conf_path = "app_conf.json"
-username_label = "username"
-password_label = "password"
+user = "username"
+password = "password"
 server_url = "server_url"
 auth_interval = "auth_interval"
 time_format = "time_format"
@@ -85,7 +85,7 @@ def on_connect_fuel_handler(client, userdata, flags, rc,props):
         errorLogger.error("Fuel data handler failed to establish connection with MQTT broker!")
 
 # iot data aggregation and forwarding to cloud
-def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, flag, stats_queue):
+def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
     new_data = []
     old_data = []
     # called when there is new message in temp_topic topic
@@ -98,6 +98,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="temp-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
     client.on_connect = on_connect_temp_handler
     client.on_message=on_message_handler
     while not client.is_connected():
@@ -137,7 +138,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
     print("Temperature data handler shutdown!")
 
 
-def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, flag, stats_queue):
+def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue):
     new_data = []
     old_data = []
     # called when there is new message in load_topic topic
@@ -151,6 +152,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="load-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
     client.on_connect = on_connect_load_handler
     client.on_message = on_message_handler
     while not client.is_connected():
@@ -190,7 +192,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
     client.disconnect()
     print("Arm load data handler shutdown!")
 
-def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, flag, stats_queue):
+def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
     # initializing stats object
     stats = stats_service.Stats()
     # called when there is new message in load_topic topic
@@ -209,6 +211,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, fl
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="fuel-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
+    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
     client.on_connect = on_connect_fuel_handler
     client.on_message = on_message_handler
     while not client.is_connected():
@@ -238,10 +241,10 @@ def main():
             infoLogger.info("IoT Gateway app started!")
             print("IoT Gateway app started!")
             # iot cloud platform login
-            jwt = auth.login(config[username_label], config[password_label], config[server_url] + "/auth/login")
+            jwt = auth.login(config[user], config[password], config[server_url] + "/auth/login")
             # if failed, periodically request signup
             if jwt is None:
-                jwt = signup_periodically(config[api_key], config[username_label], config[password_label],
+                jwt = signup_periodically(config[api_key], config[user], config[password],
                                           config[server_time_format], config[server_url] + "/auth/signup",
                                           config[auth_interval])
             # now JWT required for Cloud platform auth is stored in jwt var
@@ -266,6 +269,8 @@ def main():
                                                                                       jwt, config[time_format],
                                                                                       config[mqtt_broker][address],
                                                                                       config[mqtt_broker][port],
+                                                                                      config[mqtt_broker][user],
+                                                                                      config[mqtt_broker][password],
                                                                                       temp_handler_flag,
                                                                                       temp_stats_queue))
             temperature_data_handler.start()
@@ -274,6 +279,8 @@ def main():
                                                                         config[time_format],
                                                                         config[mqtt_broker][address],
                                                                         config[mqtt_broker][port],
+                                                                        config[mqtt_broker][user],
+                                                                        config[mqtt_broker][password],
                                                                         load_handler_flag, load_stats_queue))
             load_data_handler.start()
             fuel_data_handler = Process(target=collect_fuel_data, args=(config[fuel_level_limit],
@@ -281,6 +288,8 @@ def main():
                                                                         config[time_format],
                                                                         config[mqtt_broker][address],
                                                                         config[mqtt_broker][port],
+                                                                        config[mqtt_broker][user],
+                                                                        config[mqtt_broker][password],
                                                                         fuel_handler_flag, fuel_stats_queue,))
             fuel_data_handler.start()
             temperature_data_handler.join()
