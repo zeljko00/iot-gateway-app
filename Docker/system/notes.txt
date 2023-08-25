@@ -1,0 +1,1 @@
+docker attach CONTAINER - attach terminala na tty koji se koristi za interatkivni mod kontenjera

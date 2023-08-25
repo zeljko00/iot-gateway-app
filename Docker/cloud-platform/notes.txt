@@ -1,0 +1,2 @@
+docker build -t iot-cloud-platform .
+docker run --name iot-cloud-platform --env-file .env --network iot -p 8080:8080 iot-cloud-platform

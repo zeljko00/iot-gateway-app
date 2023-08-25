@@ -1,0 +1,2 @@
+docker build -t iot-gateway .
+docker run --name iot-gateway -it -v ./app_conf.json:/app/app_conf.json --network iot  iot-gateway

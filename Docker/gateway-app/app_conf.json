@@ -1,0 +1,16 @@
+{
+ "username":"gprincip",
+ "password":"28061914",
+ "fuel_level_limit": 40,
+ "temp_interval": 20,
+ "load_interval": 20,
+ "server_url":"http://iot-cloud-platform:8080/iot-cloud-platform",
+ "auth_interval": 5,
+ "server_time_format": "dd.MM.yyyy HH:mm:ss",
+ "time_format":"%d.%m.%Y %H:%M:%S",
+ "api_key": "bazinga00",
+ "mqtt_broker": {
+  "address": "mqtt-broker",
+  "port": 1883
+ }
+}

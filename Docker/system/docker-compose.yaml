@@ -1,0 +1,77 @@
+version: "3.9"
+services:
+  mqtt-broker:
+    image: 'eclipse-mosquitto'
+    ports:
+      - '1883:1883'
+      - '9001:9001'
+    volumes:
+      - ./mqtt-broker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mqtt-data:/mosquitto/data 
+      - mqtt-log:/mosquitto/log
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mosquitto_pub",
+          "-h",
+          "localhost",
+          "-p",
+          "1883",
+          "-t",
+          "test",
+          "-m",
+          "testing"
+        ]
+      timeout: 5s
+      retries: 3
+  sensors:
+    image: 'sensors'
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Europe/Belgrade
+    volumes:
+      - ./sensors/sensor_conf.json:/app/sensor_conf.json
+    depends_on:
+      mqtt-broker:
+        condition: service_healthy
+  postgresql-db:
+    image: 'postgres'
+    ports:
+      - '5433:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+       POSTGRES_DB: iot-platform-database
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: mysecretpassword
+  iot-cloud-platform:
+    image: 'iot-cloud-platform'
+    ports:
+      - '8080:8080'
+    env_file:
+      - ./iot-platform/.env
+    environment:
+      - TZ=Europe/Belgrade
+    depends_on:
+        postgresql-db:
+          condition: service_started
+  iot-gateway:
+    image: 'iot-gateway'
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./iot-gateway/app_conf.json:/app/app_conf.json
+    environment:
+      - TZ=Europe/Belgrade
+    depends_on:
+      iot-cloud-platform:
+        condition: service_started
+      mqtt-broker:
+        condition: service_healthy
+      
+volumes:
+  mqtt-data:
+  mqtt-log:
+  db-data:

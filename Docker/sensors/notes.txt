@@ -1,0 +1,5 @@
+pip freeze > dependencies.txt - listing zavisnosti python projekta
+
+docker network create iot
+docker build -t sensors .
+docker run --name sensors -it  -v ./sensor_conf.json:/app/sensor_conf.json --network iot  sensors
