@@ -33,6 +33,7 @@ fuel_topic = "sensors/fuel-level"
 http_unauthorized = 401
 http_ok = 200
 http_no_content = 204
+qos=2
 
 # reading app configuration from json file
 def read_conf():
@@ -67,19 +68,19 @@ def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
 def on_connect_temp_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Temperature data handler successfully established connection with MQTT broker!")
-        client.subscribe(temp_topic, qos=0)
+        client.subscribe(temp_topic, qos=qos)
     else:
         errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
 def on_connect_load_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Arm load data handler successfully established connection with MQTT broker!")
-        client.subscribe(load_topic, qos=0)
+        client.subscribe(load_topic, qos=qos)
     else:
         errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
 def on_connect_fuel_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Fuel data handler successfully established connection with MQTT broker!")
-        client.subscribe(fuel_topic, qos=0)
+        client.subscribe(fuel_topic, qos=qos)
     else:
         errorLogger.error("Fuel data handler failed to establish connection with MQTT broker!")
 
@@ -131,6 +132,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
             infoLogger.warning("There is no temperature sensor data to handle!")
         time.sleep(interval)
     stats_queue.put(stats)
+    client.loop_stop()
     client.disconnect()
     print("Temperature data handler shutdown!")
 
@@ -184,6 +186,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
             infoLogger.warning("There is no arm load sensor data to handle!")
         time.sleep(interval)
     stats_queue.put(stats)
+    client.loop_stop()
     client.disconnect()
     print("Arm load data handler shutdown!")
 
@@ -220,6 +223,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, fl
     while not flag.is_set():
         time.sleep(2)
     stats_queue.put(stats)
+    client.loop_stop()
     client.disconnect()
     print("Fuel level data handler shutdown!")
 
@@ -235,6 +239,7 @@ def main():
             print("IoT Gateway app started!")
             # iot cloud platform login
             jwt = auth.login(config[username_label], config[password_label], config[server_url] + "/auth/login")
+            jwt="jwt value"
             # if failed, periodically request signup
             if jwt is None:
                 jwt = signup_periodically(config[api_key], config[username_label], config[password_label],

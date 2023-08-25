@@ -37,23 +37,23 @@ temp_topic="sensors/temperature"
 load_topic="sensors/arm-load"
 fuel_topic="sensors/fuel-level"
 data_pattern="[ value={} , time={} , unit={} ]"
+qos = 2
 
+def on_publish(client, userdata,result):
+    pass
 def on_connect_temp_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Temperature sensor successfully established connection with MQTT broker!")
-        client.subscribe(temp_topic,qos=0)
     else:
         errorLogger.error("Temperature sensor failed to establish connection with MQTT broker!")
 def on_connect_load_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Arm load sensor successfully established connection with MQTT broker!")
-        client.subscribe(load_topic,qos=0)
     else:
         errorLogger.error("Arm load sensor failed to establish connection with MQTT broker!")
 def on_connect_fuel_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Fuel sensor successfully established connection with MQTT broker!")
-        client.subscribe(fuel_topic,qos=0)
     else:
         errorLogger.error("Fuel sensor failed to establish connection with MQTT broker!")
 
@@ -68,6 +68,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     # initializing mqtt client
     client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.on_connect=on_connect_temp_sensor
+    client.on_publish=on_publish
     while not client.is_connected():
         try:
             infoLogger.info("Temperature sensor establishing connection with MQTT broker!")
@@ -104,9 +105,11 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
                 counter += 1
             print(data_pattern.format(str(value), str(time.strftime(time_format, time.localtime())), celzius))
             # send data to MQTT broker
-            client.publish(temp_topic, data_pattern.format(str(value), str(time.strftime(time_format, time.localtime())), celzius))
+            client.publish(temp_topic, data_pattern.format(str(value), str(time.strftime(time_format,
+                                                                                         time.localtime())), celzius),qos=qos)
         except:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
+    client.loop_stop()
     client.disconnect()
     infoLogger.info("Temperature sensor shutdown!")
     print("Temperature sensor shutdown!")
@@ -124,6 +127,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     # initializing mqtt client
     client = mqtt.Client(client_id="arm-load-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.on_connect = on_connect_load_sensor
+    client.on_publish = on_publish
     while not client.is_connected():
         try:
             infoLogger.info("Arm load sensor establishing connection with MQTT broker!")
@@ -149,10 +153,12 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             print(data_pattern.format(str(data[counter % values_count]),
                                       str(time.strftime(time_format, time.localtime())), kg))
             # send data to MQTT broker
-            client.publish(load_topic, data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg))
+            client.publish(load_topic, data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg),
+                           qos=qos)
         except:
             errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
         counter += 1
+    client.loop_stop()
     client.disconnect()
     infoLogger.info("Arm load sensor shutdown!")
     print("Arm load sensor shutdown!")
@@ -171,6 +177,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     # initializing mqtt client
     client = mqtt.Client(client_id="fuel-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.on_connect = on_connect_fuel_sensor
+    client.on_publish = on_publish
     while not client.is_connected():
         infoLogger.info("Fuel level sensor establishing connection with MQTT broker!")
         try:
@@ -211,9 +218,11 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
                                       str(time.strftime(time_format, time.localtime())), liter))
             # send data to MQTT broker
             client.publish(fuel_topic,
-                           data_pattern.format(str(value),str(time.strftime(time_format, time.localtime())),liter))
+                           data_pattern.format(str(value),str(time.strftime(time_format, time.localtime())), liter),
+                           qos=qos)
         except:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
+    client.loop_stop()
     client.disconnect()
     infoLogger.info("Fuel level sensor shutdown!")
     print("Fuel level sensor shutdown!")
@@ -246,12 +255,12 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
                                                                                 conf_data[mqtt_broker][port],
                                                                                 temp_flag, ))
     excavator_arm_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
-                                                                         conf_data[arm_sensor][arm_max_t],
-                                                                         conf_data[arm_sensor][min],
-                                                                         conf_data[arm_sensor][max],
-                                                                         conf_data[mqtt_broker][address],
-                                                                         conf_data[mqtt_broker][port],
-                                                                         load_flag,))
+                                                                       conf_data[arm_sensor][arm_max_t],
+                                                                       conf_data[arm_sensor][min],
+                                                                       conf_data[arm_sensor][max],
+                                                                       conf_data[mqtt_broker][address],
+                                                                       conf_data[mqtt_broker][port],
+                                                                       load_flag,))
     fuel_level_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
                                                                         conf_data[fuel_sensor][fuel_capacity],
                                                                         conf_data[fuel_sensor][fuel_consumption],
