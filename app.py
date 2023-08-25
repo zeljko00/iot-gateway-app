@@ -239,7 +239,6 @@ def main():
             print("IoT Gateway app started!")
             # iot cloud platform login
             jwt = auth.login(config[username_label], config[password_label], config[server_url] + "/auth/login")
-            jwt="jwt value"
             # if failed, periodically request signup
             if jwt is None:
                 jwt = signup_periodically(config[api_key], config[username_label], config[password_label],
