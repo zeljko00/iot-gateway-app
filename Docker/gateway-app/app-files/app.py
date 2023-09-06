@@ -12,7 +12,7 @@ logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 
-conf_path = "app_conf.json"
+conf_path = "../app_conf.json"
 user = "username"
 password = "password"
 server_url = "server_url"
