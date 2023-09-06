@@ -1,17 +1,17 @@
 {
     "temp_sensor": {
-        "period": 5,
+        "period": 10,
         "min_val": -5,
         "avg_val": 80
     },
     "arm_sensor":{
-        "min_t": 1,
-        "max_t": 10,
+        "min_t": 8,
+        "max_t": 20,
         "min_val": 0,
         "max_val": 800
     },
     "fuel_sensor":{
-        "period": 5,
+        "period": 15,
         "capacity": 300,
         "consumption": 3000,
         "efficiency": 0.6,
