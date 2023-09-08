@@ -1,0 +1,59 @@
+.card {
+    margin: 15px;
+    background-color: white;
+    flex-grow: 1;
+    width: 300px;
+    border-radius: 15px;
+    height: 180px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    font-family: monospace
+}
+#stats-card{
+    height: 300px;
+}
+.title{
+    font-size: 25px;
+    font-style: italic;
+    margin: 5px;
+    color: rgb(173, 173, 173);
+    text-align: center;
+}
+.value{
+    font-size: 50px;
+    font-weight: 700;
+    margin: 5px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+.pie-area{
+    margin: 5px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: calc(100% - 10px);
+    height: 170px;
+}
+.secondValue{
+    font-size: 32px;
+    font-weight: 500;
+    margin: 5px;
+    text-align: center;
+}
+.subtitle{
+    font-size: 20px;
+    font-style: italic;
+    margin: 5px;
+    text-align: center;
+    color: rgb(173, 173, 173);
+}
+.red-value{
+    color: red;
+}
+.blue-value{
+    color: #8884d8
+}
+.green-value{
+    color:rgb(8, 212, 8)
+}

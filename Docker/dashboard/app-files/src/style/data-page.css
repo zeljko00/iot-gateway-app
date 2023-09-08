@@ -1,0 +1,45 @@
+.dashboard-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f4f5;
+}
+.logout-btn{
+    position: absolute !important;
+    top: 20px;
+    right: 25px;
+}
+.dashboard-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.title-div{
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.red-text{
+    color: red;
+    font-size: 30px !important;
+}
+.cards-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 0px;
+}
+.graph-area{
+    margin-right: 25px;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 15px;
+    height: 1010px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,6 +1,6 @@
 {
     "temp_sensor": {
-        "period": 15,
+        "period": 20,
         "min_val": 0,
         "avg_val": 80
     },

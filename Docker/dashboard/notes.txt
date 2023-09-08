@@ -1,0 +1,2 @@
+docker build -t iot-dashboard .
+docker run --name dashboard -p 3000:3000 --env-file .env --network iot iot-dashboard
