@@ -1,6 +1,6 @@
 {
     "temp_sensor": {
-        "period": 10,
+        "period": 15,
         "min_val": -5,
         "avg_val": 80
     },
@@ -11,9 +11,9 @@
         "max_val": 800
     },
     "fuel_sensor":{
-        "period": 15,
-        "capacity": 300,
-        "consumption": 3000,
+        "period": 30,
+        "capacity": 350,
+        "consumption": 2300,
         "efficiency": 0.6,
         "refill": 0.02
     },

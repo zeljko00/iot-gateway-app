@@ -204,7 +204,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
-                stats.update_data(4, 4, 0)
+                stats.update_data(4, 0, 0)
             # jwt has expired - handler will be stopped, and started again after app restart
             if code == http_unauthorized:
                 flag.set()

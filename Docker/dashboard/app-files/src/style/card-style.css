@@ -54,6 +54,24 @@
 .blue-value{
     color: #8884d8
 }
+.alert-card{
+    margin: 14px;
+    background-color: rgb(233, 194, 194);
+    flex-grow: 1;
+    width: 300px;
+    border-radius: 15px;
+    height: 180px;
+    border: solid 1px red;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    font-family: monospace;
+    position:relative
+}
 .green-value{
     color:rgb(8, 212, 8)
+}
+.alert-icon {
+    position: absolute;
+    bottom: -15px;
+    right: -25px;
 }

@@ -15,7 +15,8 @@ import {
   Legend,
   Cell,
 } from "recharts";
-
+import alarm1 from "../assets/audio/alarm1.mp3"
+import alarm2 from "../assets/audio/alarm2.mp3"
 import "../style/data-page.css";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 import axios from "axios";
@@ -50,7 +51,8 @@ export const DataPage = () => {
   const lastLoadTime = useRef("");
 
   const navigate = useNavigate();
-
+  const alarmSound1= new Audio(alarm1)
+  const alarmSound2= new Audio(alarm2)
   const changeTempData = (data) => {
     if (data.length > 0) {
       const tempDataObj = handleTempData(data);
@@ -259,6 +261,13 @@ export const DataPage = () => {
             console.log(fuelDataRef.current);
             console.log("------------------------------------------");
             changeFuelData(fuelDataRef.current);
+            if(body.value!==null && body.value<20){
+              try{
+                alarmSound1.play()
+              }catch {
+                console.log("Interact with browser first!")
+              }
+            }
           }
           lastFuelTime.current = body.time;
         }
@@ -273,6 +282,13 @@ export const DataPage = () => {
             console.log(tempDataRef.current);
             console.log("------------------------------------------");
             changeTempData(tempDataRef.current);
+            if(body.value!==null && body.value>75){
+              try{
+                alarmSound1.play()
+              }catch {
+                console.log("Interact with browser first!")
+              }
+            }
           }
           lastTempTime.current = body.time;
         }
@@ -328,6 +344,7 @@ export const DataPage = () => {
             title="Current temperature"
             subtitle=""
             valueColor="blue-value"
+            allert={ tempData!=null ? (tempData.currentTemp>75 ? true: false ): false}
             value={
               tempData != null
                 ? tempData.currentTemp.toFixed(1) + "°C"
@@ -344,6 +361,7 @@ export const DataPage = () => {
             title="Average temperature"
             subtitle="(last hour)"
             valueColor="green-value"
+            allert={false}
             value={
               tempData != null ? tempData.avgTemp.toFixed(1) + "°C" : "Unknown"
             }
@@ -354,6 +372,7 @@ export const DataPage = () => {
             title="Max temperature"
             subtitle=""
             valueColor="red-value"
+            allert={false}
             value={
               tempData != null ? tempData.maxTemp.toFixed(1) + "°C" : "Unknown"
             }
@@ -413,6 +432,7 @@ export const DataPage = () => {
             title="Current load"
             subtitle=""
             valueColor="blue-value"
+            allert={false}
             value={
               loadData != null
                 ? loadData.currentLoad.toFixed(1) + "kg"
@@ -429,6 +449,7 @@ export const DataPage = () => {
             title="Average load"
             subtitle="(last hour)"
             valueColor="green-value"
+            allert={false}
             value={
               loadData != null ? loadData.avgLoad.toFixed(1) + "kg" : "Unknown"
             }
@@ -439,6 +460,7 @@ export const DataPage = () => {
             title="Load sum"
             subtitle="(last hour)"
             valueColor="red-value"
+            allert={false}
             value={
               loadData != null ? loadData.sumLoad.toFixed(0) + "kg" : "Unknown"
             }
@@ -494,6 +516,7 @@ export const DataPage = () => {
             title="Last critical level"
             subtitle={fuelData ? fuelData.lastCriticalTime : "Unknown"}
             valueColor="blue-value"
+            allert={ fuelData!=null ? (fuelData.lastCriticalFuel<20 ? true: false ): false}
             value={
               fuelData != null
                 ? fuelData.lastCriticalFuel.toFixed(1) + "l"
@@ -506,6 +529,7 @@ export const DataPage = () => {
             title="Empty fuel tank"
             value={fuelData ? "x" + fuelData.empty : "Unknown"}
             valueColor="green-value"
+            allert={false}
             subtitle={
               fuelData
                 ? fuelData.empty > 0
@@ -520,6 +544,7 @@ export const DataPage = () => {
             title="Min fuel level"
             subtitle={fuelData ? fuelData.minTime : "Unknown"}
             valueColor="red-value"
+            allert={false}
             value={
               fuelData != null ? fuelData.minFuel.toFixed(1) + "l" : "Unknown"
             }
