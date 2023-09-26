@@ -15,8 +15,8 @@ import {
   Legend,
   Cell,
 } from "recharts";
-import alarm1 from "../assets/audio/alarm1.mp3"
-import alarm2 from "../assets/audio/alarm2.mp3"
+import alarm1 from "../assets/audio/alarm1.mp3";
+import alarm2 from "../assets/audio/alarm2.mp3";
 import "../style/data-page.css";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 import axios from "axios";
@@ -39,6 +39,9 @@ export const DataPage = () => {
   const [tempData, setTempData] = useState(null);
   const [loadData, setLoadData] = useState(null);
   const [fuelData, setFuelData] = useState(null);
+  const [tempGraphData, setTempGraphData] = useState(null);
+  const [loadGraphData, setLoadGraphData] = useState(null);
+  const [fuelGraphData, setFuelGraphData] = useState(null);
   const tempDataRef = useRef([]);
   const loadDataRef = useRef([]);
   const fuelDataRef = useRef([]);
@@ -51,24 +54,30 @@ export const DataPage = () => {
   const lastLoadTime = useRef("");
 
   const navigate = useNavigate();
-  const alarmSound1= new Audio(alarm1)
-  const alarmSound2= new Audio(alarm2)
+  const alarmSound1 = new Audio(alarm1);
+  const alarmSound2 = new Audio(alarm2);
   const changeTempData = (data) => {
     if (data.length > 0) {
       const tempDataObj = handleTempData(data);
+      // console.log("-----------------TEMP---------------------");
+      // console.log(tempDataObj);
+      // console.log("------------------------------------------");
       setTempData(tempDataObj);
+      setTempGraphData(tempDataObj.graphData);
     }
   };
   const changeLoadData = (data) => {
     if (data.length > 0) {
       const loadDataObj = handleLoadData(data);
       setLoadData(loadDataObj);
+      setLoadGraphData(loadDataObj.graphData);
     }
   };
   const changeFuelData = (data) => {
     if (data.length > 0) {
       const fuelDataObj = handleFuelData(data);
       setFuelData(fuelDataObj);
+      setFuelGraphData(fuelDataObj.graphData);
     }
   };
   const handleTempData = (data) => {
@@ -242,10 +251,10 @@ export const DataPage = () => {
         (payload) => {
           const body = JSON.parse(payload.body);
           if (body.time !== lastLoadTime.current) {
-            loadDataRef.current.push(body);
-            console.log("-----------------LOAD---------------------");
-            console.log(loadDataRef.current);
-            console.log("------------------------------------------");
+            loadDataRef.current = [...loadDataRef.current, body];
+            // console.log("-----------------LOAD---------------------");
+            // console.log(loadDataRef.current);
+            // console.log("------------------------------------------");
             changeLoadData(loadDataRef.current);
           }
           lastLoadTime.current = body.time;
@@ -256,16 +265,16 @@ export const DataPage = () => {
         (payload) => {
           const body = JSON.parse(payload.body);
           if (body.time !== lastFuelTime.current) {
-            fuelDataRef.current.push(body);
-            console.log("-----------------FUEL---------------------");
-            console.log(fuelDataRef.current);
-            console.log("------------------------------------------");
+            fuelDataRef.current = [...fuelDataRef.current, body];
+            // console.log("-----------------FUEL---------------------");
+            // console.log(fuelDataRef.current);
+            // console.log("------------------------------------------");
             changeFuelData(fuelDataRef.current);
-            if(body.value!==null && body.value<20){
-              try{
-                alarmSound1.play()
-              }catch {
-                console.log("Interact with browser first!")
+            if (body.value !== null && body.value < 20) {
+              try {
+                alarmSound1.play();
+              } catch {
+                console.log("Interact with browser first!");
               }
             }
           }
@@ -277,16 +286,16 @@ export const DataPage = () => {
         (payload) => {
           const body = JSON.parse(payload.body);
           if (body.time !== lastTempTime.current) {
-            tempDataRef.current.push(body);
-            console.log("-----------------TEMP---------------------");
-            console.log(tempDataRef.current);
-            console.log("------------------------------------------");
+            tempDataRef.current = [...tempDataRef.current, body];
+            // console.log("-----------------TEMP---------------------");
+            // console.log(tempDataRef.current);
+            // console.log("------------------------------------------");
             changeTempData(tempDataRef.current);
-            if(body.value!==null && body.value>75){
-              try{
-                alarmSound1.play()
-              }catch {
-                console.log("Interact with browser first!")
+            if (body.value !== null && body.value > 75) {
+              try {
+                alarmSound1.play();
+              } catch {
+                console.log("Interact with browser first!");
               }
             }
           }
@@ -344,7 +353,13 @@ export const DataPage = () => {
             title="Current temperature"
             subtitle=""
             valueColor="blue-value"
-            allert={ tempData!=null ? (tempData.currentTemp>75 ? true: false ): false}
+            allert={
+              tempData != null
+                ? tempData.currentTemp > 75
+                  ? true
+                  : false
+                : false
+            }
             value={
               tempData != null
                 ? tempData.currentTemp.toFixed(1) + "°C"
@@ -392,12 +407,12 @@ export const DataPage = () => {
           />
         </div>
         <div className="graph-area">
-          {tempData && (
+          {tempGraphData && (
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 width={500}
                 height={400}
-                data={tempData.graphData}
+                data={tempGraphData}
                 margin={{
                   top: 10,
                   right: 30,
@@ -476,12 +491,12 @@ export const DataPage = () => {
           />
         </div>
         <div className="graph-area">
-          {loadData && (
+          {loadGraphData && (
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 width={500}
                 height={400}
-                data={loadData.graphData}
+                data={loadGraphData}
                 margin={{
                   top: 10,
                   right: 30,
@@ -516,7 +531,13 @@ export const DataPage = () => {
             title="Last critical level"
             subtitle={fuelData ? fuelData.lastCriticalTime : "Unknown"}
             valueColor="blue-value"
-            allert={ fuelData!=null ? (fuelData.lastCriticalFuel<20 ? true: false ): false}
+            allert={
+              fuelData != null
+                ? fuelData.lastCriticalFuel < 20
+                  ? true
+                  : false
+                : false
+            }
             value={
               fuelData != null
                 ? fuelData.lastCriticalFuel.toFixed(1) + "l"
@@ -560,12 +581,12 @@ export const DataPage = () => {
           />
         </div>
         <div className="graph-area">
-          {fuelData && (
+          {fuelGraphData && (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 width={500}
                 height={300}
-                data={fuelData.graphData}
+                data={fuelGraphData}
                 margin={{
                   top: 20,
                   right: 30,
@@ -579,7 +600,7 @@ export const DataPage = () => {
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="value" fill="#8884d8">
-                  {fuelData.graphData.map((entry, index) => (
+                  {fuelGraphData.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={colors[index % colors.length]}
