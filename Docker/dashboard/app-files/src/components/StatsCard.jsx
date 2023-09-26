@@ -8,7 +8,7 @@ const COLORS = ["#00C49F", "#FFBB28"];
 
 export const StatsCard = (props) => {
   const data = [
-    { name: "collected bytes", value: props.valueA },
+    { name: "unused bytes", value: props.valueA },
     { name: "used bytes", value: props.valueB },
   ];
   return (
