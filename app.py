@@ -11,6 +11,7 @@ import data_service
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
+customLogger = logging.getLogger('customConsoleLogger')
 
 conf_path = "app_conf.json"
 user = "username"
@@ -51,38 +52,43 @@ def read_conf():
 def signup_periodically(key, username, password, time_pattern, url, interval):
     jwt = None
     while jwt is None:
+        customLogger.debug("Trying to sign up!")
         jwt = auth.register(key, username, password, time_pattern, url)
         time.sleep(interval)
+    customLogger.debug("Successful sign up!")
     return jwt
 
 def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
     # waiting for shutdown signal
-    input("Press ENTER to stop the app!")
+    # input("Press ENTER to stop the app!")
+    input("")
     infoLogger.info("IoT Gateway app shutting down! Please wait")
-    print("IoT Gateway app shutting down! Please wait")
+    customLogger.debug("IoT Gateway app shutting down! Please wait")
     # shutting down handler processes
     temp_handler_flag.set()
     load_handler_flag.set()
     fuel_handler_flag.set()
-    print("Shutdown controller stoped!")
 def on_connect_temp_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Temperature data handler successfully established connection with MQTT broker!")
         client.subscribe(temp_topic, qos=qos)
     else:
         errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
+        customLogger.critical("Temperature data handler failed to establish connection with MQTT broker!")
 def on_connect_load_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Arm load data handler successfully established connection with MQTT broker!")
         client.subscribe(load_topic, qos=qos)
     else:
         errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
+        customLogger.critical("Arm load data handler failed to establish connection with MQTT broker!")
 def on_connect_fuel_handler(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Fuel data handler successfully established connection with MQTT broker!")
         client.subscribe(fuel_topic, qos=qos)
     else:
         errorLogger.error("Fuel data handler failed to establish connection with MQTT broker!")
+        customLogger.critical("Fuel data handler failed to establish connection with MQTT broker!")
 
 # iot data aggregation and forwarding to cloud
 def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
@@ -92,7 +98,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
     def on_message_handler(client, userdata, message):
         if not flag.is_set():
             new_data.append(str(message.payload.decode("utf-8")))
-            print("temperature: ",new_data)
+            customLogger.info("Received temperature data: " + str(message.payload.decode("utf-8")))
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
@@ -128,6 +134,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
                 stats.update_data(len(data) * 4, 4, 1)
             # jwt has expired
             if code == http_unauthorized:
+                customLogger.error("JWT has expired!")
                 break
         else:
             infoLogger.warning("There is no temperature sensor data to handle!")
@@ -135,7 +142,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
     stats_queue.put(stats)
     client.loop_stop()
     client.disconnect()
-    print("Temperature data handler shutdown!")
+    customLogger.debug("Temperature data handler shutdown!")
 
 
 def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue):
@@ -145,7 +152,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
     def on_message_handler(client, userdata, message):
         if not flag.is_set():
             new_data.append(str(message.payload.decode("utf-8")))
-            print("load: ",new_data)
+            customLogger.info("Received load data: "+str(message.payload.decode("utf-8")))
 
     # initializing stats object
     stats = stats_service.Stats()
@@ -183,6 +190,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
                 stats.update_data(len(data) * 4, 4, 1)
             # jwt has expired
             if code == http_unauthorized:
+                customLogger.error("JWT has expired!")
                 break
         else:
             infoLogger.warning("There is no arm load sensor data to handle!")
@@ -190,24 +198,27 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
     stats_queue.put(stats)
     client.loop_stop()
     client.disconnect()
-    print("Arm load data handler shutdown!")
+    customLogger.debug("Arm load data handler shutdown!")
 
 def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
     # initializing stats object
     stats = stats_service.Stats()
     # called when there is new message in load_topic topic
     def on_message_handler(client, userdata, message):
-        # making sure that flag is not set in mean time
+        # making sure that flag is not set in meantime
         if not flag.is_set():
-            print("fuel: ",str(message.payload.decode("utf-8")))
+            customLogger.info("Received fuel data: "+str(message.payload.decode("utf-8")))
             code=data_service.handle_fuel_data(str(message.payload.decode("utf-8")), limit, url, jwt, time_pattern)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
                 stats.update_data(4, 0, 0)
             # jwt has expired - handler will be stopped, and started again after app restart
-            if code == http_unauthorized:
+            elif code == http_unauthorized:
+                customLogger.error("JWT has expired!")
                 flag.set()
+
+
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="fuel-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
@@ -228,7 +239,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
     stats_queue.put(stats)
     client.loop_stop()
     client.disconnect()
-    print("Fuel level data handler shutdown!")
+    customLogger.debug("Fuel level data handler shutdown!")
 
 def main():
     # used for restarting device due to jwt expiration
@@ -239,18 +250,22 @@ def main():
         # if config is read successfully, start app logic
         if config is not None:
             infoLogger.info("IoT Gateway app started!")
-            print("IoT Gateway app started!")
+            customLogger.debug("IoT Gateway app started!")
             # iot cloud platform login
             jwt = auth.login(config[user], config[password], config[server_url] + "/auth/login")
             # if failed, periodically request signup
             if jwt is None:
+                customLogger.error("Login failed! Trying to sign up periodically!")
                 jwt = signup_periodically(config[api_key], config[user], config[password],
                                           config[server_time_format], config[server_url] + "/auth/signup",
                                           config[auth_interval])
+            else:
+                customLogger.debug("Login successful!")
             # now JWT required for Cloud platform auth is stored in jwt var
-            print(jwt)
+            customLogger.info("Received JWT: " +jwt)
             # starting stats monitoring
             # using shared memory Queue objects for returning stats data from processes
+            customLogger.debug("Initializing devices stats data!")
             stats = stats_service.OverallStats(config[server_url] + "/stats", jwt, config[time_format])
             temp_stats_queue = Queue()
             load_stats_queue = Queue()
@@ -263,6 +278,7 @@ def main():
             shutdown_controller_worker = Thread(target=shutdown_controller,
                                                 args=(temp_handler_flag, load_handler_flag, fuel_handler_flag))
             shutdown_controller_worker.start()
+            customLogger.debug("Starting workers!")
             # data handling workers
             temperature_data_handler = Process(target=collect_temperature_data, args=(config[temp_interval],
                                                                                       config[server_url] + "/data/temp",
@@ -295,20 +311,22 @@ def main():
             temperature_data_handler.join()
             load_data_handler.join()
             fuel_data_handler.join()
+            customLogger.debug("Workers stopped!")
             stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
+            customLogger.debug("Sending device stats data!")
             stats.send_stats()
             # checking jwt, if jwt has expired  app will restart
             jwt_code=auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
             if jwt_code == http_ok:
                 reset = False
                 infoLogger.info("IoT Gateway app shutdown!")
-                print("IoT Gateway app shutdown!")
+                customLogger.debug("IoT Gateway app shutdown!")
             else:
                 reset = True
                 infoLogger.info("IoT Gateway app restart!")
-                print("IoT Gateway app restart!")
+                customLogger.debug("IoT Gateway app restart!")
         else:
-            print("Can't read app config file!")
+            customLogger.critical("Cant read config file! Aborting...")
 
 
 if __name__ == '__main__':

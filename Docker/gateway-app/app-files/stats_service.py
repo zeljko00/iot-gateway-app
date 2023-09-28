@@ -4,7 +4,7 @@ import logging.config
 
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-
+customLogger=logging.getLogger('customConsoleLogger')
 
 class Stats:
     def __init__(self):
@@ -65,6 +65,8 @@ class OverallStats:
                     break
                 else:
                     errorLogger.error("problem with Stats Cloud service!")
+                    customLogger.critical("Stats service unavailable!")
             except:
                 errorLogger.error("Stats Cloud service unavailable!")
+                customLogger.critical("Stats service unavailable!")
 

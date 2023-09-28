@@ -10,6 +10,7 @@ import logging.config
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
+customLogger=logging.getLogger("customConsoleLogger")
 
 temp_sensor = "temp_sensor"
 arm_sensor = "arm_sensor"
@@ -46,23 +47,29 @@ def on_publish(client, userdata,result):
 def on_connect_temp_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Temperature sensor successfully established connection with MQTT broker!")
+        customLogger.debug("Temperature sensor successfully established connection with MQTT broker!")
     else:
         errorLogger.error("Temperature sensor failed to establish connection with MQTT broker!")
+        customLogger.critical("Temperature sensor failed to establish connection with MQTT broker!")
 def on_connect_load_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Arm load sensor successfully established connection with MQTT broker!")
+        customLogger.debug("Arm load sensor successfully established connection with MQTT broker!")
     else:
         errorLogger.error("Arm load sensor failed to establish connection with MQTT broker!")
+        errorLogger.critical("Arm load sensor failed to establish connection with MQTT broker!")
 def on_connect_fuel_sensor(client, userdata, flags, rc,props):
     if rc == 0:
         infoLogger.info("Fuel sensor successfully established connection with MQTT broker!")
+        customLogger.debug("Fuel sensor successfully established connection with MQTT broker!")
     else:
         errorLogger.error("Fuel sensor failed to establish connection with MQTT broker!")
+        customLogger.critical("Fuel sensor failed to establish connection with MQTT broker!")
 
 # period = measuring interval in sec, min_val/max_val = min/max measured value
 def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag):
-    print("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val,avg_val))
-    print("------------------------------------------------------")
+    customLogger.debug("Temperature sensor started!")
+    customLogger.debug("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val,avg_val))
     # prevent division by zero
     if period == 0:
         period = 1
@@ -102,26 +109,25 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
                 if value > avg_val:
                     raising = False
             else:
-                print(avg_val)
-                print(data[counter % values_count])
                 value = avg_val+data[counter % values_count]
                 counter += 1
-            print(data_pattern.format(str(value), str(time.strftime(time_format, time.localtime())), celzius))
+            customLogger.error("Temperature: "+data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format, time.localtime())), celzius))
             # send data to MQTT broker
-            client.publish(temp_topic, data_pattern.format(str(value), str(time.strftime(time_format,
+            client.publish(temp_topic, data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format,
                                                                                          time.localtime())), celzius),qos=qos)
         except:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
+            customLogger.critical("Connection between temperature sensor and MQTT broker is broken!")
     client.loop_stop()
     client.disconnect()
     infoLogger.info("Temperature sensor shutdown!")
-    print("Temperature sensor shutdown!")
+    customLogger.debug("Temperature sensor shutdown!")
 
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
 def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
-    print("Arm sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
-    print("------------------------------------------------------")
+    customLogger.debug("Arm laod sensor started!")
+    customLogger.debug("Arm load sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
     # parameter validation
     if max_t <= min_t:
         max_t = min_t + random.randint(0,10)
@@ -154,27 +160,28 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             client.reconnect()
             time.sleep(0.1)
         try:
-            print(data_pattern.format(str(data[counter % values_count]),
+            customLogger.info("Load: "+data_pattern.format("{:.2f}".format(data[counter % values_count]),
                                       str(time.strftime(time_format, time.localtime())), kg))
             # send data to MQTT broker
-            client.publish(load_topic, data_pattern.format(str(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg),
+            client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg),
                            qos=qos)
         except:
             errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
+            customLogger.critical("Connection between arm load sensor and MQTT broker is broken!")
         counter += 1
     client.loop_stop()
     client.disconnect()
     infoLogger.info("Arm load sensor shutdown!")
-    print("Arm load sensor shutdown!")
+    customLogger.debug("Arm load sensor shutdown!")
 
 
 # period = measuring interval , capacity = fuel tank capacity , refill = fuel tank refill probability (0-1)
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
 def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
                               mqtt_username, mqtt_pass, flag):
-    print("Fuel sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
+    customLogger.debug("Fuel level sensor started!")
+    customLogger.debug("Fuel level sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
           format(period, capacity, consumption, efficiency, refill))
-    print("------------------------------------------------------")
     # parameter validation
     if period == 0:
         period = 1
@@ -220,18 +227,19 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             client.reconnect()
             time.sleep(0.1)
         try:
-            print(data_pattern.format(str(value),
+            customLogger.warning("Fuel: "+data_pattern.format("{:.2f}".format(value),
                                       str(time.strftime(time_format, time.localtime())), liter))
             # send data to MQTT broker
             client.publish(fuel_topic,
-                           data_pattern.format(str(value),str(time.strftime(time_format, time.localtime())), liter),
+                           data_pattern.format("{:.2f}".format(value),str(time.strftime(time_format, time.localtime())), liter),
                            qos=qos)
         except:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
+            customLogger.critical("Connection between fuel level sensor and MQTT broker is broken!")
     client.loop_stop()
     client.disconnect()
     infoLogger.info("Fuel level sensor shutdown!")
-    print("Fuel level sensor shutdown!")
+    customLogger.debug("Fuel level sensor shutdown!")
 
 
 
@@ -243,6 +251,8 @@ def read_conf():
         data = json.load(conf_file)
     except:
         errorLogger.critical("Using default config! Can't read sensor config file - ", conf_file_path, " !")
+        customLogger.critical("Using default config! Can't read sensor config file - ", conf_file_path, " !")
+
         data = {temp_sensor: {interval: 5, min: -10, avg: 100},
                 arm_sensor: {arm_min_t: 10, arm_max_t: 100, min: 0, max: 800},
                 fuel_sensor: {interval: 5, fuel_capacity: 300, fuel_consumption: 3000, fuel_efficiency: 0.6,
@@ -290,13 +300,15 @@ def main():
     fuel_flag = Event()
     sensors = sensors_devices(temp_flag, load_flag, fuel_flag)
     infoLogger.info("Sensor system started!")
-    print("Sensor system started!")
+    customLogger.debug("Sensor system starting!")
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
     # waiting for shutdown signal
-    input("Press ENTER to stop the app!")
+    # input("Press ENTER to stop the app!")
+    input("")
     infoLogger.info("Sensor system shutting down! Please wait")
+    customLogger.info("Sensor system shutting down! Please wait")
     # shutting down sensor processes
     temp_flag.set()
     load_flag.set()
@@ -304,7 +316,7 @@ def main():
     for sensor in sensors:
         sensor.join()
     infoLogger.info("Sensor system shutdown!")
-    print("Sensor system shutdown!")
+    customLogger.debug("Sensor system shutdown!")
 
 if __name__ == '__main__':
     main()

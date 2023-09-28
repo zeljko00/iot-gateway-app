@@ -12,3 +12,344 @@
 2023-08-24 21:35:42,685 - ERROR - Temperature sensor lost connection to MQTT broker!
 2023-08-24 21:35:42,867 - ERROR - Fuel level sensor lost connection to MQTT broker!
 2023-08-24 21:35:50,786 - ERROR - Arm load sensor lost connection to MQTT broker!
+2023-09-28 17:46:32,482 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:32,485 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:37,489 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:42,492 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:47,496 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:52,499 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:46:57,502 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:02,506 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:07,509 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:12,512 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:17,515 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:22,518 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:27,521 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:32,525 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:37,528 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:42,532 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:47,535 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:52,539 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:47:57,543 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:02,546 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:07,550 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:12,553 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:17,556 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:22,560 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:27,563 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:32,566 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:37,569 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:42,574 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:47,578 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:52,581 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:48:57,585 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:02,588 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:07,591 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:12,594 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:17,597 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:22,601 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:27,606 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:32,610 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:37,615 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:42,619 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:47,622 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:52,626 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:49:57,629 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:02,632 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:07,635 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:12,638 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:17,643 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:22,646 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:27,650 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:32,653 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:37,656 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:42,659 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:47,662 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:52,666 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:50:57,669 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:02,672 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:07,675 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:12,678 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:17,681 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:22,684 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:27,687 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:32,691 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:37,695 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:42,699 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:47,701 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:52,704 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:51:57,707 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:02,710 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:07,713 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:12,717 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:17,720 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:22,723 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:27,726 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:32,729 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:37,733 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:42,736 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:47,741 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:52,749 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:52:57,752 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:02,757 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:07,766 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:12,769 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:17,774 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:22,778 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:27,780 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:32,785 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:37,788 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:42,791 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:47,794 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:52,797 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:53:57,803 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:02,807 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:07,811 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:12,816 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:17,819 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:22,823 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:27,825 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:32,829 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:37,832 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:42,835 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:47,838 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:52,841 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:54:57,844 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:02,848 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:07,852 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:12,856 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:17,859 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:22,863 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:27,866 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:32,869 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:37,872 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:42,876 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:47,880 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:52,884 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:55:57,888 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:02,891 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:07,894 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:12,897 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:17,901 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:22,905 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:27,908 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:32,911 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:37,914 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:42,917 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:47,920 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:52,924 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:56:57,927 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:02,930 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:07,934 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:12,937 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:17,940 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:22,943 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:27,946 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:32,950 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:37,953 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:42,956 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:47,959 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:52,962 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:57:57,965 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:02,970 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:07,974 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:12,977 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:17,980 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:22,983 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:27,986 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:32,989 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:37,993 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:42,996 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:47,999 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:53,002 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:58:58,005 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:03,008 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:08,011 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:13,015 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:18,018 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:23,021 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:28,026 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:33,030 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:38,032 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:43,036 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:48,039 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:53,043 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 17:59:58,046 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:03,049 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:08,052 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:13,056 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:18,059 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:23,063 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:28,066 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:33,069 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:38,072 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:43,075 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:48,079 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:53,082 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:00:58,086 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:03,089 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:08,092 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:13,096 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:18,099 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:23,102 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:28,105 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:33,109 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:38,112 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:43,115 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:48,118 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:53,121 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:01:58,126 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:03,130 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:08,134 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:13,137 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:18,140 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:23,144 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:28,147 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:33,150 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:38,154 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:43,157 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:48,160 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:53,163 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:02:58,166 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:03,169 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:08,173 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:13,178 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:18,183 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:23,186 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:28,189 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:33,192 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:38,196 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:43,199 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:48,202 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:53,206 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:03:58,209 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:03,212 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:08,215 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:13,218 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:18,221 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:23,224 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:28,227 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:33,230 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:38,233 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:43,236 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:48,241 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:53,244 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:04:58,247 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:03,251 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:08,254 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:13,257 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:18,260 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:23,263 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:28,270 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:33,274 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:38,277 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:43,281 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:48,284 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:53,286 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:05:58,290 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:03,293 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:08,296 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:13,299 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:18,303 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:23,306 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:28,309 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:33,312 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:38,315 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:43,318 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:48,321 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:53,325 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:06:58,329 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:03,332 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:08,335 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:13,338 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:18,341 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:23,345 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:28,348 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:33,350 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:38,354 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:43,357 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:48,360 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:53,363 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:07:58,366 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:03,369 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:08,372 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:13,376 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:18,379 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:23,382 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:28,386 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:33,390 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:38,393 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:43,396 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:48,399 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:53,402 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:08:58,492 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:03,515 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:08,519 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:13,523 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:18,531 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:23,534 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:28,537 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:33,541 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:38,544 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:43,548 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:48,551 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:53,554 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:09:58,557 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:10:03,560 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:10:08,572 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:10:13,587 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:10:18,594 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 18:10:23,601 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:06:51,773 - ERROR - Arm load Cloud service cant be reached!
+2023-09-28 20:06:51,783 - ERROR - Temperature Cloud service cant be reached!
+2023-09-28 20:07:11,783 - ERROR - Arm load Cloud service cant be reached!
+2023-09-28 20:07:11,787 - ERROR - Temperature Cloud service cant be reached!
+2023-09-28 20:09:29,931 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:09:29,933 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:09:34,937 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:09:39,941 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:09:44,945 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:09:49,948 - ERROR - Authentication Cloud service cant be reached!
+2023-09-28 20:18:13,947 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:19,948 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:27,949 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:32,950 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:38,951 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:46,952 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:49,953 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:51,954 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:53,955 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:18:55,956 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:04,957 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:09,958 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:17,958 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:23,959 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:31,960 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:36,961 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:44,961 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:45,962 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:46,963 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:54,964 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:19:59,965 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:08,966 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:17,967 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:22,968 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:29,969 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:34,969 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:20:48,625 - ERROR - Temperature sensor lost connection to MQTT broker!
+2023-09-28 20:20:48,826 - ERROR - Fuel level sensor lost connection to MQTT broker!
+2023-09-28 20:20:51,751 - ERROR - Arm load sensor lost connection to MQTT broker!
+2023-09-28 20:25:47,694 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:25:48,695 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:25:53,696 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:00,696 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:09,697 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:15,698 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:16,699 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:25,700 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:31,701 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:38,702 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:43,702 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:52,703 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:55,704 - ERROR - Connection between arm load sensor and MQTT broker is broken!
+2023-09-28 20:26:57,705 - ERROR - Connection between arm load sensor and MQTT broker is broken!

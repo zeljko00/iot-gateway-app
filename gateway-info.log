@@ -23,3 +23,426 @@
 2023-08-24 21:30:04,584 - INFO - Temperature data handler successfully established connection with MQTT broker!
 2023-08-24 21:30:04,777 - WARNING - There is no temperature sensor data to handle!
 2023-08-24 21:30:04,778 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 17:46:32,477 - INFO - IoT Gateway app started!
+2023-09-28 18:10:34,783 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:10:34,785 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:10:34,789 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:10:34,791 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:10:34,791 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:10:34,796 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:10:34,989 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:10:34,989 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:45:22,264 - INFO - IoT Gateway app started!
+2023-09-28 18:45:22,414 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:45:22,416 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:45:22,420 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:45:22,421 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:45:22,422 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:45:22,427 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:45:22,617 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:45:22,620 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:50:47,997 - INFO - IoT Gateway app started!
+2023-09-28 18:50:48,141 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:50:48,143 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:50:48,143 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:50:48,149 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:50:48,149 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:50:48,150 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:50:48,346 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:50:48,346 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:51:08,452 - INFO - IoT Gateway app started!
+2023-09-28 18:51:08,565 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:51:08,565 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:51:08,568 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:51:08,570 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:51:08,571 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:51:08,573 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:51:08,768 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:51:08,768 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:52:28,213 - INFO - IoT Gateway app started!
+2023-09-28 18:52:28,505 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:52:28,505 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:52:28,519 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:52:28,527 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:52:28,527 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:52:28,546 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:52:28,709 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:52:28,711 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:53:00,870 - INFO - IoT Gateway app shutting down! Please wait
+2023-09-28 18:53:09,820 - INFO - IoT Gateway app shutdown!
+2023-09-28 18:53:34,489 - INFO - IoT Gateway app started!
+2023-09-28 18:53:34,627 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:53:34,629 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:53:34,629 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:53:34,633 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:53:34,634 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:53:34,635 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:53:34,831 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:53:34,832 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:54:57,489 - INFO - IoT Gateway app started!
+2023-09-28 18:54:57,641 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 18:54:57,643 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 18:54:57,646 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 18:54:57,658 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 18:54:57,660 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 18:54:57,661 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 18:54:57,846 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 18:54:57,846 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 18:55:10,915 - INFO - IoT Gateway app shutting down! Please wait
+2023-09-28 18:55:18,701 - INFO - IoT Gateway app shutdown!
+2023-09-28 19:00:21,104 - INFO - IoT Gateway app started!
+2023-09-28 19:00:21,325 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:00:21,328 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:00:21,331 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:00:21,333 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:00:21,334 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:00:21,339 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:00:21,529 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:00:21,532 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:00:44,294 - INFO - IoT Gateway app shutting down! Please wait
+2023-09-28 19:01:03,019 - INFO - IoT Gateway app shutdown!
+2023-09-28 19:26:38,531 - INFO - IoT Gateway app started!
+2023-09-28 19:26:38,707 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:26:38,709 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:26:38,713 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:26:38,720 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:26:38,721 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:26:38,722 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:26:38,911 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:26:38,915 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:29:09,267 - INFO - IoT Gateway app started!
+2023-09-28 19:29:09,426 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:29:09,428 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:29:09,431 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:29:09,434 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:29:09,439 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:29:09,440 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:29:09,630 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:29:09,632 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:41:28,003 - INFO - IoT Gateway app started!
+2023-09-28 19:41:28,155 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:41:28,158 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:41:28,161 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:41:28,164 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:28,165 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:28,166 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:28,361 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:41:28,362 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:41:51,666 - INFO - IoT Gateway app started!
+2023-09-28 19:41:51,833 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:41:51,835 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:41:51,837 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:41:51,841 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:51,842 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:51,843 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:41:52,037 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:42:14,213 - INFO - IoT Gateway app started!
+2023-09-28 19:42:14,396 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:42:14,399 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:42:14,399 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:42:14,402 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:42:14,403 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:42:14,403 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:42:14,600 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:42:14,602 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:43:44,336 - INFO - IoT Gateway app started!
+2023-09-28 19:43:44,476 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:43:44,477 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:43:44,480 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:43:44,481 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:43:44,482 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:43:44,485 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:43:44,679 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:43:44,680 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 19:49:14,571 - INFO - IoT Gateway app started!
+2023-09-28 19:49:14,739 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 19:49:14,745 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 19:49:14,746 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 19:49:14,746 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 19:49:14,753 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 19:49:14,753 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 19:49:14,942 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 19:49:14,950 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 20:03:51,138 - INFO - IoT Gateway app started!
+2023-09-28 20:03:51,288 - INFO - Temperature data handler establishing connection with MQTT broker!
+2023-09-28 20:03:51,289 - INFO - Arm load data handler establishing connection with MQTT broker!
+2023-09-28 20:03:51,291 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2023-09-28 20:03:51,294 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2023-09-28 20:03:51,295 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2023-09-28 20:03:51,296 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2023-09-28 20:03:51,491 - WARNING - There is no arm load sensor data to handle!
+2023-09-28 20:03:51,492 - WARNING - There is no temperature sensor data to handle!
+2023-09-28 20:09:29,928 - INFO - IoT Gateway app started!
+2023-09-28 20:18:08,617 - INFO - Sensor system started!
+2023-09-28 20:18:08,622 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:18:08,632 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:08,722 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:18:08,729 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:08,825 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:18:08,835 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:10,660 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:10,760 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:10,854 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:12,667 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:12,769 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:12,866 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:14,674 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:14,776 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:14,873 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:16,681 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:16,783 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:16,880 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:18,689 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:18,790 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:18,887 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:20,696 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:20,797 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:20,894 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:22,703 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:22,804 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:22,902 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:24,711 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:24,810 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:24,910 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:26,717 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:26,817 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:26,917 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:28,724 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:28,824 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:28,924 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:30,731 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:30,831 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:30,931 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:32,739 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:32,839 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:32,938 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:34,744 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:34,845 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:34,944 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:36,750 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:36,852 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:36,951 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:38,763 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:38,860 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:38,959 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:40,770 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:40,867 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:40,966 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:42,778 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:42,875 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:42,973 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:44,788 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:44,882 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:44,980 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:46,795 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:46,889 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:46,987 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:48,802 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:48,896 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:48,993 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:50,808 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:50,904 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:50,999 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:52,815 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:52,911 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:53,007 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:54,821 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:54,917 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:55,013 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:56,828 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:56,925 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:57,021 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:58,834 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:58,932 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:18:59,028 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:00,841 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:00,939 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:01,035 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:02,848 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:02,946 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:03,042 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:04,856 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:04,952 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:05,058 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:06,863 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:06,959 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:07,064 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:08,871 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:08,965 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:09,071 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:10,878 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:10,973 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:11,077 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:12,885 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:12,980 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:13,084 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:14,893 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:14,987 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:15,090 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:16,899 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:16,994 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:17,097 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:18,906 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:19,001 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:19,103 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:20,913 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:21,008 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:21,109 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:22,920 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:23,016 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:23,115 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:24,927 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:25,023 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:25,121 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:26,934 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:27,029 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:27,128 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:28,941 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:29,036 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:29,135 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:30,948 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:31,047 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:31,142 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:32,955 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:33,053 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:33,148 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:34,963 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:35,061 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:35,156 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:36,970 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:37,069 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:37,161 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:38,977 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:39,077 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:39,169 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:40,984 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:41,089 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:41,177 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:42,991 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:43,096 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:43,184 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:45,003 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:45,102 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:45,192 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:47,011 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:47,109 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:47,200 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:49,019 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:49,117 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:49,207 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:51,025 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:51,124 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:51,214 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:53,033 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:53,140 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:53,221 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:55,040 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:55,146 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:55,229 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:57,047 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:57,152 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:57,236 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:59,056 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:59,158 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:19:59,243 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:01,062 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:01,166 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:01,250 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:03,070 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:03,174 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:03,258 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:05,078 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:05,181 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:05,264 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:07,085 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:07,189 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:07,272 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:09,092 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:09,197 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:09,279 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:11,100 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:11,205 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:11,286 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:13,106 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:13,212 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:13,293 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:15,113 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:15,218 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:15,300 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:17,120 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:17,226 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:17,307 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:19,127 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:19,233 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:19,314 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:21,134 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:21,240 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:21,322 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:23,141 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:23,246 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:23,328 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:25,148 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:25,254 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:25,337 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:27,154 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:27,261 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:27,343 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:29,174 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:29,274 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:29,352 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:31,180 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:31,282 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:31,359 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:33,186 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:33,288 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:33,366 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:35,194 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:35,296 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:35,374 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:37,202 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:37,303 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:37,383 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:39,211 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:39,309 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:39,390 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:20:43,616 - INFO - Sensor system started!
+2023-09-28 20:25:43,358 - INFO - Sensor system started!
+2023-09-28 20:25:43,363 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:25:43,372 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:25:43,465 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:25:43,475 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:25:43,567 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:25:43,577 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:27:08,971 - INFO - Sensor system started!
+2023-09-28 20:27:08,976 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:27:08,985 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:27:09,078 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:27:09,087 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:27:09,180 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:27:09,189 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:27:28,510 - INFO - Sensor system shutting down! Please wait
+2023-09-28 20:27:29,194 - INFO - Temperature sensor shutdown!
+2023-09-28 20:27:29,394 - INFO - Fuel level sensor shutdown!
+2023-09-28 20:27:36,318 - INFO - Arm load sensor shutdown!
+2023-09-28 20:27:36,323 - INFO - Sensor system shutdown!
+2023-09-28 20:30:21,776 - INFO - Sensor system started!
+2023-09-28 20:30:21,782 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:30:21,791 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:30:21,884 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:30:21,893 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:30:21,984 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:30:21,992 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:31:40,834 - INFO - Sensor system started!
+2023-09-28 20:31:40,840 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:31:40,852 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:31:40,943 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:31:40,953 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:31:41,045 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:31:41,054 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2023-09-28 20:47:26,781 - INFO - Sensor system started!
+2023-09-28 20:47:26,787 - INFO - Temperature sensor establishing connection with MQTT broker!
+2023-09-28 20:47:26,801 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2023-09-28 20:47:26,889 - INFO - Arm load sensor establishing connection with MQTT broker!
+2023-09-28 20:47:26,898 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2023-09-28 20:47:26,991 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2023-09-28 20:47:27,001 - INFO - Fuel sensor successfully established connection with MQTT broker!
