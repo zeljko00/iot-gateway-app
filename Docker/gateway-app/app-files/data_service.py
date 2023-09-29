@@ -28,7 +28,7 @@ def handle_temperature_data(data, url, jwt, time_format):
     except:
         errorLogger.error("Invalid temperature data format! - "+data[0])
     # request payload
-    payload = {"value": (data_sum / len(data)), "time": time_value, "unit": unit}
+    payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -58,7 +58,7 @@ def handle_load_data(data, url, jwt, time_format):
     except:
         errorLogger.error("Invalid load data format! - "+data[0])
     # request payload
-    payload = {"value": data_sum, "time": time_value, "unit": unit}
+    payload = {"value": round(data_sum,2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding load data: " +str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -86,7 +86,7 @@ def handle_fuel_data(data, limit, url, jwt, time_format):
                 errorLogger.error("Invalid fuel data format! - " + data)
             time_value = time.strftime(time_format, time.localtime())
             # request payload
-            payload = {"value": value, "time": time_value, "unit": unit}
+            payload = {"value": round(value,2), "time": time_value, "unit": unit}
             customLogger.warning("Forwarding fuel data: " + str(payload))
             try:
                 post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
