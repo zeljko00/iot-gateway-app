@@ -217,8 +217,6 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
             elif code == http_unauthorized:
                 customLogger.error("JWT has expired!")
                 flag.set()
-
-
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="fuel-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
