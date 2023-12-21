@@ -1,3 +1,47 @@
+'''
+sensor_devices
+============
+Module with logic that simulates three different sensors: fuel level sensor, engine temperature sensor, arm load sensor
+
+Functions
+---------
+on_publish(client, userdata,result)
+    Logic executed after receiving MQTT broadcast message.
+
+on_connect_temp_sensor(client, userdata, flags, rc,props)
+    Logic executed after successfully establishing connection between temperature sensor and MQTT broker.
+
+on_connect_load_sensor(client, userdata, flags, rc,props)
+    Logic executed after successfully establishing connection between arm load sensor and MQTT broker.
+
+on_connect_fuel_sensor(client, userdata, flags, rc,props)
+    Logic executed after successfully establishing connection between fuel sensor and MQTT broker.
+
+measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag)
+    Periodically generates value representing current temperature.
+
+measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag)
+    Periodically generates value representing current arm load mass.
+
+measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
+                              mqtt_username, mqtt_pass, flag=
+    Periodically generates value representing current fuel level.
+
+read_conf()
+    Loading config data from config file. Returns sensors' configuration.
+
+sensor_devices()
+    Creates 3 processes that represent 3 types of sensors, based on sensors' config and implemented logic.
+
+main()
+    Used for testing purposes only. Starts 3 sensors processes and stops them after user request.
+
+Constants
+---------
+conf_file_path : str
+    Path to sensors' config file.
+
+'''
 import time
 import random
 import numpy
@@ -7,11 +51,13 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Process, Event
 import logging.config
 
+# setting up loggers
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger=logging.getLogger("customConsoleLogger")
 
+# keywords used in sensors' config file
 temp_sensor = "temp_sensor"
 arm_sensor = "arm_sensor"
 arm_min_t = "min_t"
@@ -27,24 +73,61 @@ mqtt_password = "password"
 max = "max_val"
 min = "min_val"
 avg= "avg_val"
-conf_file_path = "sensor_conf.json"
-time_format = "%d.%m.%Y %H:%M:%S"
-celzius = "C"
-kg = "kg"
-liter = "l"
 mqtt_broker="mqtt_broker"
 address="address"
 port="port"
+
+# sensors config file
+conf_file_path = "sensor_conf.json"
+
+# mqtt config data
 transport_protocol="tcp"
+qos = 2
+
+# REST APIs
 temp_topic="sensors/temperature"
 load_topic="sensors/arm-load"
 fuel_topic="sensors/fuel-level"
+
 data_pattern="[ value={} , time={} , unit={} ]"
-qos = 2
+time_format = "%d.%m.%Y %H:%M:%S"
+
+celzius = "C"
+kg = "kg"
+liter = "l"
 
 def on_publish(client, userdata,result):
+    '''
+    Logic executed after receiving mqtt message.
+
+    Parameters
+    ----------
+    client : paho.mqtt.client
+    userdata : object
+    result: object
+
+    Returns
+    -------
+    None
+    '''
     pass
 def on_connect_temp_sensor(client, userdata, flags, rc,props):
+    '''
+    Logic executed after establishing connection between temperature sensor process and mqtt broker
+
+    Parameters
+    ----------
+    client : mqttclient
+    userdata : object
+    flags:
+    rc: int
+    props:
+
+
+    Returns
+    -------
+    None
+    '''
     if rc == 0:
         infoLogger.info("Temperature sensor successfully established connection with MQTT broker!")
         customLogger.debug("Temperature sensor successfully established connection with MQTT broker!")
@@ -52,6 +135,22 @@ def on_connect_temp_sensor(client, userdata, flags, rc,props):
         errorLogger.error("Temperature sensor failed to establish connection with MQTT broker!")
         customLogger.critical("Temperature sensor failed to establish connection with MQTT broker!")
 def on_connect_load_sensor(client, userdata, flags, rc,props):
+    '''
+    Logic executed after establishing connection between arm load sensor process and mqtt broker
+
+    Parameters
+    ----------
+    client : paho.mqtt.client
+    userdata : object
+    flags:
+    rc: int
+    props:
+
+
+    Returns
+    -------
+    None
+    '''
     if rc == 0:
         infoLogger.info("Arm load sensor successfully established connection with MQTT broker!")
         customLogger.debug("Arm load sensor successfully established connection with MQTT broker!")
@@ -59,6 +158,22 @@ def on_connect_load_sensor(client, userdata, flags, rc,props):
         errorLogger.error("Arm load sensor failed to establish connection with MQTT broker!")
         errorLogger.critical("Arm load sensor failed to establish connection with MQTT broker!")
 def on_connect_fuel_sensor(client, userdata, flags, rc,props):
+    '''
+    Logic executed after establishing connection between FUEL sensor process and mqtt broker
+
+    Parameters
+    ----------
+    client : paho.mqtt.client
+    userdata : object
+    flags:
+    rc: int
+    props:
+
+
+    Returns
+    -------
+    None
+    '''
     if rc == 0:
         infoLogger.info("Fuel sensor successfully established connection with MQTT broker!")
         customLogger.debug("Fuel sensor successfully established connection with MQTT broker!")
@@ -68,13 +183,33 @@ def on_connect_fuel_sensor(client, userdata, flags, rc,props):
 
 # period = measuring interval in sec, min_val/max_val = min/max measured value
 def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag):
+    '''
+    Emulates temperature sensor.
+
+    Periodically generates temperature sensor reading.
+
+    Parameters
+    ----------
+    period: int
+    min_val: int
+    avg_val: int
+    broker_address: str
+    broker_port: int
+    mqtt_username: str
+    mqtt_pass: str
+    flag: multiprocessing.Event
+
+    Returns
+    -------
+    None
+    '''
     customLogger.debug("Temperature sensor started!")
     customLogger.debug("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val,avg_val))
-    # prevent division by zero
+    # preventing division by zero
     if period == 0:
         period = 1
     period = abs(round(period))
-    # initializing mqtt client
+    # establishing connection with MQTT broker
     client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect=on_connect_temp_sensor
@@ -95,7 +230,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     raising=True
     # starting temp
     value = min_val
-    # shut down sensor depending on set flag
+    # shutting down sensor depending on set flag
     while not flag.is_set():
         time.sleep(period)
         # check connection to mqtt broker
@@ -104,6 +239,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
             client.reconnect()
             time.sleep(0.2)
         try:
+            # generating new measured value
             if raising:
                 value += numpy.random.uniform(0, math.ceil(period/10),1)[0]
                 if value > avg_val:
@@ -126,6 +262,27 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
 def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
+    '''
+    Emulates arm load sensor.
+
+    Randomly generates arm load sensor reading.
+
+    Parameters
+    ----------
+    min_t: int
+    max_t: int
+    min_val: int
+    max_val: int
+    broker_address: str
+    broker_port: int
+    mqtt_username: str
+    mqtt_pass: str
+    flag: multiprocessing.Event
+
+    Returns
+    -------
+    None
+    '''
     customLogger.debug("Arm laod sensor started!")
     customLogger.debug("Arm load sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
     # parameter validation
@@ -133,7 +290,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
         max_t = min_t + random.randint(0,10)
     min_t = abs(round(min_t))
     max_t = abs(round(max_t))
-    # initializing mqtt client
+    # establishing connection with MQTT broker
     client = mqtt.Client(client_id="arm-load-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect = on_connect_load_sensor
@@ -148,7 +305,9 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             errorLogger.error("Arm load sensor failed to establish connection with MQTT broker!")
     # provide sensor with data for at least 7 days
     values_count = round(7 * 24 * 60 * 60 / min_t)
+    # measuring intervals
     intervals = numpy.random.uniform(min_t, max_t, values_count)
+    # measured data
     data = numpy.random.uniform(min_val, max_val, values_count)
     counter = 0
     # shut down sensor depending on set flag
@@ -179,6 +338,28 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
 def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
                               mqtt_username, mqtt_pass, flag):
+    '''
+    Emulates fuel sensor.
+
+    Periodically generates fuel level sensor reading.
+
+    Parameters
+    ----------
+    period: int
+    capacity: int
+    consumption: float
+    efficiency: float
+    refill: float
+    broker_address: str
+    broker_port: int
+    mqtt_username: str
+    mqtt_pass: str
+    flag: multiprocessing.Event
+
+    Returns
+    -------
+    None
+    '''
     customLogger.debug("Fuel level sensor started!")
     customLogger.debug("Fuel level sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
           format(period, capacity, consumption, efficiency, refill))
@@ -186,7 +367,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     if period == 0:
         period = 1
     period = abs(round(period))
-    # initializing mqtt client
+    # establishing connection with MQTT broker
     client = mqtt.Client(client_id="fuel-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect = on_connect_fuel_sensor
@@ -203,7 +384,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     value = random.randint(round(capacity / 2), round(capacity))
     # constant for scaling consumption per hour to per second
     scale = 1 / (60 * 60)
-    # shut down sensor depending on set flag
+    # shutting down sensor depending on set flag
     refilling = False
     while not flag.is_set():
         time.sleep(period)
@@ -217,6 +398,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             # amount of consumed fuel is determined based on fuel consumption, time elapsed
             # from previous measuring and machine state (on/of)
             consumed = period * consumption * scale * (1 + 1 - efficiency)
+            # generating new measured value
             value -= consumed;
             if value <= 0:
                 value = 0
@@ -245,6 +427,16 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
 
 # read sensor conf data
 def read_conf():
+    '''
+    Loads sensors' config from config file. If config file is inaccessible, default config is used.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    None
+    '''
     data = None
     try:
         conf_file = open(conf_file_path)
@@ -263,6 +455,19 @@ def read_conf():
 
 # creating sensor processes
 def sensors_devices(temp_flag, load_flag, fuel_flag):
+    '''
+    Creates 3 subprocesses representing 3 sensor devices.
+
+    Parameters
+    ----------
+    temp_flag : multiprocessing.Event
+    load_flagž : multiprocessing.Event
+    fuel_flag: multiprocessing.Event
+
+    Returns
+    -------
+    None
+    '''
     conf_data = read_conf()
     temperature_sensor = Process(target=measure_temperature_periodically, args=(conf_data[temp_sensor][interval],
                                                                                 conf_data[temp_sensor][min],
@@ -295,6 +500,18 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
 
 
 def main():
+    '''
+    Used for testing sensors.
+
+    Creates and executes 3 sensor subprocesses.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    None
+    '''
     temp_flag = Event()
     load_flag = Event()
     fuel_flag = Event()
@@ -304,8 +521,7 @@ def main():
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
-    # waiting for shutdown signal
-    # input("Press ENTER to stop the app!")
+    # waiting for shutdown signal (input)
     input("")
     infoLogger.info("Sensor system shutting down! Please wait")
     customLogger.info("Sensor system shutting down! Please wait")

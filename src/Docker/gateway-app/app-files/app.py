@@ -208,7 +208,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
         # making sure that flag is not set in meantime
         if not flag.is_set():
             customLogger.info("Received fuel data: "+str(message.payload.decode("utf-8")))
-            code=data_service.handle_fuel_data(str(message.payload.decode("utf-8")), limit, url, jwt, time_pattern)
+            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), limit, url, jwt, time_pattern)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
@@ -316,7 +316,7 @@ def main():
             customLogger.debug("Sending device stats data!")
             stats.send_stats()
             # checking jwt, if jwt has expired  app will restart
-            jwt_code=auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
+            jwt_code= auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
             if jwt_code == http_ok:
                 reset = False
                 infoLogger.info("IoT Gateway app shutdown!")

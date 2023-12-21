@@ -56,7 +56,7 @@ services:
     ports:
       - '8080:8080'
     env_file:
-      - ./iot-platform/.env
+      - iot-platform/.env
     environment:
       - TZ=Europe/Belgrade
     depends_on:
@@ -80,7 +80,7 @@ services:
     ports:
       - '3000:3000'
     env_file:
-      - ./iot-dashboard/.env
+      - iot-dashboard/.env
     depends_on:
       iot-cloud-platform:
         condition: service_started

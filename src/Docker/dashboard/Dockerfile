@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-COPY app-files/ /app
+COPY app-files /app
 WORKDIR /app
 
 RUN npm install
