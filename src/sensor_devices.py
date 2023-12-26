@@ -117,7 +117,7 @@ def on_connect_temp_sensor(client, userdata, flags, rc,props):
 
     Parameters
     ----------
-    client : mqttclient
+    client : mqtt.client
     userdata : object
     flags:
     rc: int
@@ -191,13 +191,21 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     Parameters
     ----------
     period: int
+        Measuring interval.
     min_val: int
+        Min temperature value that sensor can detect.
     avg_val: int
+        Avg engine temperature value.
     broker_address: str
+        MQTT broker's URL.
     broker_port: int
+        MQTT broker's port.
     mqtt_username: str
+        Username required for establishing connection with MQTT broker.
     mqtt_pass: str
+        Password required for establishing connection with MQTT broker.
     flag: multiprocessing.Event
+        Object used for stopping temperature sensor process.
 
     Returns
     -------
@@ -230,7 +238,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     raising=True
     # starting temp
     value = min_val
-    # shutting down sensor depending on set flag
+    # shutting down sensor depending on flag
     while not flag.is_set():
         time.sleep(period)
         # check connection to mqtt broker
@@ -270,14 +278,23 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     Parameters
     ----------
     min_t: int
+        Min time-lapse between two measurements.
     max_t: int
+        Max time-lapse between two measurements.
     min_val: int
+        Min load value that sensor can detect.
     max_val: int
+        Max load value that sensor can handle.
     broker_address: str
+        MQTT broker's URL
     broker_port: int
+        MQTT broker's port.
     mqtt_username: str
+        Username required for establishing connection with MQTT broker.
     mqtt_pass: str
+        Password required for establishing connection with MQTT broker.
     flag: multiprocessing.Event
+        Object used for stopping temperature sensor process.
 
     Returns
     -------
@@ -346,18 +363,29 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     Parameters
     ----------
     period: int
+        Measuring interval.
     capacity: int
+        Capacity of fuel tank.
     consumption: float
+        Engine fuel consumption [l/h].
     efficiency: float
+        Engine efficiency.
     refill: float
+        Probability of engine refill.
     broker_address: str
+        MQTT broker's URL
     broker_port: int
+        MQTT broker's port.
     mqtt_username: str
+        Username required for establishing connection with MQTT broker.
     mqtt_pass: str
+        Password required for establishing connection with MQTT broker.
     flag: multiprocessing.Event
+        Object used for stopping temperature sensor process.
 
     Returns
     -------
+
     None
     '''
     customLogger.debug("Fuel level sensor started!")
@@ -428,14 +456,15 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
 # read sensor conf data
 def read_conf():
     '''
-    Loads sensors' config from config file. If config file is inaccessible, default config is used.
+    Loads sensors' config from config file.
+
+    If config file is inaccessible, default config is used.
 
     Parameters
     ----------
 
     Returns
     -------
-    None
     '''
     data = None
     try:
@@ -461,7 +490,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag):
     Parameters
     ----------
     temp_flag : multiprocessing.Event
-    load_flagž : multiprocessing.Event
+    load_flag : multiprocessing.Event
     fuel_flag: multiprocessing.Event
 
     Returns
@@ -503,7 +532,7 @@ def main():
     '''
     Used for testing sensors.
 
-    Creates and executes 3 sensor subprocesses.
+    Creates and executes 3 sensor subprocesses. Contains logic for user requested sensors' shutdown.
 
     Parameters
     ----------

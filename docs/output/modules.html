@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>src &#8212; iot-gateway  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="src">
+<h1>src<a class="headerlink" href="#src" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.html">src package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.app">src.app module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#app">app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#constants">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.collect_fuel_data"><code class="docutils literal notranslate"><span class="pre">collect_fuel_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.collect_load_data"><code class="docutils literal notranslate"><span class="pre">collect_load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.collect_temperature_data"><code class="docutils literal notranslate"><span class="pre">collect_temperature_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.on_connect_fuel_handler"><code class="docutils literal notranslate"><span class="pre">on_connect_fuel_handler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.on_connect_load_handler"><code class="docutils literal notranslate"><span class="pre">on_connect_load_handler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.on_connect_temp_handler"><code class="docutils literal notranslate"><span class="pre">on_connect_temp_handler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.read_conf"><code class="docutils literal notranslate"><span class="pre">read_conf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.app.shutdown_controller"><code class="docutils literal notranslate"><span class="pre">shutdown_controller()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.auth">src.auth module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#auth">auth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id17">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.auth.check_jwt"><code class="docutils literal notranslate"><span class="pre">check_jwt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.auth.login"><code class="docutils literal notranslate"><span class="pre">login()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.auth.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.data_service">src.data_service module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#data-services">data_services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id24">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id25">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.data_service.handle_fuel_data"><code class="docutils literal notranslate"><span class="pre">handle_fuel_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.data_service.handle_load_data"><code class="docutils literal notranslate"><span class="pre">handle_load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.data_service.handle_temperature_data"><code class="docutils literal notranslate"><span class="pre">handle_temperature_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.sensor_devices">src.sensor_devices module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#sensor-devices">sensor_devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id32">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id33">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.measure_fuel_periodically"><code class="docutils literal notranslate"><span class="pre">measure_fuel_periodically()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.measure_load_randomly"><code class="docutils literal notranslate"><span class="pre">measure_load_randomly()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.measure_temperature_periodically"><code class="docutils literal notranslate"><span class="pre">measure_temperature_periodically()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.on_connect_fuel_sensor"><code class="docutils literal notranslate"><span class="pre">on_connect_fuel_sensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.on_connect_load_sensor"><code class="docutils literal notranslate"><span class="pre">on_connect_load_sensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.on_connect_temp_sensor"><code class="docutils literal notranslate"><span class="pre">on_connect_temp_sensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.on_publish"><code class="docutils literal notranslate"><span class="pre">on_publish()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.read_conf"><code class="docutils literal notranslate"><span class="pre">read_conf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.sensor_devices.sensors_devices"><code class="docutils literal notranslate"><span class="pre">sensors_devices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src.stats_service">src.stats_service module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#id54">sensor_devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id55">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#id56">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.stats_service.OverallStats"><code class="docutils literal notranslate"><span class="pre">OverallStats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#src.stats_service.OverallStats.combine_stats"><code class="docutils literal notranslate"><span class="pre">OverallStats.combine_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.html#src.stats_service.OverallStats.send_stats"><code class="docutils literal notranslate"><span class="pre">OverallStats.send_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#src.stats_service.Stats"><code class="docutils literal notranslate"><span class="pre">Stats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.html#src.stats_service.Stats.update_data"><code class="docutils literal notranslate"><span class="pre">Stats.update_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">iot-gateway</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, gprincip.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

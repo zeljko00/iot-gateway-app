@@ -1,3 +1,29 @@
+'''
+data_services
+============
+Module containing logic for sending collected and processed data to cloud services.
+
+Functions
+---------
+handle_temperature_data(data, url, jwt, time_format)
+    Summarizing collected temperature data and forwarding result to cloud service.
+handle_load_data(data, url, jwt, time_format)
+    Summarizing load temperature data and forwarding result to cloud service.
+handle_fuel_data(data, limit, url, jwt, time_format)
+    Filtering collected temperature data and forwarding result to cloud service.
+
+Constants
+---------
+data_pattern
+    Request body data pattern.
+http_not_found
+    Http status code.
+http_ok
+    Http status code.
+http_no_content
+    Http status code.
+
+'''
 import time
 import requests
 import logging.config
@@ -10,11 +36,29 @@ data_pattern = "[ value={} , time={} , unit={} ]"
 http_not_found = 404
 http_ok = 200
 http_no_content = 204
-
-# aggregating temperature data and forwarding to Cloud service
 def handle_temperature_data(data, url, jwt, time_format):
-    # data aggregation
+    '''
+       Summarizes and sends collected temperature data.
+
+       Triggered periodically.
+
+       Parameters
+       ----------
+       data: list
+            Collected temperature data.
+       url: str
+            Cloud services' URL.
+       jwt: str
+            JSON wen auth token
+       time_format: str
+            Cloud services' time format.
+
+       Returns
+       -------
+       http status code
+       '''
     data_sum = 0.0
+    # summarizing colleceted data
     for item in data:
         try:
             tokens=item.split(" ")
@@ -27,7 +71,7 @@ def handle_temperature_data(data, url, jwt, time_format):
         unit = data[0].split(" ")[6].split("=")[1]
     except:
         errorLogger.error("Invalid temperature data format! - "+data[0])
-    # request payload
+    # creating request payload
     payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
     try:
@@ -40,11 +84,29 @@ def handle_temperature_data(data, url, jwt, time_format):
         customLogger.critical("Temperature Cloud service cant be reached!")
         return http_not_found
 
-
-# aggregating arm load data and forwarding to Cloud service
 def handle_load_data(data, url, jwt, time_format):
-    # data aggregation
+    '''
+    Summarizes and sends collected load data.
+
+    Triggered periodically  (variable interval).
+
+    Parameters
+    ----------
+    data: list
+        Collected load data.
+    url: str
+        Cloud services' URL.
+    jwt: str
+        JSON wen auth token
+    time_format: str
+        Cloud services' time format.
+
+    Returns
+    -------
+    http status code
+   '''
     data_sum = 0.0
+    # summarizing collected load aata
     for item in data:
         try:
             tokens = item.split(" ")
@@ -72,12 +134,33 @@ def handle_load_data(data, url, jwt, time_format):
         return http_not_found
 
 
-# aggregating fuel level data and forwarding to Cloud service
-# return value True means that there was request sent to cloud service
 def handle_fuel_data(data, limit, url, jwt, time_format):
+    '''
+     Sends filtered fuel data.
+
+     Triggered periodically.
+
+     Parameters
+     ----------
+     data: list
+         Collected load data.
+     limit: double
+         Critical fuel level.
+     url: str
+         Cloud services' URL.
+     jwt: str
+         JSON web auth token.
+     time_format: str
+         Cloud services' time format.
+
+     Returns
+     -------
+     http status code
+    '''
     try:
         tokens = data.split(" ")
         value=float(tokens[1].split("=")[1])
+        # sends data to cloud services only if it is value of interest
         if value<=limit:
             unit = "unknown"
             try:

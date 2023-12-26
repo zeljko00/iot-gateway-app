@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>src package &#8212; iot-gateway  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="src-package">
+<h1>src package<a class="headerlink" href="#src-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-src.app">
+<span id="src-app-module"></span><h2>src.app module<a class="headerlink" href="#module-src.app" title="Link to this heading">¶</a></h2>
+<section id="app">
+<h3>app<a class="headerlink" href="#app" title="Link to this heading">¶</a></h3>
+<p>Module that contains main iot gateway logic.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>read_conf()</dt><dd><p>Reads iot gateway config file.</p>
+</dd>
+<dt>signup_periodically(key, username, password, time_pattern, url, interval)</dt><dd><p>Periodically initiates device signup on cloud services.</p>
+</dd>
+<dt>shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):</dt><dd><p>Shuts down all sensors.</p>
+</dd>
+<dt>on_connect_temp_handler(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully connecting temperature sensor to MQTT broker.</p>
+</dd>
+<dt>on_connect_load_handler(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully connecting load sensor to MQTT broker.</p>
+</dd>
+<dt>on_connect_fuel_handler(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully connecting fuel sensor to MQTT broker.</p>
+</dd>
+<dt>collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)</dt><dd><p>Collects temperature data and periodically initiates data processing and forwarding.</p>
+</dd>
+<dt>collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue)</dt><dd><p>Collects load data and periodically initiates data processing and forwarding.</p>
+</dd>
+<dt>collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)</dt><dd><p>Collects temperature data and initiates data filtering and forwarding.</p>
+</dd>
+<dt>main()</dt><dd><p>Iot gateway app entrypoint.</p>
+</dd>
+</dl>
+</section>
+<section id="constants">
+<h4>Constants<a class="headerlink" href="#constants" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>conf_path: str</dt><dd><p>App config file path.</p>
+</dd>
+<dt>user: str</dt><dd><p>Device username.</p>
+</dd>
+<dt>password: str</dt><dd><p>Device password.</p>
+</dd>
+<dt>server_url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>auth_interval: int</dt><dd><p>Time lapse between signup requests.</p>
+</dd>
+<dt>time_format: str</dt><dd><p>Time format.</p>
+</dd>
+<dt>server_time_format: str</dt><dd><p>Server’s time format.</p>
+</dd>
+<dt>fuel_level_limit:</dt><dd><p>Critical level of fuel.</p>
+</dd>
+<dt>temp_interval: int</dt><dd><p>Time lapse between temperature cloud service requests.</p>
+</dd>
+<dt>load_interval = “load_interval”</dt><dd><p>Time lapse between load cloud service requests.</p>
+</dd>
+<dt>api_key: str</dt><dd><p>Cloud platform API key.</p>
+</dd>
+<dt>transport_protocol: str</dt><dd><p>Transport protocol for MQTT.</p>
+</dd>
+<dt>temp_topic: str</dt><dd><p>MQTT topic for  temperature data.</p>
+</dd>
+<dt>load_topic: str</dt><dd><p>MQTT topic for load data.</p>
+</dd>
+<dt>fuel_topic: str</dt><dd><p>MQTT topic for fuel data.</p>
+</dd>
+<dt>http_unauthorized: int</dt><dd><p>Http status code.</p>
+</dd>
+<dt>http_ok: int</dt><dd><p>Http status code.</p>
+</dd>
+<dt>http_no_content: int</dt><dd><p>Http status code.</p>
+</dd>
+<dt>qos: int</dt><dd><p>Quality of service of MQTT.</p>
+</dd>
+</dl>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.collect_fuel_data">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">collect_fuel_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats_queue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.collect_fuel_data" title="Link to this definition">¶</a></dt>
+<dd><p>Fuel data handler logic.</p>
+<p>Establishes connection with MQTT broker. Listens for incoming messages. Handles received fuel messages and
+initiates data filtering and forwarding.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>limit: int</dt><dd><p>Critical fuel level.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON web auth token.</p>
+</dd>
+<dt>time_pattern: str</dt><dd><p>Time pattern/format.</p>
+</dd>
+<dt>mqtt_address: str</dt><dd><p>MQTT broker’s URL.</p>
+</dd>
+<dt>mqtt_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_user: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+<dt>stats_queue: multiprocessing.Queue</dt><dd><p>Stats data wrapper.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.collect_load_data">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">collect_load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats_queue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.collect_load_data" title="Link to this definition">¶</a></dt>
+<dd><p>Load data handler logic.</p>
+<p>Establishes connection with MQTT broker. Listens for incoming messages. Handles received load messages and
+periodically initiates data processing.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>interval: int</dt><dd><p>Measuring interval.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON web auth token.</p>
+</dd>
+<dt>time_pattern: str</dt><dd><p>Time pattern/format.</p>
+</dd>
+<dt>mqtt_address: str</dt><dd><p>MQTT broker’s URL.</p>
+</dd>
+<dt>mqtt_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_user: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+<dt>stats_queue: multiprocessing.Queue</dt><dd><p>Stats data wrapper.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.collect_temperature_data">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">collect_temperature_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats_queue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.collect_temperature_data" title="Link to this definition">¶</a></dt>
+<dd><p>Temperature data handler logic.</p>
+<p>Establishes connection with MQTT broker. Listens for incoming messages. Handles received temperature messages and
+periodically initiates data processing.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>interval: int</dt><dd><p>Measuring interval.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON web auth token.</p>
+</dd>
+<dt>time_pattern: str</dt><dd><p>Time pattern/format.</p>
+</dd>
+<dt>mqtt_address: str</dt><dd><p>MQTT broker’s URL.</p>
+</dd>
+<dt>mqtt_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_user: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+<dt>stats_queue: multiprocessing.Queue</dt><dd><p>Stats data wrapper.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.main">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.app.main" title="Link to this definition">¶</a></dt>
+<dd><p>IoT gateway app entrypoint.</p>
+<section id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.on_connect_fuel_handler">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">on_connect_fuel_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.on_connect_fuel_handler" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after successfully connecting fuel level sensor to MQTT broker.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>client: mqtt.client
+userdata: object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.on_connect_load_handler">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">on_connect_load_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.on_connect_load_handler" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after successfully connecting arm load sensor to MQTT broker.</p>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>client: mqtt.client
+userdata: object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.on_connect_temp_handler">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">on_connect_temp_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.on_connect_temp_handler" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after successfully connecting temperature sensor to MQTT broker.</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>client: mqtt.client
+userdata: object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.read_conf">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">read_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.app.read_conf" title="Link to this definition">¶</a></dt>
+<dd><p>Reads app config file.</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>conf: dict</dt><dd><p>Configuration data parsed from json config file.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.app.shutdown_controller">
+<span class="sig-prename descclassname"><span class="pre">src.app.</span></span><span class="sig-name descname"><span class="pre">shutdown_controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_handler_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_handler_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_handler_flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.app.shutdown_controller" title="Link to this definition">¶</a></dt>
+<dd><p>Handles user request for sensor shutdown.</p>
+<p>When user requests shutdown, sets sensor processes’ stop tokens.</p>
+<section id="id15">
+<h3>Parameters<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>temp_handler_flag: multiprocessing.Event</dt><dd><p>Token used for stopping temperature sensor process.</p>
+</dd>
+<dt>load_handler_flag: multiprocessing.Event</dt><dd><p>Token used for stopping load sensor process.</p>
+</dd>
+<dt>fuel_handler_flag: multiprocessing.Event</dt><dd><p>Token used for stopping fuel sensor process.</p>
+</dd>
+</dl>
+</section>
+<section id="id16">
+<h3>Returns<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-src.auth">
+<span id="src-auth-module"></span><h2>src.auth module<a class="headerlink" href="#module-src.auth" title="Link to this heading">¶</a></h2>
+<section id="auth">
+<h3>auth<a class="headerlink" href="#auth" title="Link to this heading">¶</a></h3>
+<p>Module that provides functions for iot-gateway authentication on cloud</p>
+<section id="id17">
+<h4>Functions<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>login(username,password,url)</dt><dd><p>User login with provided credentials.</p>
+</dd>
+<dt>check_jwt(jwt,url)</dt><dd><p>Checks  validity of current jwt.</p>
+</dd>
+<dt>register(key, username, password, time_format, url)</dt><dd><p>Registers new iot-gateway device.</p>
+</dd>
+</dl>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.auth.check_jwt">
+<span class="sig-prename descclassname"><span class="pre">src.auth.</span></span><span class="sig-name descname"><span class="pre">check_jwt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.auth.check_jwt" title="Link to this definition">¶</a></dt>
+<dd><p>Checking jwt validity.</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>jwt<span class="classifier">str</span></dt><dd><p>JWT to check.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud auth services url.</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>status: int</dt><dd><p>Function returns status 0 if JWT is invalid, otherwise returns 1.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.auth.login">
+<span class="sig-prename descclassname"><span class="pre">src.auth.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.auth.login" title="Link to this definition">¶</a></dt>
+<dd><p>Sign in iot-gateway to its account on cloud platform.</p>
+<p>If login is successful, returns jwt for accessing cloud REST API.</p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>username : str
+password : str
+url: str</p>
+<blockquote>
+<div><p>Cloud auth services url.</p>
+</div></blockquote>
+</section>
+<section id="id21">
+<h3>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>jwt: string</dt><dd><p>Base64 encoded JSON Web token that contains validity period, role and device username.If register process
+fails, function returns None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.auth.register">
+<span class="sig-prename descclassname"><span class="pre">src.auth.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.auth.register" title="Link to this definition">¶</a></dt>
+<dd><p>Creates new account on cloud platform for iot-gateway device.</p>
+<p>If login is successful, returns jwt for accessing cloud REST API.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>key: str</dt><dd><p>API key required for creating new account.</p>
+</dd>
+</dl>
+<p>username : str
+password : str
+time_format: str</p>
+<blockquote>
+<div><p>Time format used by iot-gateway device.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>url: str</dt><dd><p>Cloud auth services’ url.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>jwt: string</dt><dd><p>Base64 encoded JSON Web token that contains validity period, role and device username. If register process
+fails, function returns None.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-src.data_service">
+<span id="src-data-service-module"></span><h2>src.data_service module<a class="headerlink" href="#module-src.data_service" title="Link to this heading">¶</a></h2>
+<section id="data-services">
+<h3>data_services<a class="headerlink" href="#data-services" title="Link to this heading">¶</a></h3>
+<p>Module containing logic for sending collected and processed data to cloud services.</p>
+<section id="id24">
+<h4>Functions<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>handle_temperature_data(data, url, jwt, time_format)</dt><dd><p>Summarizing collected temperature data and forwarding result to cloud service.</p>
+</dd>
+<dt>handle_load_data(data, url, jwt, time_format)</dt><dd><p>Summarizing load temperature data and forwarding result to cloud service.</p>
+</dd>
+<dt>handle_fuel_data(data, limit, url, jwt, time_format)</dt><dd><p>Filtering collected temperature data and forwarding result to cloud service.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h4>Constants<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data_pattern</dt><dd><p>Request body data pattern.</p>
+</dd>
+<dt>http_not_found</dt><dd><p>Http status code.</p>
+</dd>
+<dt>http_ok</dt><dd><p>Http status code.</p>
+</dd>
+<dt>http_no_content</dt><dd><p>Http status code.</p>
+</dd>
+</dl>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data_service.handle_fuel_data">
+<span class="sig-prename descclassname"><span class="pre">src.data_service.</span></span><span class="sig-name descname"><span class="pre">handle_fuel_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data_service.handle_fuel_data" title="Link to this definition">¶</a></dt>
+<dd><p>Sends filtered fuel data.</p>
+<p>Triggered periodically.</p>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>data: list</dt><dd><p>Collected load data.</p>
+</dd>
+<dt>limit: double</dt><dd><p>Critical fuel level.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON web auth token.</p>
+</dd>
+<dt>time_format: str</dt><dd><p>Cloud services’ time format.</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<p>http status code</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data_service.handle_load_data">
+<span class="sig-prename descclassname"><span class="pre">src.data_service.</span></span><span class="sig-name descname"><span class="pre">handle_load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data_service.handle_load_data" title="Link to this definition">¶</a></dt>
+<dd><p>Summarizes and sends collected load data.</p>
+<p>Triggered periodically  (variable interval).</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>data: list</dt><dd><p>Collected load data.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON wen auth token</p>
+</dd>
+<dt>time_format: str</dt><dd><p>Cloud services’ time format.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<p>http status code</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data_service.handle_temperature_data">
+<span class="sig-prename descclassname"><span class="pre">src.data_service.</span></span><span class="sig-name descname"><span class="pre">handle_temperature_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data_service.handle_temperature_data" title="Link to this definition">¶</a></dt>
+<dd><p>Summarizes and sends collected temperature data.</p>
+<p>Triggered periodically.</p>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>data: list</dt><dd><p>Collected temperature data.</p>
+</dd>
+<dt>url: str</dt><dd><p>Cloud services’ URL.</p>
+</dd>
+<dt>jwt: str</dt><dd><p>JSON wen auth token</p>
+</dd>
+<dt>time_format: str</dt><dd><p>Cloud services’ time format.</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<p>http status code</p>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-src.sensor_devices">
+<span id="src-sensor-devices-module"></span><h2>src.sensor_devices module<a class="headerlink" href="#module-src.sensor_devices" title="Link to this heading">¶</a></h2>
+<section id="sensor-devices">
+<h3>sensor_devices<a class="headerlink" href="#sensor-devices" title="Link to this heading">¶</a></h3>
+<p>Module with logic that simulates three different sensors: fuel level sensor, engine temperature sensor, arm load sensor</p>
+<section id="id32">
+<h4>Functions<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>on_publish(client, userdata,result)</dt><dd><p>Logic executed after receiving MQTT broadcast message.</p>
+</dd>
+<dt>on_connect_temp_sensor(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully establishing connection between temperature sensor and MQTT broker.</p>
+</dd>
+<dt>on_connect_load_sensor(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully establishing connection between arm load sensor and MQTT broker.</p>
+</dd>
+<dt>on_connect_fuel_sensor(client, userdata, flags, rc,props)</dt><dd><p>Logic executed after successfully establishing connection between fuel sensor and MQTT broker.</p>
+</dd>
+<dt>measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag)</dt><dd><p>Periodically generates value representing current temperature.</p>
+</dd>
+<dt>measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag)</dt><dd><p>Periodically generates value representing current arm load mass.</p>
+</dd>
+<dt>measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,</dt><dd><blockquote>
+<div><p>mqtt_username, mqtt_pass, flag=</p>
+</div></blockquote>
+<p>Periodically generates value representing current fuel level.</p>
+</dd>
+<dt>read_conf()</dt><dd><p>Loading config data from config file. Returns sensors’ configuration.</p>
+</dd>
+<dt>sensor_devices()</dt><dd><p>Creates 3 processes that represent 3 types of sensors, based on sensors’ config and implemented logic.</p>
+</dd>
+<dt>main()</dt><dd><p>Used for testing purposes only. Starts 3 sensors processes and stops them after user request.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h4>Constants<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>conf_file_path<span class="classifier">str</span></dt><dd><p>Path to sensors’ config file.</p>
+</dd>
+</dl>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.main">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.main" title="Link to this definition">¶</a></dt>
+<dd><p>Used for testing sensors.</p>
+<p>Creates and executes 3 sensor subprocesses. Contains logic for user requested sensors’ shutdown.</p>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.measure_fuel_periodically">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">measure_fuel_periodically</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consumption</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refill</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.measure_fuel_periodically" title="Link to this definition">¶</a></dt>
+<dd><p>Emulates fuel sensor.</p>
+<p>Periodically generates fuel level sensor reading.</p>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>period: int</dt><dd><p>Measuring interval.</p>
+</dd>
+<dt>capacity: int</dt><dd><p>Capacity of fuel tank.</p>
+</dd>
+<dt>consumption: float</dt><dd><p>Engine fuel consumption [l/h].</p>
+</dd>
+<dt>efficiency: float</dt><dd><p>Engine efficiency.</p>
+</dd>
+<dt>refill: float</dt><dd><p>Probability of engine refill.</p>
+</dd>
+<dt>broker_address: str</dt><dd><p>MQTT broker’s URL</p>
+</dd>
+<dt>broker_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_username: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h3>Returns<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.measure_load_randomly">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">measure_load_randomly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.measure_load_randomly" title="Link to this definition">¶</a></dt>
+<dd><p>Emulates arm load sensor.</p>
+<p>Randomly generates arm load sensor reading.</p>
+<section id="id38">
+<h3>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>min_t: int</dt><dd><p>Min time-lapse between two measurements.</p>
+</dd>
+<dt>max_t: int</dt><dd><p>Max time-lapse between two measurements.</p>
+</dd>
+<dt>min_val: int</dt><dd><p>Min load value that sensor can detect.</p>
+</dd>
+<dt>max_val: int</dt><dd><p>Max load value that sensor can handle.</p>
+</dd>
+<dt>broker_address: str</dt><dd><p>MQTT broker’s URL</p>
+</dd>
+<dt>broker_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_username: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h3>Returns<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.measure_temperature_periodically">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">measure_temperature_periodically</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avg_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broker_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mqtt_pass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.measure_temperature_periodically" title="Link to this definition">¶</a></dt>
+<dd><p>Emulates temperature sensor.</p>
+<p>Periodically generates temperature sensor reading.</p>
+<section id="id40">
+<h3>Parameters<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>period: int</dt><dd><p>Measuring interval.</p>
+</dd>
+<dt>min_val: int</dt><dd><p>Min temperature value that sensor can detect.</p>
+</dd>
+<dt>avg_val: int</dt><dd><p>Avg engine temperature value.</p>
+</dd>
+<dt>broker_address: str</dt><dd><p>MQTT broker’s URL.</p>
+</dd>
+<dt>broker_port: int</dt><dd><p>MQTT broker’s port.</p>
+</dd>
+<dt>mqtt_username: str</dt><dd><p>Username required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>mqtt_pass: str</dt><dd><p>Password required for establishing connection with MQTT broker.</p>
+</dd>
+<dt>flag: multiprocessing.Event</dt><dd><p>Object used for stopping temperature sensor process.</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h3>Returns<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.on_connect_fuel_sensor">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">on_connect_fuel_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.on_connect_fuel_sensor" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after establishing connection between FUEL sensor process and mqtt broker</p>
+<section id="id42">
+<h3>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h3>
+<p>client : paho.mqtt.client
+userdata : object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id43">
+<h3>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.on_connect_load_sensor">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">on_connect_load_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.on_connect_load_sensor" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after establishing connection between arm load sensor process and mqtt broker</p>
+<section id="id44">
+<h3>Parameters<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<p>client : paho.mqtt.client
+userdata : object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id45">
+<h3>Returns<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.on_connect_temp_sensor">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">on_connect_temp_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.on_connect_temp_sensor" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after establishing connection between temperature sensor process and mqtt broker</p>
+<section id="id46">
+<h3>Parameters<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h3>
+<p>client : mqtt.client
+userdata : object
+flags:
+rc: int
+props:</p>
+</section>
+<section id="id47">
+<h3>Returns<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.on_publish">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">on_publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.on_publish" title="Link to this definition">¶</a></dt>
+<dd><p>Logic executed after receiving mqtt message.</p>
+<section id="id48">
+<h3>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<p>client : paho.mqtt.client
+userdata : object
+result: object</p>
+</section>
+<section id="id49">
+<h3>Returns<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.read_conf">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">read_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.read_conf" title="Link to this definition">¶</a></dt>
+<dd><p>Loads sensors’ config from config file.</p>
+<p>If config file is inaccessible, default config is used.</p>
+<section id="id50">
+<h3>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id51">
+<h3>Returns<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h3>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.sensor_devices.sensors_devices">
+<span class="sig-prename descclassname"><span class="pre">src.sensor_devices.</span></span><span class="sig-name descname"><span class="pre">sensors_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_flag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.sensor_devices.sensors_devices" title="Link to this definition">¶</a></dt>
+<dd><p>Creates 3 subprocesses representing 3 sensor devices.</p>
+<section id="id52">
+<h3>Parameters<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h3>
+<p>temp_flag : multiprocessing.Event
+load_flag : multiprocessing.Event
+fuel_flag: multiprocessing.Event</p>
+</section>
+<section id="id53">
+<h3>Returns<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<p>None</p>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-src.stats_service">
+<span id="src-stats-service-module"></span><h2>src.stats_service module<a class="headerlink" href="#module-src.stats_service" title="Link to this heading">¶</a></h2>
+<section id="id54">
+<h3>sensor_devices<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<p>Module that contains logic used for collecting stats about savings in sensor data sent over the internet.</p>
+<section id="classes">
+<h4>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>Stats</dt><dd><p>Class representing stats regarding single sensor data transmission.</p>
+</dd>
+<dt>OverallStats</dt><dd><p>Class representing stats regarding whole gateway app data transmission.</p>
+</dd>
+</dl>
+</section>
+<section id="id55">
+<h4>Functions<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h4>
+</section>
+<section id="id56">
+<h4>Constants<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h4>
+</section>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.stats_service.OverallStats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.stats_service.</span></span><span class="sig-name descname"><span class="pre">OverallStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.stats_service.OverallStats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents overall IoT gateway stats regarding data collected and transmitted over network.</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>time_pattern: str</dt><dd><p>Server date-time format.</p>
+</dd>
+<dt>url: str</dt><dd><p>Stats cloud service URL.</p>
+</dd>
+</dl>
+<p>jwt: str
+startTime: str</p>
+<blockquote>
+<div><p>Start of collecting stats.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>endTime: str</dt><dd><p>End of collecting stats.</p>
+</dd>
+<dt>tempDataBytes: int</dt><dd><p>Amount of collected temperature data [byte].</p>
+</dd>
+<dt>tempDataBytesForwarded: int</dt><dd><p>Amount of transmitted temperature data [byte].</p>
+</dd>
+<dt>tempDataRequests: int</dt><dd><p>Number of requests to temperature stats service.</p>
+</dd>
+<dt>loadDataBytes: int</dt><dd><p>Amount of collected load data [byte].</p>
+</dd>
+<dt>loadDataBytesForwarded: int</dt><dd><p>Amount of transmitted load data [byte].</p>
+</dd>
+<dt>loadDataRequests: int</dt><dd><p>Number of requests to load stats service.</p>
+</dd>
+<dt>fuelDataBytes: int</dt><dd><p>Amount of collected fuel data [byte].</p>
+</dd>
+<dt>fuelDataBytesForwarded: int</dt><dd><p>Amount of transmitted fuel data [byte].</p>
+</dd>
+<dt>fuelDataRequests: int</dt><dd><p>Number of requests to fuel stats service.</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>combine_stats(self, temp_stats, load_stats, fuel_stats)</dt><dd><p>Combines stats from different sensors into overall stats.</p>
+</dd>
+<dt>send_stats(self):</dt><dd><p>Sends collected stats dato to stats cloud service.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.stats_service.OverallStats.combine_stats">
+<span class="sig-name descname"><span class="pre">combine_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_stats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_stats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_stats</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.stats_service.OverallStats.combine_stats" title="Link to this definition">¶</a></dt>
+<dd><p>Combining stats from different sensors into overall stats.</p>
+<section id="id57">
+<h4>Parameters<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>temp_stats: Stats</dt><dd><p>Temperature stats data.</p>
+</dd>
+<dt>load_stats: Stats</dt><dd><p>Load stats data.</p>
+</dd>
+<dt>fuel_stats: Stats</dt><dd><p>Fuel stats data.</p>
+</dd>
+</dl>
+</section>
+<section id="id58">
+<h4>Returns<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.stats_service.OverallStats.send_stats">
+<span class="sig-name descname"><span class="pre">send_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.stats_service.OverallStats.send_stats" title="Link to this definition">¶</a></dt>
+<dd><p>Sending collected stats to cloud stats service.</p>
+<section id="id59">
+<h4>Parameters<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+</section>
+<section id="id60">
+<h4>Returns<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.stats_service.Stats">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.stats_service.</span></span><span class="sig-name descname"><span class="pre">Stats</span></span><a class="headerlink" href="#src.stats_service.Stats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents single sensor stats regarding data collected and transmitted over network.</p>
+<section id="id61">
+<h3>Attributes<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>dataBytes: int</dt><dd><p>Amount of collected sensor data in bytes.</p>
+</dd>
+<dt>dataBytesForwarded: int</dt><dd><p>Amount of sensor data sent to cloud services in bytes.</p>
+</dd>
+<dt>dataRequests: int</dt><dd><p>Number of requests to cloud services.</p>
+</dd>
+</dl>
+</section>
+<section id="id62">
+<h3>Methods<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>update_data(self, bytes, forwarded, requests)</dt><dd><p>Updating stats data.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.stats_service.Stats.update_data">
+<span class="sig-name descname"><span class="pre">update_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forwarded</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requests</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.stats_service.Stats.update_data" title="Link to this definition">¶</a></dt>
+<dd><p>Updates current stats  with new collected sensor data.</p>
+<section id="id63">
+<h4>Parameters<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>bytes: int</dt><dd><p>Collected sensor data in bytes.</p>
+</dd>
+<dt>forwarded: int</dt><dd><p>Sent sensor data in bytes.</p>
+</dd>
+<dt>requests: int</dt><dd><p>Number of made cloud service requests.</p>
+</dd>
+</dl>
+</section>
+<section id="id64">
+<h4>Returns<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-src">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">iot-gateway</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, gprincip.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/src.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

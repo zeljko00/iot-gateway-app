@@ -1,0 +1,45 @@
+src.Docker.gateway\-app.app\-files package
+==========================================
+
+Submodules
+----------
+
+src.Docker.gateway\-app.app\-files.app module
+---------------------------------------------
+
+.. automodule:: src.Docker.gateway-app.app-files.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.Docker.gateway\-app.app\-files.auth module
+----------------------------------------------
+
+.. automodule:: src.Docker.gateway-app.app-files.auth
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.Docker.gateway\-app.app\-files.data\_service module
+-------------------------------------------------------
+
+.. automodule:: src.Docker.gateway-app.app-files.data_service
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.Docker.gateway\-app.app\-files.stats\_service module
+--------------------------------------------------------
+
+.. automodule:: src.Docker.gateway-app.app-files.stats_service
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.Docker.gateway-app.app-files
+   :members:
+   :undoc-members:
+   :show-inheritance:

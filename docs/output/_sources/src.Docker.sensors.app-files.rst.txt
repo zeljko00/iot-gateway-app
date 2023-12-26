@@ -1,0 +1,21 @@
+src.Docker.sensors.app\-files package
+=====================================
+
+Submodules
+----------
+
+src.Docker.sensors.app\-files.sensor\_devices module
+----------------------------------------------------
+
+.. automodule:: src.Docker.sensors.app-files.sensor_devices
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.Docker.sensors.app-files
+   :members:
+   :undoc-members:
+   :show-inheritance:
