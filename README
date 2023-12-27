@@ -1,0 +1,7 @@
+Pristup dokumentaciji:
+    docs/output/index.html
+
+Pokretanje sistema:
+ 1. build/pull potrebnih Docker image-a
+ 2. cd Docker/system
+ 3. docker-compose up
