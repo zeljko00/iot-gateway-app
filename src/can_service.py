@@ -55,7 +55,6 @@ mqtt_broker="mqtt_broker"
 address="address"
 port="port"
 
-transport_protocol="tcp"
 qos = 2
 
 
@@ -97,7 +96,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              keepalive=2 * 3,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger)
-    load_client.set_on_connect(on_connect_temp_sensor)
+    load_client.set_on_connect(on_connect_load_sensor)
     load_client.set_on_publish(on_publish)
 
     if is_can_fuel:
@@ -110,7 +109,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              keepalive=conf_data[fuel_sensor][interval] * 3,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger)
-    fuel_client.set_on_connect(on_connect_temp_sensor)  # TODO: fix
+    fuel_client.set_on_connect(on_connect_fuel_sensor)
     fuel_client.set_on_publish(on_publish)
 
     notifier = can.Notifier(bus, timeout=period)
@@ -155,6 +154,7 @@ def on_publish():
     pass
 
 
+#TODO same method differed string
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
     if rc == 0:
         infoLogger.info("CAN Temperature sensor successfully established connection with MQTT broker!")
@@ -162,6 +162,22 @@ def on_connect_temp_sensor(client, userdata, flags, rc, props):
     else:
         errorLogger.error("CAN Temperature sensor failed to establish connection with MQTT broker!")
         customLogger.critical("CAN Temperature sensor failed to establish connection with MQTT broker!")
+
+def on_connect_load_sensor(client, userdata, flags, rc, props):
+    if rc == 0:
+        infoLogger.info("CAN Load sensor successfully established connection with MQTT broker!")
+        customLogger.debug("CAN Load sensor successfully established connection with MQTT broker!")
+    else:
+        errorLogger.error("CAN Load sensor failed to establish connection with MQTT broker!")
+        customLogger.critical("CAN Load sensor failed to establish connection with MQTT broker!")
+
+def on_connect_fuel_sensor(client, userdata, flags, rc, props):
+    if rc == 0:
+        infoLogger.info("CAN Fuel sensor successfully established connection with MQTT broker!")
+        customLogger.debug("CAN Fuel sensor successfully established connection with MQTT broker!")
+    else:
+        errorLogger.error("CAN Fuel sensor failed to establish connection with MQTT broker!")
+        customLogger.critical("CAN Fuel sensor failed to establish connection with MQTT broker!")
 
 
 def read_can_load(bus, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
@@ -194,11 +210,10 @@ def read_can_load(bus, broker_address, broker_port, mqtt_username, mqtt_pass, fl
 
 
 class CANListener (can.Listener):
-    def __init__(self, client, is_can_temp, is_can_load, is_can_fuel):
-        self.client = client
-        self.is_can_temp = is_can_temp
-        self.is_can_load = is_can_load
-        self.is_can_fuel = is_can_fuel
+    def __init__(self, temp_client, load_client, fuel_client):
+        self.temp_client = temp_client
+        self.load_client = load_client
+        self.fuel_client = fuel_client
 
     def on_message_received(self, msg):
 
@@ -208,19 +223,21 @@ class CANListener (can.Listener):
         binary_string = b''.join(msg.data)
         float_value = struct.unpack('<f', binary_string)[0]
         #this is part of CAN transmit ticket
-        while not self.client.is_connected():
-            errorLogger.error("Temperature sensor lost connection to MQTT broker!")
-            self.client.reconnect()
-            time.sleep(0.2)
 
-        if msg.arbitration_id == "123" and self.is_can_temp:
-            self.client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos=qos)
-        elif msg.arbitration_id == "124" and self.is_can_load:
-            self.client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
+        if self.temp_client is not None:
+            self.temp_client.try_reconnect()
+        if self.load_client is not None:
+            self.load_client.try_reconnect()
+        if self.fuel_client is not None:
+            self.fuel_client.try_reconnect()
+
+        if msg.arbitration_id == "123" and self.temp_client is not None:
+            self.temp_client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos=qos)
+        elif msg.arbitration_id == "124" and self.load_client is not None:
+            self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
                                                                 celzius), qos=qos)
-        elif msg.arbitration_id == "125" and self.is_can_fuel:
-            self.client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
+        elif msg.arbitration_id == "125" and self.fuel_client is not None:
+            self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
                                                                 celzius), qos=qos)
-        

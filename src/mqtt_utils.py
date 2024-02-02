@@ -32,3 +32,9 @@ class MQTTClient:
             except Exception as e:
                 self.errorLogger.error("CAN Temperature sensor failed to establish connection with MQTT broker!")
                 print(e)
+
+    def try_reconnect(self):
+        while not self.client.is_connected():
+            self.errorLogger.error("Temperature sensor lost connection to MQTT broker!")
+            self.client.reconnect()
+            time.sleep(0.2)
