@@ -8,10 +8,8 @@ import time
 import struct
 
 from multiprocessing import Process, Event
-
-from src import sensor_devices
 from src.mqtt_utils import MQTTClient
-from src.sensor_devices import read_app_conf, measure_temperature_periodically
+
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -58,16 +56,16 @@ port="port"
 qos = 2
 
 
-def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel, period, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
+def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel, conf_data, flag):
     bus = can.interface.Bus(interface=interface,
                             channel=channel,
                             bitrate=bitrate)
     customLogger.debug("CAN process started!")
+    print("CAN PROCESS STARTED")
+    period = conf_data[temp_sensor][interval]
     if period == 0:
         period = 1
     period = abs(round(period))
-    app_conf_data = read_app_conf()
-    conf_data = sensor_devices.read_conf()
 
     temp_client = None
     load_client = None
@@ -82,9 +80,10 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              broker_port=conf_data[mqtt_broker][port],
                              keepalive=conf_data[temp_sensor][interval] * 3,
                              infoLogger=infoLogger,
-                             errorLogger=errorLogger)
-    temp_client.set_on_connect(on_connect_temp_sensor)
-    temp_client.set_on_publish(on_publish)
+                             errorLogger=errorLogger,
+                             flag=flag)
+        temp_client.set_on_connect(on_connect_temp_sensor)
+        temp_client.set_on_publish(on_publish)
 
     if is_can_load:
         load_client = MQTTClient("load-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -95,9 +94,10 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              broker_port=conf_data[mqtt_broker][port],
                              keepalive=2 * 3,
                              infoLogger=infoLogger,
-                             errorLogger=errorLogger)
-    load_client.set_on_connect(on_connect_load_sensor)
-    load_client.set_on_publish(on_publish)
+                             errorLogger=errorLogger,
+                             flag=flag)
+        load_client.set_on_connect(on_connect_load_sensor)
+        load_client.set_on_publish(on_publish)
 
     if is_can_fuel:
         fuel_client = MQTTClient("fuel-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -108,13 +108,20 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              broker_port=conf_data[mqtt_broker][port],
                              keepalive=conf_data[fuel_sensor][interval] * 3,
                              infoLogger=infoLogger,
-                             errorLogger=errorLogger)
-    fuel_client.set_on_connect(on_connect_fuel_sensor)
-    fuel_client.set_on_publish(on_publish)
+                             errorLogger=errorLogger,
+                             flag=flag)
+        fuel_client.set_on_connect(on_connect_fuel_sensor)
+        fuel_client.set_on_publish(on_publish)
 
-    notifier = can.Notifier(bus, timeout=period)
+    notifier = can.Notifier(bus, [], timeout=period)
     can_listener = CANListener(temp_client, load_client, fuel_client)
     notifier.add_listener(can_listener)
+
+    while not flag.is_set(): #TODO wait
+        print("WAITING")
+        time.sleep(period)
+
+    notifier.stop(timeout=5)
 
 
 def read_can_temperature(interface, channel, bitrate, period, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
@@ -135,7 +142,8 @@ def read_can_temperature(interface, channel, bitrate, period, broker_address, br
                                                         broker_port=broker_port,
                                                         keepalive=period * 3,
                                                         infoLogger=infoLogger,
-                                                        errorLogger=errorLogger)
+                                                        errorLogger=errorLogger,
+                                                        )
     client.set_on_connect(on_connect_temp_sensor)
     client.set_on_publish(on_publish)
     client.connect()
@@ -211,19 +219,31 @@ def read_can_load(bus, broker_address, broker_port, mqtt_username, mqtt_pass, fl
 
 class CANListener (can.Listener):
     def __init__(self, temp_client, load_client, fuel_client):
+        if temp_client is not None:
+            temp_client.connect()
         self.temp_client = temp_client
+
+        if load_client is not None:
+            load_client.connect()
         self.load_client = load_client
+
+        if fuel_client is not None:
+            fuel_client.connect()
         self.fuel_client = fuel_client
+
+
 
     def on_message_received(self, msg):
 
         print("CAN: " + msg.__str__())
         # msg.data is a byte array, need to turn it into a single value
 
-        binary_string = b''.join(msg.data)
-        float_value = struct.unpack('<f', binary_string)[0]
-        #this is part of CAN transmit ticket
+        print(type(msg.data))
+        #binary_string = b''.join(msg.data)
 
+        float_value = struct.unpack('<f', msg.data)[0]
+        #this is part of CAN transmit ticket
+        print(float_value)
         if self.temp_client is not None:
             self.temp_client.try_reconnect()
         if self.load_client is not None:

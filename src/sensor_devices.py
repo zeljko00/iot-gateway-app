@@ -54,7 +54,7 @@ from multiprocessing import Process, Event
 import logging.config
 import logging
 
-from src.can_service import read_can_temperature, read_can_load, read_can_fuel, read_can
+from src.can_service import read_can
 from src.mqtt_utils import MQTTClient
 
 # setting up loggers
@@ -285,7 +285,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
 
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
-def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
+def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
     '''
     Emulates arm load sensor.
 
@@ -328,7 +328,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     client.username_pw_set(username=mqtt_username, password=mqtt_pass)
     client.on_connect = on_connect_load_sensor
     client.on_publish = on_publish
-    while not client.is_connected():
+    while not client.is_connected() and not flag.is_set():
         try:
             infoLogger.info("Arm load sensor establishing connection with MQTT broker!")
             client.connect(broker_address, port=broker_port, keepalive=min_t*3)
@@ -347,7 +347,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     while not flag.is_set():
         time.sleep(round(intervals[counter % values_count]))
         # check connection to mqtt broker
-        while not client.is_connected():
+        while not client.is_connected() and not flag.is_set():
             errorLogger.error("Arm load sensor lost connection to MQTT broker!")
             client.reconnect()
             time.sleep(0.1)
@@ -531,14 +531,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
     '''
     conf_data = read_conf()
     app_conf_data = read_app_conf()
-
-    temperature_sensor = None
-    excavator_arm_sensor = None
-    fuel_level_sensor = None
-    can_sensor = None
     sensors = []
-
-
 
     is_can_temp = False
     is_can_load = False
@@ -552,21 +545,18 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
-        temperature_sensor = Process(target=read_can, args=(interface,
-                                                            channel,
-                                                            bitrate,
+        can_sensor = Process(target=read_can, args=(app_conf_data[can_general_settings][interface],
+                                                            app_conf_data[can_general_settings][channel],
+                                                            app_conf_data[can_general_settings][bitrate],
                                                             is_can_temp,
                                                             is_can_load,
                                                             is_can_fuel,
-                                                            conf_data[temp_sensor][interval],
-                                                            conf_data[mqtt_broker][address],
-                                                            conf_data[mqtt_broker][port],
-                                                            conf_data[mqtt_broker][mqtt_user],
-                                                            conf_data[mqtt_broker][mqtt_password],
+                                                            conf_data,
                                                             can_flag
                                                             ))
-    elif app_conf_data[temp_settings][mode] == "SIMULATOR":
-        temperature_sensor = Process(target=measure_temperature_periodically, args=(conf_data[temp_sensor][interval],
+        sensors.append(can_sensor)
+    if app_conf_data[temp_settings][mode] == "SIMULATOR":
+        simulation_temperature_sensor = Process(target=measure_temperature_periodically, args=(conf_data[temp_sensor][interval],
                                                                                     conf_data[temp_sensor][min],
                                                                                     conf_data[temp_sensor][avg],
                                                                                     conf_data[mqtt_broker][address],
@@ -574,17 +564,9 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
                                                                                     conf_data[mqtt_broker][mqtt_user],
                                                                                     conf_data[mqtt_broker][mqtt_password],
                                                                                     temp_flag, ))
-
-    if app_conf_data[load_settings][mode] == "CAN":
-        excavator_arm_sensor = Process(target=read_can_load, args=(
-                                                                    bus,
-                                                                    conf_data[mqtt_broker][address],
-                                                                    conf_data[mqtt_broker][port],
-                                                                    conf_data[mqtt_broker][mqtt_user],
-                                                                    conf_data[mqtt_broker][mqtt_password],
-                                                                    load_flag,))
-    elif app_conf_data[temp_settings][mode] == "SIMULATOR":
-        excavator_arm_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
+        sensors.append(simulation_temperature_sensor)
+    if app_conf_data[load_settings][mode] == "SIMULATOR":
+        simulation_load_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
                                                                            conf_data[arm_sensor][arm_max_t],
                                                                            conf_data[arm_sensor][min],
                                                                            conf_data[arm_sensor][max],
@@ -593,20 +575,9 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
                                                                            conf_data[mqtt_broker][mqtt_user],
                                                                            conf_data[mqtt_broker][mqtt_password],
                                                                            load_flag,))
-    if app_conf_data[fuel_settings][mode] == "CAN":
-        fuel_level_sensor = Process(target=read_can_fuel, args=(bus,
-                                                                        conf_data[fuel_sensor][interval],
-                                                                        conf_data[fuel_sensor][fuel_capacity],
-                                                                        conf_data[fuel_sensor][fuel_consumption],
-                                                                        conf_data[fuel_sensor][fuel_efficiency],
-                                                                        conf_data[fuel_sensor][fuel_refill],
-                                                                        conf_data[mqtt_broker][address],
-                                                                        conf_data[mqtt_broker][port],
-                                                                        conf_data[mqtt_broker][mqtt_user],
-                                                                        conf_data[mqtt_broker][mqtt_password],
-                                                                        fuel_flag,))
-    elif app_conf_data[temp_settings][mode] == "SIMULATOR":
-        fuel_level_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
+        sensors.append(simulation_load_sensor)
+    if app_conf_data[fuel_settings][mode] == "SIMULATOR":
+        simulation_fuel_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
                                                                             conf_data[fuel_sensor][fuel_capacity],
                                                                             conf_data[fuel_sensor][fuel_consumption],
                                                                             conf_data[fuel_sensor][fuel_efficiency],
@@ -616,7 +587,8 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
                                                                             conf_data[mqtt_broker][mqtt_user],
                                                                             conf_data[mqtt_broker][mqtt_password],
                                                                             fuel_flag,))
-    return [temperature_sensor, excavator_arm_sensor, fuel_level_sensor]
+        sensors.append(simulation_fuel_sensor)
+    return sensors
 
 
 def main():
@@ -638,12 +610,13 @@ def main():
     can_flag = Event()
 
     sensors = sensors_devices(temp_flag, load_flag, fuel_flag, can_flag)
-    print(sensors)
+    print("SENSORS", sensors)
     infoLogger.info("Sensor system started!")
     customLogger.debug("Sensor system starting!")
     for sensor in sensors:
         sensor.start()
         time.sleep(0.1)
+    time.sleep(2)
     # waiting for shutdown signal (input)
     input("")
     infoLogger.info("Sensor system shutting down! Please wait")
@@ -654,7 +627,7 @@ def main():
     fuel_flag.set()
     can_flag.set()
     for sensor in sensors:
-        sensor.join()
+       sensor.join()
     infoLogger.info("Sensor system shutdown!")
     customLogger.debug("Sensor system shutdown!")
 
