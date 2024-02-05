@@ -81,7 +81,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              keepalive=conf_data[temp_sensor][interval] * 3,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
-                             flag=flag)
+                             flag=flag,
+                             sensor_type="TEMP")
         temp_client.set_on_connect(on_connect_temp_sensor)
         temp_client.set_on_publish(on_publish)
 
@@ -95,7 +96,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              keepalive=2 * 3,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
-                             flag=flag)
+                             flag=flag,
+                             sensor_type="LOAD")
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
 
@@ -109,7 +111,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              keepalive=conf_data[fuel_sensor][interval] * 3,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
-                             flag=flag)
+                             flag=flag,
+                             sensor_type="FUEL")
         fuel_client.set_on_connect(on_connect_fuel_sensor)
         fuel_client.set_on_publish(on_publish)
 
@@ -124,41 +127,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
     notifier.stop(timeout=5)
 
 
-def read_can_temperature(interface, channel, bitrate, period, broker_address, broker_port, mqtt_username,mqtt_pass, flag):
-    bus = can.interface.Bus(interface=interface,
-                            channel=channel,
-                            bitrate=bitrate)
-    customLogger.debug("Temperature CAN sensor started!")
-    if period == 0:
-        period = 1
-    period = abs(round(period))
-
-    print("CONNECTED TO CAN")
-    client = MQTTClient("temp-sensor-mqtt-client", transport_protocol=transport_protocol,
-                                                        protocol_version=mqtt.MQTTv5,
-                                                        mqtt_username=mqtt_username,
-                                                        mqtt_pass=mqtt_pass,
-                                                        broker_address=broker_address,
-                                                        broker_port=broker_port,
-                                                        keepalive=period * 3,
-                                                        infoLogger=infoLogger,
-                                                        errorLogger=errorLogger,
-                                                        )
-    client.set_on_connect(on_connect_temp_sensor)
-    client.set_on_publish(on_publish)
-    client.connect()
-
-    listener = CANListener(client)
-    notifier = can.Notifier(bus, [listener], timeout=period)
-
-    print("Notifier TEMP started")
-    # flag.wait()
-    while not flag.is_set():
-        time.sleep(period)
-
-    notifier.stop(timeout=5)
-
-def on_publish():
+def on_publish(topic, payload, qos):
     pass
 
 
@@ -188,38 +157,10 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
         customLogger.critical("CAN Fuel sensor failed to establish connection with MQTT broker!")
 
 
-def read_can_load(bus, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
-
-    client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
-    client.username_pw_set(username=mqtt_username, password=mqtt_pass)
-    client.on_connect = on_connect_temp_sensor
-    client.on_publish = on_publish
-    while not client.is_connected():
-        try:
-
-            infoLogger.info("CAN Temperature sensor establishing connection with MQTT broker!")
-            client.connect(broker_address, port=broker_port, keepalive=2*3) #period
-            print("CONNECTED TO MQTT")
-            client.loop_start()
-            time.sleep(0.2)
-
-        except Exception as e:
-            errorLogger.error("CAN Temperature sensor failed to establish connection with MQTT broker!")
-            print(e)
-
-    listener = CANListener(client)
-    notifier = can.Notifier(bus, [listener])
-    print("Notifier LOAD started")
-    # flag.wait()
-    while not flag.is_set():
-        time.sleep(2)
-
-    notifier.stop(timeout=5)
-
-
 class CANListener (can.Listener):
     def __init__(self, temp_client, load_client, fuel_client):
         if temp_client is not None:
+            print("CONNET BIATCH")
             temp_client.connect()
         self.temp_client = temp_client
 
@@ -241,7 +182,7 @@ class CANListener (can.Listener):
         print(type(msg.data))
         #binary_string = b''.join(msg.data)
 
-        float_value = struct.unpack('<f', msg.data)[0]
+        float_value = struct.unpack('<d', msg.data)[0]
         #this is part of CAN transmit ticket
         print(float_value)
         if self.temp_client is not None:
@@ -250,14 +191,14 @@ class CANListener (can.Listener):
             self.load_client.try_reconnect()
         if self.fuel_client is not None:
             self.fuel_client.try_reconnect()
-
-        if msg.arbitration_id == "123" and self.temp_client is not None:
-            self.temp_client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos=qos)
-        elif msg.arbitration_id == "124" and self.load_client is not None:
+        print(self.temp_client)
+        if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
+            self.temp_client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos)
+        elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
             self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
-                                                                celzius), qos=qos)
-        elif msg.arbitration_id == "125" and self.fuel_client is not None:
+                                                                celzius), qos)
+        elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
             self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
-                                                                celzius), qos=qos)
+                                                                celzius), qos)
