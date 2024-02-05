@@ -85,6 +85,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="TEMP")
         temp_client.set_on_connect(on_connect_temp_sensor)
         temp_client.set_on_publish(on_publish)
+        temp_client.set_subscribe(on_subscribe_temp_alarm)
+        temp_client.set_on_message(on_message_temp_alarm)
 
     if is_can_load:
         load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -100,6 +102,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="LOAD")
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
+        load_client.set_subscribe(subscribe_load_alarm)
 
     if is_can_fuel:
         fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -115,6 +118,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="FUEL")
         fuel_client.set_on_connect(on_connect_fuel_sensor)
         fuel_client.set_on_publish(on_publish)
+        fuel_client.set_subscribe(subscribe_fuel_alarm)
 
     notifier = can.Notifier(bus, [], timeout=period)
     can_listener = CANListener(temp_client, load_client, fuel_client)
@@ -129,6 +133,35 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
 
 def on_publish(topic, payload, qos):
     pass
+
+def on_subscribe_temp_alarm(client, userdata, flags, rc, props):
+    if rc == 0:
+        infoLogger.info("CAN Temperature alarm client successfully established connection with MQTT broker!")
+        customLogger.debug("CAN Temperature alarm client successfully established connection with MQTT broker!")
+    else:
+        errorLogger.error("CAN Temperature alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical("CAN Temperature alarm client failed to establish connection with MQTT broker!")
+
+def on_subscribe_load_alarm(client, userdata, flags, rc, props):
+    if rc == 0:
+        infoLogger.info("CAN Load alarm client successfully established connection with MQTT broker!")
+        customLogger.debug("CAN Load alarm client successfully established connection with MQTT broker!")
+    else:
+        errorLogger.error("CAN Load alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
+
+def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
+    if rc == 0:
+        infoLogger.info("CAN Load alarm client successfully established connection with MQTT broker!")
+        customLogger.debug("CAN Load alarm client successfully established connection with MQTT broker!")
+    else:
+        errorLogger.error("CAN Load alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
+
+def on_message_temp_alarm(client, userdata, msg):
+    pass
+    #send it to CAN
+
 
 
 #TODO same method differed string

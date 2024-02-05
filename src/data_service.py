@@ -36,6 +36,26 @@ data_pattern = "[ value={} , time={} , unit={} ]"
 http_not_found = 404
 http_ok = 200
 http_no_content = 204
+
+
+def parse_temperature_data(data, time_format):
+    data_sum = 0.0
+    # summarizing colleceted data
+    for item in data:
+        try:
+            tokens = item.split(" ")
+            data_sum += float(tokens[1].split("=")[1])
+        except:
+            errorLogger.error("Invalid temperature data format! - " + item)
+    time_value = time.strftime(time_format, time.localtime())
+    unit = "unknown"
+    try:
+        unit = data[0].split(" ")[6].split("=")[1]
+    except:
+        errorLogger.error("Invalid temperature data format! - " + data[0])
+    return data_sum, time_value, unit
+
+
 def handle_temperature_data(data, url, jwt, time_format):
     '''
        Summarizes and sends collected temperature data.
@@ -57,20 +77,7 @@ def handle_temperature_data(data, url, jwt, time_format):
        -------
        http status code
        '''
-    data_sum = 0.0
-    # summarizing colleceted data
-    for item in data:
-        try:
-            tokens=item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid temperature data format! - "+item)
-    time_value = time.strftime(time_format, time.localtime())
-    unit="unknown"
-    try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid temperature data format! - "+data[0])
+    data_sum, time_value, unit = parse_temperature_data(data, time_format)
     # creating request payload
     payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))

@@ -301,6 +301,15 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
         if not flag.is_set():
             new_data.append(str(message.payload.decode("utf-8")))
             customLogger.info("Received temperature data: " + str(message.payload.decode("utf-8")))
+            data_sum, time_value, unit = data_service.parse_temperature_data(data, time_format)
+            if data_sum > 150:
+                # sound the alarm!
+
+
+
+
+
+
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
