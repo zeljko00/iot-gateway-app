@@ -511,3 +511,818 @@
 2023-12-21 13:42:17,138 - INFO - Arm load sensor establishing connection with MQTT broker!
 2023-12-21 13:42:17,201 - INFO - Fuel level sensor establishing connection with MQTT broker!
 2023-12-26 10:40:29,053 - INFO - IoT Gateway app started!
+2024-02-02 12:21:01,614 - INFO - Sensor system started!
+2024-02-02 12:23:11,500 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:23:11,710 - INFO - Sensor system shutdown!
+2024-02-02 12:23:38,842 - INFO - Sensor system started!
+2024-02-02 12:24:32,116 - INFO - Sensor system started!
+2024-02-02 12:24:49,441 - INFO - Sensor system started!
+2024-02-02 12:25:14,953 - INFO - Sensor system started!
+2024-02-02 12:26:21,587 - INFO - Sensor system started!
+2024-02-02 12:27:23,541 - INFO - Sensor system started!
+2024-02-02 12:27:47,902 - INFO - Sensor system started!
+2024-02-02 12:28:17,669 - INFO - Sensor system started!
+2024-02-02 12:30:49,097 - INFO - Sensor system started!
+2024-02-02 12:31:35,390 - INFO - Sensor system started!
+2024-02-02 12:32:08,008 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:32:08,184 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:12,224 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:16,255 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:20,273 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:24,291 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:28,301 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:32,330 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:36,349 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:40,372 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:44,403 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:48,419 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:52,437 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:32:56,458 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:00,470 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:04,488 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:08,520 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:12,537 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:16,567 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:20,587 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:24,628 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:26,635 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:30,658 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:34,470 - INFO - Sensor system started!
+2024-02-02 12:33:39,317 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:33:39,496 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:43,535 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:47,557 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:51,579 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:55,587 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:33:59,623 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:03,635 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:07,647 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:11,664 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:15,684 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:19,692 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:23,701 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:27,723 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:31,732 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:35,742 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:39,748 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:43,771 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:47,781 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:51,802 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:55,833 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:34:59,842 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:03,876 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:07,886 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:11,897 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:15,906 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:19,401 - INFO - Sensor system started!
+2024-02-02 12:35:24,221 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:35:24,389 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:28,417 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:32,438 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:36,450 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:40,472 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:44,486 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:48,496 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:52,525 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:35:56,547 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:00,581 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:04,590 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:08,610 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:12,634 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:16,643 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:20,653 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:24,677 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:28,695 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:32,713 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:36,735 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:40,757 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:44,771 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:48,791 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:52,811 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:36:56,830 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:00,862 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:04,873 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:08,882 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:12,894 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:16,905 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:20,935 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:24,947 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:28,957 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:32,966 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:36,984 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:41,006 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:45,029 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:49,048 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:53,070 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:37:57,085 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:01,114 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:05,135 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:09,156 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:13,177 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:17,197 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:21,213 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:23,217 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:38:30,979 - INFO - Sensor system started!
+2024-02-02 12:51:08,511 - INFO - Sensor system started!
+2024-02-02 12:51:34,544 - INFO - Sensor system started!
+2024-02-02 12:53:37,298 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:53:37,474 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:41,491 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:45,513 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:49,533 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:51,548 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:55,566 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:53:59,584 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:03,590 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:04,408 - INFO - Sensor system started!
+2024-02-02 12:54:33,433 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:54:33,604 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:37,622 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:41,632 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:45,641 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:49,647 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:53,665 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:54:57,674 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:01,701 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:05,712 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:09,731 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:15,961 - INFO - Sensor system started!
+2024-02-02 12:55:27,176 - INFO - Sensor system shutting down! Please wait
+2024-02-02 12:55:27,352 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:31,380 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:35,421 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:39,432 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:43,461 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:47,471 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:51,509 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:55,542 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:55:59,562 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:03,581 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:07,592 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:11,617 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:15,626 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:19,641 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:23,663 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:27,695 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:31,706 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:35,714 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:39,726 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:43,749 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:47,757 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:51,765 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:55,784 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:56:59,815 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:03,826 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:07,834 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:11,844 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:15,856 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:19,864 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:23,898 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:27,916 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:31,926 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:35,949 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:39,981 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:44,009 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:48,026 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:52,043 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:57:56,062 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:00,085 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:04,106 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:08,115 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:12,126 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:16,141 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:20,158 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:24,175 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:28,194 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:32,218 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:36,238 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:40,257 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:44,267 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:48,291 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:52,312 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:58:56,333 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:00,340 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:04,360 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:08,371 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:12,392 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:16,423 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:20,443 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:24,470 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:28,492 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:32,502 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 12:59:37,199 - INFO - Sensor system started!
+2024-02-02 12:59:52,380 - INFO - Sensor system started!
+2024-02-02 12:59:59,863 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:00:00,037 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:04,057 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:08,086 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:12,105 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:16,121 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:20,141 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:24,151 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:28,170 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:32,188 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:36,208 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:40,225 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:44,244 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:48,249 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:52,263 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:00:56,283 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:00,294 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:04,304 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:08,318 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:12,339 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:16,357 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:20,379 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:24,388 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:28,406 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:32,413 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:36,435 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:40,444 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:44,463 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:48,483 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:52,489 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:01:56,507 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:00,525 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:04,533 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:08,558 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:12,580 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:16,591 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:20,610 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:24,620 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:28,642 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:32,667 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:36,702 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:40,715 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:44,734 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:48,752 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:52,772 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:02:56,795 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:00,806 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:04,829 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:08,843 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:12,867 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:16,885 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:20,903 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:24,910 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:28,932 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:32,938 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:36,955 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:40,965 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:44,976 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:48,986 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:53,004 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:03:57,018 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:01,038 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:05,048 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:09,069 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:13,102 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:17,121 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:21,129 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:04:25,137 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:10:48,055 - INFO - Sensor system started!
+2024-02-02 13:11:35,923 - INFO - Sensor system started!
+2024-02-02 13:11:41,887 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:11:42,057 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:11:46,087 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:11:50,116 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:11:54,146 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:11:58,164 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:02,187 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:06,195 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:10,214 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:16,276 - INFO - Sensor system started!
+2024-02-02 13:12:19,159 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:12:19,332 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:23,356 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:27,364 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:31,385 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:35,397 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:39,417 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:43,438 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:47,457 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:51,488 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:55,513 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:12:59,524 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:03,544 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:07,552 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:11,572 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:15,580 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:19,599 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:23,618 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:25,624 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:29,825 - INFO - Sensor system started!
+2024-02-02 13:13:33,703 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:13:33,876 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:37,904 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:41,913 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:45,922 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:49,930 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:53,964 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:13:57,984 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:01,996 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:06,007 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:10,043 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:14,054 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:16,061 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:14:19,600 - INFO - Sensor system started!
+2024-02-02 13:23:08,853 - INFO - Sensor system started!
+2024-02-02 13:23:14,103 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:23:47,994 - INFO - Sensor system started!
+2024-02-02 13:23:53,479 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:23:53,480 - INFO - Sensor system shutdown!
+2024-02-02 13:23:53,652 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:23:57,677 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:01,695 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:05,705 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:09,714 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:13,723 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:17,745 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:21,754 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:25,811 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:29,825 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:33,795 - INFO - Sensor system started!
+2024-02-02 13:24:38,574 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:24:38,576 - INFO - Sensor system shutdown!
+2024-02-02 13:24:38,747 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:42,765 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:46,774 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:50,795 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:54,818 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:24:58,846 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:02,867 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:06,887 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:10,909 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:14,917 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:18,924 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:22,943 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:26,952 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:30,960 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:25:34,995 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:02,197 - INFO - Sensor system started!
+2024-02-02 13:26:02,423 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:26:02,424 - INFO - Sensor system shutdown!
+2024-02-02 13:26:02,828 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:06,859 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:11,162 - INFO - Sensor system started!
+2024-02-02 13:26:15,901 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:26:15,903 - INFO - Sensor system shutdown!
+2024-02-02 13:26:16,075 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:20,101 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:24,120 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:28,139 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:32,147 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:36,153 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:40,176 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:44,196 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:48,215 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:52,225 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:26:56,246 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:00,267 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:04,295 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:08,308 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:12,327 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:16,347 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:20,367 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:24,385 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:28,405 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:32,415 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:36,434 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:40,453 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:44,485 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:48,514 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:52,519 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:27:56,536 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:00,557 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:04,580 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:08,590 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:12,607 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:16,615 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:20,624 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:24,638 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:28,651 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:32,660 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:36,668 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:40,699 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:44,727 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:48,741 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:52,749 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:28:56,765 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:00,828 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:04,838 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:08,913 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:12,923 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:16,934 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:20,979 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:28,200 - INFO - Sensor system started!
+2024-02-02 13:29:28,832 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:32,859 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:36,867 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:40,883 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:43,538 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:29:43,539 - INFO - Sensor system shutdown!
+2024-02-02 13:29:44,902 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:48,918 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:52,930 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:29:56,947 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:30:56,662 - INFO - Sensor system started!
+2024-02-02 13:30:57,293 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:00,106 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:31:01,309 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:05,328 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:09,350 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:13,355 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:17,379 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:21,398 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:31,257 - INFO - Sensor system started!
+2024-02-02 13:31:31,878 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:35,896 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:38,938 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:31:39,910 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:43,930 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:47,937 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:51,961 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:55,970 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:31:59,992 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:04,002 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:08,014 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:12,031 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:16,051 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:20,071 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:24,099 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:28,121 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:32,139 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:36,170 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:40,184 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:44,209 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:48,217 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:52,236 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:32:56,248 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:00,262 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:04,275 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:08,295 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:12,321 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:16,338 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:20,349 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:24,370 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:28,388 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:32,417 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:36,433 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:40,460 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:44,480 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:48,490 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:52,509 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:33:56,519 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:00,537 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:04,558 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:08,571 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:12,590 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:16,636 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:20,667 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:24,698 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:28,708 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:32,740 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:36,749 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:40,759 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:44,768 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:48,792 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:52,800 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:34:56,821 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:00,853 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:04,865 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:08,872 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:12,884 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:16,892 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:20,906 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:24,923 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:28,954 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:35:32,972 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:00,918 - INFO - Sensor system started!
+2024-02-02 13:36:01,548 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:05,568 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:08,241 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:36:09,591 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:13,609 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:17,630 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:21,662 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:25,673 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:29,683 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:36:33,039 - INFO - Sensor system started!
+2024-02-02 13:36:43,392 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:36:44,817 - INFO - Sensor system shutdown!
+2024-02-02 13:38:36,933 - INFO - Sensor system started!
+2024-02-02 13:38:37,566 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:38:41,592 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 13:38:43,368 - INFO - Sensor system shutting down! Please wait
+2024-02-02 13:38:45,636 - INFO - Arm load sensor shutdown!
+2024-02-02 13:38:47,724 - INFO - Sensor system shutdown!
+2024-02-02 14:12:59,731 - INFO - Sensor system started!
+2024-02-02 14:13:00,399 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:04,427 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:08,448 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:12,457 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:16,489 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:20,499 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:24,505 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:28,512 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:32,534 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:36,565 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:40,594 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:44,613 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:48,631 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:52,642 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:13:56,673 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:00,691 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:04,713 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:08,722 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:12,740 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:16,755 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:20,764 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:24,781 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:28,800 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:32,820 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:36,849 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:40,860 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:44,878 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:48,897 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:52,916 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:14:56,936 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:00,956 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:04,993 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:09,003 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:13,021 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:17,041 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:21,052 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:25,072 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:29,081 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:33,100 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:37,116 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:41,135 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:45,142 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:49,150 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:53,183 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:15:57,207 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:01,218 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:05,230 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:09,243 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:13,267 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:17,296 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:21,316 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:25,333 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:29,363 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:33,371 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:37,379 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:41,390 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:45,397 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:49,415 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:53,435 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:16:57,456 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:01,467 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:05,489 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:09,511 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:13,520 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:17,540 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:21,549 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:25,572 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:29,593 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:33,623 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:37,645 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:41,667 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:45,701 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:49,718 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:53,735 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:17:57,754 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:01,776 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:05,799 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:09,819 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:13,831 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:19,459 - INFO - Sensor system started!
+2024-02-02 14:18:20,101 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:24,128 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:28,147 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:32,169 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:36,194 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:18:40,228 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:15,444 - INFO - Sensor system started!
+2024-02-02 14:22:16,093 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:20,118 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:24,142 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:32,165 - INFO - Sensor system started!
+2024-02-02 14:22:32,809 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:36,828 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:40,838 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:44,861 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:48,873 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:52,891 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:22:56,903 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:00,913 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:04,922 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:08,935 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:12,953 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:16,963 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:20,983 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:24,992 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:29,003 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:33,036 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:37,067 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:41,076 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:45,092 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:49,121 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:53,138 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:23:57,160 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:01,170 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:05,201 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:09,213 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:13,229 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:17,249 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:21,269 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:25,279 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:29,314 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:33,328 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:37,345 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:41,362 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:45,373 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:49,394 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:53,424 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:24:57,450 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:01,460 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:05,474 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:09,495 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:13,508 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:17,515 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:21,535 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:25,544 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:29,560 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:33,573 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:37,581 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:41,595 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:45,623 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:49,648 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:53,661 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:25:57,679 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:01,689 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:05,708 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:12,337 - INFO - Sensor system started!
+2024-02-02 14:26:12,970 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:16,998 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:21,011 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:25,040 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:29,054 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:33,070 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:37,079 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:41,093 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:45,127 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:49,146 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:53,170 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:26:57,200 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:01,209 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:05,217 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:09,237 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:13,251 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:17,266 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:21,273 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:25,301 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:29,313 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:33,323 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:37,332 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:41,341 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:45,385 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:49,405 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:53,420 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:27:57,432 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:01,438 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:05,445 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:09,455 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:13,479 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:17,513 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:21,530 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:25,547 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:29,570 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:33,587 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:37,596 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:41,617 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:45,026 - INFO - Sensor system started!
+2024-02-02 14:28:45,668 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:28:45,673 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:28:49,047 - INFO - Sensor system shutting down! Please wait
+2024-02-02 14:28:49,709 - INFO - Arm load sensor shutdown!
+2024-02-02 14:28:50,798 - INFO - Sensor system shutdown!
+2024-02-02 14:29:03,799 - INFO - Sensor system started!
+2024-02-02 14:29:04,441 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:04,443 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:08,461 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:08,471 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:12,468 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:12,477 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:16,485 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:16,492 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:20,496 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:20,511 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:24,520 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:24,520 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:28,532 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:28,541 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:32,548 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:32,556 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:36,565 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:36,577 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:40,569 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:40,596 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:44,587 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:44,601 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:48,602 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:48,620 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:52,610 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:52,638 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:29:56,622 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:29:56,666 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:00,780 - INFO - Arm load sensor establishing connection with MQTT broker!
+oker!
+2024-02-02 14:30:04,796 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:04,799 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:08,804 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:08,825 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:12,819 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:12,833 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:16,840 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:16,843 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:20,849 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:20,860 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:24,916 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:28,925 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:28,926 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:32,932 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:32,942 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:36,946 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:36,968 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:40,962 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:40,983 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:44,969 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:45,003 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:48,980 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:49,018 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:52,995 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:53,043 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:30:57,013 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:30:57,063 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:01,020 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:01,072 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:05,048 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:05,089 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:09,057 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:09,097 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:13,077 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:13,115 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:17,090 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:17,134 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:21,116 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:21,143 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:25,147 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:25,163 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:29,167 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:29,172 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:33,197 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:33,199 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:31:36,204 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-02 14:31:36,221 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2024-02-02 14:31:36,405 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:31:36,409 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-02 14:33:44,261 - INFO - Sensor system started!
+2024-02-02 14:33:44,895 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:33:44,909 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-02 14:33:44,980 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:33:44,993 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2024-02-02 14:33:45,109 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:33:45,114 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-02 14:35:50,777 - INFO - Sensor system started!
+2024-02-02 14:35:51,413 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:51,438 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:52,453 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:52,480 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:53,470 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:53,495 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:54,476 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:54,501 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:55,490 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:55,515 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:56,505 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:56,529 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:57,519 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:57,544 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:58,553 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:35:58,554 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:59,568 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:35:59,568 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:00,586 - INFO - Arm load sensor establishing connection with MQTT broker!
+oker!
+2024-02-02 14:36:01,601 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:36:01,602 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:02,616 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:36:02,616 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:42,175 - INFO - Sensor system started!
+2024-02-02 14:36:42,820 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:42,825 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:36:45,106 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:45,107 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
+2024-02-02 14:36:47,363 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-02 14:36:47,363 - INFO - CAN Temperature sensor establishing connection with MQTT broker!
