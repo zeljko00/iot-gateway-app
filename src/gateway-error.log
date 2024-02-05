@@ -1107,3 +1107,34 @@ oker!
 2024-02-02 14:36:45,106 - ERROR - CAN Temperature sensor failed to establish connection with MQTT broker!
 2024-02-02 14:36:47,361 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
 2024-02-02 14:36:47,362 - ERROR - CAN Temperature sensor failed to establish connection with MQTT broker!
+2024-02-05 12:12:43,568 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:43,680 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:43,783 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:43,887 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:43,990 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:44,093 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:44,196 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:44,309 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:44,412 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:12:44,515 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:30,598 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:30,701 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:30,806 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:30,909 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,012 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,116 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,220 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,324 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,429 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,533 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,636 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,738 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,841 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:31,950 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,055 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,165 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,270 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,373 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,475 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:13:32,577 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-05 12:20:37,502 - ERROR - Arm load sensor lost connection to MQTT broker!
