@@ -72,7 +72,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
     fuel_client = None
 
     if is_can_temp:
-        temp_client = MQTTClient("temp-sensor-mqtt-client", transport_protocol=transport_protocol,
+        temp_client = MQTTClient("temp-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                              protocol_version=mqtt.MQTTv5,
                              mqtt_username=conf_data[mqtt_broker][mqtt_user],
                              mqtt_pass=conf_data[mqtt_broker][mqtt_password],
@@ -87,7 +87,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
         temp_client.set_on_publish(on_publish)
 
     if is_can_load:
-        load_client = MQTTClient("load-sensor-mqtt-client", transport_protocol=transport_protocol,
+        load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                              protocol_version=mqtt.MQTTv5,
                              mqtt_username=conf_data[mqtt_broker][mqtt_user],
                              mqtt_pass=conf_data[mqtt_broker][mqtt_password],
@@ -102,7 +102,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
         load_client.set_on_publish(on_publish)
 
     if is_can_fuel:
-        fuel_client = MQTTClient("fuel-sensor-mqtt-client", transport_protocol=transport_protocol,
+        fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                              protocol_version=mqtt.MQTTv5,
                              mqtt_username=conf_data[mqtt_broker][mqtt_user],
                              mqtt_pass=conf_data[mqtt_broker][mqtt_password],
@@ -160,7 +160,6 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 class CANListener (can.Listener):
     def __init__(self, temp_client, load_client, fuel_client):
         if temp_client is not None:
-            print("CONNET BIATCH")
             temp_client.connect()
         self.temp_client = temp_client
 

@@ -24,7 +24,6 @@ class MQTTClient:
     def connect(self):
         while not self.client.is_connected() and not self.flag.is_set():
             try:
-
                 self.infoLogger.info("CAN " + self.sensor_type + " sensor establishing connection with MQTT broker!")
                 self.client.connect(self.broker_address, port=self.broker_port, keepalive=self.keepalive)
                 print("CONNECTED TO MQTT")
