@@ -24,6 +24,8 @@ fuel_topic="sensors/fuel-level"
 data_pattern ="[ value={} , time={} , unit={} ]"
 time_format = "%d.%m.%Y %H:%M:%S"
 celzius = "C"
+kg = "kg"
+l = "l"
 
 mode = "mode"
 temp_settings = "temp_settings"
@@ -101,7 +103,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
                              flag=flag,
-                             sensor_type="LOAD")
+                             sensor_type="LOAD",
+                             bus= bus)
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
         #load_client.set_subscribe(subscribe_load_alarm)
@@ -117,7 +120,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
                              flag=flag,
-                             sensor_type="FUEL")
+                             sensor_type="FUEL",
+                             bus= bus)
         fuel_client.set_on_connect(on_connect_fuel_sensor)
         fuel_client.set_on_publish(on_publish)
         #fuel_client.set_subscribe(subscribe_fuel_alarm)
@@ -131,7 +135,10 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
         time.sleep(period)
 
     notifier.stop(timeout=5)
-
+    temp_client.disconnect()
+    load_client.disconnect()
+    fuel_client.disconnect()
+    #TODO on_disconnect
 
 def on_publish(topic, payload, qos):
     pass
@@ -231,11 +238,19 @@ class CANListener (can.Listener):
         print(self.temp_client)
         if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
             self.temp_client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos)
+            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(float_value),
+                                                             str(time.strftime(time_format, time.localtime())), celzius))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
             self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
                                                                 celzius), qos)
+            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(float_value),
+                                                                    str(time.strftime(time_format, time.localtime())),
+                                                                    kg))
         elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
             self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                 str(time.strftime(time_format, time.localtime())),
                                                                 celzius), qos)
+            customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(float_value),
+                                                                    str(time.strftime(time_format, time.localtime())),
+                                                                    l))

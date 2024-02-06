@@ -69,6 +69,9 @@ qos: int
 '''
 
 import json
+
+import can
+
 import auth
 import stats_service
 import data_service
@@ -92,6 +95,11 @@ server_url = "server_url"
 auth_interval = "auth_interval"
 time_format = "time_format"
 server_time_format = "server_time_format"
+
+can_general_settings = "can_general_settings"
+interface = "interface"
+channel = "channel"
+bitrate = "bitrate"
 
 temp_settings = "temp_settings"
 load_settings = "load_settings"
@@ -134,37 +142,37 @@ def read_conf():
         errorLogger.critical("Cant read app configuration file - ", conf_path, " !")
         return None
 
-# def signup_periodically(key, username, password, time_pattern, url, interval):
-#     '''
-#     Periodically requests device signup.
-#
-#     Parameters
-#     ----------
-#     key: str
-#         API key.
-#     username: str
-#         Device's username,
-#     password: str
-#         Device's password,
-#     time_pattern: str
-#         Device's time pattern.
-#     url: str
-#         Cloud services URL.
-#     interval: int
-#         Time lapse between consecutive requests.
-#
-#     Returns
-#     -------
-#     jwt: str
-#         JSON web token for accessing cloud services.
-#     '''
-#     jwt = None
-#     while jwt is None:
-#         customLogger.debug("Trying to sign up!")
-#         jwt = auth.register(key, username, password, time_pattern, url)
-#         time.sleep(interval)
-#     customLogger.debug("Successful sign up!")
-#     return jwt
+def signup_periodically(key, username, password, time_pattern, url, interval):
+     '''
+     Periodically requests device signup.
+
+     Parameters
+     ----------
+     key: str
+         API key.
+     username: str
+         Device's username,
+     password: str
+         Device's password,
+     time_pattern: str
+         Device's time pattern.
+     url: str
+         Cloud services URL.
+     interval: int
+         Time lapse between consecutive requests.
+
+     Returns
+     -------
+     jwt: str
+         JSON web token for accessing cloud services.
+     '''
+     jwt = None
+     while jwt is None:
+         customLogger.debug("Trying to sign up!")
+         jwt = auth.register(key, username, password, time_pattern, url)
+         time.sleep(interval)
+     customLogger.debug("Successful sign up!")
+     return jwt
 
 def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
     '''
@@ -302,7 +310,8 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
                              flag=flag,
-                             sensor_type="TEMP")
+                             sensor_type="TEMP",
+                             bus=None)
     # called when there is new message in temp_topic topic
     def on_message_handler(client, userdata, message):
         '''
@@ -320,6 +329,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
          -------
         '''
         if not flag.is_set():
+            print("MESSAGE HERE", message)
             new_data.append(str(message.payload.decode("utf-8")))
             customLogger.info("Received temperature data: " + str(message.payload.decode("utf-8")))
             data_sum, time_value, unit = data_service.parse_temperature_data(data, time_format)
@@ -333,7 +343,8 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
     client.on_connect = on_connect_temp_handler
-    client.on_message=on_message_handler
+    client.on_message = on_message_handler
+    print("HEEEEEELLLOOOOO?")
     client.connect()
     # periodically processes collected data and forwards result to cloud services
     while not flag.is_set():
@@ -358,10 +369,9 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
                 break
         else:
             infoLogger.warning("There is no temperature sensor data to handle!")
-        time.sleep(interval)
+        time.sleep(config[temp_settings][interval])
     # shutting down temperature sensor
     stats_queue.put(stats)
-    client.loop_stop()
     client.disconnect()
     customLogger.debug("Temperature data handler shutdown!")
 
@@ -602,6 +612,7 @@ def main():
             shutdown_controller_worker.start()
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
+
             temperature_data_handler = Process(target=collect_temperature_data, args=(config,
                                                                                       config[server_url] + "/data/temp",
                                                                                       jwt,

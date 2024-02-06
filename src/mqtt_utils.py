@@ -53,3 +53,7 @@ class MQTTClient:
     def publish(self, topic, payload, qos):
         self.client.publish(topic, payload, qos)
 
+    def disconnect(self):
+        self.client.loop_stop()
+        self.client.disconnect()
+
