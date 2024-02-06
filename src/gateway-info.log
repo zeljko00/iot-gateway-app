@@ -2228,3 +2228,4 @@ oker!
 2024-02-05 12:19:33,284 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
 2024-02-05 12:19:33,481 - INFO - CAN FUEL sensor establishing connection with MQTT broker!
 2024-02-05 12:19:33,486 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-06 11:07:04,538 - INFO - IoT Gateway app started!

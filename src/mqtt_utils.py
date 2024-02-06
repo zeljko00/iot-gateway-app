@@ -4,7 +4,7 @@ import paho.mqtt.client as mqtt
 
 
 class MQTTClient:
-    def __init__(self, client_id, transport_protocol, protocol_version, mqtt_username, mqtt_pass, broker_address, broker_port, keepalive, infoLogger, errorLogger, flag, sensor_type):
+    def __init__(self, client_id, transport_protocol, protocol_version, mqtt_username, mqtt_pass, broker_address, broker_port, keepalive, infoLogger, errorLogger, flag, sensor_type, bus):
         self.client = mqtt.Client(client_id=client_id, transport=transport_protocol, protocol=protocol_version)
         self.client.username_pw_set(username=mqtt_username, password=mqtt_pass)
         self.broker_address = broker_address
@@ -14,12 +14,22 @@ class MQTTClient:
         self.errorLogger = errorLogger
         self.flag = flag
         self.sensor_type = sensor_type
+        self.bus = bus
 
     def set_on_connect(self, connect):
         self.client.on_connect = connect
 
     def set_on_publish(self, publish):
         self.client.on_publish = publish
+
+    def set_on_message(self, on_message):
+        self.client.on_message = on_message
+
+    def set_on_subscribe(self, on_subscribe):
+        self.client.on_subscribe = on_subscribe
+
+    def get_bus(self):
+        return self.bus
 
     def connect(self):
         while not self.client.is_connected() and not self.flag.is_set():
@@ -42,3 +52,4 @@ class MQTTClient:
 
     def publish(self, topic, payload, qos):
         self.client.publish(topic, payload, qos)
+

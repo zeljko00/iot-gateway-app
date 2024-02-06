@@ -78,6 +78,8 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
 
+from src.mqtt_utils import MQTTClient
+
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
@@ -90,9 +92,12 @@ server_url = "server_url"
 auth_interval = "auth_interval"
 time_format = "time_format"
 server_time_format = "server_time_format"
-fuel_level_limit = "fuel_level_limit"
-temp_interval = "temp_interval"
-load_interval = "load_interval"
+
+temp_settings = "temp_settings"
+load_settings = "load_settings"
+fuel_settings = "fuel_settings"
+interval = "interval"
+
 api_key = "api_key"
 mqtt_broker = "mqtt_broker"
 address = "address"
@@ -105,6 +110,10 @@ http_unauthorized = 401
 http_ok = 200
 http_no_content = 204
 qos=2
+
+temp_alarm_topic = "alarms/temperature"
+load_alarm_topic = "alarms/load"
+fuel_alarm_topic = "alarms/fuel"
 
 def read_conf():
     '''
@@ -248,7 +257,7 @@ def on_connect_fuel_handler(client, userdata, flags, rc,props):
         customLogger.critical("Fuel data handler failed to establish connection with MQTT broker!")
 
 # iot data aggregation and forwarding to cloud
-def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
+def collect_temperature_data(config, url, jwt, flag, stats_queue):
     '''
     Temperature data handler logic.
 
@@ -282,6 +291,18 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
     '''
     new_data = []
     old_data = []
+
+    client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
+                             protocol_version=mqtt.MQTTv5,
+                             mqtt_username=config[mqtt_broker][user],
+                             mqtt_pass=config[mqtt_broker][password],
+                             broker_address=config[mqtt_broker][address],
+                             broker_port=config[mqtt_broker][port],
+                             keepalive=config[temp_settings][interval] * 3,
+                             infoLogger=infoLogger,
+                             errorLogger=errorLogger,
+                             flag=flag,
+                             sensor_type="TEMP")
     # called when there is new message in temp_topic topic
     def on_message_handler(client, userdata, message):
         '''
@@ -303,30 +324,17 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
             customLogger.info("Received temperature data: " + str(message.payload.decode("utf-8")))
             data_sum, time_value, unit = data_service.parse_temperature_data(data, time_format)
             if data_sum > 150:
-                # sound the alarm!
-
-
-
+                # sound the alarm! ask him what do I send #ASK
+                client.publish(temp_alarm_topic, True, qos)
 
 
 
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
-    client = mqtt.Client(client_id="temp-data-handler-mqtt-client", transport=transport_protocol,
-                         protocol=mqtt.MQTTv5)
-    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
     client.on_connect = on_connect_temp_handler
     client.on_message=on_message_handler
-    while not client.is_connected():
-        try:
-            infoLogger.info("Temperature data handler establishing connection with MQTT broker!")
-            client.connect(mqtt_address, port=mqtt_port,
-                           keepalive=abs(round(interval)) * 3)
-            client.loop_start()
-        except:
-            errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
-        time.sleep(0.2)
+    client.connect()
     # periodically processes collected data and forwards result to cloud services
     while not flag.is_set():
         # copy data from list that is populated with newly arrived data and clear that list
@@ -338,7 +346,7 @@ def collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqt
         old_data.clear()
         # send request to Cloud only if there is available data
         if len(data) > 0:
-            code = data_service.handle_temperature_data(data, url, jwt, time_pattern)
+            code = data_service.handle_temperature_data(data, url, jwt, config[time_format])
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
                 old_data = data.copy()
@@ -594,33 +602,23 @@ def main():
             shutdown_controller_worker.start()
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
-            temperature_data_handler = Process(target=collect_temperature_data, args=(config[temp_interval],
+            temperature_data_handler = Process(target=collect_temperature_data, args=(config,
                                                                                       config[server_url] + "/data/temp",
-                                                                                      jwt, config[time_format],
-                                                                                      config[mqtt_broker][address],
-                                                                                      config[mqtt_broker][port],
-                                                                                      config[mqtt_broker][user],
-                                                                                      config[mqtt_broker][password],
+                                                                                      jwt,
                                                                                       temp_handler_flag,
                                                                                       temp_stats_queue))
             temperature_data_handler.start()
-            load_data_handler = Process(target=collect_load_data, args=(config[load_interval],
-                                                                        config[server_url] + "/data/load", jwt,
-                                                                        config[time_format],
-                                                                        config[mqtt_broker][address],
-                                                                        config[mqtt_broker][port],
-                                                                        config[mqtt_broker][user],
-                                                                        config[mqtt_broker][password],
-                                                                        load_handler_flag, load_stats_queue))
+            load_data_handler = Process(target=collect_load_data, args=(config,
+                                                                        config[server_url] + "/data/load",
+                                                                        jwt,
+                                                                        load_handler_flag,
+                                                                        load_stats_queue))
             load_data_handler.start()
-            fuel_data_handler = Process(target=collect_fuel_data, args=(config[fuel_level_limit],
-                                                                        config[server_url] + "/data/fuel", jwt,
-                                                                        config[time_format],
-                                                                        config[mqtt_broker][address],
-                                                                        config[mqtt_broker][port],
-                                                                        config[mqtt_broker][user],
-                                                                        config[mqtt_broker][password],
-                                                                        fuel_handler_flag, fuel_stats_queue,))
+            fuel_data_handler = Process(target=collect_fuel_data, args=(config,
+                                                                        config[server_url] + "/data/fuel",
+                                                                        jwt,
+                                                                        fuel_handler_flag,
+                                                                        fuel_stats_queue,))
             fuel_data_handler.start()
             # waiting fow workers to stop
             temperature_data_handler.join()

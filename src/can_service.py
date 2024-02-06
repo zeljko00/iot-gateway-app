@@ -60,6 +60,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
     bus = can.interface.Bus(interface=interface,
                             channel=channel,
                             bitrate=bitrate)
+
     customLogger.debug("CAN process started!")
     print("CAN PROCESS STARTED")
     period = conf_data[temp_sensor][interval]
@@ -82,10 +83,11 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              infoLogger=infoLogger,
                              errorLogger=errorLogger,
                              flag=flag,
-                             sensor_type="TEMP")
+                             sensor_type="TEMP",
+                             bus=bus)
         temp_client.set_on_connect(on_connect_temp_sensor)
         temp_client.set_on_publish(on_publish)
-        temp_client.set_subscribe(on_subscribe_temp_alarm)
+        temp_client.set_on_subscribe(on_subscribe_temp_alarm)
         temp_client.set_on_message(on_message_temp_alarm)
 
     if is_can_load:
@@ -102,7 +104,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="LOAD")
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
-        load_client.set_subscribe(subscribe_load_alarm)
+        #load_client.set_subscribe(subscribe_load_alarm)
 
     if is_can_fuel:
         fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -118,7 +120,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="FUEL")
         fuel_client.set_on_connect(on_connect_fuel_sensor)
         fuel_client.set_on_publish(on_publish)
-        fuel_client.set_subscribe(subscribe_fuel_alarm)
+        #fuel_client.set_subscribe(subscribe_fuel_alarm)
 
     notifier = can.Notifier(bus, [], timeout=period)
     can_listener = CANListener(temp_client, load_client, fuel_client)
@@ -159,8 +161,11 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
         customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
 
 def on_message_temp_alarm(client, userdata, msg):
-    pass
-    #send it to CAN
+    print(msg)
+    print(type(msg))
+
+    bus = client.get_bus()
+    bus.send(msg=True, timeout=5)
 
 
 

@@ -1138,3 +1138,4 @@ oker!
 2024-02-05 12:13:32,475 - ERROR - Arm load sensor lost connection to MQTT broker!
 2024-02-05 12:13:32,577 - ERROR - Arm load sensor lost connection to MQTT broker!
 2024-02-05 12:20:37,502 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-06 11:07:08,607 - ERROR - Authentication Cloud service cant be reached!
