@@ -1949,3 +1949,328 @@ oker!
 2024-02-06 13:33:36,087 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
 2024-02-06 13:33:37,122 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
 2024-02-06 13:33:38,131 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:38,342 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:39,578 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:40,586 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:40,598 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:42,034 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:42,856 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:43,071 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:44,492 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:45,113 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:45,529 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:46,947 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:47,369 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:47,987 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:49,402 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:49,624 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:50,444 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:51,882 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:51,885 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:52,903 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:54,140 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:54,338 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:55,359 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:56,396 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:56,794 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:57,816 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:58,654 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:59,252 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:00,297 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:00,910 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:01,708 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:02,755 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:03,165 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:04,164 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:05,211 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:05,421 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:06,623 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:07,690 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:09,079 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:09,945 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:10,146 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:11,535 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:12,200 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:12,602 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:13,992 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:14,478 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:15,079 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:16,469 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:16,733 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:17,536 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:18,925 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:18,988 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:19,992 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:21,243 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:21,382 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:22,451 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:23,520 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:23,840 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:24,907 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:25,776 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:26,296 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:27,369 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:28,032 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:28,753 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:29,827 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:30,309 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:31,232 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:32,303 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:32,567 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:33,686 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:34,759 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:34,823 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:36,143 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:37,078 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:37,214 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:38,620 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:39,364 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:39,673 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:41,075 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:41,620 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:42,129 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:43,530 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:43,874 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:44,606 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:45,987 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:46,130 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:47,082 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:48,388 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:48,485 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:49,537 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:50,643 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:50,984 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:51,992 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:52,900 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:34:53,505 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:34:54,449 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:10,482 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:11,544 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:12,937 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:14,002 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:15,392 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:16,459 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:17,868 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:18,915 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:20,325 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:21,378 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:22,781 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:23,836 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:25,238 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:26,314 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:27,699 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:28,770 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:30,155 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:31,225 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:32,650 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:33,704 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:35,105 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:36,160 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:37,560 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:38,617 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:40,015 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:41,098 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:42,490 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:43,555 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:44,954 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:46,016 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:47,416 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:48,512 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:49,874 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:50,967 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:52,331 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:53,423 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:54,794 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:55,908 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:57,272 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:58,364 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:35:59,731 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:00,818 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:02,185 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:03,297 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:04,670 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:05,752 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:07,125 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:08,210 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:09,579 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:10,691 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:12,037 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:13,147 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:14,492 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:15,605 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:16,948 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:18,083 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:19,424 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:20,539 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:21,883 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:22,995 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:24,338 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:25,455 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:26,797 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:27,911 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:29,253 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:30,367 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:31,709 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:32,823 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:34,192 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:35,286 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:36,650 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:37,743 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:39,105 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:40,199 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:41,613 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:42,679 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:44,070 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:45,134 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:46,525 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:47,590 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:49,025 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:50,074 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:51,481 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:52,529 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:53,941 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:54,986 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:56,435 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:57,444 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:58,890 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:36:59,901 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:01,347 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:02,356 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:03,840 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:04,835 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:06,296 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:07,291 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:08,751 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:09,746 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:11,228 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:12,223 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:13,683 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:14,678 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:16,139 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:17,134 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:18,599 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:19,594 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:21,060 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:22,053 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:23,515 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:24,509 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:25,971 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:26,967 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:28,435 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:29,421 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:30,891 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:31,876 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:33,345 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:34,337 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:35,803 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:36,794 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:38,259 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:39,249 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:40,717 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:41,704 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:43,175 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:44,163 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:45,630 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:46,622 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:48,090 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:49,080 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:50,575 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:51,556 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:53,039 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:54,014 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:55,497 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:56,469 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:57,975 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:37:58,946 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:00,439 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:01,403 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:02,895 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:03,860 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:05,358 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:06,337 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:07,820 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:08,793 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:10,275 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:11,257 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:12,753 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:13,720 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:15,208 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:16,180 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:17,667 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:18,635 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:20,123 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:21,094 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:22,585 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:23,552 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:25,041 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:26,008 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:27,499 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:28,486 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:29,976 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:30,942 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:32,436 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:33,399 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:34,898 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:35,876 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:37,374 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:38,332 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:39,831 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:40,799 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:42,285 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:43,275 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:44,742 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:45,732 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:47,197 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:48,189 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:49,654 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:50,658 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:52,112 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:53,114 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:54,569 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:55,574 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:57,024 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:58,032 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:38:59,500 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:00,488 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:01,956 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:02,960 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:04,412 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:05,418 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:06,890 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:07,875 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:09,348 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:10,336 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:11,804 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:12,813 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:14,279 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:15,268 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:16,736 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:17,724 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:19,195 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:20,186 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:21,683 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:22,664 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:24,139 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:25,119 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:26,596 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:27,581 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:29,058 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:30,063 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:31,513 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:32,519 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:33,969 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:34,977 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:36,434 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:37,453 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:38,889 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:39,908 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:41,345 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:42,364 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:43,809 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:44,823 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:46,265 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:47,279 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:48,720 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:49,817 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:51,180 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:39:52,284 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!

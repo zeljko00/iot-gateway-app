@@ -109,6 +109,7 @@ level_limit = "level_limit"
 
 api_key = "api_key"
 mqtt_broker = "mqtt_broker"
+mqtt_broker_local = "mqtt_broker_local"
 address = "address"
 port = "port"
 transport_protocol = "tcp"
@@ -216,8 +217,11 @@ def on_connect_temp_handler(client, userdata, flags, rc,props):
     Returns
     -------
     '''
+    print(rc)
     if rc == 0:
         infoLogger.info("Temperature data handler successfully established connection with MQTT broker!")
+        customLogger.info("Temperature data handler successfully established connection with MQTT broker!")
+        print("SDGHSDJKGHGJKSHGJKSHJKDgh")
         client.subscribe(temp_topic, qos=qos)
     else:
         errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
@@ -237,8 +241,10 @@ def on_connect_load_handler(client, userdata, flags, rc,props):
     Returns
     -------
     '''
+    print("LOAD", rc)
     if rc == 0:
         infoLogger.info("Arm load data handler successfully established connection with MQTT broker!")
+        print("SDGHSDJKGHGJKSHGJKSHJKDghLOAD")
         client.subscribe(load_topic, qos=qos)
     else:
         errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
@@ -298,22 +304,10 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     Returns
     -------
     '''
-    print("TEMPERATURE COLLECTOR STARTED")
     new_data = []
     old_data = []
 
-    client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
-                             protocol_version=mqtt.MQTTv5,
-                             mqtt_username=config[mqtt_broker][user],
-                             mqtt_pass=config[mqtt_broker][password],
-                             broker_address=config[mqtt_broker][address],
-                             broker_port=config[mqtt_broker][port],
-                             keepalive=config[temp_settings][interval] * 3,
-                             infoLogger=infoLogger,
-                             errorLogger=errorLogger,
-                             flag=flag,
-                             sensor_type="TEMP",
-                             bus=None)
+
     # called when there is new message in temp_topic topic
     def on_message_handler(client, userdata, message):
         '''
@@ -339,13 +333,23 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
                 # sound the alarm! ask him what do I send #ASK
                 client.publish(temp_alarm_topic, True, qos)
 
-
-
+    client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
+                        protocol_version=mqtt.MQTTv5,
+                        mqtt_username=config[mqtt_broker][user],
+                        mqtt_pass=config[mqtt_broker][password],
+                        broker_address=config[mqtt_broker][address],
+                        broker_port=config[mqtt_broker][port],
+                        keepalive=config[temp_settings][interval] * 3,
+                        infoLogger=infoLogger,
+                        errorLogger=errorLogger,
+                        flag=flag,
+                        sensor_type="TEMP",
+                        bus=None)
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
-    client.on_connect = on_connect_temp_handler
-    client.on_message = on_message_handler
+    client.set_on_connect(on_connect_temp_handler)
+    client.set_on_message(on_message_handler)
     client.connect()
     # periodically processes collected data and forwards result to cloud services
     while not flag.is_set():

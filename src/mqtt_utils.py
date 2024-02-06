@@ -28,6 +28,9 @@ class MQTTClient:
     def set_on_subscribe(self, on_subscribe):
         self.client.on_subscribe = on_subscribe
 
+    def subscribe(self, topic, qos):
+        self.client.subscribe(topic, qos=qos)
+
     def get_bus(self):
         return self.bus
 

@@ -24,12 +24,6 @@
  "time_format":"%d.%m.%Y %H:%M:%S",
  "api_key": "bazinga00",
  "mqtt_broker": {
-  "address": "mqtt-broker",
-  "port": 1883,
-  "username": "iot-device",
-  "password": "10060509"
- },
- "mqtt_broker_local": {
   "address": "localhost",
   "port": 1883,
   "username": "iot-device",
