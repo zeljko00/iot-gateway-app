@@ -105,6 +105,7 @@ temp_settings = "temp_settings"
 load_settings = "load_settings"
 fuel_settings = "fuel_settings"
 interval = "interval"
+level_limit = "level_limit"
 
 api_key = "api_key"
 mqtt_broker = "mqtt_broker"
@@ -297,6 +298,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     Returns
     -------
     '''
+    print("TEMPERATURE COLLECTOR STARTED")
     new_data = []
     old_data = []
 
@@ -344,7 +346,6 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     # initializing mqtt client for collecting sensor data from broker
     client.on_connect = on_connect_temp_handler
     client.on_message = on_message_handler
-    print("HEEEEEELLLOOOOO?")
     client.connect()
     # periodically processes collected data and forwards result to cloud services
     while not flag.is_set():
@@ -376,7 +377,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     customLogger.debug("Temperature data handler shutdown!")
 
 
-def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue):
+def collect_load_data(config, url, jwt, flag, stats_queue):
     '''
     Load data handler logic.
 
@@ -436,14 +437,14 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="load-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
-    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
+    client.username_pw_set(username=config[mqtt_broker][user], password=config[mqtt_broker][password])
     client.on_connect = on_connect_load_handler
     client.on_message = on_message_handler
     while not client.is_connected():
         try:
             infoLogger.info("Arm load data handler establishing connection with MQTT broker!")
-            client.connect(mqtt_address, port=mqtt_port,
-                           keepalive=abs(round(interval)) * 3)
+            client.connect(config[mqtt_broker][address], port=config[mqtt_broker][port],
+                           keepalive=abs(round(config[load_settings][interval])) * 3)
             client.loop_start()
         except:
             errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
@@ -459,7 +460,7 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
         old_data.clear()
         # send request to Cloud only if there is available data
         if len(data) > 0:
-            code = data_service.handle_load_data(data, url, jwt, time_pattern)
+            code = data_service.handle_load_data(data, url, jwt, config[time_format])
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok :
                 old_data = data.copy()
@@ -471,14 +472,14 @@ def collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port,
                 break
         else:
             infoLogger.warning("There is no arm load sensor data to handle!")
-        time.sleep(interval)
+        time.sleep(config[load_settings][interval])
     # shutting down load sensor
     stats_queue.put(stats)
     client.loop_stop()
     client.disconnect()
     customLogger.debug("Arm load data handler shutdown!")
 
-def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue):
+def collect_fuel_data(config, url, jwt, flag, stats_queue):
     '''
     Fuel data handler logic.
 
@@ -532,7 +533,7 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
         # making sure that flag is not set in meantime
         if not flag.is_set():
             customLogger.info("Received fuel data: "+str(message.payload.decode("utf-8")))
-            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), limit, url, jwt, time_pattern)
+            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), config[fuel_settings][level_limit], url, jwt, config[time_format])
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
@@ -544,15 +545,15 @@ def collect_fuel_data(limit, url, jwt, time_pattern, mqtt_address, mqtt_port, mq
     # initializing mqtt client for collecting sensor data from broker
     client = mqtt.Client(client_id="fuel-data-handler-mqtt-client", transport=transport_protocol,
                          protocol=mqtt.MQTTv5)
-    client.username_pw_set(username=mqtt_user, password=mqtt_pass)
+    client.username_pw_set(username=config[mqtt_broker][user], password=config[mqtt_broker][password])
     client.on_connect = on_connect_fuel_handler
     client.on_message = on_message_handler
     while not client.is_connected():
         try:
             infoLogger.info("Fuel level data handler establishing connection with MQTT broker!")
-            client.connect(mqtt_address, port=mqtt_port, keepalive=abs(8 * 60 * 60))
+            client.connect(config[mqtt_broker][address], port=config[mqtt_broker][port], keepalive=abs(8 * 60 * 60))
             client.loop_start()
-        except :
+        except:
             errorLogger.error("Fuel level data handler failed to establish connection with MQTT broker!")
         time.sleep(0.2)
     # must do like this to be able to stop thread acquired for incoming messages(on_message) after flag is set
@@ -609,7 +610,7 @@ def main():
             # shutdown thread
             shutdown_controller_worker = Thread(target=shutdown_controller,
                                                 args=(temp_handler_flag, load_handler_flag, fuel_handler_flag))
-            shutdown_controller_worker.start()
+
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
 
@@ -619,19 +620,23 @@ def main():
                                                                                       temp_handler_flag,
                                                                                       temp_stats_queue))
             temperature_data_handler.start()
+            time.sleep(1)
             load_data_handler = Process(target=collect_load_data, args=(config,
                                                                         config[server_url] + "/data/load",
                                                                         jwt,
                                                                         load_handler_flag,
                                                                         load_stats_queue))
             load_data_handler.start()
+            time.sleep(1)
             fuel_data_handler = Process(target=collect_fuel_data, args=(config,
                                                                         config[server_url] + "/data/fuel",
                                                                         jwt,
                                                                         fuel_handler_flag,
                                                                         fuel_stats_queue,))
             fuel_data_handler.start()
+            time.sleep(1)
             # waiting fow workers to stop
+            shutdown_controller_worker.start()
             temperature_data_handler.join()
             load_data_handler.join()
             fuel_data_handler.join()

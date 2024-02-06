@@ -28,5 +28,11 @@
   "port": 1883,
   "username": "iot-device",
   "password": "10060509"
+ },
+ "mqtt_broker_local": {
+  "address": "localhost",
+  "port": 1883,
+  "username": "iot-device",
+  "password": "10060509"
  }
 }

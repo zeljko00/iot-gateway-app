@@ -2277,3 +2277,785 @@ oker!
 2024-02-06 12:37:30,034 - INFO - IoT Gateway app shutting down! Please wait
 2024-02-06 12:41:18,554 - INFO - IoT Gateway app started!
 2024-02-06 12:41:21,991 - INFO - IoT Gateway app shutting down! Please wait
+2024-02-06 12:54:56,398 - INFO - IoT Gateway app started!
+2024-02-06 12:55:00,557 - INFO - IoT Gateway app shutting down! Please wait
+2024-02-06 12:55:00,997 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:01,001 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:03,479 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:03,481 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:05,944 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:05,946 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:08,400 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:08,402 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:10,859 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:10,862 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:13,314 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:13,316 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:15,770 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:15,772 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:18,231 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:18,233 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:20,687 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:20,690 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:23,143 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:23,147 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:25,620 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:25,621 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:28,075 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:28,079 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:30,531 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:30,532 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:32,995 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:33,005 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:35,451 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:35,460 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:37,919 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:40,378 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:40,382 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:42,834 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:42,838 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:45,290 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:45,295 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:47,768 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:47,771 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:50,231 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:50,238 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:52,687 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:52,695 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:55,145 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:55,172 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:55:57,601 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:55:57,628 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:00,061 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:00,089 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:02,538 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:02,546 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:04,994 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:05,001 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:07,450 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:07,457 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:09,928 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:09,930 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:12,385 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:12,387 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:14,841 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:14,845 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:17,302 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:17,305 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:19,757 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:19,760 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:22,214 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:22,218 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:24,695 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:24,698 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:27,150 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:27,154 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:29,605 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:29,609 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:32,064 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:32,066 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:34,521 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:34,523 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:36,977 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:36,980 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:39,438 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:39,444 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:41,892 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:41,899 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:44,348 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:56:44,355 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:56:50,396 - INFO - IoT Gateway app started!
+2024-02-06 12:57:27,576 - INFO - IoT Gateway app started!
+2024-02-06 12:58:03,092 - INFO - IoT Gateway app started!
+2024-02-06 12:58:03,658 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:04,701 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:05,684 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:05,957 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:07,190 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:08,165 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:08,213 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:09,647 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:10,472 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:10,621 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:12,102 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:12,734 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:13,084 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:14,581 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:14,992 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:15,561 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:17,037 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:17,250 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:18,020 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:19,491 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:19,506 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:20,474 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:21,766 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:21,951 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:22,935 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:24,042 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:24,447 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:25,390 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:26,298 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:26,906 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:27,846 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:28,553 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:29,362 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:30,302 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:30,810 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:31,840 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:32,778 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:33,086 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:34,295 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:35,237 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:35,341 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:36,752 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:37,597 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:37,696 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:39,208 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:39,878 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:40,176 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:41,685 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:42,134 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:42,632 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:44,140 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:44,390 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:45,090 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:46,601 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:46,648 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:47,566 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:48,927 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:49,085 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:50,020 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:51,183 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:51,541 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:52,476 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:53,439 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:53,996 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:54,932 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:55,715 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:56,454 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:57,409 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:58:57,971 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:58:58,908 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:58:59,863 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:00,226 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:01,363 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:02,319 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:02,481 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:03,866 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:04,779 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:04,798 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:06,321 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:07,039 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:07,257 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:08,776 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:09,294 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:09,713 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:11,233 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:11,590 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:12,209 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:13,712 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:13,846 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:14,664 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:16,103 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:16,167 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:17,120 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:18,362 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:18,627 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:19,620 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:20,641 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:21,104 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:22,078 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:22,896 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:23,560 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:24,533 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:25,152 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:26,016 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:26,989 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:27,411 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:28,499 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:29,448 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:29,673 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:30,961 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:31,903 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:31,932 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:33,417 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:34,189 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:34,359 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:35,875 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:36,478 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:36,819 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:38,330 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:38,735 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:39,274 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:40,786 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:40,996 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:41,731 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:43,242 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:43,259 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:44,228 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:45,514 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:45,698 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:46,684 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:47,770 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:48,161 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:49,144 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:50,029 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:50,619 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:51,639 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:52,288 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:53,096 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:54,099 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:54,543 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:55,552 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:56,555 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:56,798 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 12:59:58,031 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 12:59:59,011 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 12:59:59,053 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:00,509 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:01,336 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:01,469 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:02,963 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:03,591 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:03,926 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:05,421 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:05,846 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:06,383 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:07,879 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:08,102 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:08,865 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:10,359 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:10,362 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:11,321 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:12,616 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:12,814 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:13,777 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:14,872 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:15,269 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:16,234 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:17,130 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:17,728 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:18,712 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:19,390 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:20,185 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:21,167 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:21,646 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:22,641 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:23,625 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:23,901 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:25,101 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:26,083 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:26,181 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:27,599 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:28,436 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:28,538 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:30,055 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:30,693 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:30,995 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:32,511 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:32,948 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:33,471 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:35,008 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:35,224 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:35,928 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:37,465 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:37,481 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:38,382 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:39,737 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:39,921 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:40,848 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:41,993 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:42,377 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:43,346 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:44,250 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:44,854 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:45,802 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:46,504 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:47,312 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:48,258 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:48,762 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:49,773 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:50,713 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:51,017 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:52,254 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:53,191 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:53,276 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:54,711 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:55,532 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:55,646 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:57,166 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:00:57,794 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:00:58,106 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:00:59,623 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:00,051 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:00,565 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:02,080 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:02,333 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:03,023 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:04,535 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:04,588 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:05,479 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:06,843 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:06,992 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:07,933 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:09,098 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:09,488 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:10,430 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:11,357 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:11,943 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:12,885 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:13,612 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:14,413 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:15,341 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:15,868 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:16,871 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:17,837 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:18,165 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:19,349 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:20,293 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:20,421 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:21,805 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:22,676 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:22,754 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:24,259 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:24,932 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:25,211 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:26,738 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:27,226 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:27,687 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:29,196 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:29,484 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:30,142 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:31,651 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:31,740 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:32,599 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:33,996 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:34,106 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:35,075 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:36,272 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:36,582 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:37,531 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:38,528 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:39,037 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:39,988 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:40,783 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:41,491 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:42,444 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:43,038 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:43,969 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:44,921 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:45,296 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:46,425 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:47,376 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:47,552 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:48,886 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:49,807 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:49,834 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:51,343 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:52,088 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:52,314 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:53,839 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:54,347 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:54,770 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:56,296 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:56,603 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:57,226 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:01:58,755 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:01:58,858 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:01:59,684 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:01,155 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:01,234 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:02,138 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:03,418 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:03,695 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:04,595 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:05,674 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:06,155 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:07,054 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:07,930 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:08,614 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:09,551 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:10,193 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:11,070 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:12,007 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:12,449 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:17,201 - INFO - IoT Gateway app started!
+2024-02-06 13:02:17,782 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:18,771 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:19,779 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:20,044 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:02:21,251 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:02:22,261 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:02:22,301 - INFO - CAN TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:04:58,814 - INFO - IoT Gateway app started!
+2024-02-06 13:04:59,409 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:05:00,379 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:05:01,379 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:05:01,695 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:05:02,841 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:05:03,860 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:05:03,949 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:05:05,297 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:05:06,204 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:05:06,316 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:05:07,754 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:05:08,459 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:05:08,771 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:28:43,124 - INFO - IoT Gateway app started!
+2024-02-06 13:28:43,727 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:28:44,717 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:28:45,751 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:28:46,008 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:28:47,200 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:28:48,214 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:28:48,263 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:28:49,656 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:28:59,502 - INFO - IoT Gateway app started!
+2024-02-06 13:29:00,038 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:01,051 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:02,088 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:02,300 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:03,532 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:04,549 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:04,556 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:05,989 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:06,815 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:07,006 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:08,444 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:09,069 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:09,461 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:10,922 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:11,347 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:11,940 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:13,379 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:13,602 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:14,396 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:15,835 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:15,857 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:16,853 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:18,112 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:18,291 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:19,330 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:20,370 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:20,748 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:21,785 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:24,645 - INFO - IoT Gateway app started!
+2024-02-06 13:29:25,282 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:26,265 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:27,267 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:27,562 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:28,729 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:29,747 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:29,818 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:31,185 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:32,078 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:32,202 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:33,641 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:34,333 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:34,661 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:36,118 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:36,615 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:37,139 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:38,573 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:38,873 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:39,598 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:41,031 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:41,129 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:42,057 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:43,406 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:43,508 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:44,518 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:45,664 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:45,964 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:46,973 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:47,920 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:48,420 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:49,430 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:50,176 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:50,876 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:51,889 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:52,441 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:53,346 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:54,344 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:54,697 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:55,804 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:56,802 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:29:56,955 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:58,261 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:29:59,211 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:29:59,259 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:00,739 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:01,488 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:01,721 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:03,195 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:03,745 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:04,183 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:05,652 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:06,001 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:06,638 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:08,117 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:08,259 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:09,105 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:10,519 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:10,596 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:11,562 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:12,779 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:13,057 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:14,017 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:15,035 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:15,513 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:16,494 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:17,293 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:17,980 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:18,950 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:19,549 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:20,441 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:21,406 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:21,804 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:22,900 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:23,861 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:24,060 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:25,382 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:26,315 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:26,319 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:27,839 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:28,573 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:28,777 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:30,295 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:30,829 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:31,240 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:32,751 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:33,084 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:33,703 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:35,231 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:35,360 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:36,159 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:37,616 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:37,688 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:38,618 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:39,874 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:40,146 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:41,075 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:42,133 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:42,612 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:43,535 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:44,390 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:45,068 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:45,994 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:46,646 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:47,526 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:48,449 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:48,902 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:49,987 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:50,904 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:51,157 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:52,466 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:53,362 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:53,416 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:54,922 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:55,671 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:55,818 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:57,379 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:30:57,929 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:30:58,273 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:30:59,838 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:00,184 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:00,750 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:02,319 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:02,443 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:03,214 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:04,699 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:04,776 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:05,672 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:06,955 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:07,232 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:08,129 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:09,214 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:09,699 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:10,589 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:11,475 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:12,157 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:13,045 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:13,738 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:14,614 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:15,501 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:15,993 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:17,093 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:17,982 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:18,270 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:19,549 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:20,443 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:20,527 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:22,004 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:22,784 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:22,900 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:24,463 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:25,042 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:25,360 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:26,943 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:27,321 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:27,837 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:29,399 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:29,576 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:30,292 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:31,830 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:31,855 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:32,747 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:34,086 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:34,310 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:35,225 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:36,349 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:36,790 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:37,683 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:38,608 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:39,249 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:40,141 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:40,864 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:41,707 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:42,595 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:43,121 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:44,184 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:45,072 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:45,378 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:46,641 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:47,528 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:47,634 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:49,101 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:49,889 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:49,988 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:51,561 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:52,146 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:52,472 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:54,029 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:54,403 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:54,936 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:56,489 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:56,659 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:57,392 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:31:58,917 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:31:58,945 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:31:59,856 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:01,177 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:01,402 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:02,335 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:03,437 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:03,858 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:04,792 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:05,692 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:06,314 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:07,249 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:07,947 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:08,768 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:09,709 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:10,225 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:11,247 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:12,164 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:12,480 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:13,704 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:14,620 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:14,735 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:16,166 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:16,990 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:17,077 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:18,624 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:19,248 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:19,535 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:21,080 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:21,506 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:21,994 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:23,543 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:23,768 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:24,453 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:25,998 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:26,023 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:26,930 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:28,281 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:28,479 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:29,386 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:30,538 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:30,936 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:31,845 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:32,798 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:33,392 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:34,302 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:35,053 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:35,852 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:36,782 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:37,331 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:38,309 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:39,238 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:39,590 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:40,765 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:41,696 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:41,848 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:43,228 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:44,107 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:44,154 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:45,685 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:46,365 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:46,613 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:48,140 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:48,621 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:49,068 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:50,596 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:50,877 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:51,569 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:53,055 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:53,135 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:54,031 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:55,390 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:55,516 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:56,486 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:57,648 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:32:57,976 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:32:58,941 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:32:59,909 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:00,434 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:01,418 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:02,168 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:02,890 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:03,874 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:04,424 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:05,346 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:06,328 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:06,680 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:07,800 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:08,789 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:08,957 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:10,270 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:11,212 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:11,244 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:12,726 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:13,468 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:13,701 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:15,181 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:15,723 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:16,180 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:17,638 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:17,981 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:18,658 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:20,093 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:20,236 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:21,114 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:22,491 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:22,547 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:23,569 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:24,754 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:25,002 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:26,047 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:27,051 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:27,481 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:28,503 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:29,306 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:29,936 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:30,959 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:31,561 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:32,391 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:33,418 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:33,818 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:34,868 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:35,877 - INFO - Fuel level data handler establishing connection with MQTT broker!
+2024-02-06 13:33:36,088 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-06 13:33:37,323 - INFO - Arm load data handler establishing connection with MQTT broker!
+2024-02-06 13:33:38,332 - INFO - Fuel level data handler establishing connection with MQTT broker!

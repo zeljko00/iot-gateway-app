@@ -1196,3 +1196,756 @@ oker!
 2024-02-06 11:53:37,998 - ERROR - Authentication Cloud service cant be reached!
 2024-02-06 11:53:44,028 - ERROR - Authentication Cloud service cant be reached!
 2024-02-06 11:53:50,075 - ERROR - Authentication Cloud service cant be reached!
+2024-02-06 12:55:03,279 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:03,280 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:05,743 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:05,745 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:08,199 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:08,201 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:10,658 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:10,660 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:13,112 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:13,115 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:15,569 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:15,571 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:18,030 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:18,032 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:20,486 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:20,488 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:22,941 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:22,945 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:25,419 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:25,420 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:27,874 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:27,878 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:30,330 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:30,332 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:32,793 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:32,803 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:35,250 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:35,259 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:37,705 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+
+2024-02-06 12:55:40,177 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:40,180 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:42,633 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:42,636 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:45,088 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:45,093 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:47,567 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:47,570 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:50,030 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:50,037 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:52,485 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:52,493 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:54,943 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:54,970 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:57,400 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:57,427 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:59,859 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:55:59,886 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:02,336 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:02,344 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:04,793 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:04,800 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:07,248 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:07,255 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:09,726 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:09,729 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:12,183 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:12,185 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:14,640 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:14,643 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:17,101 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:17,103 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:19,556 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:19,559 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:22,012 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:22,015 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:24,493 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:24,496 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:26,949 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:26,953 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:29,404 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:29,408 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:31,863 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:31,866 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:34,319 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:34,321 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:36,775 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:36,778 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:39,237 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:39,242 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:41,691 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:41,697 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:44,146 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:56:44,153 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:05,957 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:06,989 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:07,963 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:08,212 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:09,445 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:10,420 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:10,469 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:11,901 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:12,733 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:12,882 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:14,379 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:14,991 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:15,359 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:16,836 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:17,249 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:17,819 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:19,290 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:19,504 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:20,273 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:21,750 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:21,765 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:22,734 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:24,041 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:24,245 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:25,189 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:26,297 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:26,705 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:27,644 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:28,552 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:29,160 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:30,100 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:30,809 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:31,639 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:32,576 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:33,084 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:34,093 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:35,033 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:35,340 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:36,551 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:37,493 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:37,595 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:39,006 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:39,877 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:39,975 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:41,484 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:42,133 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:42,430 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:43,939 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:44,389 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:44,889 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:46,400 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:46,648 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:47,365 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:48,884 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:48,926 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:49,820 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:51,181 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:51,340 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:52,274 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:53,438 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:53,795 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:54,730 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:55,714 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:56,253 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:57,207 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:57,970 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:58:58,707 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:58:59,662 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:00,225 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:01,162 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:02,118 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:02,481 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:03,665 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:04,597 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:04,776 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:06,120 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:07,038 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:07,056 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:08,575 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:09,293 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:09,512 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:11,031 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:11,589 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:12,008 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:13,509 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:13,845 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:14,463 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:15,966 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:16,101 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:16,919 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:18,360 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:18,425 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:19,417 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:20,640 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:20,903 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:21,876 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:22,895 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:23,359 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:24,332 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:25,151 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:25,815 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:26,787 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:27,408 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:28,298 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:29,246 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:29,672 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:30,759 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:31,702 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:31,930 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:33,216 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:34,158 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:34,188 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:35,672 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:36,477 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:36,618 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:38,129 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:38,733 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:39,073 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:40,585 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:40,993 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:41,529 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:43,041 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:43,259 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:44,027 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:45,497 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:45,513 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:46,483 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:47,768 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:47,959 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:48,943 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:50,028 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:50,418 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:51,437 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:52,287 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:52,894 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:53,897 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:54,542 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:55,350 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:56,354 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:56,797 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 12:59:57,812 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:58,809 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 12:59:59,052 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:00,308 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:01,268 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:01,335 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:02,762 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:03,590 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:03,723 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:05,219 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:05,845 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:06,182 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:07,677 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:08,101 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:08,664 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:10,158 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:10,361 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:11,120 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:12,613 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:12,616 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:13,575 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:14,870 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:15,068 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:16,034 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:17,129 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:17,527 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:18,508 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:19,389 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:19,984 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:20,966 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:21,645 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:22,439 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:23,424 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:23,900 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:24,900 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:25,882 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:26,180 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:27,397 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:28,337 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:28,435 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:29,854 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:30,692 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:30,793 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:32,310 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:32,947 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:33,270 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:34,807 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:35,223 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:35,725 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:37,264 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:37,480 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:38,181 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:39,719 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:39,736 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:40,644 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:41,992 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:42,176 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:43,145 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:44,249 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:44,653 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:45,601 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:46,503 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:47,109 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:48,057 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:48,761 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:49,570 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:50,512 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:51,017 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:52,052 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:52,988 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:53,275 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:54,509 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:55,445 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:55,529 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:56,965 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:57,792 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:00:57,905 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:00:59,421 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:00,051 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:00,363 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:01,879 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:02,332 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:02,821 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:04,333 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:04,587 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:05,277 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:06,791 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:06,842 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:07,732 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:09,097 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:09,287 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:10,228 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:11,356 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:11,742 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:12,684 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:13,611 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:14,212 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:15,140 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:15,867 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:16,670 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:17,636 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:18,164 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:19,148 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:20,091 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:20,420 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:21,603 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:22,552 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:22,675 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:24,058 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:24,931 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:25,009 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:26,537 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:27,225 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:27,485 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:28,995 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:29,483 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:29,941 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:31,450 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:31,739 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:32,397 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:33,904 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:33,995 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:34,874 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:36,271 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:36,380 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:37,329 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:38,527 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:38,836 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:39,787 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:40,782 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:41,290 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:42,243 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:43,037 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:43,768 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:44,720 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:45,295 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:46,224 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:47,175 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:47,551 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:48,684 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:49,632 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:49,806 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:51,142 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:52,086 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:52,112 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:53,637 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:54,346 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:54,568 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:56,094 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:56,602 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:57,025 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:58,552 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:01:58,857 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:01:59,483 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:01,031 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:01,152 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:01,937 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:03,417 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:03,494 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:04,394 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:05,673 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:05,954 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:06,852 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:07,928 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:08,412 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:09,350 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:10,192 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:10,868 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:11,806 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:12,448 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:20,044 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:02:21,050 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:22,060 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:02:22,300 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:05:01,694 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:05:02,640 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:05:03,659 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:05:03,948 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:05:05,096 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:05:06,115 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:05:06,203 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:05:07,553 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:05:08,458 - ERROR - CAN TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:05:08,570 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:28:46,008 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:28:46,998 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:28:48,013 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:28:48,262 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:28:49,455 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:02,299 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:03,331 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:04,348 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:04,554 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:05,788 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:06,805 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:06,814 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:08,243 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:09,069 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:09,260 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:10,720 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:11,346 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:11,738 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:13,177 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:13,601 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:14,194 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:15,633 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:15,856 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:16,651 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:18,089 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:18,111 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:19,129 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:20,369 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:20,546 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:21,584 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:27,562 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:28,527 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:29,546 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:29,816 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:30,984 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:32,000 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:32,077 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:33,440 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:34,332 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:34,460 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:35,916 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:36,613 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:36,938 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:38,372 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:38,872 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:39,397 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:40,828 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:41,128 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:41,856 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:43,306 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:43,405 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:44,316 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:45,663 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:45,762 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:46,772 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:47,919 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:48,219 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:49,228 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:50,175 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:50,674 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:51,688 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:52,433 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:53,144 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:54,143 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:54,696 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:55,601 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:56,599 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:56,954 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:29:58,060 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:59,058 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:29:59,210 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:00,537 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:01,487 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:01,519 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:02,993 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:03,744 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:03,981 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:05,451 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:06,000 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:06,437 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:07,915 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:08,257 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:08,895 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:10,395 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:10,517 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:11,360 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:12,778 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:12,855 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:13,816 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:15,034 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:15,312 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:16,293 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:17,292 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:17,779 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:18,749 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:19,548 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:20,240 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:21,205 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:21,803 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:22,698 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:23,660 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:24,059 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:25,180 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:26,118 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:26,314 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:27,637 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:28,572 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:28,576 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:30,093 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:30,828 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:31,037 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:32,550 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:33,083 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:33,502 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:35,030 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:35,359 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:35,958 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:37,487 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:37,615 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:38,414 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:39,872 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:39,943 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:40,874 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:42,132 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:42,410 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:43,333 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:44,389 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:44,867 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:45,791 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:46,645 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:47,325 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:48,248 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:48,901 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:49,785 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:50,703 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:51,155 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:52,265 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:53,161 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:53,415 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:54,720 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:55,616 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:55,670 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:57,176 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:57,928 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:30:58,072 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:30:59,635 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:00,183 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:00,549 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:02,117 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:02,442 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:03,011 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:04,574 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:04,698 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:05,468 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:06,954 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:07,031 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:07,928 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:09,211 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:09,498 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:10,388 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:11,472 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:11,956 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:12,844 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:13,737 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:14,413 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:15,299 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:15,992 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:16,890 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:17,781 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:18,269 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:19,347 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:20,239 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:20,525 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:21,803 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:22,699 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:22,782 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:24,261 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:25,040 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:25,157 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:26,740 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:27,320 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:27,636 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:29,198 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:29,575 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:30,091 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:31,652 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:31,829 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:32,546 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:34,085 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:34,109 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:35,023 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:36,347 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:36,588 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:37,481 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:38,607 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:39,048 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:39,940 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:40,862 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:41,506 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:42,394 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:43,120 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:43,983 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:44,871 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:45,377 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:46,439 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:47,327 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:47,633 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:48,899 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:49,787 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:49,888 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:51,359 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:52,145 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:52,271 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:53,826 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:54,402 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:54,733 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:56,288 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:56,658 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:57,190 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:58,744 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:31:58,914 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:31:59,654 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:01,175 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:01,201 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:02,133 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:03,436 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:03,657 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:04,591 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:05,691 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:06,113 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:07,047 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:07,946 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:08,567 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:09,508 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:10,224 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:11,046 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:11,963 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:12,479 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:13,501 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:14,419 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:14,734 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:15,964 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:16,875 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:16,989 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:18,422 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:19,247 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:19,334 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:20,878 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:21,503 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:21,793 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:23,342 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:23,767 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:24,251 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:25,797 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:26,022 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:26,727 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:28,278 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:28,280 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:29,185 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:30,536 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:30,735 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:31,643 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:32,797 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:33,191 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:34,100 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:35,052 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:35,650 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:36,580 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:37,329 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:38,108 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:39,037 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:39,588 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:40,564 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:41,495 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:41,847 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:43,026 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:43,952 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:44,106 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:45,484 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:46,363 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:46,410 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:47,939 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:48,620 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:48,866 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:50,395 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:50,876 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:51,367 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:52,852 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:53,134 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:53,829 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:55,314 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:55,389 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:56,285 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:57,646 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:32:57,773 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:58,740 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:32:59,908 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:00,232 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:01,217 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:02,167 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:02,689 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:03,673 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:04,423 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:05,145 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:06,127 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:06,679 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:07,599 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:08,588 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:08,956 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:10,068 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:11,043 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:11,211 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:12,524 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:13,467 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:13,499 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:14,980 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:15,722 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:15,975 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:17,436 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:17,980 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:18,457 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:19,892 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:20,235 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:20,913 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:22,346 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:22,490 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:23,367 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:24,752 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:24,801 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:25,845 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:27,050 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:27,278 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:28,302 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:29,305 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:29,734 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:30,758 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:31,560 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:32,190 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:33,216 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:33,816 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:34,666 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:35,675 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:36,087 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-06 13:33:37,122 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
+2024-02-06 13:33:38,131 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
