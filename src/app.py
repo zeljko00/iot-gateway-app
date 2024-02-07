@@ -349,7 +349,8 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
                         errorLogger=errorLogger,
                         flag=flag,
                         sensor_type="TEMP",
-                        bus=None)
+                        bus=None,
+                        )
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
