@@ -222,13 +222,10 @@ class CANListener (can.Listener):
 
         print("CAN: " + msg.__str__())
         # msg.data is a byte array, need to turn it into a single value
-
-        print(type(msg.data))
         #binary_string = b''.join(msg.data)
 
-        float_value = struct.unpack('<d', msg.data)[0]
+        float_value = struct.unpack('d', msg.data)[0]
         #this is part of CAN transmit ticket
-        print(float_value)
         if self.temp_client is not None:
             self.temp_client.try_reconnect()
         if self.load_client is not None:

@@ -326,11 +326,16 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
         '''
         if not flag.is_set():
             print("MESSAGE HERE", message)
-            new_data.append(str(message.payload.decode("utf-8")))
-            customLogger.info("Received temperature data: " + str(message.payload.decode("utf-8")))
-            data_sum, time_value, unit = data_service.parse_temperature_data(data, time_format)
+            data = message.payload.decode("utf-8")
+            new_data.append(str(data))
+            customLogger.info("Received temperature data: " + str(data))
+            print("DATA TYPE", type(data))
+            data_sum, unit = data_service.parse_temperature_data(str(data), time_format)
+            time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
+            print("RESULT", data_sum, time_value, unit)
             if data_sum > 150:
                 # sound the alarm! ask him what do I send #ASK
+                customLogger.info("Temperature of " + str(data_sum) + "C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,

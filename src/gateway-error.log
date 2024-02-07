@@ -2274,3 +2274,215 @@ oker!
 2024-02-06 13:39:49,817 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
 2024-02-06 13:39:51,180 - ERROR - Arm load data handler failed to establish connection with MQTT broker!
 2024-02-06 13:39:52,284 - ERROR - Fuel level data handler failed to establish connection with MQTT broker!
+2024-02-07 10:35:04,322 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:35:04,344 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,344 - ERROR - Invalid temperature data format! - v
+2024-02-07 10:35:04,345 - ERROR - Invalid temperature data format! - a
+2024-02-07 10:35:04,346 - ERROR - Invalid temperature data format! - l
+2024-02-07 10:35:04,346 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:35:04,347 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:35:04,347 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:04,348 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:35:04,349 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:35:04,349 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:35:04,350 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:04,351 - ERROR - Invalid temperature data format! - 8
+2024-02-07 10:35:04,351 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:04,352 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,352 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:35:04,353 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,354 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:35:04,354 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:35:04,355 - ERROR - Invalid temperature data format! - m
+2024-02-07 10:35:04,356 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:35:04,356 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:04,357 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:04,358 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:35:04,358 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:04,359 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:04,359 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:04,360 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:04,361 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:04,361 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:04,362 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:04,363 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:04,363 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,364 - ERROR - Invalid temperature data format! - 1
+2024-02-07 10:35:04,364 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:04,365 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:35:04,366 - ERROR - Invalid temperature data format! - 3
+2024-02-07 10:35:04,366 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:35:04,367 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:35:04,367 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:04,368 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:04,369 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,369 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:35:04,370 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,371 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:35:04,371 - ERROR - Invalid temperature data format! - n
+2024-02-07 10:35:04,372 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:35:04,373 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:35:04,373 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:04,374 - ERROR - Invalid temperature data format! - C
+2024-02-07 10:35:04,375 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:04,375 - ERROR - Invalid temperature data format! - ]
+2024-02-07 10:35:04,376 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:35:42,904 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:35:42,905 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,905 - ERROR - Invalid temperature data format! - v
+2024-02-07 10:35:42,906 - ERROR - Invalid temperature data format! - a
+2024-02-07 10:35:42,907 - ERROR - Invalid temperature data format! - l
+2024-02-07 10:35:42,907 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:35:42,908 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:35:42,908 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:42,909 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:35:42,910 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:35:42,910 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:35:42,911 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:42,911 - ERROR - Invalid temperature data format! - 8
+2024-02-07 10:35:42,912 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:42,912 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,913 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:35:42,914 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,914 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:35:42,915 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:35:42,915 - ERROR - Invalid temperature data format! - m
+2024-02-07 10:35:42,916 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:35:42,917 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:42,917 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:42,918 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:35:42,918 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:42,919 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:42,920 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:42,920 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:35:42,921 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:42,922 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:42,922 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:42,923 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:42,923 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,924 - ERROR - Invalid temperature data format! - 1
+2024-02-07 10:35:42,924 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:35:42,925 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:35:42,926 - ERROR - Invalid temperature data format! - 3
+2024-02-07 10:35:42,926 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:35:42,927 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:35:42,927 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:35:42,928 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:35:42,929 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,929 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:35:42,930 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,930 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:35:42,931 - ERROR - Invalid temperature data format! - n
+2024-02-07 10:35:42,932 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:35:42,932 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:35:42,933 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:35:42,933 - ERROR - Invalid temperature data format! - C
+2024-02-07 10:35:42,934 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:35:42,935 - ERROR - Invalid temperature data format! - ]
+2024-02-07 10:35:42,935 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:36:17,976 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:36:17,977 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:17,977 - ERROR - Invalid temperature data format! - v
+2024-02-07 10:36:17,978 - ERROR - Invalid temperature data format! - a
+2024-02-07 10:36:17,979 - ERROR - Invalid temperature data format! - l
+2024-02-07 10:36:17,979 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:36:17,980 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:36:17,981 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:36:17,981 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:36:17,982 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:36:17,983 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:36:17,983 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:36:17,984 - ERROR - Invalid temperature data format! - 8
+2024-02-07 10:36:17,985 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:36:17,985 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:17,986 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:36:17,986 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:17,987 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:36:17,988 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:36:17,988 - ERROR - Invalid temperature data format! - m
+2024-02-07 10:36:17,989 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:36:17,989 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:36:17,990 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:36:17,991 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:36:17,991 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:36:17,992 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:36:17,992 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:36:17,993 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:36:17,994 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:36:17,994 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:36:17,995 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:36:17,995 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:36:17,996 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:17,997 - ERROR - Invalid temperature data format! - 1
+2024-02-07 10:36:17,997 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:36:17,998 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:36:17,999 - ERROR - Invalid temperature data format! - 3
+2024-02-07 10:36:17,999 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:36:18,000 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:36:18,001 - ERROR - Invalid temperature data format! - 1
+2024-02-07 10:36:18,001 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:36:18,002 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:18,003 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:36:18,003 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:18,004 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:36:18,004 - ERROR - Invalid temperature data format! - n
+2024-02-07 10:36:18,005 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:36:18,006 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:36:18,006 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:36:18,007 - ERROR - Invalid temperature data format! - C
+2024-02-07 10:36:18,007 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:36:18,008 - ERROR - Invalid temperature data format! - ]
+2024-02-07 10:36:18,009 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:45:56,310 - ERROR - Invalid temperature data format! - [
+2024-02-07 10:45:56,310 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,311 - ERROR - Invalid temperature data format! - v
+2024-02-07 10:45:56,312 - ERROR - Invalid temperature data format! - a
+2024-02-07 10:45:56,313 - ERROR - Invalid temperature data format! - l
+2024-02-07 10:45:56,313 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:45:56,314 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:45:56,315 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:45:56,316 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:45:56,316 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:45:56,317 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:45:56,318 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:45:56,318 - ERROR - Invalid temperature data format! - 8
+2024-02-07 10:45:56,319 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:45:56,320 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,320 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:45:56,321 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,322 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:45:56,322 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:45:56,323 - ERROR - Invalid temperature data format! - m
+2024-02-07 10:45:56,324 - ERROR - Invalid temperature data format! - e
+2024-02-07 10:45:56,324 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:45:56,325 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:45:56,326 - ERROR - Invalid temperature data format! - 7
+2024-02-07 10:45:56,326 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:45:56,327 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:45:56,328 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:45:56,328 - ERROR - Invalid temperature data format! - .
+2024-02-07 10:45:56,329 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:45:56,329 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:45:56,330 - ERROR - Invalid temperature data format! - 2
+2024-02-07 10:45:56,331 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:45:56,331 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,332 - ERROR - Invalid temperature data format! - 1
+2024-02-07 10:45:56,333 - ERROR - Invalid temperature data format! - 0
+2024-02-07 10:45:56,333 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:45:56,334 - ERROR - Invalid temperature data format! - 4
+2024-02-07 10:45:56,335 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:45:56,336 - ERROR - Invalid temperature data format! - :
+2024-02-07 10:45:56,336 - ERROR - Invalid temperature data format! - 5
+2024-02-07 10:45:56,337 - ERROR - Invalid temperature data format! - 6
+2024-02-07 10:45:56,339 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,340 - ERROR - Invalid temperature data format! - ,
+2024-02-07 10:45:56,341 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,341 - ERROR - Invalid temperature data format! - u
+2024-02-07 10:45:56,342 - ERROR - Invalid temperature data format! - n
+2024-02-07 10:45:56,343 - ERROR - Invalid temperature data format! - i
+2024-02-07 10:45:56,344 - ERROR - Invalid temperature data format! - t
+2024-02-07 10:45:56,344 - ERROR - Invalid temperature data format! - =
+2024-02-07 10:45:56,346 - ERROR - Invalid temperature data format! - C
+2024-02-07 10:45:56,347 - ERROR - Invalid temperature data format! -  
+2024-02-07 10:45:56,347 - ERROR - Invalid temperature data format! - ]
+2024-02-07 10:45:56,348 - ERROR - Invalid temperature data format! - [
