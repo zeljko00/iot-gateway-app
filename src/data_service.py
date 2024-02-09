@@ -36,6 +36,28 @@ data_pattern = "[ value={} , time={} , unit={} ]"
 http_not_found = 404
 http_ok = 200
 http_no_content = 204
+
+
+def parse_temperature_data(data, time_format):
+    data_sum = 0.0
+    print("DATA IS HERE", data)
+    # summarizing colleceted data
+    #for item in data:
+    try:
+        tokens = data.split(" ")
+        data_sum += float(tokens[1].split("=")[1])
+        print(data_sum)
+    except:
+        errorLogger.error("Invalid temperature data format! - " + data)
+    # time_value = time.strftime(time_format, time.localtime()) not needed
+    unit = "unknown"
+    try:
+        unit = data.split(" ")[6].split("=")[1]
+    except:
+        errorLogger.error("Invalid temperature data format! - " + data)
+    return data_sum, unit
+
+
 def handle_temperature_data(data, url, jwt, time_format):
     '''
        Summarizes and sends collected temperature data.
@@ -58,26 +80,19 @@ def handle_temperature_data(data, url, jwt, time_format):
        http status code
        '''
     data_sum = 0.0
-    # summarizing colleceted data
-    for item in data:
-        try:
-            tokens=item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid temperature data format! - "+item)
-    time_value = time.strftime(time_format, time.localtime())
-    unit="unknown"
-    try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid temperature data format! - "+data[0])
+    unit = "Unknown"
+    for info in data:
+        data_value, parsed_unit = parse_temperature_data(info, time_format)
+        unit = parsed_unit
+        data_sum += data_value
     # creating request payload
-    payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
+    time_value = time.strftime(time_format, time.localtime())
+    payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         if post_req.status_code != http_ok:
-            errorLogger.error("Problem with temperature Cloud service! - Http status code: "+ str(post_req.status_code))
+            errorLogger.error("Problem with temperature Cloud service! - Http status code: " + str(post_req.status_code))
         return post_req.status_code
     except:
         errorLogger.error("Temperature Cloud service cant be reached!")
