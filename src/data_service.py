@@ -37,10 +37,14 @@ http_not_found = 404
 http_ok = 200
 http_no_content = 204
 
+qos = 2
+temp_alarm_topic = "alarms/temperature"
+load_alarm_topic = "alarms/load"
+fuel_alarm_topic = "alarms/fuel"
 
-def parse_temperature_data(data, time_format):
+def parse_incoming_data(data, type):
     data_sum = 0.0
-    print("DATA IS HERE", data)
+    #print("DATA IS HERE", data)
     # summarizing colleceted data
     #for item in data:
     try:
@@ -48,17 +52,16 @@ def parse_temperature_data(data, time_format):
         data_sum += float(tokens[1].split("=")[1])
         print(data_sum)
     except:
-        errorLogger.error("Invalid temperature data format! - " + data)
+        errorLogger.error("Invalid " + type + " data format! - " + data)
     # time_value = time.strftime(time_format, time.localtime()) not needed
     unit = "unknown"
     try:
         unit = data.split(" ")[6].split("=")[1]
     except:
-        errorLogger.error("Invalid temperature data format! - " + data)
+        errorLogger.error("Invalid " + type + " data format! - " + data)
     return data_sum, unit
 
-
-def handle_temperature_data(data, url, jwt, time_format):
+def handle_temperature_data(data, url, jwt, time_format, client):
     '''
        Summarizes and sends collected temperature data.
 
@@ -82,10 +85,15 @@ def handle_temperature_data(data, url, jwt, time_format):
     data_sum = 0.0
     unit = "Unknown"
     for info in data:
-        data_value, parsed_unit = parse_temperature_data(info, time_format)
+        data_value, parsed_unit = parse_incoming_data(info, "temperature")
         unit = parsed_unit
         data_sum += data_value
     # creating request payload
+    if data_sum > 150:
+        # sound the alarm! ask him what do I send #ASK
+        customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
+        client.publish(temp_alarm_topic, True, qos)
+
     time_value = time.strftime(time_format, time.localtime())
     payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
@@ -121,22 +129,15 @@ def handle_load_data(data, url, jwt, time_format):
     http status code
    '''
     data_sum = 0.0
-    # summarizing collected load aata
-    for item in data:
-        try:
-            tokens = item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid load data format! - "+ item)
-    time_value = time.strftime(time_format, time.localtime())
-    unit = "unknown"
-    try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid load data format! - "+data[0])
+    unit = "Unknown"
+    for info in data:
+        data_value, parsed_unit = parse_incoming_data(info, "load")
+        unit = parsed_unit
+        data_sum += data_value
     # request payload
+    time_value = time.strftime(time_format, time.localtime())
     payload = {"value": round(data_sum,2), "time": time_value, "unit": unit}
-    customLogger.warning("Forwarding load data: " +str(payload))
+    customLogger.warning("Forwarding load data: " + str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         if post_req.status_code != http_ok:
@@ -149,7 +150,7 @@ def handle_load_data(data, url, jwt, time_format):
         return http_not_found
 
 
-def handle_fuel_data(data, limit, url, jwt, time_format):
+def handle_fuel_data(data, limit, url, jwt, time_format, client):
     '''
      Sends filtered fuel data.
 
@@ -176,7 +177,12 @@ def handle_fuel_data(data, limit, url, jwt, time_format):
         tokens = data.split(" ")
         value=float(tokens[1].split("=")[1])
         # sends data to cloud services only if it is value of interest
-        if value<=limit:
+        if value<=limit: #ASK same limit as his or a different one?
+
+            # sound the alarm! ask him what do I send #ASK
+            customLogger.info("Fuel is below the designated limit! Sounding the alarm")
+            client.publish(fuel_alarm_topic, True, qos)
+
             unit = "unknown"
             try:
                 unit = tokens[6].split("=")[1]
@@ -184,6 +190,7 @@ def handle_fuel_data(data, limit, url, jwt, time_format):
                 errorLogger.error("Invalid fuel data format! - " + data)
             time_value = time.strftime(time_format, time.localtime())
             # request payload
+
             payload = {"value": round(value,2), "time": time_value, "unit": unit}
             customLogger.warning("Forwarding fuel data: " + str(payload))
             try:

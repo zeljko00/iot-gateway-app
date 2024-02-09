@@ -2498,3 +2498,96 @@ oker!
 2024-02-07 13:42:25,880 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
 2024-02-07 13:43:14,338 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
 2024-02-07 13:44:11,387 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:35:06,247 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:10,260 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:14,296 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:18,306 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:22,325 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:26,334 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:30,348 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:34,375 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:38,401 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:42,415 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:46,426 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:50,436 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:54,444 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:35:58,460 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:02,468 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:06,481 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:10,498 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:18,054 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:18,076 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:21,743 - ERROR - Authentication Cloud service cant be reached!
+2024-02-09 12:36:22,061 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:22,094 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:25,758 - ERROR - Authentication Cloud service cant be reached!
+2024-02-09 12:36:26,072 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:26,106 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:30,090 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:30,111 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:32,767 - ERROR - Authentication Cloud service cant be reached!
+2024-02-09 12:36:34,110 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:34,121 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:38,129 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:38,132 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:42,144 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:42,146 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:46,159 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:46,169 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:50,175 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:50,176 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:54,190 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:54,196 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:58,209 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:36:58,219 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:02,229 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:02,236 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:06,237 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:06,249 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:10,245 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:10,264 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:14,255 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:14,285 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:18,266 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:18,295 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:22,273 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:22,318 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:26,292 - ERROR - TEMP sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:26,326 - ERROR - Arm load sensor failed to establish connection with MQTT broker!
+2024-02-09 12:37:30,337 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:37:30,529 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:37:39,140 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:37:39,141 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:37:59,170 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:37:59,377 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:38:58,870 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:38:59,073 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 12:38:59,293 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:10:02,504 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:10:02,715 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:10:02,928 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:14:29,355 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:14:29,559 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:14:29,770 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:15:04,250 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:14,414 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:14,620 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:14,824 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:30,562 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:30,766 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:17:30,972 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:20:14,217 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:20:14,432 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:20:14,646 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:21:22,236 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:21:46,107 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:35:31,415 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:35:31,620 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:35:31,823 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:40:39,761 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:40:39,969 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:40:40,179 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:40:58,275 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:41:12,679 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:41:12,892 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-09 13:41:13,096 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
