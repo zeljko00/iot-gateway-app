@@ -91,21 +91,21 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              bus=bus)
 
         def on_message_temp_alarm(client, userdata, msg):
-            print("MESSAGE HERE BUDDIES", msg)
-            print(type(msg.payload))
+
             can_message = can.Message(arbitration_id=0x120,
                                       data=[bool(msg.payload)], #TODO if anything else is sent instead of True/False
                                       is_extended_id=False,
                                       is_remote_frame=False)
             time.sleep(10)
             bus.send(msg=can_message, timeout=5)
-            print("MESSAGE SENT")
+            customLogger.info("Temperature alarm registered! Forwarding to CAN!")
 
 
         temp_client.set_on_connect(on_connect_temp_sensor)
         temp_client.set_on_publish(on_publish)
         temp_client.set_on_subscribe(on_subscribe_temp_alarm)
         temp_client.set_on_message(on_message_temp_alarm)
+
 
     if is_can_load:
         load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -120,6 +120,15 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              flag=flag,
                              sensor_type="LOAD",
                              bus= bus)
+        def on_message_load_alarm(client, userdata, msg):
+
+            can_message = can.Message(arbitration_id=0x121,
+                                      data=[bool(msg.payload)], #TODO if anything else is sent instead of True/False
+                                      is_extended_id=False,
+                                      is_remote_frame=False)
+            time.sleep(10)
+            bus.send(msg=can_message, timeout=5)
+            customLogger.info("Load alarm registered! Forwarding to CAN!")
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
         #load_client.set_subscribe(subscribe_load_alarm)
