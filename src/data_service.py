@@ -43,6 +43,25 @@ http_not_found = 404
 http_ok = 200
 http_no_content = 204
 
+def parse_temperature_data(data, time_format):
+    data_sum = 0.0
+    print("DATA IS HERE", data)
+    # summarizing colleceted data
+    #for item in data:
+    try:
+        tokens = data.split(" ")
+        data_sum += float(tokens[1].split("=")[1])
+        print(data_sum)
+    except:
+        errorLogger.error("Invalid temperature data format! - " + data)
+    # time_value = time.strftime(time_format, time.localtime()) not needed
+    unit = "unknown"
+    try:
+        unit = data.split(" ")[6].split("=")[1]
+    except:
+        errorLogger.error("Invalid temperature data format! - " + data)
+    return data_sum, unit
+  
 # [REST/MQTT] [New parameter from mqtt client added to all handle functions]
 def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     '''
@@ -67,21 +86,14 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
        '''
 
     data_sum = 0.0
-    # summarizing colleceted data
-    for item in data:
-        try:
-            tokens=item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid temperature data format! - "+item)
-    time_value = time.strftime(time_format, time.localtime())
-    unit="unknown"
-    try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid temperature data format! - "+data[0])
+    unit = "Unknown"
+    for info in data:
+        data_value, parsed_unit = parse_temperature_data(info, time_format)
+        unit = parsed_unit
+        data_sum += data_value
     # creating request payload
-    payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
+    time_value = time.strftime(time_format, time.localtime())
+    payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
     try:
         # [REST/MQTT]
