@@ -25,8 +25,14 @@ http_no_content
 
 '''
 import time
+import json
 import requests
 import logging.config
+
+from mqtt_util import gcb_temp_topic
+from mqtt_util import gcb_load_topic
+from mqtt_util import gcb_fuel_topic
+from mqtt_util import gcb_qos
 
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
@@ -60,8 +66,9 @@ def parse_incoming_data(data, type):
     except:
         errorLogger.error("Invalid " + type + " data format! - " + data)
     return data_sum, unit
-
-def handle_temperature_data(data, url, jwt, time_format, client):
+  
+# [REST/MQTT] [New parameter from mqtt client added to all handle functions]
+def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     '''
        Summarizes and sends collected temperature data.
 
@@ -82,6 +89,7 @@ def handle_temperature_data(data, url, jwt, time_format, client):
        -------
        http status code
        '''
+
     data_sum = 0.0
     unit = "Unknown"
     for info in data:
@@ -98,16 +106,21 @@ def handle_temperature_data(data, url, jwt, time_format, client):
     payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding temperature data: " + str(payload))
     try:
-        post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code != http_ok:
-            errorLogger.error("Problem with temperature Cloud service! - Http status code: " + str(post_req.status_code))
-        return post_req.status_code
+        # [REST/MQTT]
+        mqtt_payload = {"username": username, "payload": payload}
+        mqtt_client.publish(gcb_temp_topic, json.dumps(mqtt_payload), gcb_qos)
+        customLogger.debug("TEMP MESSAGE PUBLISHED")
+
+        #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
+        #if post_req.status_code != http_ok:
+        #    errorLogger.error("Problem with temperature Cloud service! - Http status code: "+ str(post_req.status_code))
+        #return post_req.status_code
     except:
         errorLogger.error("Temperature Cloud service cant be reached!")
         customLogger.critical("Temperature Cloud service cant be reached!")
         return http_not_found
 
-def handle_load_data(data, url, jwt, time_format):
+def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     '''
     Summarizes and sends collected load data.
 
@@ -127,7 +140,7 @@ def handle_load_data(data, url, jwt, time_format):
     Returns
     -------
     http status code
-   '''
+    '''
     data_sum = 0.0
     unit = "Unknown"
     for info in data:
@@ -139,18 +152,23 @@ def handle_load_data(data, url, jwt, time_format):
     payload = {"value": round(data_sum,2), "time": time_value, "unit": unit}
     customLogger.warning("Forwarding load data: " + str(payload))
     try:
-        post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code != http_ok:
-            errorLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
-            customLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
-        return post_req.status_code
+        # [REST/MQTT]
+        mqtt_payload = {"username": username, "payload": payload}
+        mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos)
+        customLogger.debug("LOAD MESSAGE PUBLISHED")
+
+        #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
+        #if post_req.status_code != http_ok:
+        #    errorLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
+        #    customLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
+        #return post_req.status_code
     except:
         errorLogger.error("Arm load Cloud service cant be reached!")
         customLogger.critical("Arm load Cloud service cant be reached!")
         return http_not_found
 
 
-def handle_fuel_data(data, limit, url, jwt, time_format, client):
+def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
     '''
      Sends filtered fuel data.
 
@@ -168,6 +186,8 @@ def handle_fuel_data(data, limit, url, jwt, time_format, client):
          JSON web auth token.
      time_format: str
          Cloud services' time format.
+     mqtt_client: paho.mqtt.client.Client
+         MQTT client used to send data to gateway-cloud broker.
 
      Returns
      -------
@@ -193,12 +213,19 @@ def handle_fuel_data(data, limit, url, jwt, time_format, client):
 
             payload = {"value": round(value,2), "time": time_value, "unit": unit}
             customLogger.warning("Forwarding fuel data: " + str(payload))
+
             try:
-                post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-                if post_req.status_code != http_ok:
-                    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                    customLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                return post_req.status_code
+                # [REST/MQTT]
+                mqtt_payload = {"username": username, "payload": payload}
+                mqtt_client.publish(gcb_fuel_topic, json.dumps(mqtt_payload), gcb_qos)
+                customLogger.debug("FUEL MESSAGE PUBLISHED")
+
+                #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
+
+                #if post_req.status_code != http_ok:
+                #    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
+                #    customLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
+                #return post_req.status_code
             except:
                 errorLogger.error("Fuel Cloud service cant be reached!")
                 customLogger.error("Fuel Cloud service cant be reached!")
