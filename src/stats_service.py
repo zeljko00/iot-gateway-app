@@ -22,6 +22,8 @@ import time
 import requests
 import logging.config
 
+from mqtt_util import *
+
 # setting up loggers
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
@@ -117,13 +119,16 @@ class OverallStats:
     send_stats(self):
         Sends collected stats dato to stats cloud service.
     '''
-    def __init__(self, url, jwt, time_pattern):
+    # [REST/MQTT] New parameter for mqtt publisher client
+    def __init__(self, url, jwt, username, time_pattern, mqtt_client):
         '''
         Initializes OverallStats object.
         '''
         self.time_pattern = time_pattern
         self.url = url
         self.jwt = jwt
+        self.username = username
+        self.mqtt_client = mqtt_client
         self.startTime = time.strftime(self.time_pattern, time.localtime())
         self.endTime = ""
         self.tempDataBytes = 0
@@ -187,12 +192,16 @@ class OverallStats:
         # trying to send stats data 5 times
         for i in range(0, 5):
             try:
-                post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
-                if post_req.status_code == 200:
-                    break
-                else:
-                    errorLogger.error("problem with Stats Cloud service!")
-                    customLogger.critical("Stats service unavailable!")
+                # [REST/MQTT]
+                mqtt_payload = {"username": self.username, "payload": payload}
+                self.mqtt_client.publish(gcb_stats_topic, json.dumps(mqtt_payload), gcb_qos)
+
+                #post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
+                #if post_req.status_code == 200:
+                #    break
+                #else:
+                #    errorLogger.error("problem with Stats Cloud service!")
+                #    customLogger.critical("Stats service unavailable!")
             except:
                 errorLogger.error("Stats Cloud service unavailable!")
                 customLogger.critical("Stats service unavailable!")
