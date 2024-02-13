@@ -1,0 +1,35 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+  push:
+    branches:
+      - develop
+      - master
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Python Code Quality and Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ricardochaves/python-lint@v1.4.0
+        with:
+          python-root-list: "modules"
+          use-pylint: false
+          use-pycodestyle: true
+          use-flake8: false
+          use-black: false
+          use-mypy: false
+          use-isort: false
+          extra-pylint-options: ""
+          extra-pycodestyle-options: "--max-line-length=120 --ignore=E722"
+          extra-flake8-options: ""
+          extra-black-options: ""
+          extra-mypy-options: ""
+          extra-isort-options: ""
