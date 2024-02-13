@@ -330,7 +330,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
             customLogger.info("Received temperature data: " + str(data))
             data_sum, unit = data_service.parse_incoming_data(str(data), "temperature")
             time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
-            if data_sum > 150:
+            if data_sum > 95:
                 # sound the alarm! ask him what do I send #ASK
                 customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
