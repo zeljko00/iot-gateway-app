@@ -60,7 +60,7 @@ temp_alarm_topic = "alarms/temperature"
 load_alarm_topic = "alarms/load"
 fuel_alarm_topic = "alarms/fuel"
 
-def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel, conf_data, flag):
+def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel, conf_data, flag, config_flag):
     bus = can.interface.Bus(interface=interface,
                             channel=channel,
                             bitrate=bitrate)
@@ -95,7 +95,6 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                                       data=[bool(msg.payload)], #TODO if anything else is sent instead of True/False
                                       is_extended_id=False,
                                       is_remote_frame=False)
-            time.sleep(10)
             bus.send(msg=can_message, timeout=5)
             customLogger.info("Temperature alarm registered! Forwarding to CAN!")
 
@@ -119,12 +118,10 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                              sensor_type="LOAD",
                              bus= bus)
         def on_message_load_alarm(client, userdata, msg):
-            print("HELLLO?")
             can_message = can.Message(arbitration_id=0x121,
                                       data=[bool(msg.payload)], #TODO if anything else is sent instead of True/False
                                       is_extended_id=False,
                                       is_remote_frame=False)
-            time.sleep(10)
             bus.send(msg=can_message, timeout=5)
             customLogger.info("Load alarm registered! Forwarding to CAN!")
 
@@ -153,7 +150,6 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                                       data=[bool(msg.payload)], #TODO if anything else is sent instead of True/False
                                       is_extended_id=False,
                                       is_remote_frame=False)
-            time.sleep(10)
             bus.send(msg=can_message, timeout=5)
             customLogger.info("Fuel alarm registered! Forwarding to CAN!")
 
@@ -168,7 +164,8 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
     notifier.add_listener(can_listener)
 
     while not flag.is_set(): #TODO wait
-        # print("WAITING")
+        if config_flag.is_set():
+            conf_data =
         time.sleep(period)
 
     notifier.stop(timeout=5)

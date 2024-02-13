@@ -17,11 +17,13 @@ class ConfFlags:
         self.fuel_flag = Event()
         self.temp_flag = Event()
         self.load_flag = Event()
+        self.can_flag = Event()
 
     def set_all(self):
         self.fuel_flag.set()
         self.temp_flag.set()
         self.load_flag.set()
+        self.can_flag.set()
 
 
 class ConfHandler(FileSystemEventHandler):
@@ -30,7 +32,7 @@ class ConfHandler(FileSystemEventHandler):
         self.conf_flags = conf_flags
 
     def on_modified(self, event):
-        self.conf_flags.set_all()
+       self.conf_flags.set_all()
 
     def on_any_event(self, event):
         return
@@ -81,3 +83,9 @@ def get_load_interval(config):
 
 def get_fuel_level_limit(config):
     return config[fuel_settings]['level_limit']
+
+class Config:
+    def __init__(self, path):
+        self.path = path
+
+

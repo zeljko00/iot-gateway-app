@@ -55,6 +55,7 @@ import logging.config
 import logging
 
 from src.can_service import read_can
+from src.config_util import ConfFlags, start_config_observer
 from src.mqtt_utils import MQTTClient
 
 # setting up loggers
@@ -93,8 +94,8 @@ address="address"
 port="port"
 
 # sensors config file
-conf_file_path = "sensor_conf.json"
-app_conf_file_path = "app_conf.json"
+conf_file_path = "configuration/sensor_conf.json"
+app_conf_file_path = "configuration/app_conf.json"
 
 # mqtt config data
 transport_protocol="tcp"
@@ -507,14 +508,14 @@ def read_app_conf():
         errorLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
         customLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
 
-        data = {fuel_settings: {"fuel_level_limit": 200, mode: "CAN"},
-                temp_settings: {"temp_interval": 20, mode: "CAN"},
+        data = {fuel_settings: {"fuel_level_limit": 200, mode: "SIMULATOR"},
+                temp_settings: {"temp_interval": 20, mode: "SIMULATOR"},
                 load_settings: {"load_interval": 20, mode: "SIMULATOR"}, }
     return data
 
 
 # creating sensor processes
-def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
+def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags):
     '''
     Creates 3 subprocesses representing 3 sensor devices.
 
@@ -552,7 +553,8 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
                                                             is_can_load,
                                                             is_can_fuel,
                                                             conf_data,
-                                                            can_flag
+                                                            can_flag,
+                                                            config_flags.can_flag
                                                             ))
         sensors.append(can_sensor)
     if app_conf_data[temp_settings][mode] == "SIMULATOR":
@@ -609,7 +611,10 @@ def main():
     fuel_flag = Event()
     can_flag = Event()
 
-    sensors = sensors_devices(temp_flag, load_flag, fuel_flag, can_flag)
+    app_config_flags = ConfFlags()
+    app_config_observer = start_config_observer(app_config_flags)
+
+    sensors = sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, app_config_flags)
     print("SENSORS", sensors)
     infoLogger.info("Sensor system started!")
     customLogger.debug("Sensor system starting!")
@@ -628,6 +633,9 @@ def main():
     can_flag.set()
     for sensor in sensors:
        sensor.join()
+
+    app_config_observer.join()
+    sensor_config_observer.join()
     infoLogger.info("Sensor system shutdown!")
     customLogger.debug("Sensor system shutdown!")
 

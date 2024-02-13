@@ -88,7 +88,7 @@ infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger('customConsoleLogger')
 
-conf_path = "app_conf.json"
+conf_path = "configuration/app_conf.json"
 user = "username"
 password = "password"
 server_url = "server_url"
