@@ -499,21 +499,6 @@ def read_conf():
     return data
 
 
-def read_app_conf():
-    data = None
-    try:
-        conf_file = open(app_conf_file_path)
-        data = json.load(conf_file)
-    except:
-        errorLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
-        customLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
-
-        data = {fuel_settings: {"fuel_level_limit": 200, mode: "SIMULATOR"},
-                temp_settings: {"temp_interval": 20, mode: "SIMULATOR"},
-                load_settings: {"load_interval": 20, mode: "SIMULATOR"}, }
-    return data
-
-
 # creating sensor processes
 def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags):
     '''
