@@ -11,7 +11,7 @@
  },
  "load_settings": {
  "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
 },
  "can_general_settings": {
   "interface": "pcan",
