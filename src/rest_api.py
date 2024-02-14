@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from config_util import *
 
+
 class FuelSettings(BaseModel):
     level_limit: int
     mode: str
@@ -29,6 +30,7 @@ class FluidConfig(BaseModel):
     temp_settings: TempSettings
     load_settings: LoadSettings
 
+
 def start_rest_api(host, port):
     app = FastAPI()
 
@@ -45,10 +47,10 @@ def start_rest_api(host, port):
     async def config_get():
         try:
             config = read_conf()
-            return { temp_settings: config[temp_settings],
-                     load_settings: config[load_settings],
-                     fuel_settings: config[fuel_settings], }
-        except:
+            return {temp_settings: config[temp_settings],
+                    load_settings: config[load_settings],
+                    fuel_settings: config[fuel_settings], }
+        except BaseException:
             return None
 
     @app.put("/config/")
@@ -60,13 +62,14 @@ def start_rest_api(host, port):
             config[temp_settings] = jsonable_encoder(fluid_config.temp_settings)
             config[load_settings] = jsonable_encoder(fluid_config.load_settings)
             write_conf(config)
-            return { temp_settings: config[temp_settings],
-                     load_settings: config[load_settings],
-                     fuel_settings: config[fuel_settings], }
-        except:
+            return {temp_settings: config[temp_settings],
+                    load_settings: config[load_settings],
+                    fuel_settings: config[fuel_settings], }
+        except BaseException:
             return None
 
     uvicorn.run(app, host=host, port=port)
+
 
 if __name__ == "__main__":
     config = read_conf()
