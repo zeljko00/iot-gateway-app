@@ -81,7 +81,7 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
 
-from src.mqtt_utils import MQTTClient
+from mqtt_utils import MQTTClient
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')

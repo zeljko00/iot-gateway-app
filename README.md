@@ -11,7 +11,11 @@
  - run docker compose:
    - ```docker.exe compose -f .\Docker\system\docker-compose.yaml -p system up -d iot-gateway```
 ### Plain run
- - ```python ./src/app.py``` - not finished yet
+ ```
+   cd src
+   python app.py
+ ```
+  - not finished yet
  
 ## Developer Documentation
     docs/output/index.html
