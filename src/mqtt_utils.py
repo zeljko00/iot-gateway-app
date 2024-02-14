@@ -39,7 +39,6 @@ class MQTTClient:
         while not self.client.is_connected() and not self.flag.is_set():
             try:
                 self.infoLogger.info(self.sensor_type + " sensor establishing connection with MQTT broker!") #TODO alarm vs sensor
-                print(self.broker_address, self.broker_port)
                 self.client.connect(self.broker_address, port=self.broker_port, keepalive=self.keepalive)
                 self.client.loop_start()
                 time.sleep(0.2)

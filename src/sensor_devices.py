@@ -42,6 +42,8 @@ conf_file_path : str
     Path to sensors' config file.
 
 '''
+import multiprocessing
+import threading
 import time
 import random
 
@@ -54,7 +56,7 @@ from multiprocessing import Process, Event
 import logging.config
 import logging
 
-from src.can_service import read_can
+from src.can_service import read_can, read_app_conf
 from src.config_util import ConfFlags, start_config_observer
 from src.mqtt_utils import MQTTClient
 
@@ -62,7 +64,7 @@ from src.mqtt_utils import MQTTClient
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger("customConsoleLogger")
+customLogger = logging.getLogger("customConsoleLogger")
 
 # keywords used in sensors' config file
 mode = "mode"
@@ -88,30 +90,31 @@ mqtt_user = "username"
 mqtt_password = "password"
 max = "max_val"
 min = "min_val"
-avg= "avg_val"
-mqtt_broker="mqtt_broker"
-address="address"
-port="port"
+avg = "avg_val"
+mqtt_broker = "mqtt_broker"
+address = "address"
+port = "port"
 
 # sensors config file
 conf_file_path = "configuration/sensor_conf.json"
 app_conf_file_path = "configuration/app_conf.json"
 
 # mqtt config data
-transport_protocol="tcp"
+transport_protocol = "tcp"
 qos = 2
 
 # REST APIs
-temp_topic="sensors/temperature"
-load_topic="sensors/arm-load"
-fuel_topic="sensors/fuel-level"
+temp_topic = "sensors/temperature"
+load_topic = "sensors/arm-load"
+fuel_topic = "sensors/fuel-level"
 
-data_pattern="[ value={} , time={} , unit={} ]"
+data_pattern = "[ value={} , time={} , unit={} ]"
 time_format = "%d.%m.%Y %H:%M:%S"
 
 celzius = "C"
 kg = "kg"
 liter = "l"
+
 
 def on_publish(client, userdata, result):
     '''
@@ -128,7 +131,9 @@ def on_publish(client, userdata, result):
     None
     '''
     pass
-def on_connect_temp_sensor(client, userdata, flags, rc,props):
+
+
+def on_connect_temp_sensor(client, userdata, flags, rc, props):
     '''
     Logic executed after establishing connection between temperature sensor process and mqtt broker
 
@@ -151,7 +156,9 @@ def on_connect_temp_sensor(client, userdata, flags, rc,props):
     else:
         errorLogger.error("Temperature sensor failed to establish connection with MQTT broker!")
         customLogger.critical("Temperature sensor failed to establish connection with MQTT broker!")
-def on_connect_load_sensor(client, userdata, flags, rc,props):
+
+
+def on_connect_load_sensor(client, userdata, flags, rc, props):
     '''
     Logic executed after establishing connection between arm load sensor process and mqtt broker
 
@@ -174,7 +181,9 @@ def on_connect_load_sensor(client, userdata, flags, rc,props):
     else:
         errorLogger.error("Arm load sensor failed to establish connection with MQTT broker!")
         errorLogger.critical("Arm load sensor failed to establish connection with MQTT broker!")
-def on_connect_fuel_sensor(client, userdata, flags, rc,props):
+
+
+def on_connect_fuel_sensor(client, userdata, flags, rc, props):
     '''
     Logic executed after establishing connection between FUEL sensor process and mqtt broker
 
@@ -198,8 +207,10 @@ def on_connect_fuel_sensor(client, userdata, flags, rc,props):
         errorLogger.error("Fuel sensor failed to establish connection with MQTT broker!")
         customLogger.critical("Fuel sensor failed to establish connection with MQTT broker!")
 
+
 # period = measuring interval in sec, min_val/max_val = min/max measured value
-def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port,mqtt_username,mqtt_pass, flag):
+def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port, mqtt_username, mqtt_pass,
+                                     flag, config_flag, init_flags, temp_lock):
     '''
     Emulates temperature sensor.
 
@@ -229,7 +240,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     None
     '''
     customLogger.debug("Temperature sensor started!")
-    customLogger.debug("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val,avg_val))
+    customLogger.debug("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val, avg_val))
     # preventing division by zero
     if period == 0:
         period = 1
@@ -237,12 +248,12 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     # establishing connection with MQTT broker
     client = mqtt.Client(client_id="temp-sensor-mqtt-client", transport=transport_protocol, protocol=mqtt.MQTTv5)
     client.username_pw_set(username=mqtt_username, password=mqtt_pass)
-    client.on_connect=on_connect_temp_sensor
-    client.on_publish=on_publish
+    client.on_connect = on_connect_temp_sensor
+    client.on_publish = on_publish
     while not client.is_connected():
         try:
             infoLogger.info("Temperature sensor establishing connection with MQTT broker!")
-            client.connect(broker_address, port=broker_port, keepalive=period*3)
+            client.connect(broker_address, port=broker_port, keepalive=period * 3)
             client.loop_start()
             time.sleep(0.2)
         except:
@@ -252,11 +263,21 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
     data = numpy.random.uniform(-5, 5, values_count)
     counter = 0
     # determines whether engine is warming up
-    raising=True
+    raising = True
     # starting temp
     value = min_val
     # shutting down sensor depending on flag
     while not flag.is_set():
+
+        if config_flag.is_set():
+            config = read_app_conf()
+            if config[temp_settings][mode] == "CAN":
+                temp_lock.acquire()
+                init_flags.temp_simulator_initiated = False
+                temp_lock.release()
+                config_flag.clear()
+                break  # TODO BREAK?? or flag?
+
         time.sleep(period)
         # check connection to mqtt broker
         while not client.is_connected():
@@ -266,16 +287,19 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
         try:
             # generating new measured value
             if raising:
-                value += numpy.random.uniform(0, math.ceil(period/10),1)[0]
+                value += numpy.random.uniform(0, math.ceil(period / 10), 1)[0]
                 if value > avg_val:
                     raising = False
             else:
-                value = avg_val+data[counter % values_count]
+                value = avg_val + data[counter % values_count]
                 counter += 1
-            customLogger.error("Temperature: "+data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format, time.localtime())), celzius))
+            customLogger.error("Temperature: " + data_pattern.format("{:.2f}".format(value),
+                                                                     str(time.strftime(time_format, time.localtime())),
+                                                                     celzius))
             # send data to MQTT broker
             client.publish(temp_topic, data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format,
-                                                                                         time.localtime())), celzius),qos=qos)
+                                                                                                     time.localtime())),
+                                                           celzius), qos=qos)
         except:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
             customLogger.critical("Connection between temperature sensor and MQTT broker is broken!")
@@ -286,7 +310,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
 
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
-def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
+def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username, mqtt_pass, flag, config_flag, init_flags, load_lock):
     '''
     Emulates arm load sensor.
 
@@ -318,10 +342,12 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     None
     '''
     customLogger.debug("Arm load sensor started!")
-    customLogger.debug("Arm load sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val, max_val))
+    customLogger.debug(
+        "Arm load sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(min_t, max_t, min_val,
+                                                                                                 max_val))
     # parameter validation
     if max_t <= min_t:
-        max_t = min_t + random.randint(0,10)
+        max_t = min_t + random.randint(0, 10)
     min_t = abs(round(min_t))
     max_t = abs(round(max_t))
     # establishing connection with MQTT broker
@@ -332,7 +358,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     while not client.is_connected() and not flag.is_set():
         try:
             infoLogger.info("Arm load sensor establishing connection with MQTT broker!")
-            client.connect(broker_address, port=broker_port, keepalive=min_t*3)
+            client.connect(broker_address, port=broker_port, keepalive=min_t * 3)
             client.loop_start()
             time.sleep(0.2)
         except:
@@ -346,6 +372,16 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     counter = 0
     # shut down sensor depending on set flag
     while not flag.is_set():
+
+        if config_flag.is_set():  # TODO this is just for the mode, what if the broker data has been changed?
+            config = read_app_conf()
+            if config[load_settings][mode] == "CAN":
+                load_lock.acquire()
+                init_flags.load_simulator_initiated = False
+                load_lock.release()
+                config_flag.clear()
+                break  # TODO BREAK?? or flag?
+
         time.sleep(round(intervals[counter % values_count]))
         # check connection to mqtt broker
         while not client.is_connected() and not flag.is_set():
@@ -353,10 +389,11 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
             client.reconnect()
             time.sleep(0.1)
         try:
-            customLogger.info("Load: "+data_pattern.format("{:.2f}".format(data[counter % values_count]),
-                                      str(time.strftime(time_format, time.localtime())), kg))
+            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(data[counter % values_count]),
+                                                             str(time.strftime(time_format, time.localtime())), kg))
             # send data to MQTT broker
-            client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]),str(time.strftime(time_format, time.localtime())),kg),
+            client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]),
+                                                           str(time.strftime(time_format, time.localtime())), kg),
                            qos=qos)
         except:
             errorLogger.error("Connection between arm load sensor and MQTT broker is broken!")
@@ -371,7 +408,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
 # period = measuring interval , capacity = fuel tank capacity , refill = fuel tank refill probability (0-1)
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
 def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
-                              mqtt_username, mqtt_pass, flag):
+                              mqtt_username, mqtt_pass, flag, config_flag, init_flags, fuel_lock):
     '''
     Emulates fuel sensor.
 
@@ -406,8 +443,9 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     None
     '''
     customLogger.debug("Fuel level sensor started!")
-    customLogger.debug("Fuel level sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
-          format(period, capacity, consumption, efficiency, refill))
+    customLogger.debug(
+        "Fuel level sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
+        format(period, capacity, consumption, efficiency, refill))
     # parameter validation
     if period == 0:
         period = 1
@@ -432,6 +470,16 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     # shutting down sensor depending on set flag
     refilling = False
     while not flag.is_set():
+
+        if config_flag.is_set():
+            config = read_app_conf()
+            if config[fuel_settings][mode] == "CAN":
+                fuel_lock.acquire()
+                init_flags.fuel_simulator_initiated = False
+                fuel_lock.release()
+                config_flag.clear()
+                break  # TODO BREAK?? or flag?
+
         time.sleep(period)
         # fuel tank is filling
         if refilling:
@@ -444,7 +492,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             # from previous measuring and machine state (on/of)
             consumed = period * consumption * scale * (1 + 1 - efficiency)
             # generating new measured value
-            value -= consumed;
+            value -= consumed
             if value <= 0:
                 value = 0
                 refilling = True
@@ -454,11 +502,13 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             client.reconnect()
             time.sleep(0.1)
         try:
-            customLogger.warning("Fuel: "+data_pattern.format("{:.2f}".format(value),
-                                      str(time.strftime(time_format, time.localtime())), liter))
+            customLogger.warning("Fuel: " + data_pattern.format("{:.2f}".format(value),
+                                                                str(time.strftime(time_format, time.localtime())),
+                                                                liter))
             # send data to MQTT broker
             client.publish(fuel_topic,
-                           data_pattern.format("{:.2f}".format(value),str(time.strftime(time_format, time.localtime())), liter),
+                           data_pattern.format("{:.2f}".format(value),
+                                               str(time.strftime(time_format, time.localtime())), liter),
                            qos=qos)
         except:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
@@ -467,7 +517,6 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     client.disconnect()
     infoLogger.info("Fuel level sensor shutdown!")
     customLogger.debug("Fuel level sensor shutdown!")
-
 
 
 # read sensor conf data
@@ -495,12 +544,13 @@ def read_conf():
                 arm_sensor: {arm_min_t: 10, arm_max_t: 100, min: 0, max: 800},
                 fuel_sensor: {interval: 5, fuel_capacity: 300, fuel_consumption: 3000, fuel_efficiency: 0.6,
                               fuel_refill: 0.02},
-                mqtt_broker: { address: "localhost", port:1883, mqtt_user: "iot-device", mqtt_password: "password"}}
+                mqtt_broker: {address: "localhost", port: 1883, mqtt_user: "iot-device", mqtt_password: "password"}}
     return data
 
 
 # creating sensor processes
-def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags):
+def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
+                    init_flags, temp_lock, load_lock, fuel_lock, can_lock):
     '''
     Creates 3 subprocesses representing 3 sensor devices.
 
@@ -531,51 +581,107 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags):
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
-        can_sensor = Process(target=read_can, args=(app_conf_data[can_general_settings][interface],
-                                                            app_conf_data[can_general_settings][channel],
-                                                            app_conf_data[can_general_settings][bitrate],
-                                                            is_can_temp,
-                                                            is_can_load,
-                                                            is_can_fuel,
-                                                            conf_data,
-                                                            can_flag,
-                                                            config_flags.can_flag
-                                                            ))
-        sensors.append(can_sensor)
+        can_lock.acquire()
+        if not init_flags.can_initiated:
+            can_lock.release()
+            can_sensor = Process(target=read_can, args=(app_conf_data[can_general_settings][interface],
+                                                        app_conf_data[can_general_settings][channel],
+                                                        app_conf_data[can_general_settings][bitrate],
+                                                        is_can_temp,
+                                                        is_can_load,
+                                                        is_can_fuel,
+                                                        conf_data,
+                                                        can_flag,
+                                                        config_flags.can_flag,
+                                                        init_flags,
+                                                        can_lock
+                                                        ))
+
+            sensors.append(can_sensor)
+            can_lock.acquire()
+            init_flags.can_initiated = True
+            can_lock.release()
     if app_conf_data[temp_settings][mode] == "SIMULATOR":
-        simulation_temperature_sensor = Process(target=measure_temperature_periodically, args=(conf_data[temp_sensor][interval],
-                                                                                    conf_data[temp_sensor][min],
-                                                                                    conf_data[temp_sensor][avg],
-                                                                                    conf_data[mqtt_broker][address],
-                                                                                    conf_data[mqtt_broker][port],
-                                                                                    conf_data[mqtt_broker][mqtt_user],
-                                                                                    conf_data[mqtt_broker][mqtt_password],
-                                                                                    temp_flag, ))
-        sensors.append(simulation_temperature_sensor)
+        temp_lock.acquire()
+        if not init_flags.temp_simulator_initiated:
+            temp_lock.release()
+            simulation_temperature_sensor = Process(target=measure_temperature_periodically,
+                                                    args=(conf_data[temp_sensor][interval],
+                                                          conf_data[temp_sensor][min],
+                                                          conf_data[temp_sensor][avg],
+                                                          conf_data[mqtt_broker][address],
+                                                          conf_data[mqtt_broker][port],
+                                                          conf_data[mqtt_broker][mqtt_user],
+                                                          conf_data[mqtt_broker][mqtt_password],
+                                                          temp_flag,
+                                                          config_flags.temp_flag,
+                                                          init_flags,
+                                                          temp_lock))
+            sensors.append(simulation_temperature_sensor)
+            temp_lock.acquire()
+            init_flags.temp_simulator_initiated = True
+            temp_lock.release()
     if app_conf_data[load_settings][mode] == "SIMULATOR":
-        simulation_load_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
-                                                                           conf_data[arm_sensor][arm_max_t],
-                                                                           conf_data[arm_sensor][min],
-                                                                           conf_data[arm_sensor][max],
-                                                                           conf_data[mqtt_broker][address],
-                                                                           conf_data[mqtt_broker][port],
-                                                                           conf_data[mqtt_broker][mqtt_user],
-                                                                           conf_data[mqtt_broker][mqtt_password],
-                                                                           load_flag,))
-        sensors.append(simulation_load_sensor)
+        if not init_flags.load_simulator_initiated:
+            simulation_load_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
+                                                                                 conf_data[arm_sensor][arm_max_t],
+                                                                                 conf_data[arm_sensor][min],
+                                                                                 conf_data[arm_sensor][max],
+                                                                                 conf_data[mqtt_broker][address],
+                                                                                 conf_data[mqtt_broker][port],
+                                                                                 conf_data[mqtt_broker][mqtt_user],
+                                                                                 conf_data[mqtt_broker][mqtt_password],
+                                                                                 load_flag,
+                                                                                 config_flags.load_flag,
+                                                                                 init_flags,
+                                                                                 load_lock))
+            sensors.append(simulation_load_sensor)
+            load_lock.acquire()
+            init_flags.load_simulator_initiated = True
+            load_lock.release()
     if app_conf_data[fuel_settings][mode] == "SIMULATOR":
-        simulation_fuel_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
-                                                                            conf_data[fuel_sensor][fuel_capacity],
-                                                                            conf_data[fuel_sensor][fuel_consumption],
-                                                                            conf_data[fuel_sensor][fuel_efficiency],
-                                                                            conf_data[fuel_sensor][fuel_refill],
-                                                                            conf_data[mqtt_broker][address],
-                                                                            conf_data[mqtt_broker][port],
-                                                                            conf_data[mqtt_broker][mqtt_user],
-                                                                            conf_data[mqtt_broker][mqtt_password],
-                                                                            fuel_flag,))
-        sensors.append(simulation_fuel_sensor)
+        fuel_lock.acquire()
+        if not init_flags.fuel_simulator_initiated:
+            fuel_lock.release()
+            simulation_fuel_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
+                                                                                     conf_data[fuel_sensor][
+                                                                                         fuel_capacity],
+                                                                                     conf_data[fuel_sensor][
+                                                                                         fuel_consumption],
+                                                                                     conf_data[fuel_sensor][
+                                                                                         fuel_efficiency],
+                                                                                     conf_data[fuel_sensor][
+                                                                                         fuel_refill],
+                                                                                     conf_data[mqtt_broker][address],
+                                                                                     conf_data[mqtt_broker][port],
+                                                                                     conf_data[mqtt_broker][mqtt_user],
+                                                                                     conf_data[mqtt_broker][
+                                                                                         mqtt_password],
+                                                                                     fuel_flag,
+                                                                                     config_flags.fuel_flag,
+                                                                                     init_flags,
+                                                                                     fuel_lock))
+            sensors.append(simulation_fuel_sensor)
+            fuel_lock.acquire()
+            init_flags.fuel_simulator_initiated = True
+            fuel_lock.release()
     return sensors
+
+
+class InitFlags:
+    def __init__(self):
+        self.can_initiated = False
+        self.temp_simulator_initiated = False
+        self.load_simulator_initiated = False
+        self.fuel_simulator_initiated = False
+
+    def has_started(self):
+        if (self.can_initiated is True or
+                self.temp_simulator_initiated is True or
+                self.load_simulator_initiated is True or
+                self.fuel_simulator_initiated is True):
+            return True
+        return False
 
 
 def main():
@@ -591,38 +697,79 @@ def main():
     -------
     None
     '''
-    temp_flag = Event()
-    load_flag = Event()
-    fuel_flag = Event()
+    temp_simulation_flag = Event()
+    load_simulation_flag = Event()
+    fuel_simulation_flag = Event()
     can_flag = Event()
 
-    app_config_flags = ConfFlags()
-    app_config_observer = start_config_observer(app_config_flags)
+    main_execution_flag = Event()
 
-    sensors = sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, app_config_flags)
-    print("SENSORS", sensors)
-    infoLogger.info("Sensor system started!")
+    temp_lock = multiprocessing.Lock()
+    load_lock = multiprocessing.Lock()
+    fuel_lock = multiprocessing.Lock()
+    can_lock = multiprocessing.Lock()
+
+    app_config_flags = ConfFlags()
+    init_flags = InitFlags()
+    app_config_observer = start_config_observer(app_config_flags)
+    initial = True
+    sensors = []
     customLogger.debug("Sensor system starting!")
+    shutdown_controller_worker = Process(target=shutdown_controller,
+                                         args=(temp_simulation_flag, load_simulation_flag, fuel_simulation_flag, can_flag, main_execution_flag))
+    shutdown_controller_worker.start()
+    initial = True
+    while not main_execution_flag.is_set():
+        if app_config_flags.execution_flag.is_set() or initial:
+            initial = False
+            sensors = sensors_devices(temp_simulation_flag, load_simulation_flag, fuel_simulation_flag, can_flag, app_config_flags, init_flags, can_lock, temp_lock, load_lock, fuel_lock)
+            if sensors is not None:
+                for sensor in sensors:
+                    sensor.start()
+                    time.sleep(0.1)
+        if init_flags.has_started():
+            infoLogger.info("Sensor system started!")
+        else:
+            infoLogger.info("No sensors to start!")
+
+        time.sleep(2)
+    shutdown_controller_worker.join()
     for sensor in sensors:
-        sensor.start()
-        time.sleep(0.1)
-    time.sleep(2)
-    # waiting for shutdown signal (input)
-    input("")
-    infoLogger.info("Sensor system shutting down! Please wait")
-    customLogger.info("Sensor system shutting down! Please wait")
-    # shutting down sensor processes
-    temp_flag.set()
-    load_flag.set()
-    fuel_flag.set()
-    can_flag.set()
-    for sensor in sensors:
-       sensor.join()
+        sensor.join()
 
     app_config_observer.join()
-    sensor_config_observer.join()
     infoLogger.info("Sensor system shutdown!")
     customLogger.debug("Sensor system shutdown!")
+
+
+def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag, can_flag, main_execution_flag):
+    '''
+    Handles user request for sensor shutdown.
+
+    When user requests shutdown, sets sensor processes' stop tokens.
+
+    Parameters
+    ----------
+    temp_handler_flag: multiprocessing.Event
+        Token used for stopping temperature sensor process.
+    load_handler_flag: multiprocessing.Event
+        Token used for stopping load sensor process.
+    fuel_handler_flag: multiprocessing.Event
+        Token used for stopping fuel sensor process.
+
+    Returns
+    -------
+    '''
+    # waiting for shutdown signal
+    input("")
+    infoLogger.info("IoT Gateway app shutting down! Please wait")
+    customLogger.debug("IoT Gateway app shutting down! Please wait")
+    # shutting down handler processes
+    temp_handler_flag.set()
+    load_handler_flag.set()
+    fuel_handler_flag.set()
+    can_flag.set()
+    main_execution_flag.set()
 
 if __name__ == '__main__':
     main()

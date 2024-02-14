@@ -626,7 +626,7 @@ def main():
             # starting stats collecting
             # using shared memory Queue objects for returning stats data from processes
             customLogger.debug("Initializing devices stats data!")
-            stats = stats_service.OverallStats(config[server_url] + "/stats", jwt, config[time_format])
+            #stats = stats_service.OverallStats(config[server_url] + "/stats", jwt, config[time_format])
             temp_stats_queue = Queue()
             load_stats_queue = Queue()
             fuel_stats_queue = Queue()
@@ -670,9 +670,9 @@ def main():
             customLogger.debug("Workers stopped!")
 
             # finalizing stats
-            stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
+            #stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get())
             customLogger.debug("Sending device stats data!")
-            stats.send_stats()
+            #stats.send_stats()
             # checking jwt, if jwt has expired  app will restart
             jwt_code= auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
             if jwt_code == http_ok:

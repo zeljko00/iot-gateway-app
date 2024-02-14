@@ -4720,3 +4720,754 @@ oker!
 2024-02-12 13:48:23,859 - WARNING - There is no arm load sensor data to handle!
 2024-02-12 13:48:43,343 - WARNING - There is no temperature sensor data to handle!
 2024-02-12 13:48:43,861 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:28:29,491 - INFO - IoT Gateway app started!
+2024-02-14 13:29:51,986 - INFO - IoT Gateway app started!
+2024-02-14 13:33:45,422 - INFO - IoT Gateway app started!
+2024-02-14 13:33:46,065 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 13:33:46,077 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2024-02-14 13:33:46,276 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:33:47,084 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 13:33:47,095 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2024-02-14 13:33:47,295 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:33:48,090 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 13:33:48,102 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2024-02-14 13:34:06,277 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:34:07,297 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:34:26,278 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:34:27,299 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:34:46,280 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:34:47,300 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:35:06,281 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:35:07,302 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:35:26,282 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:35:27,303 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:35:46,284 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:35:47,305 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:36:06,285 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:36:07,306 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:36:26,287 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:36:27,308 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:36:46,288 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:36:47,310 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:37:06,290 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:37:07,311 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:37:26,291 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:37:27,313 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:37:46,293 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:37:47,313 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:37:57,928 - INFO - IoT Gateway app started!
+2024-02-14 13:37:58,566 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 13:37:58,577 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2024-02-14 13:37:58,776 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:37:59,550 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 13:37:59,563 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2024-02-14 13:37:59,760 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:38:00,535 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 13:38:00,547 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2024-02-14 13:38:18,778 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:38:19,761 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:38:38,779 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:38:39,762 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:38:58,781 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:38:59,764 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:39:18,783 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:39:19,766 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:39:38,784 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:39:39,766 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:39:58,785 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:39:59,766 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:40:18,786 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:40:19,767 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:40:38,787 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:40:39,768 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:40:58,788 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:40:59,769 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:41:18,789 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:41:19,770 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:41:38,790 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:41:39,771 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:41:58,792 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:41:59,772 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:42:18,793 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:42:19,773 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:42:38,794 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:42:39,775 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:42:58,793 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:42:59,775 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:43:18,794 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:43:19,776 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:43:38,794 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:43:39,776 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:43:58,797 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:43:59,776 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:44:18,797 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:44:19,777 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:44:38,798 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:44:39,777 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:44:58,799 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:44:59,778 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:45:18,801 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:45:19,780 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:45:38,803 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:45:39,781 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:45:58,805 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:45:59,781 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:46:18,805 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:46:19,783 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:46:38,807 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:46:39,785 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:46:58,808 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:46:59,786 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:47:18,809 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:47:19,786 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:47:38,810 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:47:39,787 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:47:58,810 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:47:59,788 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:48:18,810 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:48:19,790 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:48:38,812 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:48:39,791 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:48:58,813 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:48:59,792 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:49:18,814 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:49:19,791 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:49:38,815 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:49:39,793 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:49:40,243 - INFO - Sensor system started!
+2024-02-14 13:49:42,244 - INFO - Sensor system started!
+2024-02-14 13:49:44,245 - INFO - Sensor system started!
+2024-02-14 13:49:46,246 - INFO - Sensor system started!
+2024-02-14 13:49:48,247 - INFO - Sensor system started!
+2024-02-14 13:49:50,247 - INFO - Sensor system started!
+2024-02-14 13:49:52,249 - INFO - Sensor system started!
+2024-02-14 13:49:54,250 - INFO - Sensor system started!
+2024-02-14 13:49:56,251 - INFO - Sensor system started!
+2024-02-14 13:49:58,253 - INFO - Sensor system started!
+2024-02-14 13:49:58,816 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:49:59,794 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:50:00,254 - INFO - Sensor system started!
+2024-02-14 13:50:02,255 - INFO - Sensor system started!
+2024-02-14 13:50:04,257 - INFO - Sensor system started!
+2024-02-14 13:50:06,259 - INFO - Sensor system started!
+2024-02-14 13:50:08,259 - INFO - Sensor system started!
+2024-02-14 13:50:10,260 - INFO - Sensor system started!
+2024-02-14 13:50:12,261 - INFO - Sensor system started!
+2024-02-14 13:50:14,262 - INFO - Sensor system started!
+2024-02-14 13:50:16,263 - INFO - Sensor system started!
+2024-02-14 13:50:18,265 - INFO - Sensor system started!
+2024-02-14 13:50:18,816 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:50:19,795 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:50:20,267 - INFO - Sensor system started!
+2024-02-14 13:50:22,278 - INFO - Sensor system started!
+2024-02-14 13:50:24,280 - INFO - Sensor system started!
+2024-02-14 13:50:26,347 - INFO - Sensor system started!
+2024-02-14 13:50:28,350 - INFO - Sensor system started!
+2024-02-14 13:50:30,351 - INFO - Sensor system started!
+2024-02-14 13:50:35,875 - INFO - Sensor system started!
+2024-02-14 13:50:36,460 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 13:50:36,476 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-14 13:50:36,676 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 13:50:36,682 - INFO - CAN Load sensor successfully established connection with MQTT broker!
+2024-02-14 13:50:37,875 - INFO - Sensor system started!
+2024-02-14 13:50:38,818 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:50:39,797 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:50:39,876 - INFO - Sensor system started!
+2024-02-14 13:50:41,877 - INFO - Sensor system started!
+2024-02-14 13:50:43,880 - INFO - Sensor system started!
+2024-02-14 13:50:45,880 - INFO - Sensor system started!
+2024-02-14 13:50:47,880 - INFO - Sensor system started!
+2024-02-14 13:50:49,882 - INFO - Sensor system started!
+2024-02-14 13:50:51,882 - INFO - Sensor system started!
+2024-02-14 13:50:53,884 - INFO - Sensor system started!
+2024-02-14 13:50:55,886 - INFO - Sensor system started!
+2024-02-14 13:50:57,888 - INFO - Sensor system started!
+2024-02-14 13:50:58,819 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:50:59,798 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:50:59,890 - INFO - Sensor system started!
+2024-02-14 13:51:01,892 - INFO - Sensor system started!
+2024-02-14 13:51:03,893 - INFO - Sensor system started!
+2024-02-14 13:51:05,894 - INFO - Sensor system started!
+2024-02-14 13:51:07,896 - INFO - Sensor system started!
+2024-02-14 13:51:09,897 - INFO - Sensor system started!
+2024-02-14 13:51:11,899 - INFO - Sensor system started!
+2024-02-14 13:51:13,900 - INFO - Sensor system started!
+2024-02-14 13:51:15,902 - INFO - Sensor system started!
+2024-02-14 13:51:17,904 - INFO - Sensor system started!
+2024-02-14 13:51:18,820 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:51:19,799 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:51:19,906 - INFO - Sensor system started!
+2024-02-14 13:51:21,908 - INFO - Sensor system started!
+2024-02-14 13:51:23,910 - INFO - Sensor system started!
+2024-02-14 13:51:25,911 - INFO - Sensor system started!
+2024-02-14 13:51:27,912 - INFO - Sensor system started!
+2024-02-14 13:51:29,914 - INFO - Sensor system started!
+2024-02-14 13:51:31,915 - INFO - Sensor system started!
+2024-02-14 13:51:33,916 - INFO - Sensor system started!
+2024-02-14 13:51:35,917 - INFO - Sensor system started!
+2024-02-14 13:51:37,919 - INFO - Sensor system started!
+2024-02-14 13:51:38,822 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:51:39,800 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:51:39,920 - INFO - Sensor system started!
+2024-02-14 13:51:41,920 - INFO - Sensor system started!
+2024-02-14 13:51:43,921 - INFO - Sensor system started!
+2024-02-14 13:51:45,922 - INFO - Sensor system started!
+2024-02-14 13:51:47,923 - INFO - Sensor system started!
+2024-02-14 13:51:49,925 - INFO - Sensor system started!
+2024-02-14 13:51:51,926 - INFO - Sensor system started!
+2024-02-14 13:51:53,928 - INFO - Sensor system started!
+2024-02-14 13:51:55,929 - INFO - Sensor system started!
+2024-02-14 13:51:57,930 - INFO - Sensor system started!
+2024-02-14 13:51:58,823 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:51:59,800 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:51:59,931 - INFO - Sensor system started!
+2024-02-14 13:52:01,933 - INFO - Sensor system started!
+2024-02-14 13:52:03,935 - INFO - Sensor system started!
+2024-02-14 13:52:05,936 - INFO - Sensor system started!
+2024-02-14 13:52:07,938 - INFO - Sensor system started!
+2024-02-14 13:52:09,939 - INFO - Sensor system started!
+2024-02-14 13:52:11,940 - INFO - Sensor system started!
+2024-02-14 13:52:13,941 - INFO - Sensor system started!
+2024-02-14 13:52:15,942 - INFO - Sensor system started!
+2024-02-14 13:52:17,944 - INFO - Sensor system started!
+2024-02-14 13:52:18,824 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:52:19,802 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:52:19,946 - INFO - Sensor system started!
+2024-02-14 13:52:21,948 - INFO - Sensor system started!
+2024-02-14 13:52:23,949 - INFO - Sensor system started!
+2024-02-14 13:52:25,951 - INFO - Sensor system started!
+2024-02-14 13:52:27,952 - INFO - Sensor system started!
+2024-02-14 13:52:29,953 - INFO - Sensor system started!
+2024-02-14 13:52:31,955 - INFO - Sensor system started!
+2024-02-14 13:52:33,956 - INFO - Sensor system started!
+2024-02-14 13:52:35,957 - INFO - Sensor system started!
+2024-02-14 13:52:37,959 - INFO - Sensor system started!
+2024-02-14 13:52:38,826 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:52:39,803 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:52:39,960 - INFO - Sensor system started!
+2024-02-14 13:52:41,962 - INFO - Sensor system started!
+2024-02-14 13:52:43,962 - INFO - Sensor system started!
+2024-02-14 13:52:45,964 - INFO - Sensor system started!
+2024-02-14 13:52:47,966 - INFO - Sensor system started!
+2024-02-14 13:52:49,967 - INFO - Sensor system started!
+2024-02-14 13:52:51,967 - INFO - Sensor system started!
+2024-02-14 13:52:53,968 - INFO - Sensor system started!
+2024-02-14 13:52:55,970 - INFO - Sensor system started!
+2024-02-14 13:52:57,971 - INFO - Sensor system started!
+2024-02-14 13:52:58,828 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:52:59,804 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:52:59,973 - INFO - Sensor system started!
+2024-02-14 13:53:01,975 - INFO - Sensor system started!
+2024-02-14 13:53:03,977 - INFO - Sensor system started!
+2024-02-14 13:53:05,979 - INFO - Sensor system started!
+2024-02-14 13:53:07,980 - INFO - Sensor system started!
+2024-02-14 13:53:09,981 - INFO - Sensor system started!
+2024-02-14 13:53:11,983 - INFO - Sensor system started!
+2024-02-14 13:53:13,984 - INFO - Sensor system started!
+2024-02-14 13:53:15,984 - INFO - Sensor system started!
+2024-02-14 13:53:17,986 - INFO - Sensor system started!
+2024-02-14 13:53:18,829 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:53:19,806 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:53:19,988 - INFO - Sensor system started!
+2024-02-14 13:53:21,989 - INFO - Sensor system started!
+2024-02-14 13:53:23,990 - INFO - Sensor system started!
+2024-02-14 13:53:25,992 - INFO - Sensor system started!
+2024-02-14 13:53:27,993 - INFO - Sensor system started!
+2024-02-14 13:53:29,994 - INFO - Sensor system started!
+2024-02-14 13:53:31,995 - INFO - Sensor system started!
+2024-02-14 13:53:33,996 - INFO - Sensor system started!
+2024-02-14 13:53:35,997 - INFO - Sensor system started!
+2024-02-14 13:53:37,999 - INFO - Sensor system started!
+2024-02-14 13:53:38,831 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:53:39,807 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:53:40,000 - INFO - Sensor system started!
+2024-02-14 13:53:42,000 - INFO - Sensor system started!
+2024-02-14 13:53:44,002 - INFO - Sensor system started!
+2024-02-14 13:53:46,004 - INFO - Sensor system started!
+2024-02-14 13:53:48,004 - INFO - Sensor system started!
+2024-02-14 13:53:50,005 - INFO - Sensor system started!
+2024-02-14 13:53:52,006 - INFO - Sensor system started!
+2024-02-14 13:53:54,008 - INFO - Sensor system started!
+2024-02-14 13:53:56,015 - INFO - Sensor system started!
+2024-02-14 13:53:58,017 - INFO - Sensor system started!
+2024-02-14 13:53:58,832 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:53:59,808 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:54:00,018 - INFO - Sensor system started!
+2024-02-14 13:54:02,019 - INFO - Sensor system started!
+2024-02-14 13:54:04,021 - INFO - Sensor system started!
+2024-02-14 13:54:06,023 - INFO - Sensor system started!
+2024-02-14 13:54:08,024 - INFO - Sensor system started!
+2024-02-14 13:54:10,025 - INFO - Sensor system started!
+2024-02-14 13:54:12,027 - INFO - Sensor system started!
+2024-02-14 13:54:14,028 - INFO - Sensor system started!
+2024-02-14 13:54:16,029 - INFO - Sensor system started!
+2024-02-14 13:54:18,031 - INFO - Sensor system started!
+2024-02-14 13:54:18,832 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:54:19,808 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:54:20,032 - INFO - Sensor system started!
+2024-02-14 13:54:22,033 - INFO - Sensor system started!
+2024-02-14 13:54:24,034 - INFO - Sensor system started!
+2024-02-14 13:54:26,035 - INFO - Sensor system started!
+2024-02-14 13:54:28,036 - INFO - Sensor system started!
+2024-02-14 13:54:30,038 - INFO - Sensor system started!
+2024-02-14 13:54:32,038 - INFO - Sensor system started!
+2024-02-14 13:54:34,039 - INFO - Sensor system started!
+2024-02-14 13:54:36,040 - INFO - Sensor system started!
+2024-02-14 13:54:38,042 - INFO - Sensor system started!
+2024-02-14 13:54:38,833 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:54:39,810 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:54:40,044 - INFO - Sensor system started!
+2024-02-14 13:54:42,044 - INFO - Sensor system started!
+2024-02-14 13:54:44,045 - INFO - Sensor system started!
+2024-02-14 13:54:46,046 - INFO - Sensor system started!
+2024-02-14 13:54:48,048 - INFO - Sensor system started!
+2024-02-14 13:54:50,060 - INFO - Sensor system started!
+2024-02-14 13:54:52,061 - INFO - Sensor system started!
+2024-02-14 13:54:54,063 - INFO - Sensor system started!
+2024-02-14 13:54:56,064 - INFO - Sensor system started!
+2024-02-14 13:54:58,066 - INFO - Sensor system started!
+2024-02-14 13:54:58,834 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:54:59,811 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:55:00,067 - INFO - Sensor system started!
+2024-02-14 13:55:02,069 - INFO - Sensor system started!
+2024-02-14 13:55:04,070 - INFO - Sensor system started!
+2024-02-14 13:55:06,072 - INFO - Sensor system started!
+2024-02-14 13:55:08,073 - INFO - Sensor system started!
+2024-02-14 13:55:10,074 - INFO - Sensor system started!
+2024-02-14 13:55:12,074 - INFO - Sensor system started!
+2024-02-14 13:55:14,076 - INFO - Sensor system started!
+2024-02-14 13:55:16,077 - INFO - Sensor system started!
+2024-02-14 13:55:18,079 - INFO - Sensor system started!
+2024-02-14 13:55:18,835 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:55:19,812 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:55:20,081 - INFO - Sensor system started!
+2024-02-14 13:55:22,083 - INFO - Sensor system started!
+2024-02-14 13:55:24,084 - INFO - Sensor system started!
+2024-02-14 13:55:26,086 - INFO - Sensor system started!
+2024-02-14 13:55:28,087 - INFO - Sensor system started!
+2024-02-14 13:55:30,089 - INFO - Sensor system started!
+2024-02-14 13:55:32,090 - INFO - Sensor system started!
+2024-02-14 13:55:34,092 - INFO - Sensor system started!
+2024-02-14 13:55:36,094 - INFO - Sensor system started!
+2024-02-14 13:55:38,095 - INFO - Sensor system started!
+2024-02-14 13:55:38,837 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:55:39,814 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:55:40,096 - INFO - Sensor system started!
+2024-02-14 13:55:42,096 - INFO - Sensor system started!
+2024-02-14 13:55:44,098 - INFO - Sensor system started!
+2024-02-14 13:55:46,099 - INFO - Sensor system started!
+2024-02-14 13:55:48,101 - INFO - Sensor system started!
+2024-02-14 13:55:50,102 - INFO - Sensor system started!
+2024-02-14 13:55:52,103 - INFO - Sensor system started!
+2024-02-14 13:55:54,105 - INFO - Sensor system started!
+2024-02-14 13:55:56,106 - INFO - Sensor system started!
+2024-02-14 13:55:58,107 - INFO - Sensor system started!
+2024-02-14 13:55:58,838 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:55:59,815 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:56:00,123 - INFO - Sensor system started!
+2024-02-14 13:56:02,124 - INFO - Sensor system started!
+2024-02-14 13:56:04,125 - INFO - Sensor system started!
+2024-02-14 13:56:06,126 - INFO - Sensor system started!
+2024-02-14 13:56:08,128 - INFO - Sensor system started!
+2024-02-14 13:56:10,130 - INFO - Sensor system started!
+2024-02-14 13:56:12,131 - INFO - Sensor system started!
+2024-02-14 13:56:14,775 - INFO - Sensor system started!
+2024-02-14 13:56:15,468 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 13:56:15,487 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-14 13:56:15,686 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 13:56:15,691 - INFO - CAN Load sensor successfully established connection with MQTT broker!
+2024-02-14 13:56:15,890 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 13:56:15,896 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-14 13:56:16,776 - INFO - Sensor system started!
+2024-02-14 13:56:18,778 - INFO - Sensor system started!
+2024-02-14 13:56:18,839 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:56:19,817 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:56:20,779 - INFO - Sensor system started!
+2024-02-14 13:56:22,780 - INFO - Sensor system started!
+2024-02-14 13:56:24,781 - INFO - Sensor system started!
+2024-02-14 13:56:26,782 - INFO - Sensor system started!
+2024-02-14 13:56:28,784 - INFO - Sensor system started!
+2024-02-14 13:56:30,785 - INFO - Sensor system started!
+2024-02-14 13:56:32,787 - INFO - Sensor system started!
+2024-02-14 13:56:34,788 - INFO - Sensor system started!
+2024-02-14 13:56:36,790 - INFO - Sensor system started!
+2024-02-14 13:56:38,791 - INFO - Sensor system started!
+2024-02-14 13:56:38,840 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:56:39,818 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:56:40,792 - INFO - Sensor system started!
+2024-02-14 13:56:42,794 - INFO - Sensor system started!
+2024-02-14 13:56:44,795 - INFO - Sensor system started!
+2024-02-14 13:56:46,797 - INFO - Sensor system started!
+2024-02-14 13:56:48,798 - INFO - Sensor system started!
+2024-02-14 13:56:50,799 - INFO - Sensor system started!
+2024-02-14 13:56:52,800 - INFO - Sensor system started!
+2024-02-14 13:56:54,801 - INFO - Sensor system started!
+2024-02-14 13:56:56,803 - INFO - Sensor system started!
+2024-02-14 13:56:58,804 - INFO - Sensor system started!
+2024-02-14 13:56:58,841 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:56:59,818 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:57:00,806 - INFO - Sensor system started!
+2024-02-14 13:57:02,808 - INFO - Sensor system started!
+2024-02-14 13:57:04,810 - INFO - Sensor system started!
+2024-02-14 13:57:06,812 - INFO - Sensor system started!
+2024-02-14 13:57:08,815 - INFO - Sensor system started!
+2024-02-14 13:57:10,816 - INFO - Sensor system started!
+2024-02-14 13:57:12,817 - INFO - Sensor system started!
+2024-02-14 13:57:14,818 - INFO - Sensor system started!
+2024-02-14 13:57:16,819 - INFO - Sensor system started!
+2024-02-14 13:57:18,820 - INFO - Sensor system started!
+2024-02-14 13:57:18,843 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:57:19,819 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:57:20,822 - INFO - Sensor system started!
+2024-02-14 13:57:22,823 - INFO - Sensor system started!
+2024-02-14 13:57:24,824 - INFO - Sensor system started!
+2024-02-14 13:57:26,826 - INFO - Sensor system started!
+2024-02-14 13:57:28,827 - INFO - Sensor system started!
+2024-02-14 13:57:30,829 - INFO - Sensor system started!
+2024-02-14 13:57:32,829 - INFO - Sensor system started!
+2024-02-14 13:57:34,829 - INFO - Sensor system started!
+2024-02-14 13:57:36,831 - INFO - Sensor system started!
+2024-02-14 13:57:38,832 - INFO - Sensor system started!
+2024-02-14 13:57:38,844 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:57:39,820 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:57:40,834 - INFO - Sensor system started!
+2024-02-14 13:57:42,835 - INFO - Sensor system started!
+2024-02-14 13:57:44,836 - INFO - Sensor system started!
+2024-02-14 13:57:46,838 - INFO - Sensor system started!
+2024-02-14 13:57:48,839 - INFO - Sensor system started!
+2024-02-14 13:57:50,841 - INFO - Sensor system started!
+2024-02-14 13:57:52,843 - INFO - Sensor system started!
+2024-02-14 13:57:54,844 - INFO - Sensor system started!
+2024-02-14 13:57:56,846 - INFO - Sensor system started!
+2024-02-14 13:57:58,844 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:57:58,848 - INFO - Sensor system started!
+2024-02-14 13:57:59,821 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:58:00,850 - INFO - Sensor system started!
+2024-02-14 13:58:02,851 - INFO - Sensor system started!
+2024-02-14 13:58:04,852 - INFO - Sensor system started!
+2024-02-14 13:58:06,854 - INFO - Sensor system started!
+2024-02-14 13:58:08,855 - INFO - Sensor system started!
+2024-02-14 13:58:10,855 - INFO - Sensor system started!
+2024-02-14 13:58:12,857 - INFO - Sensor system started!
+2024-02-14 13:58:16,352 - INFO - Sensor system started!
+2024-02-14 13:58:17,006 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 13:58:17,024 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-14 13:58:17,223 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 13:58:17,228 - INFO - CAN Load sensor successfully established connection with MQTT broker!
+2024-02-14 13:58:17,427 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 13:58:17,432 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-14 13:58:18,352 - INFO - Sensor system started!
+2024-02-14 13:58:18,846 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:58:19,823 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:58:20,353 - INFO - Sensor system started!
+2024-02-14 13:58:22,354 - INFO - Sensor system started!
+2024-02-14 13:58:24,356 - INFO - Sensor system started!
+2024-02-14 13:58:26,357 - INFO - Sensor system started!
+2024-02-14 13:58:28,359 - INFO - Sensor system started!
+2024-02-14 13:58:30,361 - INFO - Sensor system started!
+2024-02-14 13:58:32,362 - INFO - Sensor system started!
+2024-02-14 13:58:34,364 - INFO - Sensor system started!
+2024-02-14 13:58:36,365 - INFO - Sensor system started!
+2024-02-14 13:58:38,365 - INFO - Sensor system started!
+2024-02-14 13:58:38,847 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:58:39,824 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:58:40,367 - INFO - Sensor system started!
+2024-02-14 13:58:42,369 - INFO - Sensor system started!
+2024-02-14 13:58:44,370 - INFO - Sensor system started!
+2024-02-14 13:58:46,372 - INFO - Sensor system started!
+2024-02-14 13:58:48,373 - INFO - Sensor system started!
+2024-02-14 13:58:50,374 - INFO - Sensor system started!
+2024-02-14 13:58:52,375 - INFO - Sensor system started!
+2024-02-14 13:58:54,376 - INFO - Sensor system started!
+2024-02-14 13:58:56,378 - INFO - Sensor system started!
+2024-02-14 13:58:58,380 - INFO - Sensor system started!
+2024-02-14 13:58:58,849 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:58:59,825 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:59:00,381 - INFO - Sensor system started!
+2024-02-14 13:59:02,382 - INFO - Sensor system started!
+2024-02-14 13:59:04,383 - INFO - Sensor system started!
+2024-02-14 13:59:06,385 - INFO - Sensor system started!
+2024-02-14 13:59:08,386 - INFO - Sensor system started!
+2024-02-14 13:59:10,386 - INFO - Sensor system started!
+2024-02-14 13:59:12,387 - INFO - Sensor system started!
+2024-02-14 13:59:14,389 - INFO - Sensor system started!
+2024-02-14 13:59:16,390 - INFO - Sensor system started!
+2024-02-14 13:59:18,391 - INFO - Sensor system started!
+2024-02-14 13:59:18,850 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:59:19,826 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:59:20,393 - INFO - Sensor system started!
+2024-02-14 13:59:22,395 - INFO - Sensor system started!
+2024-02-14 13:59:24,396 - INFO - Sensor system started!
+2024-02-14 13:59:26,397 - INFO - Sensor system started!
+2024-02-14 13:59:28,398 - INFO - Sensor system started!
+2024-02-14 13:59:30,400 - INFO - Sensor system started!
+2024-02-14 13:59:32,402 - INFO - Sensor system started!
+2024-02-14 13:59:34,403 - INFO - Sensor system started!
+2024-02-14 13:59:36,405 - INFO - Sensor system started!
+2024-02-14 13:59:38,407 - INFO - Sensor system started!
+2024-02-14 13:59:38,852 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:59:39,828 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 13:59:40,408 - INFO - Sensor system started!
+2024-02-14 13:59:42,409 - INFO - Sensor system started!
+2024-02-14 13:59:58,852 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 13:59:59,829 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:00:18,853 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:00:19,830 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:00:38,854 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:00:39,831 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:00:58,856 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:00:59,833 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:01:18,856 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:01:19,834 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:01:38,857 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:01:39,836 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:01:58,858 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:01:59,837 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:02:17,704 - INFO - Sensor system started!
+2024-02-14 14:02:18,363 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 14:02:18,378 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-14 14:02:18,578 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 14:02:18,584 - INFO - CAN Load sensor successfully established connection with MQTT broker!
+2024-02-14 14:02:18,782 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 14:02:18,788 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-14 14:02:18,859 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:02:19,704 - INFO - Sensor system started!
+2024-02-14 14:02:19,839 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:02:21,705 - INFO - Sensor system started!
+2024-02-14 14:02:23,706 - INFO - Sensor system started!
+2024-02-14 14:02:25,707 - INFO - Sensor system started!
+2024-02-14 14:02:27,709 - INFO - Sensor system started!
+2024-02-14 14:02:29,710 - INFO - Sensor system started!
+2024-02-14 14:02:31,711 - INFO - Sensor system started!
+2024-02-14 14:02:33,713 - INFO - Sensor system started!
+2024-02-14 14:02:35,714 - INFO - Sensor system started!
+2024-02-14 14:02:37,716 - INFO - Sensor system started!
+2024-02-14 14:02:38,861 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:02:39,717 - INFO - Sensor system started!
+2024-02-14 14:02:39,841 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:02:41,718 - INFO - Sensor system started!
+2024-02-14 14:02:43,719 - INFO - Sensor system started!
+2024-02-14 14:02:45,719 - INFO - Sensor system started!
+2024-02-14 14:02:47,720 - INFO - Sensor system started!
+2024-02-14 14:02:49,721 - INFO - Sensor system started!
+2024-02-14 14:02:51,723 - INFO - Sensor system started!
+2024-02-14 14:02:53,725 - INFO - Sensor system started!
+2024-02-14 14:02:55,726 - INFO - Sensor system started!
+2024-02-14 14:02:57,735 - INFO - Sensor system started!
+2024-02-14 14:02:58,862 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:02:59,736 - INFO - Sensor system started!
+2024-02-14 14:02:59,842 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:03:05,464 - INFO - Sensor system started!
+2024-02-14 14:03:06,081 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-14 14:03:06,096 - INFO - CAN Temperature sensor successfully established connection with MQTT broker!
+2024-02-14 14:03:06,295 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-14 14:03:06,301 - INFO - CAN Load sensor successfully established connection with MQTT broker!
+2024-02-14 14:03:06,499 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-14 14:03:06,504 - INFO - CAN Fuel sensor successfully established connection with MQTT broker!
+2024-02-14 14:03:07,465 - INFO - Sensor system started!
+2024-02-14 14:03:09,466 - INFO - Sensor system started!
+2024-02-14 14:03:11,467 - INFO - Sensor system started!
+2024-02-14 14:03:13,469 - INFO - Sensor system started!
+2024-02-14 14:03:15,471 - INFO - Sensor system started!
+2024-02-14 14:03:17,471 - INFO - Sensor system started!
+2024-02-14 14:03:18,863 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:03:19,473 - INFO - Sensor system started!
+2024-02-14 14:03:19,843 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:03:21,474 - INFO - Sensor system started!
+2024-02-14 14:03:23,476 - INFO - Sensor system started!
+2024-02-14 14:03:25,477 - INFO - Sensor system started!
+2024-02-14 14:03:27,478 - INFO - Sensor system started!
+2024-02-14 14:03:29,479 - INFO - Sensor system started!
+2024-02-14 14:03:31,481 - INFO - Sensor system started!
+2024-02-14 14:03:33,482 - INFO - Sensor system started!
+2024-02-14 14:03:35,484 - INFO - Sensor system started!
+2024-02-14 14:03:37,485 - INFO - Sensor system started!
+2024-02-14 14:03:38,865 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:03:39,487 - INFO - Sensor system started!
+2024-02-14 14:03:39,845 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:03:41,489 - INFO - Sensor system started!
+2024-02-14 14:03:43,490 - INFO - Sensor system started!
+2024-02-14 14:03:45,491 - INFO - Sensor system started!
+2024-02-14 14:03:47,492 - INFO - Sensor system started!
+2024-02-14 14:03:49,494 - INFO - Sensor system started!
+2024-02-14 14:03:51,495 - INFO - Sensor system started!
+2024-02-14 14:03:53,497 - INFO - Sensor system started!
+2024-02-14 14:03:55,498 - INFO - Sensor system started!
+2024-02-14 14:03:57,499 - INFO - Sensor system started!
+2024-02-14 14:03:58,866 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:03:59,499 - INFO - Sensor system started!
+2024-02-14 14:03:59,846 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:04:01,500 - INFO - Sensor system started!
+2024-02-14 14:04:03,501 - INFO - Sensor system started!
+2024-02-14 14:04:05,503 - INFO - Sensor system started!
+2024-02-14 14:04:07,504 - INFO - Sensor system started!
+2024-02-14 14:04:09,505 - INFO - Sensor system started!
+2024-02-14 14:04:11,507 - INFO - Sensor system started!
+2024-02-14 14:04:13,508 - INFO - Sensor system started!
+2024-02-14 14:04:15,510 - INFO - Sensor system started!
+2024-02-14 14:04:17,511 - INFO - Sensor system started!
+2024-02-14 14:04:18,867 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:04:19,513 - INFO - Sensor system started!
+2024-02-14 14:04:19,848 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:04:21,513 - INFO - Sensor system started!
+2024-02-14 14:04:23,515 - INFO - Sensor system started!
+2024-02-14 14:04:25,517 - INFO - Sensor system started!
+2024-02-14 14:04:27,517 - INFO - Sensor system started!
+2024-02-14 14:04:29,517 - INFO - Sensor system started!
+2024-02-14 14:04:31,519 - INFO - Sensor system started!
+2024-02-14 14:04:33,521 - INFO - Sensor system started!
+2024-02-14 14:04:35,523 - INFO - Sensor system started!
+2024-02-14 14:04:37,524 - INFO - Sensor system started!
+2024-02-14 14:04:38,869 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:04:39,526 - INFO - Sensor system started!
+2024-02-14 14:04:39,849 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:04:41,526 - INFO - Sensor system started!
+2024-02-14 14:04:43,527 - INFO - Sensor system started!
+2024-02-14 14:04:45,529 - INFO - Sensor system started!
+2024-02-14 14:04:47,530 - INFO - Sensor system started!
+2024-02-14 14:04:49,531 - INFO - Sensor system started!
+2024-02-14 14:04:51,533 - INFO - Sensor system started!
+2024-02-14 14:04:53,534 - INFO - Sensor system started!
+2024-02-14 14:04:55,535 - INFO - Sensor system started!
+2024-02-14 14:04:57,536 - INFO - Sensor system started!
+2024-02-14 14:04:58,870 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:04:59,538 - INFO - Sensor system started!
+2024-02-14 14:04:59,849 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:05:01,540 - INFO - Sensor system started!
+2024-02-14 14:05:03,541 - INFO - Sensor system started!
+2024-02-14 14:05:05,543 - INFO - Sensor system started!
+2024-02-14 14:05:07,543 - INFO - Sensor system started!
+2024-02-14 14:05:09,544 - INFO - Sensor system started!
+2024-02-14 14:05:11,546 - INFO - Sensor system started!
+2024-02-14 14:05:13,548 - INFO - Sensor system started!
+2024-02-14 14:05:15,548 - INFO - Sensor system started!
+2024-02-14 14:05:17,550 - INFO - Sensor system started!
+2024-02-14 14:05:18,871 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:05:19,551 - INFO - Sensor system started!
+2024-02-14 14:05:19,851 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:05:21,553 - INFO - Sensor system started!
+2024-02-14 14:05:23,554 - INFO - Sensor system started!
+2024-02-14 14:05:25,555 - INFO - Sensor system started!
+2024-02-14 14:05:27,557 - INFO - Sensor system started!
+2024-02-14 14:05:29,557 - INFO - Sensor system started!
+2024-02-14 14:05:31,558 - INFO - Sensor system started!
+2024-02-14 14:05:33,559 - INFO - Sensor system started!
+2024-02-14 14:05:35,560 - INFO - Sensor system started!
+2024-02-14 14:05:37,561 - INFO - Sensor system started!
+2024-02-14 14:05:38,872 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:05:39,561 - INFO - Sensor system started!
+2024-02-14 14:05:39,852 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:05:41,563 - INFO - Sensor system started!
+2024-02-14 14:05:43,564 - INFO - Sensor system started!
+2024-02-14 14:05:45,566 - INFO - Sensor system started!
+2024-02-14 14:05:47,567 - INFO - Sensor system started!
+2024-02-14 14:05:49,568 - INFO - Sensor system started!
+2024-02-14 14:05:51,570 - INFO - Sensor system started!
+2024-02-14 14:05:53,572 - INFO - Sensor system started!
+2024-02-14 14:05:55,573 - INFO - Sensor system started!
+2024-02-14 14:05:57,574 - INFO - Sensor system started!
+2024-02-14 14:05:58,874 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:05:59,575 - INFO - Sensor system started!
+2024-02-14 14:05:59,854 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:06:01,576 - INFO - Sensor system started!
+2024-02-14 14:06:03,577 - INFO - Sensor system started!
+2024-02-14 14:06:05,578 - INFO - Sensor system started!
+2024-02-14 14:06:07,579 - INFO - Sensor system started!
+2024-02-14 14:06:09,580 - INFO - Sensor system started!
+2024-02-14 14:06:11,582 - INFO - Sensor system started!
+2024-02-14 14:06:13,583 - INFO - Sensor system started!
+2024-02-14 14:06:15,584 - INFO - Sensor system started!
+2024-02-14 14:06:17,586 - INFO - Sensor system started!
+2024-02-14 14:06:18,875 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:06:19,587 - INFO - Sensor system started!
+2024-02-14 14:06:19,855 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:06:21,588 - INFO - Sensor system started!
+2024-02-14 14:06:23,590 - INFO - Sensor system started!
+2024-02-14 14:06:25,591 - INFO - Sensor system started!
+2024-02-14 14:06:27,592 - INFO - Sensor system started!
+2024-02-14 14:06:29,593 - INFO - Sensor system started!
+2024-02-14 14:06:31,594 - INFO - Sensor system started!
+2024-02-14 14:06:33,596 - INFO - Sensor system started!
+2024-02-14 14:06:35,597 - INFO - Sensor system started!
+2024-02-14 14:06:37,599 - INFO - Sensor system started!
+2024-02-14 14:06:38,876 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:06:39,600 - INFO - Sensor system started!
+2024-02-14 14:06:39,855 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:06:41,602 - INFO - Sensor system started!
+2024-02-14 14:06:43,603 - INFO - Sensor system started!
+2024-02-14 14:06:45,603 - INFO - Sensor system started!
+2024-02-14 14:06:47,604 - INFO - Sensor system started!
+2024-02-14 14:06:49,605 - INFO - Sensor system started!
+2024-02-14 14:06:51,607 - INFO - Sensor system started!
+2024-02-14 14:06:53,608 - INFO - Sensor system started!
+2024-02-14 14:06:55,610 - INFO - Sensor system started!
+2024-02-14 14:06:57,611 - INFO - Sensor system started!
+2024-02-14 14:06:58,878 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:06:59,613 - INFO - Sensor system started!
+2024-02-14 14:06:59,856 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:07:01,614 - INFO - Sensor system started!
+2024-02-14 14:07:03,615 - INFO - Sensor system started!
+2024-02-14 14:07:05,617 - INFO - Sensor system started!
+2024-02-14 14:07:07,619 - INFO - Sensor system started!
+2024-02-14 14:07:09,620 - INFO - Sensor system started!
+2024-02-14 14:07:11,622 - INFO - Sensor system started!
+2024-02-14 14:07:13,624 - INFO - Sensor system started!
+2024-02-14 14:07:15,626 - INFO - Sensor system started!
+2024-02-14 14:07:17,626 - INFO - Sensor system started!
+2024-02-14 14:07:18,879 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:07:19,627 - INFO - Sensor system started!
+2024-02-14 14:07:19,857 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:07:21,629 - INFO - Sensor system started!
+2024-02-14 14:07:23,630 - INFO - Sensor system started!
+2024-02-14 14:07:25,632 - INFO - Sensor system started!
+2024-02-14 14:07:27,634 - INFO - Sensor system started!
+2024-02-14 14:07:29,636 - INFO - Sensor system started!
+2024-02-14 14:07:31,637 - INFO - Sensor system started!
+2024-02-14 14:07:33,639 - INFO - Sensor system started!
+2024-02-14 14:07:35,640 - INFO - Sensor system started!
+2024-02-14 14:07:37,640 - INFO - Sensor system started!
+2024-02-14 14:07:38,881 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:07:39,642 - INFO - Sensor system started!
+2024-02-14 14:07:39,859 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:07:41,643 - INFO - Sensor system started!
+2024-02-14 14:07:43,644 - INFO - Sensor system started!
+2024-02-14 14:07:45,645 - INFO - Sensor system started!
+2024-02-14 14:07:47,645 - INFO - Sensor system started!
+2024-02-14 14:07:49,647 - INFO - Sensor system started!
+2024-02-14 14:07:51,649 - INFO - Sensor system started!
+2024-02-14 14:07:53,649 - INFO - Sensor system started!
+2024-02-14 14:07:55,650 - INFO - Sensor system started!
+2024-02-14 14:07:57,651 - INFO - Sensor system started!
+2024-02-14 14:07:58,882 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:07:59,652 - INFO - Sensor system started!
+2024-02-14 14:07:59,859 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:08:01,654 - INFO - Sensor system started!
+2024-02-14 14:08:03,655 - INFO - Sensor system started!
+2024-02-14 14:08:05,657 - INFO - Sensor system started!
+2024-02-14 14:08:07,659 - INFO - Sensor system started!
+2024-02-14 14:08:09,659 - INFO - Sensor system started!
+2024-02-14 14:08:11,660 - INFO - Sensor system started!
+2024-02-14 14:08:13,661 - INFO - Sensor system started!
+2024-02-14 14:08:15,663 - INFO - Sensor system started!
+2024-02-14 14:08:17,665 - INFO - Sensor system started!
+2024-02-14 14:08:18,884 - WARNING - There is no temperature sensor data to handle!
+2024-02-14 14:08:19,666 - INFO - Sensor system started!
+2024-02-14 14:08:19,861 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:08:21,667 - INFO - Sensor system started!
+2024-02-14 14:08:23,668 - INFO - Sensor system started!
+2024-02-14 14:08:25,669 - INFO - Sensor system started!
+2024-02-14 14:08:27,669 - INFO - Sensor system started!
+2024-02-14 14:08:29,671 - INFO - Sensor system started!
+2024-02-14 14:08:31,672 - INFO - Sensor system started!
+2024-02-14 14:08:33,674 - INFO - Sensor system started!
+2024-02-14 14:08:35,675 - INFO - Sensor system started!
+2024-02-14 14:08:37,675 - INFO - Sensor system started!
+2024-02-14 14:08:39,677 - INFO - Sensor system started!
+2024-02-14 14:08:39,862 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:08:41,796 - INFO - Sensor system started!
+2024-02-14 14:08:42,314 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2024-02-14 14:08:42,330 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2024-02-14 14:08:59,864 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:09:02,538 - INFO - Fuel level sensor shutdown!
+2024-02-14 14:09:19,864 - WARNING - There is no arm load sensor data to handle!
+2024-02-14 14:09:39,865 - WARNING - There is no arm load sensor data to handle!

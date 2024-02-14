@@ -1,8 +1,6 @@
 import json
 from multiprocessing import Event
-from watchdog.observers import Observer
 from watchdog.observers.polling import PollingObserver
-from watchdog.observers.inotify import InotifyObserver
 from watchdog.events import FileSystemEventHandler
 
 conf_dir = './configuration'
@@ -18,13 +16,14 @@ class ConfFlags:
         self.temp_flag = Event()
         self.load_flag = Event()
         self.can_flag = Event()
+        self.execution_flag = Event()
 
     def set_all(self):
         self.fuel_flag.set()
         self.temp_flag.set()
         self.load_flag.set()
         self.can_flag.set()
-
+        self.execution_flag.set()
 
 class ConfHandler(FileSystemEventHandler):
     def __init__(self, conf_flags: ConfFlags):

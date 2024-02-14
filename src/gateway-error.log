@@ -2609,3 +2609,23 @@ oker!
 2024-02-12 13:29:23,357 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
 2024-02-12 13:29:26,375 - ERROR - Authentication Cloud service cant be reached!
 2024-02-12 13:29:31,386 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:28:33,556 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:28:37,571 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:28:46,609 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:29:52,074 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:29:52,080 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:29:57,089 - ERROR - Authentication Cloud service cant be reached!
+2024-02-14 13:50:36,479 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:50:36,685 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:56:15,490 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:56:15,694 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:56:15,899 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:58:17,028 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:58:17,231 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 13:58:17,435 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:02:18,381 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:02:18,587 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:02:18,791 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:03:06,099 - ERROR - CAN Temperature alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:03:06,303 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
+2024-02-14 14:03:06,507 - ERROR - CAN Load alarm client failed to establish connection with MQTT broker!
