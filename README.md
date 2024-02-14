@@ -5,17 +5,13 @@
 
 ## Running:
  - location: Project's root folder
-### With docker image:
- - build: ```docker build -t iot-gateway -f .\Docker\gateway-app\Dockerfile .```
- - run image: ``` docker run ...```
+### With docker container
+ - build container: ```docker build -t iot-gateway -f .\Docker\gateway-app\Dockerfile .```
+ - run container: ``` docker run ...```
  - run docker compose:
    - ```docker.exe compose -f .\Docker\system\docker-compose.yaml -p system up -d iot-gateway```
-### Plain run:
+### Plain run
+ - ```python ./src/app.py``` - not finished yet
  
-Pristup dokumentaciji:
+## Developer Documentation
     docs/output/index.html
-
-Pokretanje sistema:
- 1. build/pull potrebnih Docker image-a
- 2. cd Docker/system
- 3. docker-compose up
