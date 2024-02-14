@@ -41,27 +41,27 @@ services:
     depends_on:
       mqtt-broker:
         condition: service_healthy
-  postgresql-db:
-    image: 'postgres'
-    ports:
-      - '5433:5432'
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    environment:
-       POSTGRES_DB: iot-platform-database
-       POSTGRES_USER: postgres
-       POSTGRES_PASSWORD: mysecretpassword
-  iot-cloud-platform:
-    image: 'iot-cloud-platform'
-    ports:
-      - '8080:8080'
-    env_file:
-      - iot-platform/.env
-    environment:
-      - TZ=Europe/Belgrade
-    depends_on:
-        postgresql-db:
-          condition: service_started
+#  postgresql-db:
+#    image: 'postgres'
+#    ports:
+#      - '5433:5432'
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+#    environment:
+#       POSTGRES_DB: iot-platform-database
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: mysecretpassword
+#  iot-cloud-platform:
+#    image: 'iot-cloud-platform'
+#    ports:
+#      - '8080:8080'
+#    env_file:
+#      - iot-platform/.env
+#    environment:
+#      - TZ=Europe/Belgrade
+#    depends_on:
+#        postgresql-db:
+#          condition: service_started
   iot-gateway:
     image: 'iot-gateway'
     stdin_open: true
@@ -71,19 +71,19 @@ services:
     environment:
       - TZ=Europe/Belgrade
     depends_on:
-      iot-cloud-platform:
-        condition: service_started
+#      iot-cloud-platform:
+#        condition: service_started
       mqtt-broker:
         condition: service_healthy
-  dashboard:
-    image: 'iot-dashboard'
-    ports:
-      - '3000:3000'
-    env_file:
-      - iot-dashboard/.env
-    depends_on:
-      iot-cloud-platform:
-        condition: service_started
+#  dashboard:
+#    image: 'iot-dashboard'
+#    ports:
+#      - '3000:3000'
+#    env_file:
+#      - iot-dashboard/.env
+#    depends_on:
+#      iot-cloud-platform:
+#        condition: service_started
 volumes:
   mqtt-data:
   mqtt-logs:
