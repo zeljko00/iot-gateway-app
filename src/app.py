@@ -217,11 +217,9 @@ def on_connect_temp_handler(client, userdata, flags, rc,props):
     Returns
     -------
     '''
-    print(rc)
     if rc == 0:
         infoLogger.info("Temperature data handler successfully established connection with MQTT broker!")
         customLogger.info("Temperature data handler successfully established connection with MQTT broker!")
-        print("SDGHSDJKGHGJKSHGJKSHJKDgh")
         client.subscribe(temp_topic, qos=qos)
     else:
         errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
@@ -241,10 +239,8 @@ def on_connect_load_handler(client, userdata, flags, rc,props):
     Returns
     -------
     '''
-    print("LOAD", rc)
     if rc == 0:
         infoLogger.info("Arm load data handler successfully established connection with MQTT broker!")
-        print("SDGHSDJKGHGJKSHGJKSHJKDghLOAD")
         client.subscribe(load_topic, qos=qos)
     else:
         errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
@@ -327,13 +323,13 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
         if not flag.is_set():
             data = message.payload.decode("utf-8")
             new_data.append(str(data))
-            customLogger.info("Received temperature data: " + str(data))
-            data_sum, unit = data_service.parse_incoming_data(str(data), "temperature")
-            time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
-            if data_sum > 150:
+            #customLogger.info("Received temperature data: " + str(data))
+            #data_sum, unit = data_service.parse_incoming_data(str(data), "temperature")
+            #time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
+            #if data_sum > 150:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
-                client.publish(temp_alarm_topic, True, qos)
+                #customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
+                #client.publish(temp_alarm_topic, True, qos)
 
     client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
                         protocol_version=mqtt.MQTTv5,
@@ -365,7 +361,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
         old_data.clear()
         # send request to Cloud only if there is available data
         if len(data) > 0:
-            code = data_service.handle_temperature_data(data, url, jwt, config[time_format], client)
+            code = data_service.handle_temperature_data(data, url, jwt, config[user], config[time_format], client)
 
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
@@ -481,7 +477,7 @@ def collect_load_data(config, url, jwt, flag, stats_queue):
         old_data.clear()
         # send request to Cloud only if there is available data
         if len(data) > 0:
-            code = data_service.handle_load_data(data, url, jwt, config[time_format])
+            code = data_service.handle_load_data(data, url, jwt, config[user], config[time_format], client)
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
                 old_data = data.copy()
@@ -566,7 +562,7 @@ def collect_fuel_data(config, url, jwt, flag, stats_queue):
         # making sure that flag is not set in meantime
         if not flag.is_set():
             customLogger.info("Received fuel data: "+str(message.payload.decode("utf-8")))
-            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), config[fuel_settings][level_limit], url, jwt, config[time_format], client)
+            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), config[fuel_settings][level_limit], url, jwt, config[user], config[time_format], client)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:

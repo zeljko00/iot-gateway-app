@@ -581,31 +581,21 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
-        can_lock.acquire()
+
         if not init_flags.can_initiated:
-            can_lock.release()
-            can_sensor = Process(target=read_can, args=(app_conf_data[can_general_settings][interface],
-                                                        app_conf_data[can_general_settings][channel],
-                                                        app_conf_data[can_general_settings][bitrate],
-                                                        is_can_temp,
-                                                        is_can_load,
-                                                        is_can_fuel,
-                                                        conf_data,
-                                                        can_flag,
-                                                        config_flags.can_flag,
-                                                        init_flags,
-                                                        can_lock
-                                                        ))
+            can_sensor = threading.Thread(target=read_can, args=(can_flag,
+                                                                 config_flags.can_flag,
+                                                                 init_flags,
+                                                                 can_lock
+                                                                 ))
 
             sensors.append(can_sensor)
             can_lock.acquire()
             init_flags.can_initiated = True
             can_lock.release()
     if app_conf_data[temp_settings][mode] == "SIMULATOR":
-        temp_lock.acquire()
         if not init_flags.temp_simulator_initiated:
-            temp_lock.release()
-            simulation_temperature_sensor = Process(target=measure_temperature_periodically,
+            simulation_temperature_sensor = threading.Thread(target=measure_temperature_periodically,
                                                     args=(conf_data[temp_sensor][interval],
                                                           conf_data[temp_sensor][min],
                                                           conf_data[temp_sensor][avg],
@@ -623,7 +613,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             temp_lock.release()
     if app_conf_data[load_settings][mode] == "SIMULATOR":
         if not init_flags.load_simulator_initiated:
-            simulation_load_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
+            simulation_load_sensor = threading.Thread(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
                                                                                  conf_data[arm_sensor][arm_max_t],
                                                                                  conf_data[arm_sensor][min],
                                                                                  conf_data[arm_sensor][max],
@@ -640,10 +630,9 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             init_flags.load_simulator_initiated = True
             load_lock.release()
     if app_conf_data[fuel_settings][mode] == "SIMULATOR":
-        fuel_lock.acquire()
+
         if not init_flags.fuel_simulator_initiated:
-            fuel_lock.release()
-            simulation_fuel_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
+            simulation_fuel_sensor = threading.Thread(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
                                                                                      conf_data[fuel_sensor][
                                                                                          fuel_capacity],
                                                                                      conf_data[fuel_sensor][
@@ -683,6 +672,9 @@ class InitFlags:
             return True
         return False
 
+    def print(self):
+        print("CAN: " + str(self.can_initiated) + "| TEMP: " + str(self.temp_simulator_initiated) + "| LOAD: " + str(self.load_simulator_initiated) + "| FUEL: " + str(self.fuel_simulator_initiated))
+
 
 def main():
     '''
@@ -704,10 +696,10 @@ def main():
 
     main_execution_flag = Event()
 
-    temp_lock = multiprocessing.Lock()
-    load_lock = multiprocessing.Lock()
-    fuel_lock = multiprocessing.Lock()
-    can_lock = multiprocessing.Lock()
+    temp_lock = threading.Lock()
+    load_lock = threading.Lock()
+    fuel_lock = threading.Lock()
+    can_lock = threading.Lock()
 
     app_config_flags = ConfFlags()
     init_flags = InitFlags()
@@ -715,25 +707,22 @@ def main():
     initial = True
     sensors = []
     customLogger.debug("Sensor system starting!")
-    shutdown_controller_worker = Process(target=shutdown_controller,
-                                         args=(temp_simulation_flag, load_simulation_flag, fuel_simulation_flag, can_flag, main_execution_flag))
-    shutdown_controller_worker.start()
     initial = True
+
+    #  dictionary to track which thread to join, remembering old and new flags from config
+
     while not main_execution_flag.is_set():
         if app_config_flags.execution_flag.is_set() or initial:
             initial = False
+            init_flags.print()
             sensors = sensors_devices(temp_simulation_flag, load_simulation_flag, fuel_simulation_flag, can_flag, app_config_flags, init_flags, can_lock, temp_lock, load_lock, fuel_lock)
+            app_config_flags.execution_flag.clear()
+            init_flags.print()
             if sensors is not None:
                 for sensor in sensors:
                     sensor.start()
                     time.sleep(0.1)
-        if init_flags.has_started():
-            infoLogger.info("Sensor system started!")
-        else:
-            infoLogger.info("No sensors to start!")
-
         time.sleep(2)
-    shutdown_controller_worker.join()
     for sensor in sensors:
         sensor.join()
 
@@ -762,8 +751,8 @@ def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag, 
     '''
     # waiting for shutdown signal
     input("")
-    infoLogger.info("IoT Gateway app shutting down! Please wait")
-    customLogger.debug("IoT Gateway app shutting down! Please wait")
+    infoLogger.info("Sensor app shutting down! Please wait")
+    customLogger.debug("Sensor app shutting down! Please wait")
     # shutting down handler processes
     temp_handler_flag.set()
     load_handler_flag.set()

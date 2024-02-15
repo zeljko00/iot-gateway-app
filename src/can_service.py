@@ -37,6 +37,7 @@ temp_settings = "temp_settings"
 load_settings = "load_settings"
 fuel_settings = "fuel_settings"
 can_general_settings = "can_general_settings"
+
 channel = "channel"
 interface = "interface"
 bitrate = "bitrate"
@@ -66,7 +67,7 @@ load_alarm_topic = "alarms/load"
 fuel_alarm_topic = "alarms/fuel"
 
 
-def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel, conf_data, flag, config_flag, init_flags, can_lock):
+def read_can(execution_flag, config_flag, init_flags, can_lock):
 
     customLogger.debug("CAN process started!")
 
@@ -77,14 +78,31 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
     temp_client = None
     load_client = None
     fuel_client = None
-    while not flag.is_set():  # TODO wait
+
+    bus = None
+    while not execution_flag.is_set():  # TODO wait
         if config_flag.is_set() or initial:
             conf_data = read_app_conf()
-            bus = can.interface.Bus(interface=interface,
-                                    channel=channel,
-                                    bitrate=bitrate)
+
+            stop_can(notifier, bus, temp_client, load_client, fuel_client)
+
+            interface_value = conf_data[can_general_settings][interface]
+            channel_value = conf_data[can_general_settings][channel]
+            bitrate_value = conf_data[can_general_settings][bitrate]
+
+            is_can_temp = True if conf_data[temp_settings][mode] == "CAN" else False
+            is_can_load = True if conf_data[load_settings][mode] == "CAN" else False
+            is_can_fuel = True if conf_data[fuel_settings][mode] == "CAN" else False
+
+            if (is_can_temp is False) and (is_can_load is False) and (is_can_fuel is False):
+                break
+
+            bus = can.interface.Bus(interface=interface_value,
+                                    channel=channel_value,
+                                    bitrate=bitrate_value)
+
             temp_client, load_client, fuel_client = init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel,
-                                                                      conf_data, flag)
+                                                                      conf_data, execution_flag)
             notifier = can.Notifier(bus, [], timeout=period)
             can_listener = CANListener(temp_client, load_client, fuel_client)
             notifier.add_listener(can_listener)
@@ -92,19 +110,25 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
             config_flag.clear()  # TODO
 
         time.sleep(period)
-
     can_lock.acquire()
     init_flags.can_flag = False  # TODO suss
     can_lock.release()
 
-    notifier.stop(timeout=5)
+    stop_can(notifier, bus, temp_client, load_client, fuel_client)
+    # TODO on_disconnect
+    execution_flag.clear()
+
+def stop_can(notifier, bus, temp_client, load_client, fuel_client):
+    if notifier is not None:
+        notifier.stop(timeout=5)
     if temp_client is not None:
         temp_client.disconnect()
     if load_client is not None:
         load_client.disconnect()
     if fuel_client is not None:
         fuel_client.disconnect()
-    # TODO on_disconnect
+    if bus is not None:
+        bus.shutdown()
 
 
 def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, flag):

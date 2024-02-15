@@ -100,7 +100,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     if data_sum > 150:
         # sound the alarm! ask him what do I send #ASK
         customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
-        client.publish(temp_alarm_topic, True, qos)
+        mqtt_client.publish(temp_alarm_topic, True, qos)
 
     time_value = time.strftime(time_format, time.localtime())
     payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
@@ -108,7 +108,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     try:
         # [REST/MQTT]
         mqtt_payload = {"username": username, "payload": payload}
-        mqtt_client.publish(gcb_temp_topic, json.dumps(mqtt_payload), gcb_qos)
+        # publish(gcb_temp_topic, json.dumps(mqtt_payload), gcb_qos)
         customLogger.debug("TEMP MESSAGE PUBLISHED")
 
         #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -119,6 +119,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
         errorLogger.error("Temperature Cloud service cant be reached!")
         customLogger.critical("Temperature Cloud service cant be reached!")
         return http_not_found
+
 
 def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     '''
@@ -154,7 +155,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     try:
         # [REST/MQTT]
         mqtt_payload = {"username": username, "payload": payload}
-        mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos)
+        # mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos)
         customLogger.debug("LOAD MESSAGE PUBLISHED")
 
         #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -201,7 +202,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
 
             # sound the alarm! ask him what do I send #ASK
             customLogger.info("Fuel is below the designated limit! Sounding the alarm")
-            client.publish(fuel_alarm_topic, True, qos)
+            mqtt_client.publish(fuel_alarm_topic, True, qos)
 
             unit = "unknown"
             try:
@@ -217,7 +218,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
             try:
                 # [REST/MQTT]
                 mqtt_payload = {"username": username, "payload": payload}
-                mqtt_client.publish(gcb_fuel_topic, json.dumps(mqtt_payload), gcb_qos)
+                # mqtt_client.publish(gcb_fuel_topic, json.dumps(mqtt_payload), gcb_qos)
                 customLogger.debug("FUEL MESSAGE PUBLISHED")
 
                 #post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
