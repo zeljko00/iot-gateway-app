@@ -116,7 +116,8 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
 
         # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         # if post_req.status_code != http_ok:
-        #    errorLogger.error("Problem with temperature Cloud service! - Http status code: "+ str(post_req.status_code))
+        #    errorLogger.error("Problem with temperature Cloud service! - Http status code: "
+        #    + str(post_req.status_code))
         # return post_req.status_code
     except BaseException:
         errorLogger.error("Temperature Cloud service cant be reached!")
@@ -227,8 +228,10 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
                 # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
 
                 # if post_req.status_code != http_ok:
-                #    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                #    customLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
+                #    errorLogger.error("Problem with fuel Cloud service! - Http status code: "
+                #    + str(post_req.status_code))
+                #    customLogger.error("Problem with fuel Cloud service! - Http status code: "
+                #    + str(post_req.status_code))
                 # return post_req.status_code
             except BaseException:
                 errorLogger.error("Fuel Cloud service cant be reached!")

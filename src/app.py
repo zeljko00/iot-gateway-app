@@ -17,7 +17,8 @@ on_connect_load_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting load sensor to MQTT broker.
 on_connect_fuel_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting fuel sensor to MQTT broker.
-collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)
+collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address,
+mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)
     Collects temperature data and periodically initiates data processing and forwarding.
 collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue)
     Collects load data and periodically initiates data processing and forwarding.
@@ -658,25 +659,28 @@ def main():
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
 
-            temperature_data_handler = Process(target=collect_temperature_data, args=(config,
-                                                                                      config[server_url] + "/data/temp",
-                                                                                      jwt,
-                                                                                      temp_handler_flag,
-                                                                                      temp_stats_queue))
+            temperature_data_handler = Process(target=collect_temperature_data,
+                                               args=(config,
+                                                     config[server_url] + "/data/temp",
+                                                     jwt,
+                                                     temp_handler_flag,
+                                                     temp_stats_queue))
             temperature_data_handler.start()
             time.sleep(1)
-            load_data_handler = Process(target=collect_load_data, args=(config,
-                                                                        config[server_url] + "/data/load",
-                                                                        jwt,
-                                                                        load_handler_flag,
-                                                                        load_stats_queue))
+            load_data_handler = Process(target=collect_load_data,
+                                        args=(config,
+                                              config[server_url] + "/data/load",
+                                              jwt,
+                                              load_handler_flag,
+                                              load_stats_queue))
             load_data_handler.start()
             time.sleep(1)
-            fuel_data_handler = Process(target=collect_fuel_data, args=(config,
-                                                                        config[server_url] + "/data/fuel",
-                                                                        jwt,
-                                                                        fuel_handler_flag,
-                                                                        fuel_stats_queue,))
+            fuel_data_handler = Process(target=collect_fuel_data,
+                                        args=(config,
+                                              config[server_url] + "/data/fuel",
+                                              jwt,
+                                              fuel_handler_flag,
+                                              fuel_stats_queue,))
             fuel_data_handler.start()
             time.sleep(1)
             # waiting fow workers to stop
