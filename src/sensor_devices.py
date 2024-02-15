@@ -207,7 +207,8 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 # period = measuring interval in sec, min_val/max_val = min/max measured value
 
 
-def measure_temperature_periodically(period, min_val, avg_val, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
+def measure_temperature_periodically(period, min_val, avg_val, broker_address,
+                                     broker_port, mqtt_username, mqtt_pass, flag):
     '''
     Emulates temperature sensor.
 
@@ -281,10 +282,10 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address, b
                 value = avg_val + data[counter % values_count]
                 counter += 1
             customLogger.error("Temperature: " + data_pattern.format("{:.2f}".format(value),
-                                                                     str(time.strftime(time_format, time.localtime())), celzius))
+                               str(time.strftime(time_format, time.localtime())), celzius))
             # send data to MQTT broker
-            client.publish(temp_topic, data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format,
-                                                                                                     time.localtime())), celzius), qos=qos)
+            client.publish(temp_topic, data_pattern.format("{:.2f}".format(value),
+                           str(time.strftime(time_format, time.localtime())), celzius), qos=qos)
         except BaseException:
             errorLogger.error("Connection between temperature sensor and MQTT broker is broken!")
             customLogger.critical("Connection between temperature sensor and MQTT broker is broken!")
@@ -417,7 +418,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     None
     '''
     customLogger.debug("Fuel level sensor started!")
-    customLogger.debug("Fuel level sensor conf: period={}s , capacity={}l , consumption={}l/h , efficiency={} , refill={}".
+    customLogger.debug("Fuel level sensor conf: period={}s, capacity={}l, consumption={}l/h, efficiency={}, refill={}".
                        format(period, capacity, consumption, efficiency, refill))
     # parameter validation
     if period == 0:
@@ -466,10 +467,10 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
             time.sleep(0.1)
         try:
             customLogger.warning("Fuel: " + data_pattern.format("{:.2f}".format(value),
-                                                                str(time.strftime(time_format, time.localtime())), liter))
+                                 str(time.strftime(time_format, time.localtime())), liter))
             # send data to MQTT broker
-            client.publish(fuel_topic,
-                           data_pattern.format("{:.2f}".format(value), str(time.strftime(time_format, time.localtime())), liter),
+            client.publish(fuel_topic, data_pattern.format("{:.2f}".format(value),
+                           str(time.strftime(time_format, time.localtime())), liter),
                            qos=qos)
         except BaseException:
             errorLogger.error("Connection between fuel level sensor and MQTT broker is broken!")
@@ -567,37 +568,40 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
                                                     ))
         sensors.append(can_sensor)
     if app_conf_data[temp_settings][mode] == "SIMULATOR":
-        simulation_temperature_sensor = Process(target=measure_temperature_periodically, args=(conf_data[temp_sensor][interval],
-                                                                                               conf_data[temp_sensor][min],
-                                                                                               conf_data[temp_sensor][avg],
-                                                                                               conf_data[mqtt_broker][address],
-                                                                                               conf_data[mqtt_broker][port],
-                                                                                               conf_data[mqtt_broker][mqtt_user],
-                                                                                               conf_data[mqtt_broker][mqtt_password],
-                                                                                               temp_flag, ))
+        simulation_temperature_sensor = Process(target=measure_temperature_periodically,
+                                                args=(conf_data[temp_sensor][interval],
+                                                      conf_data[temp_sensor][min],
+                                                      conf_data[temp_sensor][avg],
+                                                      conf_data[mqtt_broker][address],
+                                                      conf_data[mqtt_broker][port],
+                                                      conf_data[mqtt_broker][mqtt_user],
+                                                      conf_data[mqtt_broker][mqtt_password],
+                                                      temp_flag, ))
         sensors.append(simulation_temperature_sensor)
     if app_conf_data[load_settings][mode] == "SIMULATOR":
-        simulation_load_sensor = Process(target=measure_load_randomly, args=(conf_data[arm_sensor][arm_min_t],
-                                                                             conf_data[arm_sensor][arm_max_t],
-                                                                             conf_data[arm_sensor][min],
-                                                                             conf_data[arm_sensor][max],
-                                                                             conf_data[mqtt_broker][address],
-                                                                             conf_data[mqtt_broker][port],
-                                                                             conf_data[mqtt_broker][mqtt_user],
-                                                                             conf_data[mqtt_broker][mqtt_password],
-                                                                             load_flag,))
+        simulation_load_sensor = Process(target=measure_load_randomly,
+                                         args=(conf_data[arm_sensor][arm_min_t],
+                                               conf_data[arm_sensor][arm_max_t],
+                                               conf_data[arm_sensor][min],
+                                               conf_data[arm_sensor][max],
+                                               conf_data[mqtt_broker][address],
+                                               conf_data[mqtt_broker][port],
+                                               conf_data[mqtt_broker][mqtt_user],
+                                               conf_data[mqtt_broker][mqtt_password],
+                                               load_flag,))
         sensors.append(simulation_load_sensor)
     if app_conf_data[fuel_settings][mode] == "SIMULATOR":
-        simulation_fuel_sensor = Process(target=measure_fuel_periodically, args=(conf_data[fuel_sensor][interval],
-                                                                                 conf_data[fuel_sensor][fuel_capacity],
-                                                                                 conf_data[fuel_sensor][fuel_consumption],
-                                                                                 conf_data[fuel_sensor][fuel_efficiency],
-                                                                                 conf_data[fuel_sensor][fuel_refill],
-                                                                                 conf_data[mqtt_broker][address],
-                                                                                 conf_data[mqtt_broker][port],
-                                                                                 conf_data[mqtt_broker][mqtt_user],
-                                                                                 conf_data[mqtt_broker][mqtt_password],
-                                                                                 fuel_flag,))
+        simulation_fuel_sensor = Process(target=measure_fuel_periodically,
+                                         args=(conf_data[fuel_sensor][interval],
+                                               conf_data[fuel_sensor][fuel_capacity],
+                                               conf_data[fuel_sensor][fuel_consumption],
+                                               conf_data[fuel_sensor][fuel_efficiency],
+                                               conf_data[fuel_sensor][fuel_refill],
+                                               conf_data[mqtt_broker][address],
+                                               conf_data[mqtt_broker][port],
+                                               conf_data[mqtt_broker][mqtt_user],
+                                               conf_data[mqtt_broker][mqtt_password],
+                                               fuel_flag,))
         sensors.append(simulation_fuel_sensor)
     return sensors
 
