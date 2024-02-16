@@ -25,7 +25,7 @@ data_pattern = "[ value={} , time={} , unit={} ]"
 time_format = "%d.%m.%Y %H:%M:%S"
 celzius = "C"
 kg = "kg"
-l = "l"
+_l = "l"
 
 mode = "mode"
 temp_settings = "temp_settings"
@@ -296,4 +296,4 @@ class CANListener (can.Listener):
                                                                      celzius), qos)
             customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(float_value),
                                                              str(time.strftime(time_format, time.localtime())),
-                                                             l))
+                                                             _l))
