@@ -346,10 +346,7 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             time_value = time.strftime(time_format, time.localtime())
             if data_sum > 150:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info(
-                    "Temperature of " +
-                    str(data_sum) +
-                    " C is too high! Sounding the alarm!")
+                customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     # [REST/MQTT]
@@ -503,10 +500,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
             time_value = time.strftime(time_format, time.localtime())
             if data_sum > 1000:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info(
-                    "Load of " +
-                    str(data_sum) +
-                    " kg is too high! Sounding the alarm!")
+                customLogger.info("Load of " + str(data_sum) + " kg is too high! Sounding the alarm!")
                 client.publish(load_alarm_topic, True, qos)
 
     # initializing stats object
@@ -665,19 +659,16 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                 limit = get_fuel_level_limit(read_conf())
                 conf_flag.clear()
 
-            customLogger.info("Received fuel data: " +
-                              str(message.payload.decode("utf-8")))
+            customLogger.info("Received fuel data: " + str(message.payload.decode("utf-8")))
 
-            code = data_service.handle_fuel_data(
-                str(
-                    message.payload.decode("utf-8")),
-                config[fuel_settings][level_limit],
-                url,
-                jwt,
-                config[user],
-                config[time_format],
-                client,
-                gcb_client)
+            code = data_service.handle_fuel_data(str(message.payload.decode("utf-8")),
+                                                 config[fuel_settings][level_limit],
+                                                 url,
+                                                 jwt,
+                                                 config[user],
+                                                 config[time_format],
+                                                 client,
+                                                 gcb_client)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
@@ -736,23 +727,19 @@ def main():
             conf_observer = start_config_observer(conf_flags)
 
             # iot cloud platform login
-            jwt = auth.login(
-                config[user],
-                config[password],
-                config[server_url] +
-                "/auth/login")
+            jwt = auth.login(config[user],
+                             config[password],
+                             config[server_url] + "/auth/login")
             # if failed, periodically request signup
             if jwt is None:
                 customLogger.error(
                     "Login failed! Trying to sign up periodically!")
-                jwt = signup_periodically(
-                    config[api_key],
-                    config[user],
-                    config[password],
-                    config[server_time_format],
-                    config[server_url] +
-                    "/auth/signup",
-                    config[auth_interval])
+                jwt = signup_periodically(config[api_key],
+                                          config[user],
+                                          config[password],
+                                          config[server_time_format],
+                                          config[server_url] + "/auth/signup",
+                                          config[auth_interval])
             else:
                 customLogger.debug("Login successful!")
             # now JWT required for Cloud platform auth is stored in jwt var
@@ -765,21 +752,16 @@ def main():
 
             # [REST/MQTT] [Publisher client created and passed as new parameter i OverallStats]
             gcb_conf = MQTTConf.from_app_config(config, "gateway_cloud_broker")
-            gcb_client = gcb_init_publisher(
-                "stats_data_publisher_mqtt",
-                gcb_conf.username,
-                gcb_conf.password)
+            gcb_client = gcb_init_publisher("stats_data_publisher_mqtt", gcb_conf.username, gcb_conf.password)
             gcb_connect(gcb_client, gcb_conf.address, gcb_conf.port)
             customLogger.debug(
                 "STATS PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
-            stats = stats_service.OverallStats(
-                config[server_url] +
-                "/stats",
-                jwt,
-                config[user],
-                config[time_format],
-                gcb_client)
+            stats = stats_service.OverallStats(config[server_url] + "/stats",
+                                               jwt,
+                                               config[user],
+                                               config[time_format],
+                                               gcb_client)
             temp_stats_queue = Queue()
             load_stats_queue = Queue()
             fuel_stats_queue = Queue()
@@ -788,48 +770,38 @@ def main():
             load_handler_flag = Event()
             fuel_handler_flag = Event()
             # shutdown thread
-            shutdown_controller_worker = Thread(
-                target=shutdown_controller, args=(
-                    temp_handler_flag, load_handler_flag, fuel_handler_flag))
+            shutdown_controller_worker = Thread(target=shutdown_controller,
+                                                args=(temp_handler_flag, load_handler_flag, fuel_handler_flag))
 
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
 
-            temperature_data_handler = Process(
-                target=collect_temperature_data,
-                args=(
-                    config,
-                    config[server_url] +
-                    "/data/temp",
-                    jwt,
-                    temp_handler_flag,
-                    conf_flags.temp_flag,
-                    temp_stats_queue))
+            temperature_data_handler = Process(target=collect_temperature_data,
+                                               args=(config,
+                                                     config[server_url] + "/data/temp",
+                                                     jwt,
+                                                     temp_handler_flag,
+                                                     conf_flags.temp_flag,
+                                                     temp_stats_queue))
             temperature_data_handler.start()
             time.sleep(1)
-            load_data_handler = Process(
-                target=collect_load_data,
-                args=(
-                    config,
-                    config[server_url] +
-                    "/data/load",
-                    jwt,
-                    load_handler_flag,
-                    conf_flags.load_flag,
-                    load_stats_queue))
+            load_data_handler = Process(target=collect_load_data,
+                                        args=(config,
+                                              config[server_url] + "/data/load",
+                                              jwt,
+                                              load_handler_flag,
+                                              conf_flags.load_flag,
+                                              load_stats_queue))
             load_data_handler.start()
             time.sleep(1)
-            fuel_data_handler = Process(
-                target=collect_fuel_data,
-                args=(
-                    config,
-                    config[server_url] +
-                    "/data/fuel",
-                    jwt,
-                    fuel_handler_flag,
-                    conf_flags.fuel_flag,
-                    fuel_stats_queue,
-                ))
+            fuel_data_handler = Process(target=collect_fuel_data,
+                                        args=(config,
+                                              config[server_url] + "/data/fuel",
+                                              jwt,
+                                              fuel_handler_flag,
+                                              conf_flags.fuel_flag,
+                                              fuel_stats_queue,
+                                              ))
             fuel_data_handler.start()
             time.sleep(1)
             # waiting fow workers to stop
