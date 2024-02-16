@@ -67,7 +67,6 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                             bitrate=bitrate)
 
     customLogger.debug("CAN process started!")
-    print("CAN PROCESS STARTED")
     period = conf_data[temp_sensor][interval]
     if period == 0:
         period = 1
@@ -105,6 +104,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
         temp_client.set_on_publish(on_publish)
         temp_client.set_on_subscribe(on_subscribe_temp_alarm)
         temp_client.set_on_message(on_message_temp_alarm)
+        temp_client.connect()
 
     if is_can_load:
         load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -121,7 +121,7 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                                  bus=bus)
 
         def on_message_load_alarm(client, userdata, msg):
-
+            print("HELLLO?")
             can_message = can.Message(arbitration_id=0x121,
                                       data=[bool(msg.payload)],  # TODO if anything else is sent instead of True/False
                                       is_extended_id=False,
@@ -129,9 +129,12 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
             time.sleep(10)
             bus.send(msg=can_message, timeout=5)
             customLogger.info("Load alarm registered! Forwarding to CAN!")
+
         load_client.set_on_connect(on_connect_load_sensor)
         load_client.set_on_publish(on_publish)
-        # load_client.set_subscribe(subscribe_load_alarm)
+        load_client.set_on_subscribe(on_subscribe_load_alarm)
+        load_client.set_on_message(on_message_load_alarm)
+        load_client.connect()
 
     if is_can_fuel:
         fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
@@ -146,9 +149,22 @@ def read_can(interface, channel, bitrate, is_can_temp, is_can_load, is_can_fuel,
                                  flag=flag,
                                  sensor_type="FUEL",
                                  bus=bus)
+
+        def on_message_fuel_alarm(client, userdata, msg):
+
+            can_message = can.Message(arbitration_id=0x122,
+                                      data=[bool(msg.payload)],  # TODO if anything else is sent instead of True/False
+                                      is_extended_id=False,
+                                      is_remote_frame=False)
+            time.sleep(10)
+            bus.send(msg=can_message, timeout=5)
+            customLogger.info("Fuel alarm registered! Forwarding to CAN!")
+
         fuel_client.set_on_connect(on_connect_fuel_sensor)
         fuel_client.set_on_publish(on_publish)
-        # fuel_client.set_subscribe(subscribe_fuel_alarm)
+        fuel_client.set_on_subscribe(on_subscribe_fuel_alarm)
+        fuel_client.set_on_message(on_message_fuel_alarm)
+        fuel_client.connect()
 
     notifier = can.Notifier(bus, [], timeout=period)
     can_listener = CANListener(temp_client, load_client, fuel_client)
@@ -264,15 +280,9 @@ class CANListener (can.Listener):
                     "{:.2f}".format(float_value), str(
                         time.strftime(
                             time_format, time.localtime())), celzius), qos)
-            customLogger.info(
-                "Temperature: " +
-                data_pattern.format(
-                    "{:.2f}".format(float_value),
-                    str(
-                        time.strftime(
-                            time_format,
-                            time.localtime())),
-                    celzius))
+            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(float_value),
+                                                                    str(time.strftime(time_format, time.localtime())),
+                                                                    celzius))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
             self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
                                                                      str(time.strftime(time_format, time.localtime())),

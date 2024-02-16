@@ -78,9 +78,9 @@ import logging.config
 import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
-from src.mqtt_utils import MQTTClient
 from mqtt_util import *
 from config_util import *
+from mqtt_utils import MQTTClient
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -319,8 +319,8 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         gcb_conf.password)
     gcb_connect(gcb_client, gcb_conf.address, gcb_conf.port)
     customLogger.debug("TEMP PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
-
     # called when there is new message in temp_topic topic
+
     def on_message_handler(client, userdata, message):
         '''
          Handles received mqtt message.
@@ -337,22 +337,19 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
          -------
         '''
         if not flag.is_set():
-            print("MESSAGE HERE", message)
             data = message.payload.decode("utf-8")
             new_data.append(str(data))
             customLogger.info("Received temperature data: " + str(data))
-            print("DATA TYPE", type(data))
-            data_sum, unit = data_service.parse_temperature_data(
-                str(data), time_format)
+            data_sum, unit = data_service.parse_incoming_data(
+                str(data), "temperature")
             # ASK this is the time from the gateway, not the sensor
             time_value = time.strftime(time_format, time.localtime())
-            print("RESULT", data_sum, time_value, unit)
             if data_sum > 150:
                 # sound the alarm! ask him what do I send #ASK
                 customLogger.info(
                     "Temperature of " +
                     str(data_sum) +
-                    "C is too high! Sounding the alarm!")
+                    " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     # [REST/MQTT]
@@ -408,7 +405,8 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         # send request to Cloud only if there is available data
         if len(data) > 0:
             code = data_service.handle_temperature_data(
-                data, url, jwt, config[user], config[time_format], gcb_client)
+                data, url, jwt, config[user], config[time_format], client, gcb_client)
+
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
                 old_data = data.copy()
@@ -479,6 +477,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
     customLogger.debug("LOAD PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
     # called when there is new message in load_topic topic
+
     def on_message_handler(client, userdata, message):
         '''
          Handles received mqtt message.
@@ -495,43 +494,46 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
          -------
         '''
         if not flag.is_set():
-            new_data.append(str(message.payload.decode("utf-8")))
-            customLogger.info("Received load data: " +
-                              str(message.payload.decode("utf-8")))
+            data = message.payload.decode("utf-8")
+            new_data.append(str(data))
+            customLogger.info("Received load data: " + str(data))
+            data_sum, unit = data_service.parse_incoming_data(
+                str(data), "load")
+            # ASK this is the time from the gateway, not the sensor
+            time_value = time.strftime(time_format, time.localtime())
+            if data_sum > 1000:
+                # sound the alarm! ask him what do I send #ASK
+                customLogger.info(
+                    "Load of " +
+                    str(data_sum) +
+                    " kg is too high! Sounding the alarm!")
+                client.publish(load_alarm_topic, True, qos)
 
     # initializing stats object
     stats = stats_service.Stats()
     # initializing mqtt client for collecting sensor data from broker
-    client = mqtt.Client(
-        client_id="load-data-handler-mqtt-client",
-        transport=transport_protocol,
-        protocol=mqtt.MQTTv5)
-    client.username_pw_set(
-        username=config[mqtt_broker][user],
-        password=config[mqtt_broker][password])
-    client.on_connect = on_connect_load_handler
-    client.on_message = on_message_handler
-    while not client.is_connected():
-        # [REST/MQTT]
-        if conf_flag.is_set():
-            interval = get_load_interval(read_conf())
-            conf_flag.clear()
+    client = MQTTClient(
+        "load-data-handler-mqtt-client",
+        transport_protocol=transport_protocol,
+        protocol_version=mqtt.MQTTv5,
+        mqtt_username=config[mqtt_broker][user],
+        mqtt_pass=config[mqtt_broker][password],
+        broker_address=config[mqtt_broker][address],
+        broker_port=config[mqtt_broker][port],
+        keepalive=config[temp_settings][interval] * 3,
+        infoLogger=infoLogger,
+        errorLogger=errorLogger,
+        flag=flag,
+        sensor_type="LOAD",
+        bus=None,
+    )
+    # initializing stats object
+    stats = stats_service.Stats()
+    # initializing mqtt client for collecting sensor data from broker
+    client.set_on_connect(on_connect_load_handler)
+    client.set_on_message(on_message_handler)
+    client.connect()
 
-        try:
-            infoLogger.info(
-                "Arm load data handler establishing connection with MQTT broker!")
-            client.connect(
-                config[mqtt_broker][address],
-                port=config[mqtt_broker][port],
-                keepalive=abs(
-                    round(
-                        config[load_settings][interval])) *
-                3)
-            client.loop_start()
-        except BaseException:
-            errorLogger.error(
-                "Arm load data handler failed to establish connection with MQTT broker!")
-        time.sleep(0.2)
     # periodically processes collected data and forwards result to cloud
     # services
     while not flag.is_set():
@@ -610,6 +612,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
     -------
     '''
     # initializing stats object
+
     stats = stats_service.Stats()
 
     # [REST/MQTT]
@@ -623,6 +626,22 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
     customLogger.debug("FUEL PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
     # called when there is new message in load_topic topic
+    client = MQTTClient(
+        "fuel-data-handler-mqtt-client",
+        transport_protocol=transport_protocol,
+        protocol_version=mqtt.MQTTv5,
+        mqtt_username=config[mqtt_broker][user],
+        mqtt_pass=config[mqtt_broker][password],
+        broker_address=config[mqtt_broker][address],
+        broker_port=config[mqtt_broker][port],
+        keepalive=config[temp_settings][interval] * 3,
+        infoLogger=infoLogger,
+        errorLogger=errorLogger,
+        flag=flag,
+        sensor_type="FUEL",
+        bus=None,
+    )
+
     def on_message_handler(client, userdata, message):
         '''
             Handles received mqtt message.
@@ -648,6 +667,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
 
             customLogger.info("Received fuel data: " +
                               str(message.payload.decode("utf-8")))
+
             code = data_service.handle_fuel_data(
                 str(
                     message.payload.decode("utf-8")),
@@ -656,6 +676,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                 jwt,
                 config[user],
                 config[time_format],
+                client,
                 gcb_client)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
@@ -667,36 +688,21 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                 customLogger.error("JWT has expired!")
                 flag.set()
     # initializing mqtt client for collecting sensor data from broker
-    client = mqtt.Client(
-        client_id="fuel-data-handler-mqtt-client",
-        transport=transport_protocol,
-        protocol=mqtt.MQTTv5)
-    client.username_pw_set(
-        username=config[mqtt_broker][user],
-        password=config[mqtt_broker][password])
-    client.on_connect = on_connect_fuel_handler
-    client.on_message = on_message_handler
-    while not client.is_connected():
-        try:
-            infoLogger.info(
-                "Fuel level data handler establishing connection with MQTT broker!")
-            client.connect(
-                config[mqtt_broker][address],
-                port=config[mqtt_broker][port],
-                keepalive=abs(
-                    8 * 60 * 60))
-            client.loop_start()
-        except BaseException:
-            errorLogger.error(
-                "Fuel level data handler failed to establish connection with MQTT broker!")
-        time.sleep(0.2)
+
+    # initializing stats object
+    stats = stats_service.Stats()
+    # initializing mqtt client for collecting sensor data from broker
+    client.set_on_connect(on_connect_fuel_handler)
+    client.set_on_message(on_message_handler)
+    client.connect()
+
     # must do like this to be able to stop thread acquired for incoming
     # messages(on_message) after flag is set
+
     while not flag.is_set():
         time.sleep(2)
     # shutting down temperature sensor
     stats_queue.put(stats)
-    client.loop_stop()
     client.disconnect()
 
     # [REST/MQTT]
