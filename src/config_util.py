@@ -12,6 +12,7 @@ temp_settings = 'temp_settings'
 load_settings = 'load_settings'
 fuel_settings = 'fuel_settings'
 
+
 class ConfFlags:
     def __init__(self):
         self.fuel_flag = Event()
@@ -53,7 +54,7 @@ def read_conf():
         conf_file = open(conf_path)
         conf = json.load(conf_file)
         return conf
-    except:
+    except BaseException:
         return None
 
 
@@ -62,22 +63,29 @@ def write_conf(config):
         conf_file = open(conf_path, "w")
         conf_file.write(json.dumps(config, indent=4))
         return config
-    except:
+    except BaseException:
         return None
+
 
 def get_temp(config):
     return config['temp']
 
+
 def get_load(config):
     return config['load']
 
+
 def get_fuel(config):
     return config['fuel']
+
+
 def get_temp_interval(config):
     return config[temp_settings]['interval']
 
+
 def get_load_interval(config):
     return config[load_settings]['interval']
+
 
 def get_fuel_level_limit(config):
     return config[fuel_settings]['level_limit']

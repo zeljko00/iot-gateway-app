@@ -25,7 +25,8 @@ import logging.config
 # setting up loggers
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger('customConsoleLogger')
+customLogger = logging.getLogger('customConsoleLogger')
+
 
 class Stats:
     '''
@@ -44,6 +45,7 @@ class Stats:
     update_data(self, bytes, forwarded, requests)
         Updating stats data.
     '''
+
     def __init__(self):
         '''
         Initializes Stats object.
@@ -117,6 +119,7 @@ class OverallStats:
     send_stats(self):
         Sends collected stats dato to stats cloud service.
     '''
+
     def __init__(self, url, jwt, time_pattern):
         '''
         Initializes OverallStats object.
@@ -193,7 +196,6 @@ class OverallStats:
                 else:
                     errorLogger.error("problem with Stats Cloud service!")
                     customLogger.critical("Stats service unavailable!")
-            except:
+            except BaseException:
                 errorLogger.error("Stats Cloud service unavailable!")
                 customLogger.critical("Stats service unavailable!")
-

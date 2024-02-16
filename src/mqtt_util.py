@@ -20,6 +20,7 @@ gcb_load_topic = "gateway_data/load"
 gcb_fuel_topic = "gateway_data/fuel"
 gcb_stats_topic = "gateway_data/stats"
 
+
 class MQTTConf:
     def __init__(self, address, port, username, password):
         self.address = address
@@ -35,11 +36,14 @@ class MQTTConf:
                         config[broker]["password"])
 
 # These two are the same for now, but can be extended so that we can have different logic for pubs and subs
+
+
 def gcb_publisher_on_connect(client, userdata, flags, rc, props):
     if rc == 0:
         infoLogger.info("Successfully established connection with MQTT broker!")
     else:
         errorLogger.error("Failed to establish connection with MQTT broker!")
+
 
 def gcb_subscriber_on_connect(client, userdata, flags, rc, props):
     if rc == 0:
@@ -47,16 +51,20 @@ def gcb_subscriber_on_connect(client, userdata, flags, rc, props):
     else:
         errorLogger.error("Failed to establish connection with MQTT broker!")
 
+
 def gcb_on_publish(client, userdata, result):
     pass
 
+
 def gcb_on_message(client, userdata, message):
     customLogger.debug(f"GATEWAY_CLOUD_BROKER RECEIVED: {str(message.payload.decode('utf-8'))}")
+
 
 def gcb_init_client(client_id, username, password):
     client = mqtt.Client(client_id=client_id, transport=gcb_transport, protocol=gcb_protocol)
     client.username_pw_set(username=username, password=password)
     return client
+
 
 def gcb_init_publisher(client_id, username, password):
     client = gcb_init_client(client_id, username, password)
@@ -64,20 +72,23 @@ def gcb_init_publisher(client_id, username, password):
     client.on_publish = gcb_on_publish
     return client
 
+
 def gcb_init_subscriber(client_id, username, password):
     client = gcb_init_client(client_id, username, password)
     client.on_connect = gcb_subscriber_on_connect
     client.on_message = gcb_on_message
     return client
 
+
 def gcb_connect(client, address, port):
     while not client.is_connected():
         try:
             client.connect(address, port=port, keepalive=gcb_keepalive)
             client.loop_start()
-        except:
+        except BaseException:
             customLogger.error("Client failed to establish connection with MQTT broker.")
         time.sleep(gcb_connection_attempt_interval)
+
 
 def gcb_disconnect(client):
     client.loop_stop()

@@ -30,7 +30,7 @@ import logging.config
 
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger('customConsoleLogger')
+customLogger = logging.getLogger('customConsoleLogger')
 
 data_pattern = "[ value={} , time={} , unit={} ]"
 http_not_found = 404
@@ -42,18 +42,18 @@ def parse_temperature_data(data, time_format):
     data_sum = 0.0
     print("DATA IS HERE", data)
     # summarizing colleceted data
-    #for item in data:
+    # for item in data:
     try:
         tokens = data.split(" ")
         data_sum += float(tokens[1].split("=")[1])
         print(data_sum)
-    except:
+    except BaseException:
         errorLogger.error("Invalid temperature data format! - " + data)
     # time_value = time.strftime(time_format, time.localtime()) not needed
     unit = "unknown"
     try:
         unit = data.split(" ")[6].split("=")[1]
-    except:
+    except BaseException:
         errorLogger.error("Invalid temperature data format! - " + data)
     return data_sum, unit
 
@@ -92,12 +92,14 @@ def handle_temperature_data(data, url, jwt, time_format):
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         if post_req.status_code != http_ok:
-            errorLogger.error("Problem with temperature Cloud service! - Http status code: " + str(post_req.status_code))
+            errorLogger.error("Problem with temperature Cloud service! - Http status code: " +
+                              str(post_req.status_code))
         return post_req.status_code
-    except:
+    except BaseException:
         errorLogger.error("Temperature Cloud service cant be reached!")
         customLogger.critical("Temperature Cloud service cant be reached!")
         return http_not_found
+
 
 def handle_load_data(data, url, jwt, time_format):
     '''
@@ -126,24 +128,24 @@ def handle_load_data(data, url, jwt, time_format):
         try:
             tokens = item.split(" ")
             data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid load data format! - "+ item)
+        except BaseException:
+            errorLogger.error("Invalid load data format! - " + item)
     time_value = time.strftime(time_format, time.localtime())
     unit = "unknown"
     try:
         unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid load data format! - "+data[0])
+    except BaseException:
+        errorLogger.error("Invalid load data format! - " + data[0])
     # request payload
-    payload = {"value": round(data_sum,2), "time": time_value, "unit": unit}
-    customLogger.warning("Forwarding load data: " +str(payload))
+    payload = {"value": round(data_sum, 2), "time": time_value, "unit": unit}
+    customLogger.warning("Forwarding load data: " + str(payload))
     try:
         post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
         if post_req.status_code != http_ok:
             errorLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
             customLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
         return post_req.status_code
-    except:
+    except BaseException:
         errorLogger.error("Arm load Cloud service cant be reached!")
         customLogger.critical("Arm load Cloud service cant be reached!")
         return http_not_found
@@ -174,32 +176,34 @@ def handle_fuel_data(data, limit, url, jwt, time_format):
     '''
     try:
         tokens = data.split(" ")
-        value=float(tokens[1].split("=")[1])
+        value = float(tokens[1].split("=")[1])
         # sends data to cloud services only if it is value of interest
-        if value<=limit:
+        if value <= limit:
             unit = "unknown"
             try:
                 unit = tokens[6].split("=")[1]
-            except:
+            except BaseException:
                 errorLogger.error("Invalid fuel data format! - " + data)
             time_value = time.strftime(time_format, time.localtime())
             # request payload
-            payload = {"value": round(value,2), "time": time_value, "unit": unit}
+            payload = {"value": round(value, 2), "time": time_value, "unit": unit}
             customLogger.warning("Forwarding fuel data: " + str(payload))
             try:
                 post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
                 if post_req.status_code != http_ok:
-                    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                    customLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
+                    errorLogger.error("Problem with fuel Cloud service! - Http status code: " +
+                                      str(post_req.status_code))
+                    customLogger.error("Problem with fuel Cloud service! - Http status code: " +
+                                       str(post_req.status_code))
                 return post_req.status_code
-            except:
+            except BaseException:
                 errorLogger.error("Fuel Cloud service cant be reached!")
                 customLogger.error("Fuel Cloud service cant be reached!")
                 return http_not_found
         else:
             # data is handled but is not sent because fuel level is over the limit
             return http_no_content
-    except:
+    except BaseException:
         errorLogger.error("Invalid fuel data format! - " + data)
         # data can not be parsed, trying again to parse it and send in next iteration is redundant
         return http_no_content
