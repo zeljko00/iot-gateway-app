@@ -17,7 +17,8 @@ on_connect_load_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting load sensor to MQTT broker.
 on_connect_fuel_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting fuel sensor to MQTT broker.
-collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)
+collect_temperature_data(interval, url, jwt, time_pattern, mqtt_address,
+mqtt_port, mqtt_user,mqtt_pass, flag, stats_queue)
     Collects temperature data and periodically initiates data processing and forwarding.
 collect_load_data(interval, url, jwt, time_pattern, mqtt_address, mqtt_port, mqtt_user,mqtt_pass,flag, stats_queue)
     Collects load data and periodically initiates data processing and forwarding.
@@ -81,7 +82,7 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
 
-from src.mqtt_utils import MQTTClient
+from mqtt_utils import MQTTClient
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -123,45 +124,46 @@ fuel_topic = "sensors/fuel-level"
 http_unauthorized = 401
 http_ok = 200
 http_no_content = 204
-qos=2
+qos = 2
 
 temp_alarm_topic = "alarms/temperature"
 load_alarm_topic = "alarms/load"
 fuel_alarm_topic = "alarms/fuel"
 
 def signup_periodically(key, username, password, time_pattern, url, interval):
-     '''
-     Periodically requests device signup.
+    '''
+    Periodically requests device signup.
 
-     Parameters
-     ----------
-     key: str
-         API key.
-     username: str
-         Device's username,
-     password: str
-         Device's password,
-     time_pattern: str
-         Device's time pattern.
-     url: str
-         Cloud services URL.
-     interval: int
-         Time lapse between consecutive requests.
+    Parameters
+    ----------
+    key: str
+        API key.
+    username: str
+        Device's username,
+    password: str
+        Device's password,
+    time_pattern: str
+        Device's time pattern.
+    url: str
+        Cloud services URL.
+    interval: int
+        Time lapse between consecutive requests.
 
-     Returns
-     -------
-     jwt: str
-         JSON web token for accessing cloud services.
-     '''
-     jwt = None
-     while jwt is None:
-         customLogger.debug("Trying to sign up!")
-         jwt = auth.register(key, username, password, time_pattern, url)
-         time.sleep(interval)
-     customLogger.debug("Successful sign up!")
-     return jwt
+    Returns
+    -------
+    jwt: str
+        JSON web token for accessing cloud services.
+    '''
+    jwt = None
+    while jwt is None:
+        customLogger.debug("Trying to sign up!")
+        jwt = auth.register(key, username, password, time_pattern, url)
+        time.sleep(interval)
+    customLogger.debug("Successful sign up!")
+    return jwt
 
-def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
+
+def shutdown_controller(temp_handler_flag, load_handler_flag, fuel_handler_flag):
     '''
     Handles user request for sensor shutdown.
 
@@ -187,7 +189,9 @@ def shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
     temp_handler_flag.set()
     load_handler_flag.set()
     fuel_handler_flag.set()
-def on_connect_temp_handler(client, userdata, flags, rc,props):
+
+
+def on_connect_temp_handler(client, userdata, flags, rc, props):
     '''
     Logic executed after successfully connecting temperature sensor to MQTT broker.
 
@@ -211,7 +215,9 @@ def on_connect_temp_handler(client, userdata, flags, rc,props):
     else:
         errorLogger.error("Temperature data handler failed to establish connection with MQTT broker!")
         customLogger.critical("Temperature data handler failed to establish connection with MQTT broker!")
-def on_connect_load_handler(client, userdata, flags, rc,props):
+
+
+def on_connect_load_handler(client, userdata, flags, rc, props):
     '''
     Logic executed after successfully connecting arm load sensor to MQTT broker.
 
@@ -234,7 +240,9 @@ def on_connect_load_handler(client, userdata, flags, rc,props):
     else:
         errorLogger.error("Arm load data handler failed to establish connection with MQTT broker!")
         customLogger.critical("Arm load data handler failed to establish connection with MQTT broker!")
-def on_connect_fuel_handler(client, userdata, flags, rc,props):
+
+
+def on_connect_fuel_handler(client, userdata, flags, rc, props):
     '''
     Logic executed after successfully connecting fuel level sensor to MQTT broker.
 
@@ -298,8 +306,8 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
     gcb_client = gcb_init_publisher("temp_data_publisher_mqtt", gcb_conf.username, gcb_conf.password)
     gcb_connect(gcb_client, gcb_conf.address, gcb_conf.port)
     customLogger.debug("TEMP PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
-
     # called when there is new message in temp_topic topic
+
     def on_message_handler(client, userdata, message):
         '''
          Handles received mqtt message.
@@ -320,7 +328,8 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             new_data.append(str(data))
             customLogger.info("Received temperature data: " + str(data))
             data_sum, unit = data_service.parse_incoming_data(str(data), "temperature")
-            time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
+            # ASK this is the time from the gateway, not the sensor
+            time_value = time.strftime(time_format, time.localtime())
             if data_sum > 150:
                 # sound the alarm! ask him what do I send #ASK
                 customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
@@ -365,7 +374,7 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             conf_flag.clear()
 
         # copy data from list that is populated with newly arrived data and clear that list
-        data=new_data.copy()
+        data = new_data.copy()
         new_data.clear()
         # append data that is not sent in previous iterations due to connection problem
         for i in old_data:
@@ -441,6 +450,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
     customLogger.debug("LOAD PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
     # called when there is new message in load_topic topic
+
     def on_message_handler(client, userdata, message):
         '''
          Handles received mqtt message.
@@ -588,6 +598,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                         sensor_type="FUEL",
                         bus=None,
                         )
+
     def on_message_handler(client, userdata, message):
         '''
             Handles received mqtt message.
@@ -613,8 +624,8 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
 
             customLogger.info("Received fuel data: "+str(message.payload.decode("utf-8")))
             
-            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), config[fuel_settings][level_limit], url, jwt, config[user], config[time_format], client, gcb_client)
-
+            code= data_service.handle_fuel_data(str(message.payload.decode("utf-8")), config[fuel_settings][level_limit],
+                                                url, jwt, config[user], config[time_format], client, gcb_client)
             if code == http_ok:
                 stats.update_data(4, 4, 1)
             elif code == http_no_content:
@@ -643,6 +654,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
     gcb_disconnect(gcb_client)
 
     customLogger.debug("Fuel level data handler shutdown!")
+
 
 def main():
     '''
@@ -679,7 +691,7 @@ def main():
             else:
                 customLogger.debug("Login successful!")
             # now JWT required for Cloud platform auth is stored in jwt var
-            customLogger.info("Received JWT: " +jwt)
+            customLogger.info("Received JWT: " + jwt)
             # starting stats collecting
 
             # using shared memory Queue objects for returning stats data from processes
@@ -742,11 +754,11 @@ def main():
             gcb_disconnect(gcb_client)
 
             # finalizing stats
-            stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get() )
+            stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get())
             customLogger.debug("Sending device stats data!")
             stats.send_stats()
             # checking jwt, if jwt has expired  app will restart
-            jwt_code= auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
+            jwt_code = auth.check_jwt(jwt, config[server_url] + "/auth/jwt-check")
             if jwt_code == http_ok:
                 reset = False
                 infoLogger.info("IoT Gateway app shutdown!")
