@@ -581,7 +581,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
-
+        print("CHECKING CAN")
         if not init_flags.can_initiated:
             can_sensor = threading.Thread(target=read_can, args=(can_flag,
                                                                  config_flags.can_flag,
@@ -592,6 +592,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             sensors.append(can_sensor)
             can_lock.acquire()
             init_flags.can_initiated = True
+            print("CAN SET TO TRUE")
             can_lock.release()
     if app_conf_data[temp_settings][mode] == "SIMULATOR":
         if not init_flags.temp_simulator_initiated:
@@ -714,6 +715,7 @@ def main():
     while not main_execution_flag.is_set():
         if app_config_flags.execution_flag.is_set() or initial:
             initial = False
+            time.sleep(10)
             init_flags.print()
             sensors = sensors_devices(temp_simulation_flag, load_simulation_flag, fuel_simulation_flag, can_flag, app_config_flags, init_flags, can_lock, temp_lock, load_lock, fuel_lock)
             app_config_flags.execution_flag.clear()

@@ -112,11 +112,13 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
         time.sleep(period)
     can_lock.acquire()
     init_flags.can_flag = False  # TODO suss
+    print("SET TO FALSE")
     can_lock.release()
 
     stop_can(notifier, bus, temp_client, load_client, fuel_client)
     # TODO on_disconnect
     execution_flag.clear()
+    print("SHUTDOWN CAN")
 
 def stop_can(notifier, bus, temp_client, load_client, fuel_client):
     if notifier is not None:
