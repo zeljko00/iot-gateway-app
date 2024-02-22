@@ -81,7 +81,7 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
 
-from src.mqtt_utils import MQTTClient
+from mqtt_utils import MQTTClient
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -323,13 +323,6 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
         if not flag.is_set():
             data = message.payload.decode("utf-8")
             new_data.append(str(data))
-            #customLogger.info("Received temperature data: " + str(data))
-            #data_sum, unit = data_service.parse_incoming_data(str(data), "temperature")
-            #time_value = time.strftime(time_format, time.localtime()) #ASK this is the time from the gateway, not the sensor
-            #if data_sum > 150:
-                # sound the alarm! ask him what do I send #ASK
-                #customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
-                #client.publish(temp_alarm_topic, True, qos)
 
     client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
                         protocol_version=mqtt.MQTTv5,
@@ -353,7 +346,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
     # periodically processes collected data and forwards result to cloud services
     while not flag.is_set():
         # copy data from list that is populated with newly arrived data and clear that list
-        data=new_data.copy()
+        data = new_data.copy()
         new_data.clear()
         # append data that is not sent in previous iterations due to connection problem
         for i in old_data:
@@ -492,7 +485,6 @@ def collect_load_data(config, url, jwt, flag, stats_queue):
         time.sleep(config[load_settings][interval])
     # shutting down load sensor
     stats_queue.put(stats)
-    client.loop_stop()
     client.disconnect()
     customLogger.debug("Arm load data handler shutdown!")
 

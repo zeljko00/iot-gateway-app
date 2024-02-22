@@ -7,11 +7,11 @@
  },
  "temp_settings": {
   "interval": 20,
-  "mode": "CAN"
+  "mode": "SIMULATOR"
  },
  "load_settings": {
  "interval": 20,
-  "mode": "CAN"
+  "mode": "SIMULATOR"
 },
  "can_general_settings": {
   "interface": "pcan",
