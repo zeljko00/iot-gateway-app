@@ -340,6 +340,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
             data = message.payload.decode("utf-8")
             new_data.append(str(data))
 
+
     client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
                         protocol_version=mqtt.MQTTv5,
                         mqtt_username=config[mqtt_broker][user],
