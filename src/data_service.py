@@ -97,7 +97,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
         unit = parsed_unit
         data_sum += data_value
     # creating request payload
-    if data_sum > 150:
+    if data_sum > 95:
         # sound the alarm! ask him what do I send #ASK
         customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
         client.publish(temp_alarm_topic, True, qos)
