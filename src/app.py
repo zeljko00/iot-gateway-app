@@ -341,7 +341,7 @@ def collect_temperature_data(config, url, jwt, flag, stats_queue):
             time_value = time.strftime(time_format, time.localtime())
             if data_value > 95:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
+                customLogger.info("Temperature of " + str(data_value) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     client = MQTTClient("temp-data-handler-mqtt-client", transport_protocol=transport_protocol,
