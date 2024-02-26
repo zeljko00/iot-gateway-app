@@ -687,7 +687,7 @@ def main():
 
             # finalizing stats
 
-            stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get())
+            #stats.combine_stats(temp_stats_queue.get(), load_stats_queue.get(), fuel_stats_queue.get())
 
             customLogger.debug("Sending device stats data!")
             #stats.send_stats()

@@ -215,7 +215,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 
 def measure_temperature_periodically(period, min_val, avg_val, broker_address,
-                                     broker_port, mqtt_username, mqtt_pass, flag):
+                                     broker_port, mqtt_username, mqtt_pass, flag, config_flag, init_flags, temp_lock):
     '''
     Emulates temperature sensor.
 
@@ -595,7 +595,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
     None
     '''
     conf_data = read_conf()
-    app_conf_data = read_app_conf()
+    #app_conf_data = read_app_conf()
     app_conf = Config(app_conf_file_path, errorLogger, customLogger)
     app_conf.try_open()
 
@@ -624,7 +624,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             can_lock.acquire()
             init_flags.can_initiated = True
             can_lock.release()
-    if app_conf_data[temp_settings][mode] == "SIMULATOR":
+    if app_conf.get_temp_mode() == "SIMULATOR":
         if not init_flags.temp_simulator_initiated:
             simulation_temperature_sensor = threading.Thread(target=measure_temperature_periodically,
                                                              args=(conf_data[temp_sensor][interval],
@@ -642,7 +642,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             temp_lock.acquire()
             init_flags.temp_simulator_initiated = True
             temp_lock.release()
-    if app_conf_data[load_settings][mode] == "SIMULATOR":
+    if app_conf.get_load_mode() == "SIMULATOR":
         if not init_flags.load_simulator_initiated:
             simulation_load_sensor = threading.Thread(
                 target=measure_load_randomly,
@@ -663,7 +663,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             load_lock.acquire()
             init_flags.load_simulator_initiated = True
             load_lock.release()
-    if app_conf_data[fuel_settings][mode] == "SIMULATOR":
+    if app_conf.get_fuel_mode() == "SIMULATOR":
 
         if not init_flags.fuel_simulator_initiated:
             simulation_fuel_sensor = threading.Thread(

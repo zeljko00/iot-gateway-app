@@ -12,6 +12,7 @@ import struct
 from multiprocessing import Process, Event
 from mqtt_utils import MQTTClient
 from can.listener import Listener
+from config_util import Config
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -85,17 +86,17 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     bus = None
     while not execution_flag.is_set():  # TODO wait
         if config_flag.is_set() or initial:
-            conf_data = read_app_conf()
+            config = Config(app_conf_file_path, errorLogger, customLogger)
 
             stop_can(notifier, bus, temp_client, load_client, fuel_client)
 
-            interface_value = conf_data[can_general_settings][interface]
-            channel_value = conf_data[can_general_settings][channel]
-            bitrate_value = conf_data[can_general_settings][bitrate]
+            interface_value = config.get_can_interface()
+            channel_value = config.get_can_channel()
+            bitrate_value = config.get_can_bitrate()
 
-            is_can_temp = True if conf_data[temp_settings][mode] == "CAN" else False
-            is_can_load = True if conf_data[load_settings][mode] == "CAN" else False
-            is_can_fuel = True if conf_data[fuel_settings][mode] == "CAN" else False
+            is_can_temp = True if config.get_temp_mode() == "CAN" else False
+            is_can_load = True if config.get_load_mode() == "CAN" else False
+            is_can_fuel = True if config.get_fuel_mode() == "CAN" else False
 
             if (is_can_temp is False) and (is_can_load is False) and (is_can_fuel is False):
                 break
@@ -105,7 +106,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
                                     bitrate=bitrate_value)
 
             temp_client, load_client, fuel_client = init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel,
-                                                                      conf_data, execution_flag)
+                                                                      config, execution_flag)
             notifier = can.Notifier(bus, [], timeout=period)
             can_listener = CANListener(temp_client, load_client, fuel_client)
             notifier.add_listener(can_listener)
@@ -135,7 +136,7 @@ def stop_can(notifier, bus, temp_client, load_client, fuel_client):
         bus.shutdown()
 
 
-def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, flag):
+def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag):
     temp_client = None
     load_client = None
     fuel_client = None
@@ -143,10 +144,10 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, fla
     if is_can_temp:
         temp_client = MQTTClient("temp-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                                  protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=conf_data[mqtt_broker][mqtt_user],
-                                 mqtt_pass=conf_data[mqtt_broker][mqtt_password],
-                                 broker_address=conf_data[mqtt_broker][address],
-                                 broker_port=conf_data[mqtt_broker][port],
+                                 mqtt_username=config.get_mqtt_broker_username(),
+                                 mqtt_pass=config.get_mqtt_broker_password(),
+                                 broker_address=config.get_mqtt_broker_address(),
+                                 broker_port=config.get_mqtt_broker_port(),
                                  keepalive=2 * 3,
                                  infoLogger=infoLogger,
                                  errorLogger=errorLogger,
@@ -171,10 +172,10 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, fla
     if is_can_load:
         load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                                  protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=conf_data[mqtt_broker][mqtt_user],
-                                 mqtt_pass=conf_data[mqtt_broker][mqtt_password],
-                                 broker_address=conf_data[mqtt_broker][address],
-                                 broker_port=conf_data[mqtt_broker][port],
+                                 mqtt_username=config.get_mqtt_broker_username(),
+                                 mqtt_pass=config.get_mqtt_broker_password(),
+                                 broker_address=config.get_mqtt_broker_address(),
+                                 broker_port=config.get_mqtt_broker_port(),
                                  keepalive=2 * 3,
                                  infoLogger=infoLogger,
                                  errorLogger=errorLogger,
@@ -199,10 +200,10 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, fla
     if is_can_fuel:
         fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
                                  protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=conf_data[mqtt_broker][mqtt_user],
-                                 mqtt_pass=conf_data[mqtt_broker][mqtt_password],
-                                 broker_address=conf_data[mqtt_broker][address],
-                                 broker_port=conf_data[mqtt_broker][port],
+                                 mqtt_username=config.get_mqtt_broker_username(),
+                                 mqtt_pass=config.get_mqtt_broker_password(),
+                                 broker_address=config.get_mqtt_broker_address(),
+                                 broker_port=config.get_mqtt_broker_port(),
                                  keepalive=2 * 3,
                                  infoLogger=infoLogger,
                                  errorLogger=errorLogger,

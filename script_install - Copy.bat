@@ -48,7 +48,7 @@ pip show paho-mqtt > nul 2>&1
 if %errorlevel% neq 0 (
 	echo Error: Paho-mqtt package is not installed
 	echo Installing...
-	pip install paho-mqtt
+	pip install paho-mqtt 1.6.1
 )
 
 REM Check if colorlog is installed

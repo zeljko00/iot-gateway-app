@@ -11,7 +11,15 @@ load_settings = 'load_settings'
 fuel_settings = 'fuel_settings'
 
 mode = "mode"
-
+can_general_settings = "can_general_settings"
+interface = "interface"
+channel = "channel"
+bitrate = "bitrate"
+mqtt_broker = "mqtt_broker"
+username = "username"
+password = "password"
+address = "address"
+port = "port"
 
 class ConfFlags:
     def __init__(self):
@@ -113,20 +121,28 @@ class Config:
                       temp_settings: {"temp_interval": 20, "mode": "SIMULATOR"},
                       load_settings: {"load_interval": 20, "mode": "SIMULATOR"}, }
 
-
     def get_temp_mode(self):
-        if self.config is not None:
-            return self.config[temp_settings][mode]
-        return None
+        return self.config[temp_settings][mode]
 
     def get_load_mode(self):
-        if self.config is not None:
-            return self.config[load_settings][mode]
-        return None
+        return self.config[load_settings][mode]
 
     def get_fuel_mode(self):
-        if self.config is not None:
-            return self.config[fuel_settings][mode]
-        return None
+        return self.config[fuel_settings][mode]
 
+    def get_can_interface(self):
+        return self.config[can_general_settings][interface]
 
+    def get_can_channel(self):
+        return self.config[can_general_settings][channel]
+
+    def get_can_bitrate(self):
+        return self.config[can_general_settings][bitrate]
+    def get_mqtt_broker_username(self):
+        return self.config[mqtt_broker][username]
+    def get_mqtt_broker_password(self):
+        return self.config[mqtt_broker][password]
+    def get_mqtt_broker_address(self):
+        return self.config[mqtt_broker][address]
+    def get_mqtt_broker_port(self):
+        return self.config[mqtt_broker][port]
