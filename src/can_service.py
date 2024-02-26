@@ -16,7 +16,8 @@ from can.listener import Listener
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger("customConsoleLogger")
+customLogger = logging.getLogger("customConsoleLogger")
+
 
 conf_file_path = "configuration/sensor_conf.json"
 app_conf_file_path = "configuration/app_conf.json"
@@ -26,11 +27,12 @@ temp_topic="sensors/temperature"
 load_topic="sensors/arm-load"
 fuel_topic="sensors/fuel-level"
 
-data_pattern ="[ value={} , time={} , unit={} ]"
+
+data_pattern = "[ value={} , time={} , unit={} ]"
 time_format = "%d.%m.%Y %H:%M:%S"
 celzius = "C"
 kg = "kg"
-l = "l"
+_l = "l"
 
 mode = "mode"
 temp_settings = "temp_settings"
@@ -56,10 +58,10 @@ mqtt_user = "username"
 mqtt_password = "password"
 max = "max_val"
 min = "min_val"
-avg= "avg_val"
-mqtt_broker="mqtt_broker"
-address="address"
-port="port"
+avg = "avg_val"
+mqtt_broker = "mqtt_broker"
+address = "address"
+port = "port"
 
 qos = 2
 temp_alarm_topic = "alarms/temperature"
@@ -68,6 +70,7 @@ fuel_alarm_topic = "alarms/fuel"
 
 
 def read_can(execution_flag, config_flag, init_flags, can_lock):
+
 
     customLogger.debug("CAN process started!")
 
@@ -117,6 +120,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     stop_can(notifier, bus, temp_client, load_client, fuel_client)
     # TODO on_disconnect
     execution_flag.clear()
+
 
 def stop_can(notifier, bus, temp_client, load_client, fuel_client):
     if notifier is not None:
@@ -222,6 +226,7 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, conf_data, fla
     return temp_client, load_client, fuel_client
 
 
+
 def read_app_conf():
     data = None
     try:
@@ -269,7 +274,8 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
         customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
 
 
-#TODO same method differed string
+
+# TODO same method differed string
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
     if rc == 0:
         infoLogger.info("CAN Temperature sensor successfully established connection with MQTT broker!")
@@ -314,6 +320,7 @@ class CANListener (Listener):
             fuel_client.connect()
         self.fuel_client = fuel_client
 
+
     def set_temp_client(self, client):
         if client is None:
             if self.temp_client is not None:
@@ -345,24 +352,27 @@ class CANListener (Listener):
             self.load_client.try_reconnect()
         if self.fuel_client is not None:
             self.fuel_client.try_reconnect()
-        try:
-            if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
-                self.temp_client.publish(temp_topic, data_pattern.format("{:.2f}".format(float_value), str(time.strftime(time_format, time.localtime())), celzius), qos)
-                customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(float_value),
-                                                                 str(time.strftime(time_format, time.localtime())), celzius))
-            elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
-                self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
+
+        if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
+            self.temp_client.publish(
+                temp_topic, data_pattern.format(
+                    "{:.2f}".format(float_value), str(
+                        time.strftime(
+                            time_format, time.localtime())), celzius), qos)
+            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(float_value),
                                                                     str(time.strftime(time_format, time.localtime())),
-                                                                    celzius), qos)
-                customLogger.info("Load: " + data_pattern.format("{:.2f}".format(float_value),
-                                                                        str(time.strftime(time_format, time.localtime())),
-                                                                        kg))
-            elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
-                self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
-                                                                    str(time.strftime(time_format, time.localtime())),
-                                                                    celzius), qos)
-                customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(float_value),
-                                                                        str(time.strftime(time_format, time.localtime())),
-                                                                         l))
-        except:
-            errorLogger.error("Error has occurred while sending data to gateway. Check the MQTT clients!")
+                                                                    celzius))
+        elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
+            self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
+                                                                     str(time.strftime(time_format, time.localtime())),
+                                                                     celzius), qos)
+            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(float_value),
+                                                             str(time.strftime(time_format, time.localtime())),
+                                                             kg))
+        elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
+            self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
+                                                                     str(time.strftime(time_format, time.localtime())),
+                                                                     celzius), qos)
+            customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(float_value),
+                                                             str(time.strftime(time_format, time.localtime())),
+                                                             _l))

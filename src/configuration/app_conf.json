@@ -28,5 +28,15 @@
   "port": 1883,
   "username": "iot-device",
   "password": "10060509"
+ },
+ "gateway_cloud_broker": {
+  "address": "gateway-cloud-broker",
+  "port": 1884,
+  "username": "iot-device",
+  "password": "10060509"
+ },
+ "rest_api": {
+  "host": "0.0.0.0",
+  "port": 9876
  }
 }

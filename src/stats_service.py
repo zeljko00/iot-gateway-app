@@ -28,7 +28,8 @@ from mqtt_util import *
 # setting up loggers
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger('customConsoleLogger')
+customLogger = logging.getLogger('customConsoleLogger')
+
 
 class Stats:
     '''
@@ -47,6 +48,7 @@ class Stats:
     update_data(self, bytes, forwarded, requests)
         Updating stats data.
     '''
+
     def __init__(self):
         '''
         Initializes Stats object.
@@ -121,6 +123,7 @@ class OverallStats:
         Sends collected stats dato to stats cloud service.
     '''
     # [REST/MQTT] New parameter for mqtt publisher client
+
     def __init__(self, url, jwt, username, time_pattern, mqtt_client):
         '''
         Initializes OverallStats object.
@@ -197,13 +200,12 @@ class OverallStats:
                 mqtt_payload = {"username": self.username, "payload": payload}
                 self.mqtt_client.publish(gcb_stats_topic, json.dumps(mqtt_payload), gcb_qos)
 
-                #post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
-                #if post_req.status_code == 200:
+                # post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
+                # if post_req.status_code == 200:
                 #    break
-                #else:
+                # else:
                 #    errorLogger.error("problem with Stats Cloud service!")
                 #    customLogger.critical("Stats service unavailable!")
-            except:
+            except BaseException:
                 errorLogger.error("Stats Cloud service unavailable!")
                 customLogger.critical("Stats service unavailable!")
-
