@@ -20,6 +20,12 @@ username = "username"
 password = "password"
 address = "address"
 port = "port"
+server_url = "server_url"
+server_time_format = "server_time_format"
+api_key = "api_key"
+auth_interval = "auth_interval"
+interval = "interval"
+time_format = "time_format"
 
 class ConfFlags:
     def __init__(self):
@@ -138,11 +144,36 @@ class Config:
 
     def get_can_bitrate(self):
         return self.config[can_general_settings][bitrate]
+
     def get_mqtt_broker_username(self):
         return self.config[mqtt_broker][username]
+
     def get_mqtt_broker_password(self):
         return self.config[mqtt_broker][password]
+
     def get_mqtt_broker_address(self):
         return self.config[mqtt_broker][address]
+
     def get_mqtt_broker_port(self):
         return self.config[mqtt_broker][port]
+
+    def get_server_url(self):
+        return self.config[server_url]
+
+    def get_iot_username(self):
+        return self.config[username]
+
+    def get_iot_password(self):
+        return self.config[password]
+
+    def get_api_key(self):
+        return self.config[api_key]
+    def get_server_time_format(self):
+        return self.config[server_time_format]
+    def get_auth_interval(self):
+        return self.config[auth_interval]
+    def get_temp_settings_interval(self):
+        return self.config[temp_settings][interval]
+
+    def get_time_format(self):
+        return self.config[time_format]
