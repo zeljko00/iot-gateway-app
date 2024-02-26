@@ -11,7 +11,7 @@ import struct
 
 from multiprocessing import Process, Event
 from mqtt_utils import MQTTClient
-
+from can.listener import Listener
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -300,7 +300,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
         customLogger.critical("CAN Fuel sensor failed to establish connection with MQTT broker!")
 
 
-class CANListener (can.Listener):
+class CANListener (Listener):
     def __init__(self, temp_client, load_client, fuel_client):
         if temp_client is not None:
             temp_client.connect()

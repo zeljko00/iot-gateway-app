@@ -10,6 +10,8 @@ temp_settings = 'temp_settings'
 load_settings = 'load_settings'
 fuel_settings = 'fuel_settings'
 
+mode = "mode"
+
 class ConfFlags:
     def __init__(self):
         self.fuel_flag = Event()
@@ -83,8 +85,40 @@ def get_load_interval(config):
 def get_fuel_level_limit(config):
     return config[fuel_settings]['level_limit']
 
+
 class Config:
-    def __init__(self, path):
+    def __init__(self, path, error_logger, custom_logger):
         self.path = path
+        self.config = None
+        self.error_logger = error_logger
+        self.custom_logger = custom_logger
+
+    def try_open(self):
+        try:
+            conf_file = open(self.path)
+            self.config = json.load(conf_file)
+        except:
+            self.error_logger.critical("Using default config! Can't read app config file - ", self.path, " !")
+            self.custom_logger.critical("Using default config! Can't read app config file - ", self.path, " !")
+
+            self.config = {fuel_settings: {"fuel_level_limit": 200, "mode": "SIMULATOR"},
+                      temp_settings: {"temp_interval": 20, "mode": "SIMULATOR"},
+                      load_settings: {"load_interval": 20, "mode": "SIMULATOR"}, }
+
+
+    def get_temp_mode(self):
+        if self.config is not None:
+            return self.config[temp_settings][mode]
+        return None
+
+    def get_load_mode(self):
+        if self.config is not None:
+            return self.config[load_settings][mode]
+        return None
+
+    def get_fuel_mode(self):
+        if self.config is not None:
+            return self.config[fuel_settings][mode]
+        return None
 
 

@@ -9454,3 +9454,401 @@ oker!
 2024-02-21 13:09:43,784 - INFO - IoT Gateway app shutdown!
 2024-02-21 13:11:49,325 - INFO - IoT Gateway app started!
 2024-02-21 13:11:52,548 - INFO - IoT Gateway app shutdown!
+2024-02-26 08:17:22,959 - INFO - IoT Gateway app started!
+2024-02-26 08:17:24,518 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-26 08:17:24,530 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2024-02-26 08:17:24,728 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:17:25,515 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-26 08:17:25,527 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2024-02-26 08:17:25,725 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:17:26,522 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-26 08:17:26,535 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2024-02-26 08:17:44,728 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:17:45,725 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:18:04,729 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:18:05,726 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:18:24,730 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:18:25,727 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:18:44,730 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:18:45,727 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:19:04,731 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:19:05,728 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:19:24,732 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:19:25,728 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:19:44,732 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:19:45,729 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:20:04,733 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:20:05,730 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:20:24,734 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:20:25,731 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:20:44,735 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:20:45,733 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:21:04,736 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:21:05,734 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:21:24,738 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:21:25,735 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:21:44,739 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:21:45,736 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:22:04,741 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:22:05,738 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:22:24,743 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:22:25,739 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:22:44,744 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:22:45,740 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:23:04,745 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:23:05,742 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:23:24,746 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:23:25,743 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:23:44,749 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:23:45,744 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:24:04,750 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:24:05,746 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:24:24,752 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:24:25,747 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:24:34,757 - INFO - IoT Gateway app started!
+2024-02-26 08:24:35,196 - INFO - TEMP sensor establishing connection with MQTT broker!
+2024-02-26 08:24:35,208 - INFO - Temperature data handler successfully established connection with MQTT broker!
+2024-02-26 08:24:35,408 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:24:36,193 - INFO - LOAD sensor establishing connection with MQTT broker!
+2024-02-26 08:24:36,204 - INFO - Arm load data handler successfully established connection with MQTT broker!
+2024-02-26 08:24:36,402 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:24:37,215 - INFO - FUEL sensor establishing connection with MQTT broker!
+2024-02-26 08:24:37,227 - INFO - Fuel data handler successfully established connection with MQTT broker!
+2024-02-26 08:24:55,409 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:24:56,403 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:25:15,410 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:25:16,405 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:25:35,411 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:25:36,406 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:25:55,413 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:25:56,408 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:26:15,414 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:26:16,409 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:26:35,417 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:26:36,411 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:26:55,418 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:26:56,413 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:27:15,420 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:27:16,414 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:27:35,421 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:27:36,416 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:27:55,422 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:27:56,418 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:28:15,424 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:28:16,419 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:28:35,425 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:28:36,420 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:28:55,427 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:28:56,422 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:29:15,429 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:29:16,423 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:29:35,430 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:29:36,424 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:29:55,432 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:29:56,425 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:30:15,433 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:30:16,426 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:30:35,433 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:30:36,428 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:30:55,435 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:30:56,429 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:31:15,436 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:31:16,431 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:31:35,437 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:31:36,432 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:31:55,439 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:31:56,433 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:32:15,441 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:32:16,435 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:32:35,442 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:32:36,436 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:32:55,443 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:32:56,438 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:33:15,445 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:33:16,442 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:33:35,446 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:33:36,443 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:33:55,448 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:33:56,444 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:34:15,449 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:34:16,445 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:34:35,450 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:34:36,446 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:34:55,451 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:34:56,447 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:35:15,452 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:35:16,448 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:35:35,453 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:35:36,449 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:35:55,454 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:35:56,450 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:36:15,743 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:36:16,608 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:36:36,129 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:36:37,016 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:36:56,343 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:36:57,137 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:37:16,343 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:37:17,137 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:37:36,386 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:37:37,138 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:37:56,387 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:37:57,140 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:38:16,388 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:38:17,142 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:38:36,390 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:38:37,143 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:38:56,392 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:38:57,144 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:39:16,393 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:39:17,146 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:39:36,394 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:39:38,042 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:39:56,396 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:39:58,043 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:40:16,398 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:40:18,044 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:40:36,399 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:40:38,045 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:40:56,400 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:40:58,046 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:41:16,403 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:41:18,048 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:41:36,404 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:41:38,050 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:41:56,405 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:41:58,051 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:42:16,406 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:42:18,053 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:42:36,407 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:42:38,055 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:42:56,409 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:42:58,056 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:43:16,411 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:43:18,059 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:43:36,413 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:43:38,060 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:43:56,415 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:43:58,062 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:44:16,415 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:44:18,063 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:44:36,416 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:44:38,063 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:44:56,418 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:44:58,064 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:45:16,420 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:45:18,067 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:45:36,421 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:45:38,069 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:45:56,423 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:45:58,070 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:46:16,425 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:46:18,073 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:46:36,428 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:46:38,076 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:46:56,429 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:46:58,077 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:47:16,526 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:47:18,078 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:47:36,719 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:47:38,193 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:47:56,835 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:47:58,343 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:48:16,964 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:48:18,544 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:48:36,965 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:48:38,544 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:48:56,967 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:48:58,545 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:49:17,053 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:49:18,701 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:49:37,274 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:49:38,863 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:49:57,275 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:49:58,865 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:50:17,277 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:50:18,865 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:50:37,278 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:50:38,866 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:50:57,280 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:50:58,868 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:51:17,282 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:51:18,869 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:51:37,284 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:51:38,870 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:51:57,286 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:51:58,872 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:52:17,287 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:52:18,873 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:52:37,288 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:52:38,875 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:52:57,290 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:52:58,875 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:53:17,293 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:53:18,876 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:53:37,294 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:53:38,877 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:53:57,295 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:53:58,878 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:54:17,299 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:54:18,880 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:54:37,300 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:54:38,880 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:54:57,303 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:54:58,881 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:55:17,305 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:55:18,883 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:55:37,306 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:55:38,885 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:55:57,308 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:55:58,887 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:56:17,310 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:56:18,890 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:56:37,311 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:56:38,891 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:56:57,312 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:56:58,893 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:57:17,313 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:57:18,894 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:57:37,315 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:57:38,897 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:57:57,316 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:57:58,900 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:58:17,318 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:58:18,901 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:58:37,319 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:58:38,902 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:58:57,319 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:58:58,903 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:59:17,421 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:59:19,017 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:59:37,422 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:59:39,018 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 08:59:57,423 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 08:59:59,018 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:00:17,425 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:00:19,019 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:00:37,426 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:00:39,021 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:00:57,428 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:00:59,023 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:01:17,429 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:01:19,024 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:01:37,429 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:01:39,025 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:01:57,431 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:01:59,026 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:02:17,432 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:02:19,028 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:02:37,433 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:02:39,030 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:02:57,435 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:02:59,032 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:03:17,437 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:03:19,035 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:03:37,438 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:03:39,037 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:03:57,440 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:03:59,038 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:04:17,443 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:04:19,040 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:04:37,445 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:04:39,041 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:04:57,446 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:04:59,042 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:05:17,448 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:05:19,044 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:05:37,450 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:05:39,045 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:05:57,451 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:05:59,047 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:06:17,452 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:06:19,049 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:06:37,454 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:06:39,050 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:06:57,455 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:06:59,052 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:07:17,456 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:07:19,055 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:07:37,459 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:07:39,057 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:07:57,460 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:07:59,058 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:08:17,463 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:08:19,060 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:08:37,464 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:08:39,060 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:08:57,465 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:08:59,061 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:09:17,467 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:09:19,062 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:09:37,468 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:09:39,063 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:09:57,470 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:09:59,064 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:10:17,473 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:10:19,066 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:10:37,475 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:10:39,067 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:10:57,476 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:10:59,068 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:11:17,478 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:11:19,069 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:11:37,480 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:11:39,070 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:11:57,480 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:11:59,071 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:12:17,481 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:12:19,073 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:12:37,483 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:12:39,074 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:12:57,485 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:12:59,075 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:13:17,486 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:13:19,076 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:13:37,487 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:13:39,077 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:13:57,488 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:13:59,079 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:14:17,490 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:14:19,080 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:14:37,491 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:14:39,083 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:14:57,493 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:14:59,086 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:15:17,494 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:15:19,088 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:15:37,496 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:15:39,090 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:15:57,497 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:15:59,091 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:16:17,501 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:16:19,092 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:16:37,502 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:16:39,094 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:16:57,502 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:16:59,095 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:17:17,504 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:17:19,098 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:17:37,504 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:17:39,099 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:17:57,506 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:17:59,101 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:18:17,510 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:18:19,102 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:18:37,510 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:18:39,105 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:18:57,512 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:18:59,106 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:19:17,513 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:19:19,108 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:19:37,514 - WARNING - There is no temperature sensor data to handle!
+2024-02-26 09:19:39,108 - WARNING - There is no arm load sensor data to handle!
+2024-02-26 09:19:46,605 - INFO - Temperature sensor establishing connection with MQTT broker!
+2024-02-26 09:19:46,631 - INFO - Temperature sensor successfully established connection with MQTT broker!
+2024-02-26 09:19:46,705 - INFO - Arm load sensor establishing connection with MQTT broker!
+2024-02-26 09:19:46,713 - INFO - Arm load sensor successfully established connection with MQTT broker!
+2024-02-26 09:19:46,806 - INFO - Fuel level sensor establishing connection with MQTT broker!
+2024-02-26 09:19:46,835 - INFO - Fuel sensor successfully established connection with MQTT broker!
+2024-02-26 09:21:10,977 - INFO - IoT Gateway app started!
+2024-02-26 09:21:14,590 - INFO - IoT Gateway app shutdown!

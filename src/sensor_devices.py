@@ -60,6 +60,7 @@ import logging
 from can_service import read_can, read_app_conf
 from config_util import ConfFlags, start_config_observer
 from mqtt_utils import MQTTClient
+from config_util import Config
 
 # setting up loggers
 logging_path = Path(__file__).parent / 'logging.conf'
@@ -581,17 +582,20 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
     '''
     conf_data = read_conf()
     app_conf_data = read_app_conf()
+    app_conf = Config(app_conf_file_path, errorLogger, customLogger)
+    app_conf.try_open()
+
     sensors = []
 
     is_can_temp = False
     is_can_load = False
     is_can_fuel = False
 
-    if app_conf_data[temp_settings][mode] == "CAN":
+    if app_conf.get_temp_mode() == "CAN":
         is_can_temp = True
-    if app_conf_data[load_settings][mode] == "CAN":
+    if app_conf.get_load_mode() == "CAN":
         is_can_load = True
-    if app_conf_data[fuel_settings][mode] == "CAN":
+    if app_conf.get_fuel_mode() == "CAN":
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
