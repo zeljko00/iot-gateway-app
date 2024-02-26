@@ -625,7 +625,6 @@ def main():
     can_flag = Event()
 
     sensors = sensors_devices(temp_flag, load_flag, fuel_flag, can_flag)
-    print("SENSORS", sensors)
     infoLogger.info("Sensor system started!")
     customLogger.debug("Sensor system starting!")
     for sensor in sensors:

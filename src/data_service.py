@@ -100,10 +100,6 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
         unit = parsed_unit
         data_sum += data_value
     # creating request payload
-    if data_sum > 95:
-        # sound the alarm! ask him what do I send #ASK
-        customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
-        client.publish(temp_alarm_topic, True, qos)
 
     time_value = time.strftime(time_format, time.localtime())
     payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
@@ -173,7 +169,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
         return http_not_found
 
 
-def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
+def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client, mqtt_client):
     '''
      Sends filtered fuel data.
 
@@ -206,7 +202,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, mqtt_client):
 
             # sound the alarm! ask him what do I send #ASK
             customLogger.info("Fuel is below the designated limit! Sounding the alarm")
-            client.publish(fuel_alarm_topic, True, qos)
+            alarm_client.publish(fuel_alarm_topic, True, qos)
 
             unit = "unknown"
             try:
