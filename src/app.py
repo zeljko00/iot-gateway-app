@@ -68,7 +68,6 @@ http_no_content: int
 qos: int
     Quality of service of MQTT.
 '''
-import json
 import can
 import auth
 import stats_service
@@ -78,8 +77,8 @@ import logging.config
 import paho.mqtt.client as mqtt
 from multiprocessing import Process, Queue, Event
 from threading import Thread
-from mqtt_util import *
-from config_util import *
+from mqtt_util import MQTTConf, gcb_init_publisher, gcb_connect, gcb_disconnect
+from config_util import ConfFlags, read_conf, get_temp_interval, get_load_interval, get_fuel_level_limit
 from mqtt_utils import MQTTClient
 
 logging.config.fileConfig('logging.conf')
