@@ -343,17 +343,6 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
                 customLogger.info("Temperature of " + str(data_value) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
-    # [REST/MQTT]
-    # Bojan je zamijenio kod za konekciju na klijent sa apstrakcijom.
-    # while not client.is_connected():
-    # ...
-    # Ako se dozvoljava promjena konfiguracije i dok konekcija sa sensor-gateway brokerom
-    # nije uspostavljena, onda se i unutar while petlje za konekciju treba
-    # staviti
-    #    if conf_flag.is_set():
-    #        interval = get_temp_interval(read_conf())
-    #        conf_flag.clear()
-
     client = MQTTClient(
         "temp-data-handler-mqtt-client",
         transport_protocol=transport_protocol,
