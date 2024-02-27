@@ -203,13 +203,11 @@ def on_connect_temp_handler(client, userdata, flags, rc, props):
     Returns
     -------
     '''
-    print(rc)
     if rc == 0:
         infoLogger.info(
             "Temperature data handler successfully established connection with MQTT broker!")
         customLogger.info(
             "Temperature data handler successfully established connection with MQTT broker!")
-        print("SDGHSDJKGHGJKSHGJKSHJKDgh")
         client.subscribe(temp_topic, qos=qos)
     else:
         errorLogger.error(
@@ -233,11 +231,9 @@ def on_connect_load_handler(client, userdata, flags, rc, props):
     Returns
     -------
     '''
-    print("LOAD", rc)
     if rc == 0:
         infoLogger.info(
             "Arm load data handler successfully established connection with MQTT broker!")
-        print("SDGHSDJKGHGJKSHGJKSHJKDghLOAD")
         client.subscribe(load_topic, qos=qos)
     else:
         errorLogger.error(
@@ -339,13 +335,12 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             data = message.payload.decode("utf-8")
             new_data.append(str(data))
             customLogger.info("Received temperature data: " + str(data))
-            data_sum, unit = data_service.parse_incoming_data(
-                str(data), "temperature")
+            data_value, unit = data_service.parse_incoming_data(str(data), "temperature")
             # ASK this is the time from the gateway, not the sensor
             time_value = time.strftime(time_format, time.localtime())
-            if data_sum > 150:
+            if data_value > 95:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info("Temperature of " + str(data_sum) + " C is too high! Sounding the alarm!")
+                customLogger.info("Temperature of " + str(data_value) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     # [REST/MQTT]
