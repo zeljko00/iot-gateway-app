@@ -349,11 +349,11 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         "temp-data-handler-mqtt-client",
         transport_protocol=transport_protocol,
         protocol_version=mqtt.MQTTv5,
-        mqtt_username=config[mqtt_broker][user],
-        mqtt_pass=config[mqtt_broker][password],
-        broker_address=config[mqtt_broker][address],
-        broker_port=config[mqtt_broker][port],
-        keepalive=config[temp_settings][interval] * 3,
+        mqtt_username=config.get_mqtt_broker_username(),
+        mqtt_pass=config.get_mqtt_broker_password(),
+        broker_address=config.get_mqtt_broker_address(),
+        broker_port=config.get_mqtt_broker_port(),
+        keepalive=config.get_temp_settings_interval() * 3,
         infoLogger=infoLogger,
         errorLogger=errorLogger,
         flag=flag,
@@ -388,7 +388,7 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         if len(data) > 0:
 
             code = data_service.handle_temperature_data(
-                data, url, jwt, config[user], config[time_format], client, gcb_client)
+                data, url, jwt, config.get_iot_username(), config.get_time_format(), client, gcb_client)
 
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
@@ -497,11 +497,11 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
         "load-data-handler-mqtt-client",
         transport_protocol=transport_protocol,
         protocol_version=mqtt.MQTTv5,
-        mqtt_username=config[mqtt_broker][user],
-        mqtt_pass=config[mqtt_broker][password],
-        broker_address=config[mqtt_broker][address],
-        broker_port=config[mqtt_broker][port],
-        keepalive=config[temp_settings][interval] * 3,
+        mqtt_username=config.get_mqtt_broker_username(),
+        mqtt_pass=config.get_mqtt_broker_password(),
+        broker_address=config.get_mqtt_broker_address(),
+        broker_port=config.get_mqtt_broker_port(),
+        keepalive=config.get_temp_settings_interval() * 3, # ASK HERE
         infoLogger=infoLogger,
         errorLogger=errorLogger,
         flag=flag,
@@ -538,7 +538,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
         if len(data) > 0:
 
             code = data_service.handle_load_data(
-                data, url, jwt, config[user], config[time_format], gcb_client)
+                data, url, jwt, config.get_iot_username(), config.get_time_format(), gcb_client)
             # if data is not sent to cloud, it is returned to queue
             if code != http_ok:
                 old_data = data.copy()
@@ -615,11 +615,11 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
         "fuel-data-handler-mqtt-client",
         transport_protocol=transport_protocol,
         protocol_version=mqtt.MQTTv5,
-        mqtt_username=config[mqtt_broker][user],
-        mqtt_pass=config[mqtt_broker][password],
-        broker_address=config[mqtt_broker][address],
-        broker_port=config[mqtt_broker][port],
-        keepalive=config[temp_settings][interval] * 3,
+        mqtt_username=config.get_mqtt_broker_username(),
+        mqtt_pass=config.get_mqtt_broker_password(),
+        broker_address=config.get_mqtt_broker_address(),
+        broker_port=config.get_mqtt_broker_port(),
+        keepalive=config.get_temp_settings_interval() * 3,
         infoLogger=infoLogger,
         errorLogger=errorLogger,
         flag=flag,
@@ -655,11 +655,11 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
 
 
             code = data_service.handle_fuel_data(str(message.payload.decode("utf-8")),
-                                                 config[fuel_settings][level_limit],
+                                                 config.get_fuel_settings_level_limit(),
                                                  url,
                                                  jwt,
-                                                 config[user],
-                                                 config[time_format],
+                                                 config.get_iot_username(),
+                                                 config.get_time_format(),
                                                  client,
                                                  gcb_client)
             if code == http_ok:
@@ -723,19 +723,19 @@ def main():
 
             # iot cloud platform login
 
-            jwt = auth.login(config[user],
-                             config[password],
-                             config[server_url] + "/auth/login")
+            jwt = auth.login(config.get_iot_username(),
+                             config.get_iot_password(),
+                             config.get_server_url() + "/auth/login")
             # if failed, periodically request signup
             if jwt is None:
                 customLogger.error(
                     "Login failed! Trying to sign up periodically!")
-                jwt = signup_periodically(config[api_key],
-                                          config[user],
-                                          config[password],
-                                          config[server_time_format],
-                                          config[server_url] + "/auth/signup",
-                                          config[auth_interval])
+                jwt = signup_periodically(config.get_api_key(),
+                                          config.get_iot_username(),
+                                          config.get_iot_password(),
+                                          config.get_server_time_format(),
+                                          config.get_server_url() + "/auth/signup",
+                                          config.get_auth_interval())
             else:
                 customLogger.debug("Login successful!")
             # now JWT required for Cloud platform auth is stored in jwt var
@@ -754,10 +754,10 @@ def main():
             customLogger.debug(
                 "STATS PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
-            stats = stats_service.OverallStats(config[server_url] + "/stats",
+            stats = stats_service.OverallStats(config.get_server_url() + "/stats",
                                                jwt,
-                                               config[user],
-                                               config[time_format],
+                                               config.get_iot_username(),
+                                               config.get_time_format(),
                                                gcb_client)
 
             temp_stats_queue = Queue()
@@ -824,7 +824,7 @@ def main():
             #stats.send_stats()
             # checking jwt, if jwt has expired  app will restart
             jwt_code = auth.check_jwt(
-                jwt, config[server_url] + "/auth/jwt-check")
+                jwt, config.get_server_url() + "/auth/jwt-check")
             if jwt_code == http_ok:
                 reset = False
                 infoLogger.info("IoT Gateway app shutdown!")

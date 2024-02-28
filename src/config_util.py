@@ -184,5 +184,5 @@ class Config:
     def get_time_format(self):
         return self.config[time_format]
 
-    def get_fuel_level_limit(self):
+    def get_fuel_settings_level_limit(self):
         return self.config[fuel_settings][level_limit]
