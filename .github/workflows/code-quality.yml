@@ -21,14 +21,14 @@ jobs:
       - uses: ricardochaves/python-lint@v1.4.0
         with:
           python-root-list: "src"
-          use-pylint: false
-          use-pycodestyle: true
+          use-pylint: true
+          use-pycodestyle: false
           use-flake8: false
           use-black: false
           use-mypy: false
           use-isort: false
-          extra-pylint-options: ""
-          extra-pycodestyle-options: "--max-line-length=120 --ignore=E722"
+          extra-pylint-options: "--max-line-length=120 --ignore=E722"
+          extra-pycodestyle-options: ""
           extra-flake8-options: ""
           extra-black-options: ""
           extra-mypy-options: ""
