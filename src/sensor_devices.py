@@ -48,7 +48,6 @@ import time
 import random
 from pathlib import Path
 
-import can
 import numpy
 import json
 import math

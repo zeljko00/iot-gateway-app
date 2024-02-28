@@ -3,15 +3,15 @@
  "password":"28061914",
  "fuel_settings": {
   "level_limit": 200,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
  },
  "temp_settings": {
   "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
  },
  "load_settings": {
  "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
 },
  "can_general_settings": {
   "interface": "pcan",
@@ -30,13 +30,13 @@
   "password": "10060509"
  },
  "gateway_cloud_broker": {
-  "address": "gateway-cloud-broker",
+  "address": "localhost",
   "port": 1884,
   "username": "iot-device",
   "password": "10060509"
  },
  "rest_api": {
-  "host": "0.0.0.0",
+  "host": "localhost",
   "port": 9876
  }
 }

@@ -26,6 +26,11 @@ api_key = "api_key"
 auth_interval = "auth_interval"
 interval = "interval"
 time_format = "time_format"
+level_limit = "level_limit"
+gateway_cloud_broker = "gateway_cloud_broker"
+rest_api = "rest_api"
+host = "host"
+port = "port"
 
 class ConfFlags:
     def __init__(self):
@@ -97,19 +102,19 @@ def get_fuel(config):
 
 
 def get_temp_interval(config):
-    return config[temp_settings]['interval']
+    return config.get_temp_settings_interval()
 
 
 def get_load_interval(config):
-    return config[load_settings]['interval']
+    return config.get_load_settings_interval()
 
 
 def get_fuel_level_limit(config):
-    return config[fuel_settings]['level_limit']
+    return config.get_fuel_settings_level_limit()
 
 
 class Config:
-    def __init__(self, path, error_logger, custom_logger):
+    def __init__(self, path, error_logger=None, custom_logger=None):
         self.path = path
         self.config = None
         self.error_logger = error_logger
@@ -170,10 +175,55 @@ class Config:
         return self.config[api_key]
     def get_server_time_format(self):
         return self.config[server_time_format]
+
     def get_auth_interval(self):
         return self.config[auth_interval]
+
     def get_temp_settings_interval(self):
         return self.config[temp_settings][interval]
 
+    def get_load_settings_interval(self):
+        return self.config[load_settings][interval]
+
     def get_time_format(self):
         return self.config[time_format]
+
+    def get_fuel_settings_level_limit(self):
+        return self.config[fuel_settings][level_limit]
+
+    def get_gateway_cloud_broker_iot_username(self):
+        return self.config[gateway_cloud_broker][username]
+
+    def get_gateway_cloud_broker_iot_password(self):
+        return self.config[gateway_cloud_broker][password]
+
+    def get_gateway_cloud_broker_address(self):
+        return self.config[gateway_cloud_broker][address]
+
+    def get_gateway_cloud_broker_port(self):
+        return self.config[gateway_cloud_broker][port]
+
+    def get_temp_settings(self):
+        return self.config[temp_settings]
+
+    def get_load_settings(self):
+        return self.config[load_settings]
+
+    def get_fuel_settings(self):
+        return self.config[fuel_settings]
+
+    def set_temp_settings(self, temp_settings_set):
+        self.config[temp_settings] = temp_settings_set
+
+    def set_load_settings(self, load_settings_set):
+        self.config[load_settings] = load_settings_set
+
+    def set_fuel_settings(self, fuel_settings_set):
+        self.config[fuel_settings] = fuel_settings_set
+
+    def get_rest_api_host(self):
+        return self.config[rest_api][host]
+
+    def get_rest_api_port(self):
+        return self.config[rest_api][port]
+

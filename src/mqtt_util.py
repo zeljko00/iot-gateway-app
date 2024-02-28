@@ -30,10 +30,12 @@ class MQTTConf:
 
     @staticmethod
     def from_app_config(config, broker):
-        return MQTTConf(config[broker]["address"],
-                        config[broker]["port"],
-                        config[broker]["username"],
-                        config[broker]["password"])
+        if broker == "gateway_cloud_broker":
+            return MQTTConf(config.get_gateway_cloud_broker_address(),
+                            config.get_gateway_cloud_broker_port(),
+                            config.get_gateway_cloud_broker_iot_username(),
+                            config.get_gateway_cloud_broker_iot_password())
+        return None
 
 # These two are the same for now, but can be extended so that we can have different logic for pubs and subs
 
