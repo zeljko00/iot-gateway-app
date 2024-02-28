@@ -27,6 +27,7 @@ auth_interval = "auth_interval"
 interval = "interval"
 time_format = "time_format"
 level_limit = "level_limit"
+gateway_cloud_broker = "gateway_cloud_broker"
 
 class ConfFlags:
     def __init__(self):
@@ -186,3 +187,11 @@ class Config:
 
     def get_fuel_settings_level_limit(self):
         return self.config[fuel_settings][level_limit]
+    def get_gateway_cloud_broker_iot_username(self):
+        return self.config[gateway_cloud_broker][username]
+    def get_gateway_cloud_broker_iot_password(self):
+        return self.config[gateway_cloud_broker][password]
+    def get_gateway_cloud_broker_address(self):
+        return self.config[gateway_cloud_broker][address]
+    def get_gateway_cloud_broker_port(self):
+        return self.config[gateway_cloud_broker][port]

@@ -148,7 +148,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     try:
         # [REST/MQTT]
         mqtt_payload = {"username": username, "payload": payload}
-        # mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos)
+        # mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos) # ASK usage
         customLogger.debug("LOAD MESSAGE PUBLISHED")
 
         # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
