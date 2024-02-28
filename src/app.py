@@ -382,7 +382,7 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         customLogger.debug(f"INTERVAL: {interval}")
         # [REST/MQTT]
         if conf_flag.is_set():
-            interval = get_temp_interval(read_conf())
+            interval = config.get_temp_settings_interval()
             conf_flag.clear()
 
         # copy data from list that is populated with newly arrived data and
@@ -540,7 +540,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
     while not flag.is_set():
         # [REST/MQTT]
         if conf_flag.is_set():
-            interval = get_load_interval(read_conf())
+            interval = config.get_load_settings_interval()
             conf_flag.clear()
 
         # copy data from list that is populated with newly arrived data and
@@ -671,7 +671,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
             # [REST/MQTT]
             if conf_flag.is_set():
                 nonlocal limit
-                limit = get_fuel_level_limit(read_conf())
+                limit = config.get_fuel_settings_level_limit()
                 conf_flag.clear()
 
             customLogger.info("Received fuel data: " +

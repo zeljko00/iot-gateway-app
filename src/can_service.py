@@ -13,7 +13,6 @@ from multiprocessing import Process, Event
 from mqtt_utils import MQTTClient
 from can.listener import Listener
 from can.interface import Bus
-from can import rc
 from config_util import Config
 
 logging.config.fileConfig('logging.conf')
@@ -346,8 +345,9 @@ class CANListener (Listener):
     def on_message_received(self, msg):
         # msg.data is a byte array, need to turn it into a single value
 
-        float_value = struct.unpack('d', msg.data)[0]
-
+        #int_value = struct.unpack('<q', msg.data)[0]
+        int_value = int.from_bytes(msg.data, byteorder="big", signed=True)
+        value = int_value / 10.0
         # this is part of CAN transmit ticket
 
         if self.temp_client is not None:
@@ -360,23 +360,23 @@ class CANListener (Listener):
         if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
             self.temp_client.publish(
                 temp_topic, data_pattern.format(
-                    "{:.2f}".format(float_value), str(
+                    "{:.2f}".format(value), str(
                         time.strftime(
                             time_format, time.localtime())), celzius), qos)
-            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(float_value),
+            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(value),
                                                                     str(time.strftime(time_format, time.localtime())),
                                                                     celzius))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
-            self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(float_value),
+            self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(value),
                                                                      str(time.strftime(time_format, time.localtime())),
                                                                      celzius), qos)
-            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(float_value),
+            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(value),
                                                              str(time.strftime(time_format, time.localtime())),
                                                              kg))
         elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
-            self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(float_value),
+            self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(value),
                                                                      str(time.strftime(time_format, time.localtime())),
                                                                      celzius), qos)
-            customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(float_value),
+            customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(value),
                                                              str(time.strftime(time_format, time.localtime())),
                                                              _l))
