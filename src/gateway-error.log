@@ -3792,3 +3792,9 @@ oker!
 2024-02-26 11:53:08,767 - ERROR - Fuel level sensor lost connection to MQTT broker!
 2024-02-26 11:53:08,768 - ERROR - Temperature sensor lost connection to MQTT broker!
 2024-02-26 11:53:08,843 - ERROR - Arm load sensor lost connection to MQTT broker!
+2024-02-27 09:07:24,948 - ERROR - Authentication Cloud service cant be reached!
+2024-02-27 09:07:28,965 - ERROR - Authentication Cloud service cant be reached!
+2024-02-27 09:07:37,979 - ERROR - Authentication Cloud service cant be reached!
+2024-02-27 09:07:43,044 - ERROR - Authentication Cloud service cant be reached!
+2024-02-27 09:07:48,056 - ERROR - Authentication Cloud service cant be reached!
+2024-02-27 09:07:53,067 - ERROR - Authentication Cloud service cant be reached!

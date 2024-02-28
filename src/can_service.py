@@ -12,6 +12,8 @@ import struct
 from multiprocessing import Process, Event
 from mqtt_utils import MQTTClient
 from can.listener import Listener
+from can.interface import Bus
+from can import rc
 from config_util import Config
 
 logging.config.fileConfig('logging.conf')
@@ -86,8 +88,9 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     bus = None
     while not execution_flag.is_set():  # TODO wait
         if config_flag.is_set() or initial:
-            config = Config(app_conf_file_path, errorLogger, customLogger)
 
+            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config.try_open()
             stop_can(notifier, bus, temp_client, load_client, fuel_client)
 
             interface_value = config.get_can_interface()
@@ -101,9 +104,9 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
             if (is_can_temp is False) and (is_can_load is False) and (is_can_fuel is False):
                 break
 
-            bus = can.interface.Bus(interface=interface_value,
-                                    channel=channel_value,
-                                    bitrate=bitrate_value)
+            bus = Bus(interface=interface_value,
+                      channel=channel_value,
+                      bitrate=bitrate_value)
 
             temp_client, load_client, fuel_client = init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel,
                                                                       config, execution_flag)

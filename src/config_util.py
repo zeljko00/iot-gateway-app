@@ -26,6 +26,7 @@ api_key = "api_key"
 auth_interval = "auth_interval"
 interval = "interval"
 time_format = "time_format"
+level_limit = "level_limit"
 
 class ConfFlags:
     def __init__(self):
@@ -170,10 +171,18 @@ class Config:
         return self.config[api_key]
     def get_server_time_format(self):
         return self.config[server_time_format]
+
     def get_auth_interval(self):
         return self.config[auth_interval]
+
     def get_temp_settings_interval(self):
         return self.config[temp_settings][interval]
 
+    def get_load_settings_interval(self):
+        return self.config[load_settings][interval]
+
     def get_time_format(self):
         return self.config[time_format]
+
+    def get_fuel_level_limit(self):
+        return self.config[fuel_settings][level_limit]
