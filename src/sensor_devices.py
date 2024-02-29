@@ -306,8 +306,9 @@ def measure_temperature_periodically(
     while not flag.is_set():
 
         if config_flag.is_set():
-            config = read_app_conf()
-            if config[temp_settings][mode] == "CAN":
+            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config.try_open()
+            if config.get_temp_mode() == "CAN":
                 temp_lock.acquire()
                 init_flags.temp_simulator_initiated = False
                 temp_lock.release()
@@ -443,8 +444,9 @@ def measure_load_randomly(
 
         if config_flag.is_set(
         ):  # TODO this is just for the mode, what if the broker data has been changed?
-            config = read_app_conf()
-            if config[load_settings][mode] == "CAN":
+            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config.try_open()
+            if config.get_load_mode() == "CAN":
                 load_lock.acquire()
                 init_flags.load_simulator_initiated = False
                 load_lock.release()
@@ -570,8 +572,9 @@ def measure_fuel_periodically(
     while not flag.is_set():
 
         if config_flag.is_set():
-            config = read_app_conf()
-            if config[fuel_settings][mode] == "CAN":
+            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config.try_open()
+            if config.get_fuel_mode() == "CAN":
                 fuel_lock.acquire()
                 init_flags.fuel_simulator_initiated = False
                 fuel_lock.release()
