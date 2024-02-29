@@ -19,7 +19,10 @@ class MQTTClient:
             flag,
             sensor_type,
             bus):
-        self.client = mqtt.Client(client_id=client_id, transport=transport_protocol, protocol=protocol_version)
+        self.client = mqtt.Client(
+            client_id=client_id,
+            transport=transport_protocol,
+            protocol=protocol_version)
         self.client.username_pw_set(username=mqtt_username, password=mqtt_pass)
         self.broker_address = broker_address
         self.broker_port = broker_port
@@ -51,18 +54,27 @@ class MQTTClient:
     def connect(self):
         while not self.client.is_connected() and not self.flag.is_set():
             try:
-                self.infoLogger.info(self.sensor_type + " sensor establishing connection with MQTT broker!") #TODO alarm vs sensor
-                self.client.connect(self.broker_address, port=self.broker_port, keepalive=self.keepalive)
+                self.infoLogger.info(
+                    self.sensor_type +
+                    " sensor establishing connection with MQTT broker!")  # TODO alarm vs sensor
+                self.client.connect(
+                    self.broker_address,
+                    port=self.broker_port,
+                    keepalive=self.keepalive)
                 self.client.loop_start()
                 time.sleep(0.2)
 
             except Exception as e:
-                self.errorLogger.error(self.sensor_type + " sensor failed to establish connection with MQTT broker!")
+                self.errorLogger.error(
+                    self.sensor_type +
+                    " sensor failed to establish connection with MQTT broker!")
                 print(e)
 
     def try_reconnect(self):
         while not self.client.is_connected() and not self.flag.is_set():
-            self.errorLogger.error(self.sensor_type + " sensor lost connection to MQTT broker!")
+            self.errorLogger.error(
+                self.sensor_type +
+                " sensor lost connection to MQTT broker!")
             self.client.reconnect()
             time.sleep(0.2)
 

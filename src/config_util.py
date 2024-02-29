@@ -32,6 +32,7 @@ rest_api = "rest_api"
 host = "host"
 port = "port"
 
+
 class ConfFlags:
     def __init__(self):
         self.fuel_flag = Event()
@@ -47,13 +48,14 @@ class ConfFlags:
         self.can_flag.set()
         self.execution_flag.set()
 
+
 class ConfHandler(FileSystemEventHandler):
     def __init__(self, conf_flags: ConfFlags):
         super()
         self.conf_flags = conf_flags
 
     def on_modified(self, event):
-       self.conf_flags.set_all()
+        self.conf_flags.set_all()
 
     def on_any_event(self, event):
         return
@@ -124,13 +126,17 @@ class Config:
         try:
             conf_file = open(self.path)
             self.config = json.load(conf_file)
-        except:
-            self.error_logger.critical("Using default config! Can't read app config file - ", self.path, " !")
-            self.custom_logger.critical("Using default config! Can't read app config file - ", self.path, " !")
+        except BaseException:
+            self.error_logger.critical(
+                "Using default config! Can't read app config file - ", self.path, " !")
+            self.custom_logger.critical(
+                "Using default config! Can't read app config file - ", self.path, " !")
 
-            self.config = {fuel_settings: {"fuel_level_limit": 200, "mode": "SIMULATOR"},
-                      temp_settings: {"temp_interval": 20, "mode": "SIMULATOR"},
-                      load_settings: {"load_interval": 20, "mode": "SIMULATOR"}, }
+            self.config = {
+                fuel_settings: {
+                    "fuel_level_limit": 200, "mode": "SIMULATOR"}, temp_settings: {
+                    "temp_interval": 20, "mode": "SIMULATOR"}, load_settings: {
+                    "load_interval": 20, "mode": "SIMULATOR"}, }
 
     def get_temp_mode(self):
         return self.config[temp_settings][mode]
@@ -173,6 +179,7 @@ class Config:
 
     def get_api_key(self):
         return self.config[api_key]
+
     def get_server_time_format(self):
         return self.config[server_time_format]
 
@@ -226,4 +233,3 @@ class Config:
 
     def get_rest_api_port(self):
         return self.config[rest_api][port]
-

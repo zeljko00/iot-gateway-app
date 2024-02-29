@@ -24,10 +24,10 @@ customLogger = logging.getLogger("customConsoleLogger")
 conf_file_path = "configuration/sensor_conf.json"
 app_conf_file_path = "configuration/app_conf.json"
 
-transport_protocol="tcp"
-temp_topic="sensors/temperature"
-load_topic="sensors/arm-load"
-fuel_topic="sensors/fuel-level"
+transport_protocol = "tcp"
+temp_topic = "sensors/temperature"
+load_topic = "sensors/arm-load"
+fuel_topic = "sensors/fuel-level"
 
 
 data_pattern = "[ value={} , time={} , unit={} ]"
@@ -73,7 +73,6 @@ fuel_alarm_topic = "alarms/fuel"
 
 def read_can(execution_flag, config_flag, init_flags, can_lock):
 
-
     customLogger.debug("CAN process started!")
 
     period = 2
@@ -100,15 +99,16 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
             is_can_load = True if config.get_load_mode() == "CAN" else False
             is_can_fuel = True if config.get_fuel_mode() == "CAN" else False
 
-            if (is_can_temp is False) and (is_can_load is False) and (is_can_fuel is False):
+            if (is_can_temp is False) and (
+                    is_can_load is False) and (is_can_fuel is False):
                 break
 
             bus = Bus(interface=interface_value,
                       channel=channel_value,
                       bitrate=bitrate_value)
 
-            temp_client, load_client, fuel_client = init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel,
-                                                                      config, execution_flag)
+            temp_client, load_client, fuel_client = init_mqtt_clients(
+                bus, is_can_temp, is_can_load, is_can_fuel, config, execution_flag)
             notifier = can.Notifier(bus, [], timeout=period)
             can_listener = CANListener(temp_client, load_client, fuel_client)
             notifier.add_listener(can_listener)
@@ -138,32 +138,43 @@ def stop_can(notifier, bus, temp_client, load_client, fuel_client):
         bus.shutdown()
 
 
-def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag):
+def init_mqtt_clients(
+        bus,
+        is_can_temp,
+        is_can_load,
+        is_can_fuel,
+        config,
+        flag):
     temp_client = None
     load_client = None
     fuel_client = None
 
     if is_can_temp:
-        temp_client = MQTTClient("temp-can-sensor-mqtt-client", transport_protocol=transport_protocol,
-                                 protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=config.get_mqtt_broker_username(),
-                                 mqtt_pass=config.get_mqtt_broker_password(),
-                                 broker_address=config.get_mqtt_broker_address(),
-                                 broker_port=config.get_mqtt_broker_port(),
-                                 keepalive=2 * 3,
-                                 infoLogger=infoLogger,
-                                 errorLogger=errorLogger,
-                                 flag=flag,
-                                 sensor_type="TEMP",
-                                 bus=bus)
+        temp_client = MQTTClient(
+            "temp-can-sensor-mqtt-client",
+            transport_protocol=transport_protocol,
+            protocol_version=mqtt.MQTTv5,
+            mqtt_username=config.get_mqtt_broker_username(),
+            mqtt_pass=config.get_mqtt_broker_password(),
+            broker_address=config.get_mqtt_broker_address(),
+            broker_port=config.get_mqtt_broker_port(),
+            keepalive=2 * 3,
+            infoLogger=infoLogger,
+            errorLogger=errorLogger,
+            flag=flag,
+            sensor_type="TEMP",
+            bus=bus)
 
         def on_message_temp_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x120,
-                                      data=[bool(msg.payload)],  # TODO if anything else is sent instead of True/False
+                                      # TODO if anything else is sent instead
+                                      # of True/False
+                                      data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)
             bus.send(msg=can_message, timeout=5)
-            customLogger.info("Temperature alarm registered! Forwarding to CAN!")
+            customLogger.info(
+                "Temperature alarm registered! Forwarding to CAN!")
 
         temp_client.set_on_connect(on_connect_temp_sensor)
         temp_client.set_on_publish(on_publish)
@@ -172,22 +183,26 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag):
         temp_client.connect()
 
     if is_can_load:
-        load_client = MQTTClient("load-can-sensor-mqtt-client", transport_protocol=transport_protocol,
-                                 protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=config.get_mqtt_broker_username(),
-                                 mqtt_pass=config.get_mqtt_broker_password(),
-                                 broker_address=config.get_mqtt_broker_address(),
-                                 broker_port=config.get_mqtt_broker_port(),
-                                 keepalive=2 * 3,
-                                 infoLogger=infoLogger,
-                                 errorLogger=errorLogger,
-                                 flag=flag,
-                                 sensor_type="LOAD",
-                                 bus=bus)
+        load_client = MQTTClient(
+            "load-can-sensor-mqtt-client",
+            transport_protocol=transport_protocol,
+            protocol_version=mqtt.MQTTv5,
+            mqtt_username=config.get_mqtt_broker_username(),
+            mqtt_pass=config.get_mqtt_broker_password(),
+            broker_address=config.get_mqtt_broker_address(),
+            broker_port=config.get_mqtt_broker_port(),
+            keepalive=2 * 3,
+            infoLogger=infoLogger,
+            errorLogger=errorLogger,
+            flag=flag,
+            sensor_type="LOAD",
+            bus=bus)
 
         def on_message_load_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x121,
-                                      data=[bool(msg.payload)],  # TODO if anything else is sent instead of True/False
+                                      # TODO if anything else is sent instead
+                                      # of True/False
+                                      data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)
             bus.send(msg=can_message, timeout=5)
@@ -200,22 +215,26 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag):
         load_client.connect()
 
     if is_can_fuel:
-        fuel_client = MQTTClient("fuel-can-sensor-mqtt-client", transport_protocol=transport_protocol,
-                                 protocol_version=mqtt.MQTTv5,
-                                 mqtt_username=config.get_mqtt_broker_username(),
-                                 mqtt_pass=config.get_mqtt_broker_password(),
-                                 broker_address=config.get_mqtt_broker_address(),
-                                 broker_port=config.get_mqtt_broker_port(),
-                                 keepalive=2 * 3,
-                                 infoLogger=infoLogger,
-                                 errorLogger=errorLogger,
-                                 flag=flag,
-                                 sensor_type="FUEL",
-                                 bus=bus)
+        fuel_client = MQTTClient(
+            "fuel-can-sensor-mqtt-client",
+            transport_protocol=transport_protocol,
+            protocol_version=mqtt.MQTTv5,
+            mqtt_username=config.get_mqtt_broker_username(),
+            mqtt_pass=config.get_mqtt_broker_password(),
+            broker_address=config.get_mqtt_broker_address(),
+            broker_port=config.get_mqtt_broker_port(),
+            keepalive=2 * 3,
+            infoLogger=infoLogger,
+            errorLogger=errorLogger,
+            flag=flag,
+            sensor_type="FUEL",
+            bus=bus)
 
         def on_message_fuel_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x122,
-                                      data=[bool(msg.payload)],  # TODO if anything else is sent instead of True/False
+                                      # TODO if anything else is sent instead
+                                      # of True/False
+                                      data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)
             bus.send(msg=can_message, timeout=5)
@@ -229,15 +248,20 @@ def init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag):
     return temp_client, load_client, fuel_client
 
 
-
 def read_app_conf():
     data = None
     try:
         conf_file = open(app_conf_file_path)
         data = json.load(conf_file)
-    except:
-        errorLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
-        customLogger.critical("Using default config! Can't read app config file - ", app_conf_file_path, " !")
+    except BaseException:
+        errorLogger.critical(
+            "Using default config! Can't read app config file - ",
+            app_conf_file_path,
+            " !")
+        customLogger.critical(
+            "Using default config! Can't read app config file - ",
+            app_conf_file_path,
+            " !")
 
         data = {fuel_settings: {"fuel_level_limit": 200, mode: "SIMULATOR"},
                 temp_settings: {"temp_interval": 20, mode: "SIMULATOR"},
@@ -251,62 +275,85 @@ def on_publish(topic, payload, qos):
 
 def on_subscribe_temp_alarm(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Temperature alarm client successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Temperature alarm client successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Temperature alarm client successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Temperature alarm client successfully established connection with MQTT broker!")
     else:
-        errorLogger.error("CAN Temperature alarm client failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Temperature alarm client failed to establish connection with MQTT broker!")
+        errorLogger.error(
+            "CAN Temperature alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Temperature alarm client failed to establish connection with MQTT broker!")
 
 
 def on_subscribe_load_alarm(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Load alarm client successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Load alarm client successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Load alarm client successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Load alarm client successfully established connection with MQTT broker!")
     else:
-        errorLogger.error("CAN Load alarm client failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
+        errorLogger.error(
+            "CAN Load alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Load alarm client failed to establish connection with MQTT broker!")
 
 
 def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Load alarm client successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Load alarm client successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Load alarm client successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Load alarm client successfully established connection with MQTT broker!")
         client.subscribe(fuel_alarm_topic, qos=qos)
     else:
-        errorLogger.error("CAN Load alarm client failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Load alarm client failed to establish connection with MQTT broker!")
-
+        errorLogger.error(
+            "CAN Load alarm client failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Load alarm client failed to establish connection with MQTT broker!")
 
 
 # TODO same method differed string
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Temperature sensor successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Temperature sensor successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Temperature sensor successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Temperature sensor successfully established connection with MQTT broker!")
         client.subscribe(temp_alarm_topic, qos=qos)
     else:
-        errorLogger.error("CAN Temperature sensor failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Temperature sensor failed to establish connection with MQTT broker!")
+        errorLogger.error(
+            "CAN Temperature sensor failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Temperature sensor failed to establish connection with MQTT broker!")
 
 
 def on_connect_load_sensor(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Load sensor successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Load sensor successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Load sensor successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Load sensor successfully established connection with MQTT broker!")
         client.subscribe(load_alarm_topic, qos=qos)
     else:
-        errorLogger.error("CAN Load sensor failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Load sensor failed to establish connection with MQTT broker!")
+        errorLogger.error(
+            "CAN Load sensor failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Load sensor failed to establish connection with MQTT broker!")
 
 
 def on_connect_fuel_sensor(client, userdata, flags, rc, props):
     if rc == 0:
-        infoLogger.info("CAN Fuel sensor successfully established connection with MQTT broker!")
-        customLogger.debug("CAN Fuel sensor successfully established connection with MQTT broker!")
+        infoLogger.info(
+            "CAN Fuel sensor successfully established connection with MQTT broker!")
+        customLogger.debug(
+            "CAN Fuel sensor successfully established connection with MQTT broker!")
         client.subscribe(fuel_alarm_topic, qos=qos)
     else:
-        errorLogger.error("CAN Fuel sensor failed to establish connection with MQTT broker!")
-        customLogger.critical("CAN Fuel sensor failed to establish connection with MQTT broker!")
+        errorLogger.error(
+            "CAN Fuel sensor failed to establish connection with MQTT broker!")
+        customLogger.critical(
+            "CAN Fuel sensor failed to establish connection with MQTT broker!")
 
 
 class CANListener (Listener):
@@ -322,7 +369,6 @@ class CANListener (Listener):
         if fuel_client is not None:
             fuel_client.connect()
         self.fuel_client = fuel_client
-
 
     def set_temp_client(self, client):
         if client is None:
@@ -345,7 +391,7 @@ class CANListener (Listener):
     def on_message_received(self, msg):
         # msg.data is a byte array, need to turn it into a single value
 
-        #int_value = struct.unpack('<q', msg.data)[0]
+        # int_value = struct.unpack('<q', msg.data)[0]
         int_value = int.from_bytes(msg.data, byteorder="big", signed=True)
         value = int_value / 10.0
         # this is part of CAN transmit ticket
@@ -363,20 +409,34 @@ class CANListener (Listener):
                     "{:.2f}".format(value), str(
                         time.strftime(
                             time_format, time.localtime())), celzius), qos)
-            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(value),
-                                                                    str(time.strftime(time_format, time.localtime())),
-                                                                    celzius))
+            customLogger.info(
+                "Temperature: " +
+                data_pattern.format(
+                    "{:.2f}".format(value),
+                    str(
+                        time.strftime(
+                            time_format,
+                            time.localtime())),
+                    celzius))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
-            self.load_client.publish(load_topic, data_pattern.format("{:.2f}".format(value),
-                                                                     str(time.strftime(time_format, time.localtime())),
-                                                                     celzius), qos)
-            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(value),
-                                                             str(time.strftime(time_format, time.localtime())),
-                                                             kg))
+            self.load_client.publish(
+                load_topic, data_pattern.format(
+                    "{:.2f}".format(value), str(
+                        time.strftime(
+                            time_format, time.localtime())), celzius), qos)
+            customLogger.info(
+                "Load: " + data_pattern.format(
+                    "{:.2f}".format(value), str(
+                        time.strftime(
+                            time_format, time.localtime())), kg))
         elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
-            self.fuel_client.publish(fuel_topic, data_pattern.format("{:.2f}".format(value),
-                                                                     str(time.strftime(time_format, time.localtime())),
-                                                                     celzius), qos)
-            customLogger.info("Fuel: " + data_pattern.format("{:.2f}".format(value),
-                                                             str(time.strftime(time_format, time.localtime())),
-                                                             _l))
+            self.fuel_client.publish(
+                fuel_topic, data_pattern.format(
+                    "{:.2f}".format(value), str(
+                        time.strftime(
+                            time_format, time.localtime())), celzius), qos)
+            customLogger.info(
+                "Fuel: " + data_pattern.format(
+                    "{:.2f}".format(value), str(
+                        time.strftime(
+                            time_format, time.localtime())), _l))

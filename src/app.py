@@ -320,7 +320,8 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             gcb_conf.username,
             gcb_conf.password)
         gcb_connect(gcb_client, gcb_conf.address, gcb_conf.port)
-        customLogger.debug("TEMP PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
+        customLogger.debug(
+            "TEMP PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
     sensors_broker_client = MQTTClient(
         "temp-data-handler-mqtt-client",
@@ -474,7 +475,8 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
             gcb_conf.username,
             gcb_conf.password)
         gcb_connect(gcb_client, gcb_conf.address, gcb_conf.port)
-        customLogger.debug("LOAD PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
+        customLogger.debug(
+            "LOAD PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
     # called when there is new message in load_topic topic
     # initializing mqtt client for collecting sensor data from broker
