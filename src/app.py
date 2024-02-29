@@ -671,8 +671,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                 limit = config.get_fuel_settings_level_limit()
                 conf_flag.clear()
 
-            customLogger.info("Received fuel data: " +
-                              str(message.payload.decode("utf-8")))
+            customLogger.info("Received fuel data: " + str(message.payload.decode("utf-8")))
 
             code = data_service.handle_fuel_data(
                 str(message.payload.decode("utf-8")),
@@ -803,8 +802,7 @@ def main():
                 target=collect_temperature_data,
                 args=(
                     config,
-                    config.get_server_url() +
-                    "/data/temp",
+                    config.get_server_url() + "/data/temp",
                     jwt,
                     temp_handler_flag,
                     conf_flags.temp_flag,
@@ -815,8 +813,7 @@ def main():
                 target=collect_load_data,
                 args=(
                     config,
-                    config.get_server_url() +
-                    "/data/load",
+                    config.get_server_url() + "/data/load",
                     jwt,
                     load_handler_flag,
                     conf_flags.load_flag,
@@ -827,8 +824,7 @@ def main():
                 target=collect_fuel_data,
                 args=(
                     config,
-                    config.get_server_url() +
-                    "/data/fuel",
+                    config.get_server_url() + "/data/fuel",
                     jwt,
                     fuel_handler_flag,
                     conf_flags.fuel_flag,
