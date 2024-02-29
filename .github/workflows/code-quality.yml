@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - uses: parafoxia/pip-install@v1
         with:
           packages: flake8-docstrings
-      - uses: actions/checkout@v2
       - uses: ricardochaves/python-lint@v1.4.0
         with:
           python-root-list: "src"
