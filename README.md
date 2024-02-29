@@ -12,9 +12,11 @@
    - create network: ```docker network create iot``` - not needed every time.
    - run container: ```docker run --name iot-gateway -it  --network iot  iot-gateway```
  - run docker compose:
-   - ```docker.exe compose -f .\Docker\system\docker-compose.yaml -p system up -d iot-gateway```
+   - ``` bash
+     docker.exe compose -f .\Docker\system\docker-compose.yaml -p system up -d iot-gateway
+     ```
 ### Plain run
- ```
+ ``` bash
    cd src
    python app.py
  ```

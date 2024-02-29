@@ -1,0 +1,12 @@
+name: Unimport
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - uses: actions/setup-python@v4.6.1
+      - name: Check unused imports
+        uses: hakancelikdev/unimport@stable
+        with:
+          extra_args: --include src/
