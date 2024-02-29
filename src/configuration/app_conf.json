@@ -3,7 +3,7 @@
  "password":"28061914",
  "fuel_settings": {
   "level_limit": 200,
-  "mode": "CAN"
+  "mode": "SIMULATOR"
  },
  "temp_settings": {
   "interval": 20,
@@ -11,7 +11,7 @@
  },
  "load_settings": {
  "interval": 20,
-  "mode": "CAN"
+  "mode": "SIMULATOR"
 },
  "can_general_settings": {
   "interface": "pcan",

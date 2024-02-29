@@ -162,8 +162,7 @@ def init_mqtt_clients(
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
-            sensor_type="TEMP",
-            bus=bus)
+            sensor_type="TEMP")
 
         def on_message_temp_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x120,
@@ -195,8 +194,7 @@ def init_mqtt_clients(
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
-            sensor_type="LOAD",
-            bus=bus)
+            sensor_type="LOAD")
 
         def on_message_load_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x121,
@@ -227,8 +225,7 @@ def init_mqtt_clients(
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
-            sensor_type="FUEL",
-            bus=bus)
+            sensor_type="FUEL")
 
         def on_message_fuel_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x122,

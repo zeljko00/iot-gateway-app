@@ -17,8 +17,7 @@ class MQTTClient:
             infoLogger,
             errorLogger,
             flag,
-            sensor_type,
-            bus):
+            sensor_type):
         self.client = mqtt.Client(
             client_id=client_id,
             transport=transport_protocol,
@@ -31,7 +30,6 @@ class MQTTClient:
         self.errorLogger = errorLogger
         self.flag = flag
         self.sensor_type = sensor_type
-        self.bus = bus
 
     def set_on_connect(self, connect):
         self.client.on_connect = connect
@@ -47,9 +45,6 @@ class MQTTClient:
 
     def subscribe(self, topic, qos):
         self.client.subscribe(topic, qos=qos)
-
-    def get_bus(self):
-        return self.bus
 
     def connect(self):
         while not self.client.is_connected() and not self.flag.is_set():

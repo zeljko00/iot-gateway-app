@@ -336,7 +336,6 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         errorLogger=errorLogger,
         flag=flag,
         sensor_type="TEMP",
-        bus=None,
     )
 
     # called when there is new message in temp_topic topic
@@ -492,7 +491,6 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
         errorLogger=errorLogger,
         flag=flag,
         sensor_type="LOAD",
-        bus=None,
     )
 
     def on_message_handler(client, userdata, message):
@@ -645,7 +643,6 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
         errorLogger=errorLogger,
         flag=flag,
         sensor_type="FUEL",
-        bus=None,
     )
 
     def on_message_handler(client, userdata, message):
