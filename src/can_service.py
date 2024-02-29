@@ -123,7 +123,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     stop_can(notifier, bus, temp_client, load_client, fuel_client)
     # TODO on_disconnect
     execution_flag.clear()
-
+    customLogger.debug("CAN process shutdown!")
 
 def stop_can(notifier, bus, temp_client, load_client, fuel_client):
     if notifier is not None:

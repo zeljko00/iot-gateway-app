@@ -840,6 +840,7 @@ def main():
             customLogger.debug("Workers stopped!")
 
             # [REST/MQTT]
+            conf_observer.stop()
             conf_observer.join()
             gcb_disconnect(gcb_client)
 

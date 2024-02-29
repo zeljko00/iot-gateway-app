@@ -352,6 +352,7 @@ def measure_temperature_periodically(
                 "Connection between temperature sensor and MQTT broker is broken!")
     client.loop_stop()
     client.disconnect()
+    flag.clear()
     infoLogger.info("Temperature sensor shutdown!")
     customLogger.debug("Temperature sensor shutdown!")
 
@@ -475,6 +476,7 @@ def measure_load_randomly(
         counter += 1
     client.loop_stop()
     client.disconnect()
+    flag.clear()
     infoLogger.info("Arm load sensor shutdown!")
     customLogger.debug("Arm load sensor shutdown!")
 
@@ -626,6 +628,7 @@ def measure_fuel_periodically(
                 "Connection between fuel level sensor and MQTT broker is broken!")
     client.loop_stop()
     client.disconnect()
+    flag.clear()
     infoLogger.info("Fuel level sensor shutdown!")
     customLogger.debug("Fuel level sensor shutdown!")
 
@@ -863,6 +866,15 @@ def main():
     app_config_flags = ConfFlags()
     init_flags = InitFlags()
     app_config_observer = start_config_observer(app_config_flags)
+    shutdown_thread = threading.Thread(target=shutdown_controller,
+                                       args=(
+                                           temp_simulation_flag,
+                                           load_simulation_flag,
+                                           fuel_simulation_flag,
+                                           can_flag,
+                                           main_execution_flag
+                                       ))
+    shutdown_thread.start()
     initial = True
     sensors = []
 
@@ -894,7 +906,8 @@ def main():
         time.sleep(2)
     for sensor in sensors:
         sensor.join()
-
+    shutdown_thread.join()
+    app_config_observer.stop()
     app_config_observer.join()
     infoLogger.info("Sensor system shutdown!")
     customLogger.debug("Sensor system shutdown!")
@@ -925,8 +938,8 @@ def shutdown_controller(
     '''
     # waiting for shutdown signal
     input("")
-    infoLogger.info("Sensor app shutting down! Please wait")
-    customLogger.debug("Sensor app shutting down! Please wait")
+    infoLogger.info("Dispatcher app shutting down! Please wait")
+    customLogger.debug("Dispatcher app shutting down! Please wait")
     # shutting down handler processes
     temp_handler_flag.set()
     load_handler_flag.set()
