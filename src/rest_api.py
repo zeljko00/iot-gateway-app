@@ -17,6 +17,7 @@ infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger('customConsoleLogger')
 
+
 class FuelSettings(BaseModel):
     level_limit: int
     mode: str
@@ -65,7 +66,7 @@ def start_rest_api(host, port):
     @app.post("/config/")
     async def config_post(fluid_config: FluidConfig):
         try:
-            config = Config(conf_path, errorLogger, customLogger) # TODO
+            config = Config(conf_path, errorLogger, customLogger)  # TODO
             config.try_open()
             config.set_fuel_settings(jsonable_encoder(fluid_config.fuel_settings))
             config.set_temp_settings(jsonable_encoder(fluid_config.temp_settings))

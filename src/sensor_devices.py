@@ -462,7 +462,9 @@ def measure_load_randomly(
         try:
             customLogger.info("Load: " +
                               data_pattern.format("{:.2f}".format(data[counter %
-                                                                       values_count]), str(time.strftime(time_format, time.localtime())), kg))
+                                                                       values_count]),
+                                                  str(time.strftime(time_format, time.localtime())),
+                                                  kg))
             # send data to MQTT broker
             client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]), str(
                 time.strftime(time_format, time.localtime())), kg), qos=qos)
