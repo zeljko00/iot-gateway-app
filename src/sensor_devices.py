@@ -824,10 +824,10 @@ class InitFlags:
         self.fuel_simulator_initiated = False
 
     def has_started(self):
-        if (self.can_initiated is True
-                or self.temp_simulator_initiated is True
-                or self.load_simulator_initiated is True
-                or self.fuel_simulator_initiated is True):
+        if (self.can_initiated is True or
+                self.temp_simulator_initiated is True or
+                self.load_simulator_initiated is True or
+                self.fuel_simulator_initiated is True):
             return True
         return False
 
