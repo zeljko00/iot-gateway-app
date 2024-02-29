@@ -55,8 +55,7 @@ class MQTTClient:
         while not self.client.is_connected() and not self.flag.is_set():
             try:
                 self.infoLogger.info(
-                    self.sensor_type +
-                    " sensor establishing connection with MQTT broker!")  # TODO alarm vs sensor
+                    self.sensor_type + " sensor establishing connection with MQTT broker!")
                 self.client.connect(
                     self.broker_address,
                     port=self.broker_port,
@@ -66,15 +65,12 @@ class MQTTClient:
 
             except Exception as e:
                 self.errorLogger.error(
-                    self.sensor_type +
-                    " sensor failed to establish connection with MQTT broker!")
-                print(e)
+                    self.sensor_type + " sensor failed to establish connection with MQTT broker!")
 
     def try_reconnect(self):
         while not self.client.is_connected() and not self.flag.is_set():
             self.errorLogger.error(
-                self.sensor_type +
-                " sensor lost connection to MQTT broker!")
+                self.sensor_type + " sensor lost connection to MQTT broker!")
             self.client.reconnect()
             time.sleep(0.2)
 

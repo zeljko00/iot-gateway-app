@@ -331,8 +331,7 @@ def measure_temperature_periodically(
                 value = avg_val + data[counter % values_count]
                 counter += 1
             customLogger.error(
-                "Temperature: " +
-                data_pattern.format(
+                "Temperature: " + data_pattern.format(
                     "{:.2f}".format(value),
                     str(
                         time.strftime(
@@ -460,11 +459,9 @@ def measure_load_randomly(
             client.reconnect()
             time.sleep(0.1)
         try:
-            customLogger.info("Load: " +
-                              data_pattern.format("{:.2f}".format(data[counter %
-                                                                       values_count]),
-                                                  str(time.strftime(time_format, time.localtime())),
-                                                  kg))
+            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(data[counter % values_count]),
+                                                             str(time.strftime(time_format, time.localtime())),
+                                                             kg))
             # send data to MQTT broker
             client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]), str(
                 time.strftime(time_format, time.localtime())), kg), qos=qos)
@@ -532,7 +529,7 @@ def measure_fuel_periodically(
     '''
     customLogger.debug("Fuel level sensor started!")
     customLogger.debug(
-        "Fuel level sensor conf: period={}s, capacity={}l, consumption={}l/h, efficiency={}, refill={}". format(
+        "Fuel level sensor conf: period={}s, capacity={}l, consumption={}l/h, efficiency={}, refill={}".format(
             period,
             capacity,
             consumption,
@@ -606,8 +603,7 @@ def measure_fuel_periodically(
             time.sleep(0.1)
         try:
             customLogger.warning(
-                "Fuel: " +
-                data_pattern.format(
+                "Fuel: " + data_pattern.format(
                     "{:.2f}".format(value),
                     str(
                         time.strftime(
@@ -828,10 +824,10 @@ class InitFlags:
         self.fuel_simulator_initiated = False
 
     def has_started(self):
-        if (self.can_initiated is True or
-                self.temp_simulator_initiated is True or
-                self.load_simulator_initiated is True or
-                self.fuel_simulator_initiated is True):
+        if (self.can_initiated is True
+                or self.temp_simulator_initiated is True
+                or self.load_simulator_initiated is True
+                or self.fuel_simulator_initiated is True):
             return True
         return False
 

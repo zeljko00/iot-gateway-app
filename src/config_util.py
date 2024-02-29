@@ -134,9 +134,11 @@ class Config:
 
             self.config = {
                 fuel_settings: {
-                    "fuel_level_limit": 200, "mode": "SIMULATOR"}, temp_settings: {
-                    "temp_interval": 20, "mode": "SIMULATOR"}, load_settings: {
-                    "load_interval": 20, "mode": "SIMULATOR"}, }
+                    level_limit: 200, mode: "SIMULATOR"}, temp_settings: {
+                    interval: 20, mode: "SIMULATOR"}, load_settings: {
+                    interval: 20, mode: "SIMULATOR"}, server_url: "", mqtt_broker: {
+                    username: "", password: ""
+                }}
 
     def get_temp_mode(self):
         return self.config[temp_settings][mode]

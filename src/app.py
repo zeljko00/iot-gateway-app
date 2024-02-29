@@ -366,9 +366,7 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             if data_value > 95:
                 # sound the alarm! ask him what do I send #ASK
                 customLogger.info(
-                    "Temperature of " +
-                    str(data_value) +
-                    " C is too high! Sounding the alarm!")
+                    "Temperature of " + str(data_value) + " C is too high! Sounding the alarm!")
                 client.publish(temp_alarm_topic, True, qos)
 
     # initializing stats object
@@ -522,10 +520,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
             time_value = time.strftime(time_format, time.localtime())
             if data_sum > 1000:
                 # sound the alarm! ask him what do I send #ASK
-                customLogger.info(
-                    "Load of " +
-                    str(data_sum) +
-                    " kg is too high! Sounding the alarm!")
+                customLogger.info("Load of " + str(data_sum) + " kg is too high! Sounding the alarm!")
                 client.publish(load_alarm_topic, True, qos)
 
     # initializing stats object
@@ -680,8 +675,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
                               str(message.payload.decode("utf-8")))
 
             code = data_service.handle_fuel_data(
-                str(
-                    message.payload.decode("utf-8")),
+                str(message.payload.decode("utf-8")),
                 config.get_fuel_settings_level_limit(),
                 url,
                 jwt,
@@ -785,13 +779,11 @@ def main():
                 "STATS PUBLISHER ESTABLISHED CONNECTION WITH BROKER.")
 
             stats = stats_service.OverallStats(
-                config.get_server_url() +
-                "/stats",
+                config.get_server_url() + "/stats",
                 jwt,
                 config.get_iot_username(),
                 config.get_time_format(),
                 gcb_client)
-
             temp_stats_queue = Queue()
             load_stats_queue = Queue()
             fuel_stats_queue = Queue()

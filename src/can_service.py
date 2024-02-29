@@ -409,15 +409,9 @@ class CANListener (Listener):
                     "{:.2f}".format(value), str(
                         time.strftime(
                             time_format, time.localtime())), celzius), qos)
-            customLogger.info(
-                "Temperature: " +
-                data_pattern.format(
-                    "{:.2f}".format(value),
-                    str(
-                        time.strftime(
-                            time_format,
-                            time.localtime())),
-                    celzius))
+            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(value),
+                              str(time.strftime(time_format,time.localtime())),
+                              celzius))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
             self.load_client.publish(
                 load_topic, data_pattern.format(
