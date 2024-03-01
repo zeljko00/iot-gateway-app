@@ -1,4 +1,4 @@
-'''
+"""
 data_services
 ============
 Module containing logic for sending collected and processed data to cloud services.
@@ -23,7 +23,7 @@ http_ok
 http_no_content
     Http status code.
 
-'''
+"""
 import time
 import json
 import requests
@@ -72,7 +72,7 @@ def parse_incoming_data(data, type):
 
 
 def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
-    '''
+    """
        Summarizes and sends collected temperature data.
 
        Triggered periodically.
@@ -91,7 +91,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
        Returns
        -------
        http status code
-       '''
+       """
 
     data_sum = 0.0
     unit = "Unknown"
@@ -122,7 +122,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
 
 
 def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
-    '''
+    """
     Summarizes and sends collected load data.
 
     Triggered periodically  (variable interval).
@@ -141,7 +141,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     Returns
     -------
     http status code
-    '''
+    """
     data_sum = 0.0
     unit = "Unknown"
     for info in data:
@@ -170,7 +170,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
 
 
 def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client, mqtt_client):
-    '''
+    """
      Sends filtered fuel data.
 
      Triggered periodically.
@@ -193,7 +193,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client,
      Returns
      -------
      http status code
-    '''
+    """
     try:
         tokens = data.split(" ")
         value = float(tokens[1].split("=")[1])

@@ -1,4 +1,4 @@
-'''
+"""
 sensor_devices
 ============
 Module with logic that simulates three different sensors: fuel level sensor, engine temperature sensor, arm load sensor
@@ -41,7 +41,8 @@ Constants
 conf_file_path : str
     Path to sensors' config file.
 
-'''
+"""
+
 import time
 import random
 
@@ -114,7 +115,7 @@ liter = "l"
 
 
 def on_publish(client, userdata, result):
-    '''
+    """
     Logic executed after receiving mqtt message.
 
     Parameters
@@ -126,12 +127,12 @@ def on_publish(client, userdata, result):
     Returns
     -------
     None
-    '''
+    """
     pass
 
 
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
-    '''
+    """
     Logic executed after establishing connection between temperature sensor process and mqtt broker
 
     Parameters
@@ -146,7 +147,7 @@ def on_connect_temp_sensor(client, userdata, flags, rc, props):
     Returns
     -------
     None
-    '''
+    """
     if rc == 0:
         infoLogger.info("Temperature sensor successfully established connection with MQTT broker!")
         customLogger.debug("Temperature sensor successfully established connection with MQTT broker!")
@@ -156,7 +157,7 @@ def on_connect_temp_sensor(client, userdata, flags, rc, props):
 
 
 def on_connect_load_sensor(client, userdata, flags, rc, props):
-    '''
+    """
     Logic executed after establishing connection between arm load sensor process and mqtt broker
 
     Parameters
@@ -171,7 +172,7 @@ def on_connect_load_sensor(client, userdata, flags, rc, props):
     Returns
     -------
     None
-    '''
+    """
     if rc == 0:
         infoLogger.info("Arm load sensor successfully established connection with MQTT broker!")
         customLogger.debug("Arm load sensor successfully established connection with MQTT broker!")
@@ -181,7 +182,7 @@ def on_connect_load_sensor(client, userdata, flags, rc, props):
 
 
 def on_connect_fuel_sensor(client, userdata, flags, rc, props):
-    '''
+    """
     Logic executed after establishing connection between FUEL sensor process and mqtt broker
 
     Parameters
@@ -196,7 +197,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
     Returns
     -------
     None
-    '''
+    """
     if rc == 0:
         infoLogger.info("Fuel sensor successfully established connection with MQTT broker!")
         customLogger.debug("Fuel sensor successfully established connection with MQTT broker!")
@@ -209,7 +210,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 def measure_temperature_periodically(period, min_val, avg_val, broker_address,
                                      broker_port, mqtt_username, mqtt_pass, flag):
-    '''
+    """
     Emulates temperature sensor.
 
     Periodically generates temperature sensor reading.
@@ -236,7 +237,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address,
     Returns
     -------
     None
-    '''
+    """
     customLogger.debug("Temperature sensor started!")
     customLogger.debug("Temperature sensor conf: interval={}s , min={}˚C , avg={}C".format(period, min_val, avg_val))
     # preventing division by zero
@@ -297,7 +298,7 @@ def measure_temperature_periodically(period, min_val, avg_val, broker_address,
 
 # min_t/max_t = min/max measuring period in sec, min_val/max_val = min/max measured value
 def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker_port, mqtt_username, mqtt_pass, flag):
-    '''
+    """
     Emulates arm load sensor.
 
     Randomly generates arm load sensor reading.
@@ -326,7 +327,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
     Returns
     -------
     None
-    '''
+    """
     customLogger.debug("Arm load sensor started!")
     customLogger.debug(
         "Arm load sensor conf: min_interval={}s , max_interval={}s , min={}kg , max={}kg".format(
@@ -384,7 +385,7 @@ def measure_load_randomly(min_t, max_t, min_val, max_val, broker_address, broker
 # consumption = fuel usage consumption per working hour, efficiency = machine work efficiency (0-1)
 def measure_fuel_periodically(period, capacity, consumption, efficiency, refill, broker_address, broker_port,
                               mqtt_username, mqtt_pass, flag):
-    '''
+    """
     Emulates fuel sensor.
 
     Periodically generates fuel level sensor reading.
@@ -416,7 +417,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
     -------
 
     None
-    '''
+    """
     customLogger.debug("Fuel level sensor started!")
     customLogger.debug("Fuel level sensor conf: period={}s, capacity={}l, consumption={}l/h, efficiency={}, refill={}".
                        format(period, capacity, consumption, efficiency, refill))
@@ -483,7 +484,7 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
 
 # read sensor conf data
 def read_conf():
-    '''
+    """
     Loads sensors' config from config file.
 
     If config file is inaccessible, default config is used.
@@ -493,7 +494,7 @@ def read_conf():
 
     Returns
     -------
-    '''
+    """
     data = None
     try:
         conf_file = open(conf_file_path)
@@ -527,7 +528,7 @@ def read_app_conf():
 
 # creating sensor processes
 def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
-    '''
+    """
     Creates 3 subprocesses representing 3 sensor devices.
 
     Parameters
@@ -540,7 +541,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
     Returns
     -------
     None
-    '''
+    """
     conf_data = read_conf()
     app_conf_data = read_app_conf()
     sensors = []
@@ -607,7 +608,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag):
 
 
 def main():
-    '''
+    """
     Used for testing sensors.
 
     Creates and executes 3 sensor subprocesses. Contains logic for user requested sensors' shutdown.
@@ -618,7 +619,7 @@ def main():
     Returns
     -------
     None
-    '''
+    """
     temp_flag = Event()
     load_flag = Event()
     fuel_flag = Event()
