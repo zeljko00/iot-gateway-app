@@ -19,9 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v5
-      - uses: parafoxia/pip-install@v1
         with:
-          packages: flake8-docstrings
+          python-version: '3.10'
+          run: pip install flake8-docstrings
       - uses: ricardochaves/python-lint@v1.4.0
         with:
           python-root-list: "src"
