@@ -23,7 +23,7 @@ jobs:
           python-version: '3.10'
           cache: 'pip' # caching pip dependencies
       - run: pip install flake8-docstrings
-      - run: flake8 --docstring-convention numpy src
+      - run: flake8 ./src/ --docstring-convention numpy --max-line-length 120 --ignore D401,D205,D400
       - uses: ricardochaves/python-lint@v1.4.0
         with:
           python-root-list: "src"
@@ -35,7 +35,7 @@ jobs:
           use-isort: false
           extra-pylint-options: "--max-line-length=120 --ignore=E722,W0703,E0401,W0107"
           extra-pycodestyle-options: "--max-line-length=120 --ignore=E722"
-          extra-flake8-options: "--docstring-convention numpy"
+          extra-flake8-options: "--docstring-convention numpy --max-line-length 120 --ignore D401,D205,D400"
           extra-black-options: ""
           extra-mypy-options: ""
           extra-isort-options: ""
