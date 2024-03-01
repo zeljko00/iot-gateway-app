@@ -1,4 +1,4 @@
-'''
+"""
 auth
 ============
 Module that provides functions for iot-gateway authentication on cloud
@@ -13,7 +13,7 @@ check_jwt(jwt,url)
 
 register(key, username, password, time_format, url)
     Registers new iot-gateway device.
-'''
+"""
 
 import requests
 import base64
@@ -28,7 +28,7 @@ http_ok = 200
 
 
 def login(username, password, url):
-    '''
+    """
     Sign in iot-gateway to its account on cloud platform.
 
     If login is successful, returns jwt for accessing cloud REST API.
@@ -45,7 +45,7 @@ def login(username, password, url):
     jwt: string
         Base64 encoded JSON Web token that contains validity period, role and device username.If register process
         fails, function returns None.
-    '''
+    """
     # creating base64 encoded username:password token for basic auth
     basic_auth = "Basic " + (base64.b64encode((username + ":" + password).encode("ascii")).decode("ascii"))
     try:
@@ -63,7 +63,7 @@ def login(username, password, url):
 
 
 def check_jwt(jwt, url):
-    '''
+    """
     Checking jwt validity.
 
     Parameters
@@ -77,7 +77,7 @@ def check_jwt(jwt, url):
     -------
     status: int
          Function returns status 0 if JWT is invalid, otherwise returns 1.
-    '''
+    """
     try:
         login_req = requests.get(url, headers={"Authorization": "Bearer " + jwt})
         if login_req.status_code != http_ok:
@@ -91,7 +91,7 @@ def check_jwt(jwt, url):
 # sends also device's time format
 # register requires API key
 def register(key, username, password, time_format, url):
-    '''
+    """
     Creates new account on cloud platform for iot-gateway device.
 
     If login is successful, returns jwt for accessing cloud REST API.
@@ -112,7 +112,7 @@ def register(key, username, password, time_format, url):
     jwt: string
         Base64 encoded JSON Web token that contains validity period, role and device username. If register process
         fails, function returns None.
-    '''
+    """
     try:
         login_req = requests.post(url, params={"username": username, "password": password, "time_format": time_format},
                                   headers={"Authorization": key})
