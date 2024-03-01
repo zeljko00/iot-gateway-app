@@ -412,11 +412,6 @@ def measure_fuel_periodically(period, capacity, consumption, efficiency, refill,
         Password required for establishing connection with MQTT broker.
     flag: multiprocessing.Event
         Object used for stopping temperature sensor process.
-
-    Returns
-    -------
-
-    None
     """
     customLogger.debug("Fuel level sensor started!")
     customLogger.debug("Fuel level sensor conf: period={}s, capacity={}l, consumption={}l/h, efficiency={}, refill={}".
@@ -488,12 +483,6 @@ def read_conf():
     Loads sensors' config from config file.
 
     If config file is inaccessible, default config is used.
-
-    Parameters
-    ----------
-
-    Returns
-    -------
     """
     data = None
     try:
@@ -612,13 +601,6 @@ def main():
     Used for testing sensors.
 
     Creates and executes 3 sensor subprocesses. Contains logic for user requested sensors' shutdown.
-
-    Parameters
-    ----------
-
-    Returns
-    -------
-    None
     """
     temp_flag = Event()
     load_flag = Event()
