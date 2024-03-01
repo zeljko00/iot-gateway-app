@@ -161,8 +161,7 @@ def shutdown_controller(
         temp_handler_flag,
         load_handler_flag,
         fuel_handler_flag):
-    """
-    Handles user request for sensor shutdown.
+    """Handles user request for sensor shutdown.
 
     When user requests shutdown, sets sensor processes' stop tokens.
 
@@ -174,9 +173,6 @@ def shutdown_controller(
         Token used for stopping load sensor process.
     fuel_handler_flag: multiprocessing.Event
         Token used for stopping fuel sensor process.
-
-    Returns
-    -------
     """
     # waiting for shutdown signal
     input("")
@@ -199,9 +195,6 @@ def on_connect_temp_handler(client, userdata, flags, rc, props):
     flags:
     rc: int
     props:
-
-    Returns
-    -------
     """
     if rc == 0:
         infoLogger.info(
@@ -227,9 +220,6 @@ def on_connect_load_handler(client, userdata, flags, rc, props):
     flags:
     rc: int
     props:
-
-    Returns
-    -------
     """
     if rc == 0:
         infoLogger.info(
@@ -253,9 +243,6 @@ def on_connect_fuel_handler(client, userdata, flags, rc, props):
     flags:
     rc: int
     props:
-
-    Returns
-    -------
     """
     if rc == 0:
         infoLogger.info(
@@ -299,8 +286,6 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         Object used for stopping temperature sensor process.
     stats_queue: multiprocessing.Queue
         Stats data wrapper.
-    Returns
-    -------
     """
     new_data = []
     old_data = []
@@ -318,18 +303,19 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
 
     def on_message_handler(client, userdata, message):
         """
-         Handles received mqtt message.
+        Handles received mqtt message.
 
-         After receiving mqtt message, locally stores temperature data.
+        After receiving mqtt message, locally stores temperature data.
 
-         Parameters
-         ----------
-         client: mqtt.client
-         userdata: object
-         message: object
+        Parameters
+        ----------
+        client: mqtt.client
+        userdata: object
+        message: object
 
-         Returns
-         -------
+        Returns
+        -------
+        None
         """
         if not flag.is_set():
             data = message.payload.decode("utf-8")
@@ -439,10 +425,7 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
        Object used for stopping temperature sensor process.
     stats_queue: multiprocessing.Queue
         Stats data wrapper.
-
-    Returns
-    -------
-   """
+    """
     new_data = []
     old_data = []
 
@@ -460,18 +443,15 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
 
     def on_message_handler(client, userdata, message):
         """
-         Handles received mqtt message.
+        Handles received mqtt message.
 
-         After receiving mqtt message, locally stores load data.
+        After receiving mqtt message, locally stores load data.
 
-         Parameters
-         ----------
-         client: mqtt.client
-         userdata: object
-         message: object
-
-         Returns
-         -------
+        Parameters
+        ----------
+        client: mqtt.client
+        userdata: object
+        message: object
         """
         if not flag.is_set():
             data = message.payload.decode("utf-8")
@@ -584,9 +564,6 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
       Object used for stopping temperature sensor process.
     stats_queue: multiprocessing.Queue
        Stats data wrapper.
-
-    Returns
-    -------
     """
     # initializing stats object
 
@@ -621,18 +598,15 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
 
     def on_message_handler(client, userdata, message):
         """
-            Handles received mqtt message.
+        Handles received mqtt message.
 
-            After receiving mqtt message, initiates fuel data processing.
+        After receiving mqtt message, initiates fuel data processing.
 
-            Parameters
-            ----------
-            client: mqtt.client
-            userdata: object
-            message: object
-
-            Returns
-            -------
+        Parameters
+        ----------
+        client: mqtt.client
+        userdata: object
+        message: object
         """
         # making sure that flag is not set in meantime
         if not flag.is_set():
@@ -686,15 +660,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
 
 
 def main():
-    """
-    IoT gateway app entrypoint.
-
-    Parameters
-    ----------
-
-    Returns
-    -------
-    """
+    """The IoT gateway app entrypoint."""
     # used for restarting device due to jwt expiration
     reset = True
     while reset:
