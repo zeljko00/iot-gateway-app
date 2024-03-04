@@ -21,54 +21,54 @@ errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger("customConsoleLogger")
 
 
-conf_file_path = "configuration/sensor_conf.json"
-app_conf_file_path = "configuration/app_conf.json"
+CONF_FILE_PATH = "configuration/sensor_conf.json"
+APP_CONF_FILE_PATH = "configuration/app_conf.json"
 
-transport_protocol = "tcp"
-temp_topic = "sensors/temperature"
-load_topic = "sensors/arm-load"
-fuel_topic = "sensors/fuel-level"
+TRANSPORT_PROTOCOL = "tcp"
+TEMP_TOPIC = "sensors/temperature"
+LOAD_TOPIC = "sensors/arm-load"
+FUEL_TOPIC = "sensors/fuel-level"
 
 
-data_pattern = "[ value={} , time={} , unit={} ]"
-time_format = "%d.%m.%Y %H:%M:%S"
-celzius = "C"
-kg = "kg"
-_l = "l"
+DATA_PATTERN = "[ value={} , time={} , unit={} ]"
+TIME_FORMAT = "%d.%m.%Y %H:%M:%S"
+CELZIUS = "C"
+KG = "kg"
+_L = "l"
 
-mode = "mode"
-temp_settings = "temp_settings"
-load_settings = "load_settings"
-fuel_settings = "fuel_settings"
-can_general_settings = "can_general_settings"
+MODE = "mode"
+TEMP_SETTINGS = "temp_settings"
+LOAD_SETTINGS = "load_settings"
+FUEL_SETTINGS = "fuel_settings"
+CAN_GENERAL_SETTINGS = "can_general_settings"
 
-channel = "channel"
-interface = "interface"
-bitrate = "bitrate"
+CHANNEL = "channel"
+INTERFACE = "interface"
+BITRATE = "bitrate"
 
-temp_sensor = "temp_sensor"
-arm_sensor = "arm_sensor"
-arm_min_t = "min_t"
-arm_max_t = "max_t"
-fuel_sensor = "fuel_sensor"
-fuel_consumption = "consumption"
-fuel_capacity = "capacity"
-fuel_efficiency = "efficiency"
-fuel_refill = "refill"
-interval = "period"
-mqtt_user = "username"
-mqtt_password = "password"
-max = "max_val"
-min = "min_val"
-avg = "avg_val"
-mqtt_broker = "mqtt_broker"
-address = "address"
-port = "port"
+TEMP_SENSOR = "temp_sensor"
+ARM_SENSOR = "arm_sensor"
+ARM_MIN_T = "min_t"
+ARM_MAX_T = "max_t"
+FUEL_SENSOR = "fuel_sensor"
+FUEL_CONSUMPTION = "consumption"
+FUEL_CAPACITY = "capacity"
+FUEL_EFFICIENCY = "efficiency"
+FUEL_REFILL = "refill"
+INTERVAL = "period"
+MQTT_USER = "username"
+MQTT_PASSWORD = "password"
+_MAX = "max_val"
+_MIN = "min_val"
+_AVG = "avg_val"
+MQTT_BROKER = "mqtt_broker"
+ADDRESS = "address"
+PORT = "port"
 
-qos = 2
-temp_alarm_topic = "alarms/temperature"
-load_alarm_topic = "alarms/load"
-fuel_alarm_topic = "alarms/fuel"
+QOS = 2
+TEMP_ALARM_TOPIC = "alarms/temperature"
+LOAD_ALARM_TOPIC = "alarms/load"
+FUEL_ALARM_TOPIC = "alarms/fuel"
 
 
 def read_can(execution_flag, config_flag, init_flags, can_lock):
@@ -87,7 +87,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     while not execution_flag.is_set():  # TODO wait
         if config_flag.is_set() or initial:
 
-            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
             config.try_open()
             stop_can(notifier, bus, temp_client, load_client, fuel_client)
 
@@ -152,7 +152,7 @@ def init_mqtt_clients(
     if is_can_temp:
         temp_client = MQTTClient(
             "temp-can-sensor-mqtt-client",
-            transport_protocol=transport_protocol,
+            transport_protocol=TRANSPORT_PROTOCOL,
             protocol_version=mqtt.MQTTv5,
             mqtt_username=config.get_mqtt_broker_username(),
             mqtt_pass=config.get_mqtt_broker_password(),
@@ -184,7 +184,7 @@ def init_mqtt_clients(
     if is_can_load:
         load_client = MQTTClient(
             "load-can-sensor-mqtt-client",
-            transport_protocol=transport_protocol,
+            transport_protocol=TRANSPORT_PROTOCOL,
             protocol_version=mqtt.MQTTv5,
             mqtt_username=config.get_mqtt_broker_username(),
             mqtt_pass=config.get_mqtt_broker_password(),
@@ -215,7 +215,7 @@ def init_mqtt_clients(
     if is_can_fuel:
         fuel_client = MQTTClient(
             "fuel-can-sensor-mqtt-client",
-            transport_protocol=transport_protocol,
+            transport_protocol=TRANSPORT_PROTOCOL,
             protocol_version=mqtt.MQTTv5,
             mqtt_username=config.get_mqtt_broker_username(),
             mqtt_pass=config.get_mqtt_broker_password(),
@@ -248,21 +248,21 @@ def init_mqtt_clients(
 def read_app_conf():
     data = None
     try:
-        conf_file = open(app_conf_file_path)
+        conf_file = open(APP_CONF_FILE_PATH)
         data = json.load(conf_file)
     except BaseException:
         errorLogger.critical(
             "Using default config! Can't read app config file - ",
-            app_conf_file_path,
+            APP_CONF_FILE_PATH,
             " !")
         customLogger.critical(
             "Using default config! Can't read app config file - ",
-            app_conf_file_path,
+            APP_CONF_FILE_PATH,
             " !")
 
-        data = {fuel_settings: {"fuel_level_limit": 200, mode: "SIMULATOR"},
-                temp_settings: {"temp_interval": 20, mode: "SIMULATOR"},
-                load_settings: {"load_interval": 20, mode: "SIMULATOR"}, }
+        data = {FUEL_SETTINGS: {"fuel_level_limit": 200, MODE: "SIMULATOR"},
+                TEMP_SETTINGS: {"temp_interval": 20, MODE: "SIMULATOR"},
+                LOAD_SETTINGS: {"load_interval": 20, MODE: "SIMULATOR"}, }
     return data
 
 
@@ -302,7 +302,7 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
             "CAN Load alarm client successfully established connection with MQTT broker!")
         customLogger.debug(
             "CAN Load alarm client successfully established connection with MQTT broker!")
-        client.subscribe(fuel_alarm_topic, qos=qos)
+        client.subscribe(FUEL_ALARM_TOPIC, qos=QOS)
     else:
         errorLogger.error(
             "CAN Load alarm client failed to establish connection with MQTT broker!")
@@ -317,7 +317,7 @@ def on_connect_temp_sensor(client, userdata, flags, rc, props):
             "CAN Temperature sensor successfully established connection with MQTT broker!")
         customLogger.debug(
             "CAN Temperature sensor successfully established connection with MQTT broker!")
-        client.subscribe(temp_alarm_topic, qos=qos)
+        client.subscribe(TEMP_ALARM_TOPIC, qos=QOS)
     else:
         errorLogger.error(
             "CAN Temperature sensor failed to establish connection with MQTT broker!")
@@ -331,7 +331,7 @@ def on_connect_load_sensor(client, userdata, flags, rc, props):
             "CAN Load sensor successfully established connection with MQTT broker!")
         customLogger.debug(
             "CAN Load sensor successfully established connection with MQTT broker!")
-        client.subscribe(load_alarm_topic, qos=qos)
+        client.subscribe(LOAD_ALARM_TOPIC, qos=QOS)
     else:
         errorLogger.error(
             "CAN Load sensor failed to establish connection with MQTT broker!")
@@ -345,7 +345,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
             "CAN Fuel sensor successfully established connection with MQTT broker!")
         customLogger.debug(
             "CAN Fuel sensor successfully established connection with MQTT broker!")
-        client.subscribe(fuel_alarm_topic, qos=qos)
+        client.subscribe(FUEL_ALARM_TOPIC, qos=QOS)
     else:
         errorLogger.error(
             "CAN Fuel sensor failed to establish connection with MQTT broker!")
@@ -402,32 +402,32 @@ class CANListener (Listener):
 
         if hex(msg.arbitration_id) == "0x123" and self.temp_client is not None:
             self.temp_client.publish(
-                temp_topic, data_pattern.format(
+                TEMP_TOPIC, DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), celzius), qos)
-            customLogger.info("Temperature: " + data_pattern.format("{:.2f}".format(value),
-                              str(time.strftime(time_format, time.localtime())),
-                              celzius))
+                            TIME_FORMAT, time.localtime())), CELZIUS), QOS)
+            customLogger.info("Temperature: " + DATA_PATTERN.format("{:.2f}".format(value),
+                                                                    str(time.strftime(TIME_FORMAT, time.localtime())),
+                                                                    CELZIUS))
         elif hex(msg.arbitration_id) == "0x124" and self.load_client is not None:
             self.load_client.publish(
-                load_topic, data_pattern.format(
+                LOAD_TOPIC, DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), celzius), qos)
+                            TIME_FORMAT, time.localtime())), CELZIUS), QOS)
             customLogger.info(
-                "Load: " + data_pattern.format(
+                "Load: " + DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), kg))
+                            TIME_FORMAT, time.localtime())), KG))
         elif hex(msg.arbitration_id) == "0x125" and self.fuel_client is not None:
             self.fuel_client.publish(
-                fuel_topic, data_pattern.format(
+                FUEL_TOPIC, DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), celzius), qos)
+                            TIME_FORMAT, time.localtime())), CELZIUS), QOS)
             customLogger.info(
-                "Fuel: " + data_pattern.format(
+                "Fuel: " + DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), _l))
+                            TIME_FORMAT, time.localtime())), _L))
