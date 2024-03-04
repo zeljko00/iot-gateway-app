@@ -56,9 +56,9 @@ def start_rest_api(host, port):
         try:
             config = Config(conf_path)
             config.try_open()
-            return {temp_settings: config.get_temp_settings(),
-                    load_settings: config.get_load_settings(),
-                    fuel_settings: config.get_fuel_settings(), }
+            return {temp_settings: config.temp_settings,
+                    load_settings: config.load_settings,
+                    fuel_settings: config.fuel_settings, }
         except BaseException:
             return None
 
@@ -68,13 +68,13 @@ def start_rest_api(host, port):
         try:
             config = Config(conf_path, errorLogger, customLogger)
             config.try_open()
-            config.set_fuel_settings(jsonable_encoder(fluid_config.fuel_settings))
-            config.set_temp_settings(jsonable_encoder(fluid_config.temp_settings))
-            config.set_load_settings(jsonable_encoder(fluid_config.load_settings))
+            config.fuel_settings(jsonable_encoder(fluid_config.fuel_settings))
+            config.temp_settings(jsonable_encoder(fluid_config.temp_settings))
+            config.load_settings(jsonable_encoder(fluid_config.load_settings))
             write_conf(config)
-            return {temp_settings: config.get_temp_settings(),
-                    load_settings: config.get_load_settings(),
-                    fuel_settings: config.get_fuel_settings(), }
+            return {temp_settings: config.temp_settings,
+                    load_settings: config.load_settings,
+                    fuel_settings: config.fuel_settings, }
         except BaseException:
             return None
 

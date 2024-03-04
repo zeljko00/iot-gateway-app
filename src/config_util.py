@@ -115,13 +115,63 @@ def get_fuel_level_limit(config):
 
 
 class Config:
+    """A wrapper class for the configuration file JSON
+
+            Methods:
+                __init__(path, error_logger, custom_logger): Class constructor for initializing class objects
+                try_open(): Method for reading the configuration from a configuration file
+                get_temp_mode(): Getter for temperature mode
+                get_load_mode(): Getter for load mode
+                get_fuel_mode(): Getter for fuel mode
+                get_can_interface(): Getter for CAN interface
+                get_can_channel(): Getter for CAN channel
+                get_can_bitrate(): Getter for CAN bitrate
+                get_mqtt_broker_username(): Getter for MQTT broker client username
+                get_mqtt_broker_password(): Getter for MQTT broker client password
+                get_mqtt_broker_address(): Getter for MQTT broker client address
+                get_mqtt_broker_port(): Getter for MQTT broker client port
+                get_server_url(): Getter for cloud service url
+                get_iot_username(): Getter for the username that an IoT device uses
+                get_iot_password(): Getter for the password that an IoT device uses
+                get_api_key(): Getter for cloud api key
+                get_server_time_format(): Getter for cloud service time format
+                get_auth_interval(): Getter for cloud service authentication period
+                get_temp_settings_interval(): Getter for temperature period
+                get_load_settings_interval(): Getter for load period
+                get_fuel_settings_interval(): Getter for fuel period
+                get_time_format(): Getter for time format
+                get_fuel_settings_level_limit(): Getter for fuel level limit
+                get_gateway_cloud_broker_iot_username(): Getter for cloud MQTT broker username
+                get_gateway_cloud_broker_iot_password(): Getter for cloud MQTT broker password
+                get_gateway_cloud_broker_address(): Getter for cloud MQTT broker address
+                get_gateway_cloud_broker_port(): Getter for cloud MQTT broker port
+                get_temp_settings(): Getter for temperature settings
+                get_load_settings(): Getter for load settings
+                get_fuel_settings(): Getter for fuel_settings
+                set_temp_settings(): Setter for temperature settings
+                set_load_settings(): Setter for load settings
+                set_fuel_settings(): Setter for fuel settings
+                get_rest_api_host(): Getter for REST API hostname
+                get_rest_api_port(): Getter for REST API port
+
+    """
     def __init__(self, path, error_logger=None, custom_logger=None):
+        """
+            Constructor that initializes a Config object.
+                Args:
+                    path: File path to the configuration file
+                    error_logger: An error logger
+                    custom_logger: A standard output (console) logger
+        """
         self.path = path
         self.config = None
         self.error_logger = error_logger
         self.custom_logger = custom_logger
 
     def try_open(self):
+        """
+            Method that tries to open and read the configuration from the configuration file.
+        """
         try:
             conf_file = open(self.path)
             self.config = json.load(conf_file)
@@ -139,98 +189,130 @@ class Config:
                     username: "", password: ""
                 }}
 
-    def get_temp_mode(self):
+    @property
+    def temp_mode(self):
         return self.config[temp_settings][mode]
 
-    def get_load_mode(self):
+    @property
+    def load_mode(self):
         return self.config[load_settings][mode]
 
-    def get_fuel_mode(self):
+    @property
+    def fuel_mode(self):
         return self.config[fuel_settings][mode]
 
-    def get_can_interface(self):
+    @property
+    def can_interface(self):
         return self.config[can_general_settings][interface]
 
-    def get_can_channel(self):
+    @property
+    def can_channel(self):
         return self.config[can_general_settings][channel]
 
-    def get_can_bitrate(self):
+    @property
+    def can_bitrate(self):
         return self.config[can_general_settings][bitrate]
 
-    def get_mqtt_broker_username(self):
+    @property
+    def mqtt_broker_username(self):
         return self.config[mqtt_broker][username]
 
-    def get_mqtt_broker_password(self):
+    @property
+    def mqtt_broker_password(self):
         return self.config[mqtt_broker][password]
 
-    def get_mqtt_broker_address(self):
+    @property
+    def mqtt_broker_address(self):
         return self.config[mqtt_broker][address]
 
-    def get_mqtt_broker_port(self):
+    @property
+    def mqtt_broker_port(self):
         return self.config[mqtt_broker][port]
 
-    def get_server_url(self):
+    @property
+    def server_url(self):
         return self.config[server_url]
 
-    def get_iot_username(self):
+    @property
+    def iot_username(self):
         return self.config[username]
 
-    def get_iot_password(self):
+    @property
+    def iot_password(self):
         return self.config[password]
 
-    def get_api_key(self):
+    @property
+    def api_key(self):
         return self.config[api_key]
 
-    def get_server_time_format(self):
+    @property
+    def server_time_format(self):
         return self.config[server_time_format]
 
-    def get_auth_interval(self):
+    @property
+    def auth_interval(self):
         return self.config[auth_interval]
 
-    def get_temp_settings_interval(self):
+    @property
+    def temp_settings_interval(self):
         return self.config[temp_settings][interval]
 
-    def get_load_settings_interval(self):
+    @property
+    def load_settings_interval(self):
         return self.config[load_settings][interval]
 
-    def get_time_format(self):
+    @property
+    def time_format(self):
         return self.config[time_format]
 
-    def get_fuel_settings_level_limit(self):
+    @property
+    def fuel_settings_level_limit(self):
         return self.config[fuel_settings][level_limit]
 
-    def get_gateway_cloud_broker_iot_username(self):
+    @property
+    def gateway_cloud_broker_iot_username(self):
         return self.config[gateway_cloud_broker][username]
 
-    def get_gateway_cloud_broker_iot_password(self):
+    @property
+    def gateway_cloud_broker_iot_password(self):
         return self.config[gateway_cloud_broker][password]
 
-    def get_gateway_cloud_broker_address(self):
+    @property
+    def gateway_cloud_broker_address(self):
         return self.config[gateway_cloud_broker][address]
 
-    def get_gateway_cloud_broker_port(self):
+    @property
+    def gateway_cloud_broker_port(self):
         return self.config[gateway_cloud_broker][port]
 
-    def get_temp_settings(self):
+    @property
+    def temp_settings(self):
         return self.config[temp_settings]
 
-    def get_load_settings(self):
+    @property
+    def load_settings(self):
         return self.config[load_settings]
 
-    def get_fuel_settings(self):
+    @property
+    def fuel_settings(self):
         return self.config[fuel_settings]
 
-    def set_temp_settings(self, temp_settings_set):
+    @temp_settings.setter
+    def temp_settings(self, temp_settings_set):
         self.config[temp_settings] = temp_settings_set
 
-    def set_load_settings(self, load_settings_set):
+    @load_settings.setter
+    def load_settings(self, load_settings_set):
         self.config[load_settings] = load_settings_set
 
-    def set_fuel_settings(self, fuel_settings_set):
+    @fuel_settings.setter
+    def fuel_settings(self, fuel_settings_set):
         self.config[fuel_settings] = fuel_settings_set
 
+    @property
     def get_rest_api_host(self):
         return self.config[rest_api][host]
 
+    @property
     def get_rest_api_port(self):
         return self.config[rest_api][port]

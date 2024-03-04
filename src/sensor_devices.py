@@ -42,7 +42,6 @@ conf_file_path : str
     Path to sensors' config file.
 
 """
-import multiprocessing
 import threading
 import time
 import random
@@ -52,11 +51,11 @@ import numpy
 import json
 import math
 import paho.mqtt.client as mqtt
-from multiprocessing import Process, Event
+from multiprocessing import Event
 import logging.config
 import logging
 
-from can_service import read_can, read_app_conf
+from can_service import read_can
 from config_util import ConfFlags, start_config_observer
 from mqtt_utils import MQTTClient
 from config_util import Config
@@ -304,7 +303,7 @@ def measure_temperature_periodically(
         if config_flag.is_set():
             config = Config(app_conf_file_path, errorLogger, customLogger)
             config.try_open()
-            if config.get_temp_mode() == "CAN":
+            if config.temp_mode == "CAN":
                 temp_lock.acquire()
                 init_flags.temp_simulator_initiated = False
                 temp_lock.release()
@@ -433,7 +432,7 @@ def measure_load_randomly(
         if config_flag.is_set():
             config = Config(app_conf_file_path, errorLogger, customLogger)
             config.try_open()
-            if config.get_load_mode() == "CAN":
+            if config.load_mode == "CAN":
                 load_lock.acquire()
                 init_flags.load_simulator_initiated = False
                 load_lock.release()
@@ -548,7 +547,7 @@ def measure_fuel_periodically(
         if config_flag.is_set():
             config = Config(app_conf_file_path, errorLogger, customLogger)
             config.try_open()
-            if config.get_fuel_mode() == "CAN":
+            if config.fuel_mode == "CAN":
                 fuel_lock.acquire()
                 init_flags.fuel_simulator_initiated = False
                 fuel_lock.release()
@@ -695,11 +694,11 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
     is_can_load = False
     is_can_fuel = False
 
-    if app_conf.get_temp_mode() == "CAN":
+    if app_conf.temp_mode == "CAN":
         is_can_temp = True
-    if app_conf.get_load_mode() == "CAN":
+    if app_conf.load_mode == "CAN":
         is_can_load = True
-    if app_conf.get_fuel_mode() == "CAN":
+    if app_conf.fuel_mode == "CAN":
         is_can_fuel = True
 
     if is_can_temp or is_can_load or is_can_fuel:
@@ -716,7 +715,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             can_lock.acquire()
             init_flags.can_initiated = True
             can_lock.release()
-    if app_conf.get_temp_mode() == "SIMULATOR":
+    if app_conf.temp_mode == "SIMULATOR":
         if not init_flags.temp_simulator_initiated:
             simulation_temperature_sensor = threading.Thread(
                 target=measure_temperature_periodically,
@@ -736,7 +735,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             temp_lock.acquire()
             init_flags.temp_simulator_initiated = True
             temp_lock.release()
-    if app_conf.get_load_mode() == "SIMULATOR":
+    if app_conf.load_mode == "SIMULATOR":
         if not init_flags.load_simulator_initiated:
             simulation_load_sensor = threading.Thread(
                 target=measure_load_randomly,
@@ -757,7 +756,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             load_lock.acquire()
             init_flags.load_simulator_initiated = True
             load_lock.release()
-    if app_conf.get_fuel_mode() == "SIMULATOR":
+    if app_conf.fuel_mode == "SIMULATOR":
 
         if not init_flags.fuel_simulator_initiated:
             simulation_fuel_sensor = threading.Thread(

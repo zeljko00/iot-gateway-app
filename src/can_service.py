@@ -1,15 +1,64 @@
-import json
+"""
+can_service
+============
+Module that provides functionality for CAN bus communication.
+Classes
+---------
+CANListener: A class that accepts messages from the CAN bus
+
+Functions
+---------
+read_can(execution_flag, config_flag, init_flags, can_lock)
+    Thread execution function from sensor_devices main() for CAN communication
+stop_can(notifier, bus, temp_client, load_client, fuel_client)
+    Used for stopping all CAN functionalities
+init_mqtt_clients(bus, is_can_temp, is_can_load, is_can_fuel, config, flag)
+    Used for initializing MQTT clients that publish read CAN messages
+on_publish(topic, payload, qos)
+    Event handler for published messages to a MQTT topic
+on_subscribe_temp_alarm(client, userdata, flags, rc, props)
+    Event handler for subscribing to the temperature alarm MQTT topic
+on_subscribe_load_alarm(client, userdata, flags, rc, props)
+    Event handler for subscribing to the load alarm MQTT topic
+on_subscribe_fuel_alarm(client, userdata, flags, rc, props)
+    Event handler for subscribing to the fuel alarm MQTT topic
+on_connect_temp_sensor(client, userdata, flags, rc, props)
+    Even handler for subscribing to the temperature messages MQTT topic
+on_connect_load_sensor(client, userdata, flags, rc, props)
+    Even handler for subscribing to the load messages MQTT topic
+on_connect_fuel_sensor(client, userdata, flags, rc, props)
+    Even handler for subscribing to the fuel messages MQTT topic
+Constants
+---------
+app_conf_file_path: str
+    Path to the configuration file
+transport_protocol: str
+    JSON key for MQTT transport protocol
+temp_topic: str
+    MQTT topic for temperature data
+load_topic: str
+    MQTT topic for load data
+fuel_topic: str
+    MQTT topic for fuel data
+data_pattern: str
+    Format by which data is sent to MQTT brokers
+time_format: str
+    Format by which time is sent to MQTT brokers
+celzius: str
+    Temperature measuring unit
+kg: str
+    Load measuring unit
+_l: str
+    Fuel measuring unit
+qos: int
+    Quality of service of MQTT.
+"""
 
 import can
 import logging.config
-
-import numpy as np
 import paho.mqtt.client as mqtt
 import logging
 import time
-import struct
-
-from multiprocessing import Process, Event
 from mqtt_utils import MQTTClient
 from can.listener import Listener
 from can.interface import Bus
@@ -20,15 +69,12 @@ infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger("customConsoleLogger")
 
-
-conf_file_path = "configuration/sensor_conf.json"
 app_conf_file_path = "configuration/app_conf.json"
 
 transport_protocol = "tcp"
 temp_topic = "sensors/temperature"
 load_topic = "sensors/arm-load"
 fuel_topic = "sensors/fuel-level"
-
 
 data_pattern = "[ value={} , time={} , unit={} ]"
 time_format = "%d.%m.%Y %H:%M:%S"
@@ -91,13 +137,13 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
             config.try_open()
             stop_can(notifier, bus, temp_client, load_client, fuel_client)
 
-            interface_value = config.get_can_interface()
-            channel_value = config.get_can_channel()
-            bitrate_value = config.get_can_bitrate()
+            interface_value = config.can_interface
+            channel_value = config.can_channel
+            bitrate_value = config.can_bitrate
 
-            is_can_temp = True if config.get_temp_mode() == "CAN" else False
-            is_can_load = True if config.get_load_mode() == "CAN" else False
-            is_can_fuel = True if config.get_fuel_mode() == "CAN" else False
+            is_can_temp = True if config.temp_mode == "CAN" else False
+            is_can_load = True if config.load_mode == "CAN" else False
+            is_can_fuel = True if config.fuel_mode == "CAN" else False
 
             if (is_can_temp is False) and (
                     is_can_load is False) and (is_can_fuel is False):
@@ -239,27 +285,6 @@ def init_mqtt_clients(
     return temp_client, load_client, fuel_client
 
 
-def read_app_conf():
-    data = None
-    try:
-        conf_file = open(app_conf_file_path)
-        data = json.load(conf_file)
-    except BaseException:
-        errorLogger.critical(
-            "Using default config! Can't read app config file - ",
-            app_conf_file_path,
-            " !")
-        customLogger.critical(
-            "Using default config! Can't read app config file - ",
-            app_conf_file_path,
-            " !")
-
-        data = {fuel_settings: {"fuel_level_limit": 200, mode: "SIMULATOR"},
-                temp_settings: {"temp_interval": 20, mode: "SIMULATOR"},
-                load_settings: {"load_interval": 20, mode: "SIMULATOR"}, }
-    return data
-
-
 def on_publish(topic, payload, qos):
     pass
 
@@ -347,7 +372,29 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 
 class CANListener (Listener):
+    """A class that accepts messages from the CAN bus.
+
+        This class inherits the functionality of can.listener.Listener
+
+        Inherits:
+            can.listener.Listener: Base class for CAN bus listener functionality
+
+        Methods:
+            __init__(temp_client, load_client, fuel_client): Class constructor for initializing class objects
+            set_temp_client(client): Setter for the temperature MQTT broker client
+            set_load_client(client): Setter for the load MQTT broker client
+            set_fuel_client(client): Setter for the fuel MQTT broker client
+            on_message_received(msg): Event handler for receiving messages from the CAN bus
+    """
     def __init__(self, temp_client, load_client, fuel_client):
+        """
+        Constructor for initializing CANListener object
+
+            Args:
+                temp_client: MQTT temperature broker client
+                load_client: MQTT load broker client
+                fuel_client: MQTT fuel broker client
+        """
         super().__init__()
         if temp_client is not None:
             temp_client.connect()
@@ -362,29 +409,53 @@ class CANListener (Listener):
         self.fuel_client = fuel_client
 
     def set_temp_client(self, client):
+        """
+        Setter for the temperature MQTT broker client
+
+            Args:
+                client: MQTT temperature broker client
+        """
         if client is None:
             if self.temp_client is not None:
                 self.temp_client.disconnect()
         self.temp_client = client
 
     def set_load_client(self, client):
+        """
+        Setter for the load MQTT broker client
+
+            Args:
+                client: MQTT load broker client
+        """
         if client is None:
             if self.temp_client is not None:
                 self.temp_client.disconnect()
         self.load_client = client
 
     def set_fuel_client(self, client):
+        """
+        Setter for the fuel MQTT broker client
+
+            Args:
+                client: MQTT fuel broker client
+        """
         if client is None:
             if self.temp_client is not None:
                 self.temp_client.disconnect()
         self.fuel_client = client
 
     def on_message_received(self, msg):
-        # msg.data is a byte array, need to turn it into a single value
+        """
+            Event handler for receiving messages from the CAN bus
 
+                Args:
+                    msg: bytearray
+                        Received message from the CAN bus
+        """
+
+        # msg.data is a byte array, need to turn it into a single value
         int_value = int.from_bytes(msg.data, byteorder="big", signed=True)
         value = int_value / 10.0
-        # this is part of CAN transmit ticket
 
         if self.temp_client is not None:
             self.temp_client.try_reconnect()

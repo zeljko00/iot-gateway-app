@@ -19,10 +19,6 @@ Constants
 
 """
 import json
-import time
-import requests
-import logging.config
-
 from mqtt_util import *
 
 # setting up loggers
