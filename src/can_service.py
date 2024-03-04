@@ -125,6 +125,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     execution_flag.clear()
     customLogger.debug("CAN process shutdown!")
 
+
 def stop_can(notifier, bus, temp_client, load_client, fuel_client):
     if notifier is not None:
         notifier.stop(timeout=5)
@@ -166,8 +167,6 @@ def init_mqtt_clients(
 
         def on_message_temp_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x120,
-                                      # TODO if anything else is sent instead
-                                      # of True/False
                                       data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)
@@ -198,8 +197,6 @@ def init_mqtt_clients(
 
         def on_message_load_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x121,
-                                      # TODO if anything else is sent instead
-                                      # of True/False
                                       data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)
@@ -310,7 +307,6 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
             "CAN Load alarm client failed to establish connection with MQTT broker!")
 
 
-# TODO same method differed string
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
     if rc == 0:
         infoLogger.info(
@@ -355,6 +351,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 class CANListener (Listener):
     def __init__(self, temp_client, load_client, fuel_client):
+        super().__init__()
         if temp_client is not None:
             temp_client.connect()
         self.temp_client = temp_client
@@ -388,7 +385,6 @@ class CANListener (Listener):
     def on_message_received(self, msg):
         # msg.data is a byte array, need to turn it into a single value
 
-        # int_value = struct.unpack('<q', msg.data)[0]
         int_value = int.from_bytes(msg.data, byteorder="big", signed=True)
         value = int_value / 10.0
         # this is part of CAN transmit ticket

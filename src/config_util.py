@@ -30,7 +30,6 @@ level_limit = "level_limit"
 gateway_cloud_broker = "gateway_cloud_broker"
 rest_api = "rest_api"
 host = "host"
-port = "port"
 
 
 class ConfFlags:
