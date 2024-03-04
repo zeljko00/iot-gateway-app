@@ -598,7 +598,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
         mqtt_pass=config.mqtt_broker_password,
         broker_address=config.mqtt_broker_address,
         broker_port=config.mqtt_broker_port,
-        keepalive=config.temp_settings_interval * 3,
+        keepalive=config.fuel_settings_interval,
         infoLogger=infoLogger,
         errorLogger=errorLogger,
         flag=flag,
@@ -658,7 +658,7 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
     # messages(on_message) after flag is set
 
     while not flag.is_set():
-        time.sleep(2)
+        time.sleep(config.fuel_settings_interval)
     # shutting down temperature sensor
     stats_queue.put(stats)
     sensors_broker_client.disconnect()
