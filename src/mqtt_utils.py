@@ -45,32 +45,34 @@ class MQTTClient:
             flag,
             sensor_type):
         """
-            Constructor that initializes an MQTT object.
-                Args:
-                    client_id: str
-                        ID of the client
-                    transport_protocol: str
-                        Transport protocol that will be used to transmit message with
-                    protocol_version: int
-                        Version of the specified protocol
-                    mqtt_username: str
-                        Username
-                    mqtt_pass: str
-                        Password
-                    broker_address: str:
-                        MQTT broker address
-                    broker_port: int
-                        MQTT broker port
-                    keepalive: int
-                        The length of time that a connection will be maintained for after ping messages stop
-                    infoLogger: Logger
-                        Information file logger
-                    errorLogger: Logger
-                        Console error logger
-                    flag: multiprocessing.Event
-                        Token used for stopping the client.
-                    sensor_type: str
-                        Specifies the type of data the client will be attributed to
+        Constructor that initializes an MQTT object.
+
+        Args:
+        ----
+            client_id: str
+                ID of the client
+            transport_protocol: str
+                Transport protocol that will be used to transmit message with
+            protocol_version: int
+                Version of the specified protocol
+            mqtt_username: str
+                Username
+            mqtt_pass: str
+                Password
+            broker_address: str:
+                MQTT broker address
+            broker_port: int
+                MQTT broker port
+            keepalive: int
+                The length of time that a connection will be maintained for after ping messages stop
+            infoLogger: Logger
+                Information file logger
+            errorLogger: Logger
+                Console error logger
+            flag: multiprocessing.Event
+                Token used for stopping the client.
+            sensor_type: str
+                Specifies the type of data the client will be attributed to
         """
         self.client = mqtt.Client(
             client_id=client_id,
@@ -138,7 +140,7 @@ class MQTTClient:
                 self.client.loop_start()
                 time.sleep(0.2)
 
-            except BaseException as e:
+            except BaseException:
                 self.errorLogger.error(
                     self.sensor_type + " sensor failed to establish connection with MQTT broker!")
 
