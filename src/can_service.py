@@ -515,8 +515,8 @@ class CANListener (Listener):
         set_load_client(client): Setter for the load MQTT broker client
         set_fuel_client(client): Setter for the fuel MQTT broker client
         on_message_received(msg): Event handler for receiving messages from the CAN bus
-
     """
+
     def __init__(self, temp_client, load_client, fuel_client):
         """
         Constructor for initializing CANListener object
