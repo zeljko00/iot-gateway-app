@@ -1,4 +1,5 @@
-"""
+"""Data service utilities.
+
 data_services
 ============
 Module containing logic for sending collected and processed data to cloud services.
@@ -16,13 +17,13 @@ parse_incoming_data(data, type)
 
 Constants
 ---------
-data_pattern
+DATA_PATTERN
     Request body data pattern.
-http_not_found
+HTTP_NOT_FOUND
     Http status code.
-http_ok
+HTTP_OK
     Http status code.
-http_no_content
+HTTP_NO_CONTENT
     Http status code.
 qos
     Quality of Service of MQTT broker
@@ -34,22 +35,23 @@ fuel_alarm_topic: str
     MQTT alarm topic for fuel alarms
 """
 import time
+import json
 import logging.config
-
+from mqtt_util import GCB_TEMP_TOPIC, GCB_LOAD_TOPIC, GCB_FUEL_TOPIC, GCB_QOS
 
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger('customConsoleLogger')
 
-data_pattern = "[ value={} , time={} , unit={} ]"
-http_not_found = 404
-http_ok = 200
-http_no_content = 204
+DATA_PATTERN = "[ value={} , time={} , unit={} ]"
+HTTP_NOT_FOUND = 404
+HTTP_OK = 200
+HTTP_NO_CONTENT = 204
 
-qos = 2
-temp_alarm_topic = "alarms/temperature"
-load_alarm_topic = "alarms/load"
-fuel_alarm_topic = "alarms/fuel"
+QOS = 2
+TEMP_ALARM_TOPIC = "alarms/temperature"
+LOAD_ALARM_TOPIC = "alarms/load"
+FUEL_ALARM_TOPIC = "alarms/fuel"
 
 
 def parse_incoming_data(data, type):
@@ -112,7 +114,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     try:
         # [REST/MQTT]
         mqtt_payload = {"username": username, "payload": payload}
-        # publish(gcb_temp_topic, json.dumps(mqtt_payload), gcb_qos)
+        mqtt_client.publish(GCB_TEMP_TOPIC, json.dumps(mqtt_payload), GCB_QOS)
         customLogger.debug("TEMP MESSAGE PUBLISHED")
 
         # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -123,7 +125,7 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     except BaseException:
         errorLogger.error("Temperature Cloud service cant be reached!")
         customLogger.critical("Temperature Cloud service cant be reached!")
-        return http_not_found
+        return HTTP_NOT_FOUND
 
 
 def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
@@ -163,7 +165,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     try:
         # [REST/MQTT]
         mqtt_payload = {"username": username, "payload": payload}
-        # mqtt_client.publish(gcb_load_topic, json.dumps(mqtt_payload), gcb_qos) # ASK usage
+        mqtt_client.publish(GCB_LOAD_TOPIC, json.dumps(mqtt_payload), GCB_QOS)  # ASK usage
         customLogger.debug("LOAD MESSAGE PUBLISHED")
 
         # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -174,7 +176,7 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
     except BaseException:
         errorLogger.error("Arm load Cloud service cant be reached!")
         customLogger.critical("Arm load Cloud service cant be reached!")
-        return http_not_found
+        return HTTP_NOT_FOUND
 
 
 def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client, mqtt_client):
@@ -215,7 +217,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client,
             # sound the alarm! ask him what do I send #ASK
             customLogger.info("Fuel is below the designated limit! Sounding the alarm")
 
-            alarm_client.publish(fuel_alarm_topic, True, qos)
+            alarm_client.publish(FUEL_ALARM_TOPIC, True, QOS)
 
             unit = "unknown"
             try:
@@ -231,7 +233,7 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client,
             try:
                 # [REST/MQTT]
                 mqtt_payload = {"username": username, "payload": payload}
-                # mqtt_client.publish(gcb_fuel_topic, json.dumps(mqtt_payload), gcb_qos)
+                mqtt_client.publish(GCB_FUEL_TOPIC, json.dumps(mqtt_payload), GCB_QOS)
                 customLogger.debug("FUEL MESSAGE PUBLISHED")
 
                 # post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
@@ -246,11 +248,11 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client,
             except BaseException:
                 errorLogger.error("Fuel Cloud service cant be reached!")
                 customLogger.error("Fuel Cloud service cant be reached!")
-                return http_not_found
+                return HTTP_NOT_FOUND
         else:
             # data is handled but is not sent because fuel level is over the limit
-            return http_no_content
+            return HTTP_NO_CONTENT
     except BaseException:
         errorLogger.error("Invalid fuel data format! - " + data)
         # data can not be parsed, trying again to parse it and send in next iteration is redundant
-        return http_no_content
+        return HTTP_NO_CONTENT
