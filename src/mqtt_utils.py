@@ -28,7 +28,7 @@ class MQTTClient:
                 try_reconnect(topic, payload, qos): Method that tries to reconnect to the configured MQTT broker
                 publish(): Method that publishes a message to the specified topic
                 disconnect(): Method that closes the connection to the configured MQTT broker
-        """
+    """
 
     def __init__(
             self,

@@ -118,7 +118,21 @@ fuel_alarm_topic = "alarms/fuel"
 
 
 def read_can(execution_flag, config_flag, init_flags, can_lock):
+    """
+    Thread execution function from sensor_devices main() for CAN communication
+    It connects to an instance of CAN bus, which is then tied to a Notifier object, which listens to the bus for
+    incoming messages
 
+        Args:
+            execution_flag: multithreading.Event
+                Token used for stopping CAN thread.
+            config_flag: multithreading.Event
+                Token used for detecting configuration changes
+            init_flags: InitFlags
+                Object that keeps track of initiated threads
+            can_lock: multithreading.Lock
+                Used to prevent race condition
+    """
     customLogger.debug("CAN process started!")
 
     period = 2
@@ -172,6 +186,21 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
 
 
 def stop_can(notifier, bus, temp_client, load_client, fuel_client):
+    """
+    Used for stopping all CAN functionalities
+
+        Args:
+            notifier: can.Notifier
+                Object that listens to incoming CAN messages
+            bus: can.Bus
+                CAN bus
+            temp_client: mqtt_utils.MQTTClient
+                Temperature MQTT broker client
+            load_client: mqtt_utils.MQTTClient
+                Load MQTT broker client
+            fuel_client: mqtt_utils.MQTTClient
+                Fuel MQTT broker client
+    """
     if notifier is not None:
         notifier.stop(timeout=5)
     if temp_client is not None:
@@ -191,6 +220,21 @@ def init_mqtt_clients(
         is_can_fuel,
         config,
         flag):
+    """
+    Used for stopping all CAN functionalities
+
+        Args:
+            bus: can.Bus
+                CAN bus
+            is_can_temp: boolean
+                Flag that indicates if the configuration demands the Notifier to read CAN temperature messages
+            is_can_load: boolean
+                Flag that indicates if the configuration demands the Notifier to read CAN load messages
+            is_can_fuel: boolean
+                Flag that indicates if the configuration demands the Notifier to read CAN fuel messages
+
+    """
+
     temp_client = None
     load_client = None
     fuel_client = None
@@ -200,11 +244,11 @@ def init_mqtt_clients(
             "temp-can-sensor-mqtt-client",
             transport_protocol=transport_protocol,
             protocol_version=mqtt.MQTTv5,
-            mqtt_username=config.get_mqtt_broker_username(),
-            mqtt_pass=config.get_mqtt_broker_password(),
-            broker_address=config.get_mqtt_broker_address(),
-            broker_port=config.get_mqtt_broker_port(),
-            keepalive=2 * 3,
+            mqtt_username=config.mqtt_broker_username,
+            mqtt_pass=config.mqtt_broker_password,
+            broker_address=config.mqtt_broker_address,
+            broker_port=config.mqtt_broker_port,
+            keepalive=config.temp_settings_interval,
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
@@ -234,7 +278,7 @@ def init_mqtt_clients(
             mqtt_pass=config.get_mqtt_broker_password(),
             broker_address=config.get_mqtt_broker_address(),
             broker_port=config.get_mqtt_broker_port(),
-            keepalive=2 * 3,
+            keepalive=config.load_settings_interval,
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
@@ -259,11 +303,11 @@ def init_mqtt_clients(
             "fuel-can-sensor-mqtt-client",
             transport_protocol=transport_protocol,
             protocol_version=mqtt.MQTTv5,
-            mqtt_username=config.get_mqtt_broker_username(),
-            mqtt_pass=config.get_mqtt_broker_password(),
-            broker_address=config.get_mqtt_broker_address(),
-            broker_port=config.get_mqtt_broker_port(),
-            keepalive=2 * 3,
+            mqtt_username=config.mqtt_broker_username,
+            mqtt_pass=config.mqtt_broker_password,
+            broker_address=config.mqtt_broker_address,
+            broker_port=config.mqtt_broker_port,
+            keepalive=config.fuel_settings_interval,
             infoLogger=infoLogger,
             errorLogger=errorLogger,
             flag=flag,
@@ -286,10 +330,29 @@ def init_mqtt_clients(
 
 
 def on_publish(topic, payload, qos):
+    """
+    Event handler for published messages to a MQTT topic
+        Args:
+            topic: str
+                The topic that the message was sent to
+            payload: bytearray
+                Message published
+            qos: int
+                Quality of Service of MQTT broker
+    """
     pass
 
 
 def on_subscribe_temp_alarm(client, userdata, flags, rc, props):
+    """
+    Event handler for published messages to a MQTT topic
+        Args:
+            client: paho.mqtt.client.Client
+            userdata:
+            flags:
+            rc:
+            props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Temperature alarm client successfully established connection with MQTT broker!")
@@ -303,6 +366,15 @@ def on_subscribe_temp_alarm(client, userdata, flags, rc, props):
 
 
 def on_subscribe_load_alarm(client, userdata, flags, rc, props):
+    """
+        Event handler for published messages to a MQTT topic
+            Args:
+                client: paho.mqtt.client.Client
+                userdata:
+                flags:
+                rc:
+                props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Load alarm client successfully established connection with MQTT broker!")
@@ -316,6 +388,15 @@ def on_subscribe_load_alarm(client, userdata, flags, rc, props):
 
 
 def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
+    """
+        Event handler for published messages to a MQTT topic
+            Args:
+                client: paho.mqtt.client.Client
+                userdata:
+                flags:
+                rc:
+                props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Load alarm client successfully established connection with MQTT broker!")
@@ -330,6 +411,15 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
 
 
 def on_connect_temp_sensor(client, userdata, flags, rc, props):
+    """
+        Event handler for published messages to a MQTT topic
+            Args:
+                client: paho.mqtt.client.Client
+                userdata:
+                flags:
+                rc:
+                props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Temperature sensor successfully established connection with MQTT broker!")
@@ -344,6 +434,15 @@ def on_connect_temp_sensor(client, userdata, flags, rc, props):
 
 
 def on_connect_load_sensor(client, userdata, flags, rc, props):
+    """
+        Event handler for published messages to a MQTT topic
+            Args:
+                client: paho.mqtt.client.Client
+                userdata:
+                flags:
+                rc:
+                props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Load sensor successfully established connection with MQTT broker!")
@@ -358,6 +457,15 @@ def on_connect_load_sensor(client, userdata, flags, rc, props):
 
 
 def on_connect_fuel_sensor(client, userdata, flags, rc, props):
+    """
+        Event handler for published messages to a MQTT topic
+            Args:
+                client: paho.mqtt.client.Client
+                userdata:
+                flags:
+                rc:
+                props:
+    """
     if rc == 0:
         infoLogger.info(
             "CAN Fuel sensor successfully established connection with MQTT broker!")
@@ -372,6 +480,7 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 
 class CANListener (Listener):
+    
     """A class that accepts messages from the CAN bus.
 
         This class inherits the functionality of can.listener.Listener
@@ -386,6 +495,7 @@ class CANListener (Listener):
             set_fuel_client(client): Setter for the fuel MQTT broker client
             on_message_received(msg): Event handler for receiving messages from the CAN bus
     """
+
     def __init__(self, temp_client, load_client, fuel_client):
         """
         Constructor for initializing CANListener object

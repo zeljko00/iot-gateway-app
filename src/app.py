@@ -285,11 +285,11 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
         Cloud services' URL.
     jwt: str
         JSON web auth token.
-    flag: multiprocessing.Event
+    flag: multithreading.Event
         Object used for stopping temperature sensor process.
-    conf_flag: multiprocessing.Event
+    conf_flag: multithreading.Event
         Object used for signalling configuration changes
-    stats_queue: multiprocessing.Queue
+    stats_queue: multithreading.Queue
         Stats data wrapper.
     """
     new_data = []
@@ -345,8 +345,6 @@ def collect_temperature_data(config, url, jwt, flag, conf_flag, stats_queue):
             customLogger.info("Received temperature data: " + str(data))
             data_value, unit = data_service.parse_incoming_data(
                 str(data), "temperature")
-            # ASK this is the time from the gateway, not the sensor
-            time_value = time.strftime(time_format, time.localtime())
             if data_value > 95:
                 # sound the alarm! ask him what do I send #ASK
                 customLogger.info(
@@ -427,11 +425,11 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
        Cloud services' URL.
     jwt: str
        JSON web auth token.
-    flag: multiprocessing.Event
+    flag: multithreading.Event
        Object used for stopping temperature sensor process.
-    conf_flag: multiprocessing.Event
+    conf_flag: multithreading.Event
         Object used for signalling configuration changes
-    stats_queue: multiprocessing.Queue
+    stats_queue: multithreading.Queue
         Stats data wrapper.
     """
     new_data = []
@@ -486,9 +484,8 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
             data_sum, unit = data_service.parse_incoming_data(
                 str(data), "load")
             # ASK this is the time from the gateway, not the sensor
-            time_value = time.strftime(time_format, time.localtime())
             if data_sum > 1000:
-                # sound the alarm! ask him what do I send #ASK
+                # sound the alarm!
                 customLogger.info("Load of " + str(data_sum) + " kg is too high! Sounding the alarm!")
                 client.publish(load_alarm_topic, True, qos)
 
@@ -506,7 +503,6 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
     while not flag.is_set():
         # [REST/MQTT]
         if conf_flag.is_set():
-            interval = config.load_settings_interval
             conf_flag.clear()
 
         # copy data from list that is populated with newly arrived data and
@@ -566,11 +562,11 @@ def collect_fuel_data(config, url, jwt, flag, conf_flag, stats_queue):
       Cloud services' URL.
     jwt: str
       JSON web auth token.
-    flag: multiprocessing.Event
+    flag: multithreading.Event
       Object used for stopping temperature sensor process.
-    conf_flag: multiprocessing.Event
+    conf_flag: multithreading.Event
       Object used for signalling configuration changes
-    stats_queue: multiprocessing.Queue
+    stats_queue: multithreading.Queue
        Stats data wrapper.
     """
     # initializing stats object

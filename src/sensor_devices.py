@@ -2,6 +2,9 @@
 sensor_devices
 ============
 Module with logic that simulates three different sensors: fuel level sensor, engine temperature sensor, arm load sensor
+Classes
+---------
+InitFlags: A class that encapsulates four flags that keep track which threads have been initiated
 
 Functions
 ---------
@@ -783,19 +786,20 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
 
 
 class InitFlags:
+    """
+        A class that encapsulates four flags that keep track which threads have been initiated
+        Methods:
+            __init__(): Class constructor for initializing class objects
+    """
     def __init__(self):
+        """
+            Constructor that initializes an MQTT object.
+            None of the threads are initiated at first.
+        """
         self.can_initiated = False
         self.temp_simulator_initiated = False
         self.load_simulator_initiated = False
         self.fuel_simulator_initiated = False
-
-    def has_started(self):
-        if (self.can_initiated is True or
-                self.temp_simulator_initiated is True or
-                self.load_simulator_initiated is True or
-                self.fuel_simulator_initiated is True):
-            return True
-        return False
 
 
 def main():
