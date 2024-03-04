@@ -85,7 +85,7 @@ import paho.mqtt.client as mqtt
 from multiprocessing import Queue, Event
 from threading import Thread
 from mqtt_util import MQTTConf, gcb_init_publisher, gcb_connect, gcb_disconnect
-from config_util import ConfFlags, get_temp_interval, get_load_interval, get_fuel_level_limit, \
+from config_util import ConfFlags, get_temp_interval, get_fuel_level_limit, \
     start_config_observer
 from mqtt_utils import MQTTClient
 from src.config_util import Config
