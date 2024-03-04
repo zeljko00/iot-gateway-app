@@ -84,7 +84,7 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     fuel_client = None
 
     bus = None
-    while not execution_flag.is_set():  # TODO wait
+    while not execution_flag.is_set():
         if config_flag.is_set() or initial:
 
             config = Config(app_conf_file_path, errorLogger, customLogger)
@@ -113,15 +113,14 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
             can_listener = CANListener(temp_client, load_client, fuel_client)
             notifier.add_listener(can_listener)
             initial = False
-            config_flag.clear()  # TODO
+            config_flag.clear()
 
         time.sleep(period)
     can_lock.acquire()
-    init_flags.can_initiated = False  # TODO suss
+    init_flags.can_initiated = False
     can_lock.release()
 
     stop_can(notifier, bus, temp_client, load_client, fuel_client)
-    # TODO on_disconnect
     execution_flag.clear()
     customLogger.debug("CAN process shutdown!")
 
@@ -226,8 +225,6 @@ def init_mqtt_clients(
 
         def on_message_fuel_alarm(client, userdata, msg):
             can_message = can.Message(arbitration_id=0x122,
-                                      # TODO if anything else is sent instead
-                                      # of True/False
                                       data=[bool(msg.payload)],
                                       is_extended_id=False,
                                       is_remote_frame=False)

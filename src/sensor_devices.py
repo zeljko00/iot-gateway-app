@@ -309,7 +309,7 @@ def measure_temperature_periodically(
                 init_flags.temp_simulator_initiated = False
                 temp_lock.release()
                 config_flag.clear()
-                break  # TODO BREAK?? or flag?
+                break
 
         time.sleep(period)
         # check connection to mqtt broker
