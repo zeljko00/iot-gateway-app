@@ -1,37 +1,99 @@
-"""Configuration utilities."""
+"""Configuration utilities.
+
+config_util
+===========
+
+Module that contains simple gateway rest api server.
+
+Classes
+-------
+ConfFlags
+    Wrapper class for all tracked flags used within processes/threads.
+ConfHandler
+    Handler for configuration file changes.
+Config
+    Class for managing configuration.
+
+Functions
+---------
+start_config_observer
+    Start observer that monitors configuration changes.
+read_conf
+    Read configuration directly as dictionary.
+write_conf
+    Write configuration directly as dictionary.
+get_temp_interval
+    Extract temp interval from configuration.
+get_load_interval
+    Extract load interval from configuration.
+get_fuel_level_limit
+    Extract fuel level limit from configuration.
+
+Constants
+---------
+CONF_DIR
+    Configuration directory path.
+CONF_PATH
+    Configuration file path.
+
+Variable name to string mapping constants.
+TEMP_SETTINGS
+LOAD_SETTINGS
+FUEL_SETTINGS
+MODE
+CAN_GENERAL_SETTINGS
+INTERFACE
+CHANNEL
+BITRATE
+MQTT_BROKER
+USERNAME
+PASSWORD
+ADDRESS
+PORT
+SERVER_URL
+SERVER_TIME_FORMAT
+API_KEY
+AUTH_INTERVAL
+INTERVAL
+TIME_FORMAT
+LEVEL_LIMIT
+GATEWAY_CLOUD_BROKER
+REST_API
+HOST
+
+"""
 import json
 from multiprocessing import Event
 from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 
-conf_dir = './configuration'
-conf_path = conf_dir + "/app_conf.json"
+CONF_DIR = './configuration'
+CONF_PATH = CONF_DIR + "/app_conf.json"
 
-temp_settings = 'temp_settings'
-load_settings = 'load_settings'
-fuel_settings = 'fuel_settings'
+TEMP_SETTINGS = 'temp_settings'
+LOAD_SETTINGS = 'load_settings'
+FUEL_SETTINGS = 'fuel_settings'
 
-mode = "mode"
-can_general_settings = "can_general_settings"
-interface = "interface"
-channel = "channel"
-bitrate = "bitrate"
-mqtt_broker = "mqtt_broker"
-username = "username"
-password = "password"
-address = "address"
-port = "port"
-server_url = "server_url"
-server_time_format = "server_time_format"
-api_key = "api_key"
-auth_interval = "auth_interval"
-interval = "interval"
-time_format = "time_format"
-level_limit = "level_limit"
-gateway_cloud_broker = "gateway_cloud_broker"
-rest_api = "rest_api"
-host = "host"
-port = "port"
+MODE = "mode"
+CAN_GENERAL_SETTINGS = "can_general_settings"
+INTERFACE = "interface"
+CHANNEL = "channel"
+BITRATE = "bitrate"
+MQTT_BROKER = "mqtt_broker"
+USERNAME = "username"
+PASSWORD = "password"
+ADDRESS = "address"
+PORT = "port"
+SERVER_URL = "server_url"
+SERVER_TIME_FORMAT = "server_time_format"
+API_KEY = "api_key"
+AUTH_INTERVAL = "auth_interval"
+INTERVAL = "interval"
+TIME_FORMAT = "time_format"
+LEVEL_LIMIT = "level_limit"
+GATEWAY_CLOUD_BROKER = "gateway_cloud_broker"
+REST_API = "rest_api"
+HOST = "host"
 
 
 class ConfFlags:
@@ -142,7 +204,7 @@ def start_config_observer(conf_flags):
     """
     event_handler = ConfHandler(conf_flags)
     observer = PollingObserver()
-    observer.schedule(event_handler, path=conf_dir, recursive=False)
+    observer.schedule(event_handler, path=CONF_DIR, recursive=False)
     observer.start()
     return observer
 
@@ -161,7 +223,7 @@ def read_conf():
 
     """
     try:
-        conf_file = open(conf_path)
+        conf_file = open(CONF_PATH)
         conf = json.load(conf_file)
         return conf
     except BaseException:
@@ -187,7 +249,7 @@ def write_conf(config):
 
     """
     try:
-        conf_file = open(conf_path, "w")
+        conf_file = open(CONF_PATH, "w")
         conf_file.write(json.dumps(config, indent=4))
         return config
     except BaseException:
@@ -302,11 +364,11 @@ class Config:
                 "Using default config! Can't read app config file - ", self.path, " !")
 
             self.config = {
-                fuel_settings: {
-                    level_limit: 200, mode: "SIMULATOR"}, temp_settings: {
-                    interval: 20, mode: "SIMULATOR"}, load_settings: {
-                    interval: 20, mode: "SIMULATOR"}, server_url: "", mqtt_broker: {
-                    username: "", password: ""
+                FUEL_SETTINGS: {
+                    LEVEL_LIMIT: 200, MODE: "SIMULATOR"}, TEMP_SETTINGS: {
+                    INTERVAL: 20, MODE: "SIMULATOR"}, LOAD_SETTINGS: {
+                    INTERVAL: 20, MODE: "SIMULATOR"}, SERVER_URL: "", MQTT_BROKER: {
+                    USERNAME: "", PASSWORD: ""
                 }}
 
     def get_temp_mode(self):
@@ -318,7 +380,7 @@ class Config:
            Read temperature mode.
 
         """
-        return self.config[temp_settings][mode]
+        return self.config[TEMP_SETTINGS][MODE]
 
     def get_load_mode(self):
         """Get load mode.
@@ -329,7 +391,7 @@ class Config:
            Read load mode.
 
         """
-        return self.config[load_settings][mode]
+        return self.config[LOAD_SETTINGS][MODE]
 
     def get_fuel_mode(self):
         """Get fuel mode.
@@ -340,7 +402,7 @@ class Config:
            Read fuel mode.
 
         """
-        return self.config[fuel_settings][mode]
+        return self.config[FUEL_SETTINGS][MODE]
 
     def get_can_interface(self):
         """Get CAN interface.
@@ -351,7 +413,7 @@ class Config:
            Read CAN interface.
 
         """
-        return self.config[can_general_settings][interface]
+        return self.config[CAN_GENERAL_SETTINGS][INTERFACE]
 
     def get_can_channel(self):
         """Get CAN channel.
@@ -362,7 +424,7 @@ class Config:
            Read CAN channel.
 
         """
-        return self.config[can_general_settings][channel]
+        return self.config[CAN_GENERAL_SETTINGS][CHANNEL]
 
     def get_can_bitrate(self):
         """Get CAN bitrate.
@@ -373,7 +435,7 @@ class Config:
            Read CAN bitrate.
 
         """
-        return self.config[can_general_settings][bitrate]
+        return self.config[CAN_GENERAL_SETTINGS][BITRATE]
 
     def get_mqtt_broker_username(self):
         """Get gateway-peripherals broker username.
@@ -384,7 +446,7 @@ class Config:
            Read broker username.
 
         """
-        return self.config[mqtt_broker][username]
+        return self.config[MQTT_BROKER][USERNAME]
 
     def get_mqtt_broker_password(self):
         """Get gateway-peripherals broker password.
@@ -395,7 +457,7 @@ class Config:
            Read broker password.
 
         """
-        return self.config[mqtt_broker][password]
+        return self.config[MQTT_BROKER][PASSWORD]
 
     def get_mqtt_broker_address(self):
         """Get gateway-peripherals broker addres.
@@ -406,7 +468,7 @@ class Config:
            Read broker address.
 
         """
-        return self.config[mqtt_broker][address]
+        return self.config[MQTT_BROKER][ADDRESS]
 
     def get_mqtt_broker_port(self):
         """Get gateway-peripherals broker port.
@@ -417,7 +479,7 @@ class Config:
            Read broker port.
 
         """
-        return self.config[mqtt_broker][port]
+        return self.config[MQTT_BROKER][PORT]
 
     def get_server_url(self):
         """Get cloud server url.
@@ -428,7 +490,7 @@ class Config:
            Read cloud url.
 
         """
-        return self.config[server_url]
+        return self.config[SERVER_URL]
 
     def get_iot_username(self):
         """Get iot device username.
@@ -439,7 +501,7 @@ class Config:
            Read username.
 
         """
-        return self.config[username]
+        return self.config[USERNAME]
 
     def get_iot_password(self):
         """Get iot device password.
@@ -450,7 +512,7 @@ class Config:
            Read password.
 
         """
-        return self.config[password]
+        return self.config[PASSWORD]
 
     def get_api_key(self):
         """Get cloud server api key.
@@ -461,7 +523,7 @@ class Config:
            Read api_key.
 
         """
-        return self.config[api_key]
+        return self.config[API_KEY]
 
     def get_server_time_format(self):
         """Get cloud time format.
@@ -472,7 +534,7 @@ class Config:
            Read time format.
 
         """
-        return self.config[server_time_format]
+        return self.config[SERVER_TIME_FORMAT]
 
     def get_auth_interval(self):
         """Get cloud authentication interval.
@@ -483,7 +545,7 @@ class Config:
            Read auth interval.
 
         """
-        return self.config[auth_interval]
+        return self.config[AUTH_INTERVAL]
 
     def get_temp_settings_interval(self):
         """Get temperature settings interval.
@@ -494,7 +556,7 @@ class Config:
            Read temperature interval.
 
         """
-        return self.config[temp_settings][interval]
+        return self.config[TEMP_SETTINGS][INTERVAL]
 
     def get_load_settings_interval(self):
         """Get load settings interval.
@@ -505,7 +567,7 @@ class Config:
            Read load interval.
 
         """
-        return self.config[load_settings][interval]
+        return self.config[LOAD_SETTINGS][INTERVAL]
 
     def get_time_format(self):
         """Get gateway time format.
@@ -516,7 +578,7 @@ class Config:
            Read time format.
 
         """
-        return self.config[time_format]
+        return self.config[TIME_FORMAT]
 
     def get_fuel_settings_level_limit(self):
         """Get fuel settings level limit.
@@ -527,7 +589,7 @@ class Config:
            Read fuel level limit.
 
         """
-        return self.config[fuel_settings][level_limit]
+        return self.config[FUEL_SETTINGS][LEVEL_LIMIT]
 
     def get_gateway_cloud_broker_iot_username(self):
         """Get gateway-cloud broker username.
@@ -538,7 +600,7 @@ class Config:
            Read username.
 
         """
-        return self.config[gateway_cloud_broker][username]
+        return self.config[GATEWAY_CLOUD_BROKER][USERNAME]
 
     def get_gateway_cloud_broker_iot_password(self):
         """Get gateway-cloud broker password.
@@ -549,7 +611,7 @@ class Config:
            Read password.
 
         """
-        return self.config[gateway_cloud_broker][password]
+        return self.config[GATEWAY_CLOUD_BROKER][PASSWORD]
 
     def get_gateway_cloud_broker_address(self):
         """Get gateway-cloud broker address.
@@ -560,7 +622,7 @@ class Config:
            Read address.
 
         """
-        return self.config[gateway_cloud_broker][address]
+        return self.config[GATEWAY_CLOUD_BROKER][ADDRESS]
 
     def get_gateway_cloud_broker_port(self):
         """Get gateway-cloud broker port.
@@ -571,7 +633,7 @@ class Config:
            Read port.
 
         """
-        return self.config[gateway_cloud_broker][port]
+        return self.config[GATEWAY_CLOUD_BROKER][PORT]
 
     def get_temp_settings(self):
         """Get temperature settings.
@@ -582,7 +644,7 @@ class Config:
            Read temperature settings.
 
         """
-        return self.config[temp_settings]
+        return self.config[TEMP_SETTINGS]
 
     def get_load_settings(self):
         """Get load settings.
@@ -593,7 +655,7 @@ class Config:
            Read load settings.
 
         """
-        return self.config[load_settings]
+        return self.config[LOAD_SETTINGS]
 
     def get_fuel_settings(self):
         """Get fuel settings.
@@ -604,7 +666,7 @@ class Config:
            Read fuel settings.
 
         """
-        return self.config[fuel_settings]
+        return self.config[FUEL_SETTINGS]
 
     def set_temp_settings(self, temp_settings_set):
         """Set temp settings.
@@ -615,7 +677,7 @@ class Config:
            New temperature settings value.
 
         """
-        self.config[temp_settings] = temp_settings_set
+        self.config[TEMP_SETTINGS] = temp_settings_set
 
     def set_load_settings(self, load_settings_set):
         """Set load settings.
@@ -626,7 +688,7 @@ class Config:
            New load settings value.
 
         """
-        self.config[load_settings] = load_settings_set
+        self.config[LOAD_SETTINGS] = load_settings_set
 
     def set_fuel_settings(self, fuel_settings_set):
         """Set fuel settings.
@@ -637,7 +699,7 @@ class Config:
            New fuel settings value.
 
         """
-        self.config[fuel_settings] = fuel_settings_set
+        self.config[FUEL_SETTINGS] = fuel_settings_set
 
     def get_rest_api_host(self):
         """Get gateway rest api host.
@@ -648,7 +710,7 @@ class Config:
            Read rest api host.
 
         """
-        return self.config[rest_api][host]
+        return self.config[REST_API][HOST]
 
     def get_rest_api_port(self):
         """Get gateway rest api post.
@@ -659,4 +721,4 @@ class Config:
            Read rest api port.
 
         """
-        return self.config[rest_api][port]
+        return self.config[REST_API][PORT]

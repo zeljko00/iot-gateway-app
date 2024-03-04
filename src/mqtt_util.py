@@ -1,4 +1,61 @@
-"""Gateway-cloud broker utilities."""
+"""Mqtt utilities.
+
+mqtt_util
+=========
+Module that contains logic for gateway-cloud communication via mqtt broker.
+'gcb' prefix stands for gateway-cloud broker.
+
+Classes
+-------
+
+MqttConf
+    Wrapper for mqtt configuration that includes address, port, username and password.
+
+Functions
+---------
+
+gcb_publisher_on_connect
+    Connection event handler for publisher.
+gcb_subscriber_on_connect
+    Connection event handler for subscriber.
+gcb_on_publish
+    Publish event handler.
+gcb_on_message
+    Message event handler.
+gcb_init_client
+    Create client.
+gcb_init_publisher
+    Create publisher client.
+gcb_init_subscriber
+    Create subscriber client.
+gcb_connect
+    Connect mqtt client to specified broker.
+gcb_disconnect
+    Disconnect mqtt client from specified broker.
+
+Constants
+---------
+GCB_TRANSPORT
+    Transport layer protocol used by mqtt client.
+GCB_PROTOCOL
+    Mqtt protocol version.
+GCB_QOS
+    Mqtt quality of service level.
+GCB_KEEPALIVE
+    Mqtt keepalive period.
+GCB_CONNECTION_ATTEMPT_INTERVAL
+    Mqtt interval for retrying connection.
+
+GCB_TEMP_TOPIC
+    Temp topic identifier.
+GCB_LOAD_TOPIC
+    Load topic identifier.
+GCB_FUEL_TOPIC
+    Fuel topic identifier.
+GCB_STATS_TOPIC
+    Stats topic identifier.
+
+"""
 import time
 import logging.config
 import paho.mqtt.client as mqtt
@@ -8,18 +65,16 @@ infoLogger = logging.getLogger('customInfoLogger')
 errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger('customConsoleLogger')
 
-# 'gcb' stands for gateway-cloud broker
+GCB_TRANSPORT = "tcp"
+GCB_PROTOCOL = mqtt.MQTTv5
+GCB_QOS = 2
+GCB_KEEPALIVE = 8 * 60 * 60
+GCB_CONNECTION_ATTEMPT_INTERVAL = 0.2
 
-gcb_transport = "tcp"
-gcb_protocol = mqtt.MQTTv5
-gcb_qos = 2
-gcb_keepalive = 8 * 60 * 60
-gcb_connection_attempt_interval = 0.2
-
-gcb_temp_topic = "gateway_data/temp"
-gcb_load_topic = "gateway_data/load"
-gcb_fuel_topic = "gateway_data/fuel"
-gcb_stats_topic = "gateway_data/stats"
+GCB_TEMP_TOPIC = "gateway_data/temp"
+GCB_LOAD_TOPIC = "gateway_data/load"
+GCB_FUEL_TOPIC = "gateway_data/fuel"
+GCB_STATS_TOPIC = "gateway_data/stats"
 
 
 class MQTTConf:
@@ -167,7 +222,7 @@ def gcb_init_client(client_id, username, password):
        Created client for gateway-cloud broker.
 
     """
-    client = mqtt.Client(client_id=client_id, transport=gcb_transport, protocol=gcb_protocol)
+    client = mqtt.Client(client_id=client_id, transport=GCB_TRANSPORT, protocol=GCB_PROTOCOL)
     client.username_pw_set(username=username, password=password)
     return client
 
@@ -235,11 +290,11 @@ def gcb_connect(client, address, port):
     """
     while not client.is_connected():
         try:
-            client.connect(address, port=port, keepalive=gcb_keepalive)
+            client.connect(address, port=port, keepalive=GCB_KEEPALIVE)
             client.loop_start()
         except BaseException:
             customLogger.error("Client failed to establish connection with MQTT broker.")
-        time.sleep(gcb_connection_attempt_interval)
+        time.sleep(GCB_CONNECTION_ATTEMPT_INTERVAL)
 
 
 def gcb_disconnect(client):

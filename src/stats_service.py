@@ -1,6 +1,7 @@
-"""
-sensor_devices
-============
+"""Stats service utilities.
+
+stats_service
+=============
 Module that contains logic used for collecting stats about savings in sensor data sent over the internet.
 
 Classes
@@ -20,10 +21,9 @@ Constants
 """
 import json
 import time
-import requests
 import logging.config
 
-from mqtt_util import *
+from mqtt_util import GCB_STATS_TOPIC, GCB_QOS
 
 # setting up loggers
 logging.config.fileConfig('logging.conf')
@@ -51,14 +51,14 @@ class Stats:
     """
 
     def __init__(self):
-        """Initializes Stats object."""
+        """Initialize Stats object."""
         self.dataBytes = 0
         self.dataBytesForwarded = 0
         self.dataRequests = 0
 
     def update_data(self, bytes, forwarded, requests):
         """
-        Updates current stats  with new collected sensor data.
+        Update current stats  with new collected sensor data.
 
         Parameters
         ----------
@@ -196,7 +196,7 @@ class OverallStats:
             try:
                 # [REST/MQTT]
                 mqtt_payload = {"username": self.username, "payload": payload}
-                self.mqtt_client.publish(gcb_stats_topic, json.dumps(mqtt_payload), gcb_qos)
+                self.mqtt_client.publish(GCB_STATS_TOPIC, json.dumps(mqtt_payload), GCB_QOS)
 
                 # post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
                 # if post_req.status_code == 200:

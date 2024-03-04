@@ -1,4 +1,5 @@
-"""
+"""Authentication utilities.
+
 auth
 ============
 Module that provides functions for iot-gateway authentication on cloud
@@ -64,7 +65,7 @@ def login(username, password, url):
 
 def check_jwt(jwt, url):
     """
-    Checking jwt validity.
+    Check jwt validity.
 
     Parameters
     ----------
@@ -92,7 +93,7 @@ def check_jwt(jwt, url):
 # register requires API key
 def register(key, username, password, time_format, url):
     """
-    Creates new account on cloud platform for iot-gateway device.
+    Create new account on cloud platform for iot-gateway device.
 
     If login is successful, returns jwt for accessing cloud REST API.
 

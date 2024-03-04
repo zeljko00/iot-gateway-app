@@ -1,4 +1,30 @@
-"""Simple gateway rest api server."""
+"""Rest api utilities.
+
+rest_api
+========
+Module that contains simple gateway rest api server.
+
+Classes
+-------
+
+FuelSettings
+    Class representing fuel settings relevant for requests from cloud dashboard.
+TempSettings
+    Class representing temp settings relevant for requests from cloud dashboard.
+LoadSettings
+    Class representing load settings relevant for requests from cloud dashboard.
+FluidConfig
+    Class representing part of configuration that can be changed.
+
+Functions
+---------
+start_rest_api
+    Defines rest api server endpoints and starts running the server.
+
+Constants
+---------
+
+"""
 import uvicorn
 import logging.config
 from fastapi import FastAPI
@@ -6,9 +32,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
-from config_util import *
-conf_dir = './configuration'
-conf_path = conf_dir + "/app_conf.json"
+from config_util import Config, write_conf, TEMP_SETTINGS, LOAD_SETTINGS, FUEL_SETTINGS, CONF_PATH
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -80,7 +104,7 @@ class FluidConfig(BaseModel):
        Fuel settings.
 
     """
-    
+
     fuel_settings: FuelSettings
     temp_settings: TempSettings
     load_settings: LoadSettings
@@ -113,11 +137,11 @@ def start_rest_api(host, port):
     @app.get("/config/")
     async def config_get():
         try:
-            config = Config(conf_path)
+            config = Config(CONF_PATH)
             config.try_open()
-            return {temp_settings: config.get_temp_settings(),
-                    load_settings: config.get_load_settings(),
-                    fuel_settings: config.get_fuel_settings(), }
+            return {TEMP_SETTINGS: config.get_temp_settings(),
+                    LOAD_SETTINGS: config.get_load_settings(),
+                    FUEL_SETTINGS: config.get_fuel_settings(), }
         except BaseException:
             return None
 
@@ -125,15 +149,15 @@ def start_rest_api(host, port):
     @app.post("/config/")
     async def config_post(fluid_config: FluidConfig):
         try:
-            config = Config(conf_path, errorLogger, customLogger)  # TODO
+            config = Config(CONF_PATH, errorLogger, customLogger)  # TODO
             config.try_open()
             config.set_fuel_settings(jsonable_encoder(fluid_config.fuel_settings))
             config.set_temp_settings(jsonable_encoder(fluid_config.temp_settings))
             config.set_load_settings(jsonable_encoder(fluid_config.load_settings))
             write_conf(config)
-            return {temp_settings: config.get_temp_settings(),
-                    load_settings: config.get_load_settings(),
-                    fuel_settings: config.get_fuel_settings(), }
+            return {TEMP_SETTINGS: config.get_temp_settings(),
+                    LOAD_SETTINGS: config.get_load_settings(),
+                    FUEL_SETTINGS: config.get_fuel_settings(), }
         except BaseException:
             return None
 
@@ -141,6 +165,6 @@ def start_rest_api(host, port):
 
 
 if __name__ == "__main__":
-    config = Config(conf_path, errorLogger, customLogger)
+    config = Config(CONF_PATH, errorLogger, customLogger)
     config.try_open()
     start_rest_api(config.get_rest_api_host(), config.get_rest_api_port())
