@@ -436,7 +436,6 @@ def collect_load_data(config, url, jwt, flag, conf_flag, stats_queue):
     old_data = []
     gcb_client = None
     # [REST/MQTT]
-    interval = get_load_interval(config)
     gcb_conf = MQTTConf.from_app_config(config, "gateway_cloud_broker")
     if gcb_conf is not None:
         gcb_client = gcb_init_publisher(
