@@ -3,6 +3,7 @@
  "password":"28061914",
  "fuel_settings": {
   "level_limit": 200,
+  "interval": 20,
   "mode": "SIMULATOR"
  },
  "temp_settings": {

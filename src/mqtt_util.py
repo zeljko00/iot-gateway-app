@@ -130,10 +130,10 @@ class MQTTConf:
 
         """
         if broker == "gateway_cloud_broker":
-            return MQTTConf(config.get_gateway_cloud_broker_address(),
-                            config.get_gateway_cloud_broker_port(),
-                            config.get_gateway_cloud_broker_iot_username(),
-                            config.get_gateway_cloud_broker_iot_password())
+            return MQTTConf(config.gateway_cloud_broker_address,
+                            config.gateway_cloud_broker_port,
+                            config.gateway_cloud_broker_iot_username,
+                            config.gateway_cloud_broker_iot_password)
         return None
 
 

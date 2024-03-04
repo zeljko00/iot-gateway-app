@@ -12,6 +12,8 @@ handle_load_data(data, url, jwt, time_format)
     Summarizing load temperature data and forwarding result to cloud service.
 handle_fuel_data(data, limit, url, jwt, time_format)
     Filtering collected temperature data and forwarding result to cloud service.
+parse_incoming_data(data, type)
+    Parsing all types of data that come from sources
 
 Constants
 ---------
@@ -23,7 +25,14 @@ HTTP_OK
     Http status code.
 HTTP_NO_CONTENT
     Http status code.
-
+qos
+    Quality of Service of MQTT broker
+temp_alarm_topic: str
+    MQTT alarm topic for temperature alarms
+load_alarm_topic: str
+    MQTT alarm topic for load alarms
+fuel_alarm_topic: str
+    MQTT alarm topic for fuel alarms
 """
 import time
 import json
@@ -46,6 +55,7 @@ FUEL_ALARM_TOPIC = "alarms/fuel"
 
 
 def parse_incoming_data(data, type):
+
     data_sum = 0.0
     # summarizing colleceted data
     # for item in data:
@@ -54,7 +64,6 @@ def parse_incoming_data(data, type):
         data_sum += float(tokens[1].split("=")[1])
     except BaseException:
         errorLogger.error("Invalid " + type + " data format! - " + data)
-    # time_value = time.strftime(time_format, time.localtime()) not needed
     unit = "unknown"
     try:
         unit = data.split(" ")[6].split("=")[1]
@@ -79,9 +88,12 @@ def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
             Cloud services' URL.
        jwt: str
             JSON wen auth token
+       username: str
+            Username of the IoT device
        time_format: str
             Cloud services' time format.
-
+       mqtt_client: paho.mqtt.client.Client
+            Gateway IoT broker client
        Returns
        -------
        http status code
@@ -130,9 +142,12 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
         Cloud services' URL.
     jwt: str
         JSON wen auth token
+    username: str
+        Username of the IoT device
     time_format: str
         Cloud services' time format.
-
+    mqtt_client: paho.mqtt.client.Client
+        Gateway IoT broker client
     Returns
     -------
     http status code
@@ -180,8 +195,12 @@ def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client,
          Cloud services' URL.
      jwt: str
          JSON web auth token.
+     username: str
+        Username of the IoT device
      time_format: str
          Cloud services' time format.
+     alarm_client: MQTTClient
+         MQTT broker alarm client
      mqtt_client: paho.mqtt.client.Client
          MQTT client used to send data to gateway-cloud broker.
 

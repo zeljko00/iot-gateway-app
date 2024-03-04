@@ -272,7 +272,7 @@ def get_temp_interval(config):
        Extracted temperature interval value.
 
     """
-    return config.get_temp_settings_interval()
+    return config.temp_settings_interval
 
 
 def get_load_interval(config):
@@ -291,7 +291,7 @@ def get_load_interval(config):
        Extracted load interval value.
 
     """
-    return config.get_load_settings_interval()
+    return config.load_settings_interval
 
 
 def get_fuel_level_limit(config):
@@ -310,37 +310,63 @@ def get_fuel_level_limit(config):
        Extracted fuel level limit value.
 
     """
-    return config.get_fuel_settings_level_limit()
+    return config.fuel_settings_level_limit
 
 
 class Config:
-    """Class for managing configuration.
+    """
+    A wrapper class for the configuration file JSON
 
-    Attributes
-    ----------
-    path: str
-       Configuration file path.
-    config: dict
-       Configuration as dictionary.
-    error_logger: logging.Logger
-       Error logger for configuration management.
-    custom_logger: logging.Logger
-       Custom logger for configuration management.
+            Properties:
+                temp_mode: Property for temperature mode
+                load_mode: Property for load mode
+                fuel_mode: Property for fuel mode
+                can_interface: Property for CAN interface
+                can_channel: Property for CAN channel
+                can_bitrate: Property for CAN bitrate
+                mqtt_broker_username: Property for MQTT broker client username
+                mqtt_broker_password: Property for MQTT broker client password
+                mqtt_broker_address: Property for MQTT broker client address
+                mqtt_broker_port: Property for MQTT broker client port
+                server_url: Property for cloud service url
+                iot_username: Property for the username that an IoT device uses
+                iot_password: Property for the password that an IoT device uses
+                api_key: Property for cloud api key
+                server_time_format: Property for cloud service time format
+                auth_interval: Property for cloud service authentication period
+                temp_settings_interval: Property for temperature period
+                load_settings_interval: Property for load period
+                fuel_settings_interval: Property for fuel period
+                time_format: Property for time format
+                fuel_settings_level_limit: Property for fuel level limit
+                gateway_cloud_broker_iot_username: Property for cloud MQTT broker username
+                gateway_cloud_broker_iot_password: Property for cloud MQTT broker password
+                gateway_cloud_broker_address: Property for cloud MQTT broker address
+                gateway_cloud_broker_port: Property for cloud MQTT broker port
+                temp_settings: Property for temperature settings
+                load_settings: Property for load settings
+                fuel_settings: Property for fuel_settings
+                rest_api_host: Property for REST API hostname
+                rest_api_port: Property for REST API port
+            Methods:
+                __init__(path, error_logger, custom_logger): Class constructor for initializing class objects
+                try_open(): Method for reading the configuration from a configuration file
+                write(): Write the current configuration to the configuration file
+                temp_settings(temp_settings_set): Setter for temperature settings
+                load_settings(load_settings_set): Setter for load settings
+                fuel_settings(fuel_settings_set): Setter for fuel settings
 
     """
-
     def __init__(self, path, error_logger=None, custom_logger=None):
-        """Create object for configuration management.
-
-        Parameters
-        ----------
-        path: str
-           Configuration file path.
-        error_logger: logging.Logger
-           Error logger for configuration management.
-        custom_logger: logging.Logger
-           Custom logger for configuration management.
-
+        """
+            Constructor that initializes a Config object.
+                Args:
+                    path: str
+                        File path to the configuration file
+                    error_logger: Logger
+                        An error logger
+                    custom_logger: Logger
+                        A standard output (console) logger
         """
         self.path = path
         self.config = None
@@ -348,11 +374,8 @@ class Config:
         self.custom_logger = custom_logger
 
     def try_open(self):
-        """Read configuration.
-
-        Try reading configuration and storing it as a dictionary.
-        If it fails, fill up dictionary with predefined values.
-
+        """
+            Method that tries to open and read the configuration from the configuration file.
         """
         try:
             conf_file = open(self.path)
@@ -365,360 +388,321 @@ class Config:
 
             self.config = {
                 FUEL_SETTINGS: {
-                    LEVEL_LIMIT: 200, MODE: "SIMULATOR"}, TEMP_SETTINGS: {
+                    LEVEL_LIMIT: 200, MODE: "SIMULATOR", INTERVAL: 20}, TEMP_SETTINGS: {
                     INTERVAL: 20, MODE: "SIMULATOR"}, LOAD_SETTINGS: {
                     INTERVAL: 20, MODE: "SIMULATOR"}, SERVER_URL: "", MQTT_BROKER: {
                     USERNAME: "", PASSWORD: ""
                 }}
 
-    def get_temp_mode(self):
-        """Get temperature mode.
+    def write(self):
+        """
+            Method that writes the current configuration to the configuration file
+        """
+        try:
+            with open(self.path, 'w') as json_file:
+                json.dump(self.config, json_file)
+        except BaseException:
+            self.error_logger.critical(
+                "Can't write to app config file - ", self.path, " !")
+            self.custom_logger.critical(
+                "Can't read app config file - ", self.path, " !")
 
-        Returns
-        -------
-        temperature_mode: str
-           Read temperature mode.
-
+    @property
+    def temp_mode(self):
+        """
+        Temperature mode. Indicates the source of the temperature data.
+            Returns:
+                temp_mode: str
         """
         return self.config[TEMP_SETTINGS][MODE]
 
-    def get_load_mode(self):
-        """Get load mode.
-
-        Returns
-        -------
-        load_mode: str
-           Read load mode.
-
+    @property
+    def load_mode(self):
+        """
+        Load mode. Indicates the source of the load data.
+            Returns:
+                load_mode: str
         """
         return self.config[LOAD_SETTINGS][MODE]
 
-    def get_fuel_mode(self):
-        """Get fuel mode.
-
-        Returns
-        -------
-        fuel_mode: str
-           Read fuel mode.
-
+    @property
+    def fuel_mode(self):
+        """
+        Fuel mode. Indicates the source of the fuel data.
+            Returns:
+                fuel_mode: str
         """
         return self.config[FUEL_SETTINGS][MODE]
 
-    def get_can_interface(self):
-        """Get CAN interface.
-
-        Returns
-        -------
-        can_interface: str
-           Read CAN interface.
-
+    @property
+    def can_interface(self):
+        """
+        CAN interface name.
+            Returns:
+                interface: str
         """
         return self.config[CAN_GENERAL_SETTINGS][INTERFACE]
 
-    def get_can_channel(self):
-        """Get CAN channel.
-
-        Returns
-        -------
-        can_channel: str
-           Read CAN channel.
-
+    @property
+    def can_channel(self):
+        """
+        CAN channel name.
+            Returns:
+                channel: str
         """
         return self.config[CAN_GENERAL_SETTINGS][CHANNEL]
 
-    def get_can_bitrate(self):
-        """Get CAN bitrate.
-
-        Returns
-        -------
-        can_bitrate: int
-           Read CAN bitrate.
-
+    @property
+    def can_bitrate(self):
+        """
+        CAN bitrate
+            Returns:
+                bitrate: int
         """
         return self.config[CAN_GENERAL_SETTINGS][BITRATE]
 
-    def get_mqtt_broker_username(self):
-        """Get gateway-peripherals broker username.
-
-        Returns
-        -------
-        broker_username: str
-           Read broker username.
-
+    @property
+    def mqtt_broker_username(self):
+        """
+        MQTT broker client username
+            Returns:
+                username: str
         """
         return self.config[MQTT_BROKER][USERNAME]
 
-    def get_mqtt_broker_password(self):
-        """Get gateway-peripherals broker password.
-
-        Returns
-        -------
-        broker_password: str
-           Read broker password.
-
+    @property
+    def mqtt_broker_password(self):
+        """
+        MQTT broker client password
+            Returns:
+                password: str
         """
         return self.config[MQTT_BROKER][PASSWORD]
 
-    def get_mqtt_broker_address(self):
-        """Get gateway-peripherals broker addres.
-
-        Returns
-        -------
-        broker_address: str
-           Read broker address.
-
+    @property
+    def mqtt_broker_address(self):
+        """
+        MQTT broker client address
+            Returns:
+                address: str
         """
         return self.config[MQTT_BROKER][ADDRESS]
 
-    def get_mqtt_broker_port(self):
-        """Get gateway-peripherals broker port.
-
-        Returns
-        -------
-        broker_port: int
-           Read broker port.
-
+    @property
+    def mqtt_broker_port(self):
+        """
+        MQTT broker client port
+            Returns:
+                port: int
         """
         return self.config[MQTT_BROKER][PORT]
 
-    def get_server_url(self):
-        """Get cloud server url.
-
-        Returns
-        -------
-        cloud_url: str
-           Read cloud url.
-
+    @property
+    def server_url(self):
+        """
+        Cloud service URL
+            Returns:
+                server_url: str
         """
         return self.config[SERVER_URL]
 
-    def get_iot_username(self):
-        """Get iot device username.
-
-        Returns
-        -------
-        iot_username: str
-           Read username.
-
+    @property
+    def iot_username(self):
+        """
+        IoT device username
+            Returns:
+                username: str
         """
         return self.config[USERNAME]
 
-    def get_iot_password(self):
-        """Get iot device password.
-
-        Returns
-        -------
-        iot_password: str
-           Read password.
-
+    @property
+    def iot_password(self):
+        """
+        IoT device password
+            Returns:
+                password: str
         """
         return self.config[PASSWORD]
 
-    def get_api_key(self):
-        """Get cloud server api key.
-
-        Returns
-        -------
-        api_key: str
-           Read api_key.
-
+    @property
+    def api_key(self):
+        """
+        Cloud service API key
+            Returns:
+                api_key: str
         """
         return self.config[API_KEY]
 
-    def get_server_time_format(self):
-        """Get cloud time format.
-
-        Returns
-        -------
-        time_format: str
-           Read time format.
-
+    @property
+    def server_time_format(self):
+        """
+        Cloud service time format
+            Returns:
+                server_time_format: str
         """
         return self.config[SERVER_TIME_FORMAT]
 
-    def get_auth_interval(self):
-        """Get cloud authentication interval.
-
-        Returns
-        -------
-        auth_interval: int
-           Read auth interval.
-
+    @property
+    def auth_interval(self):
+        """
+        Interval for cloud service authentication attempts
+            Returns:
+                interval: int
         """
         return self.config[AUTH_INTERVAL]
 
-    def get_temp_settings_interval(self):
-        """Get temperature settings interval.
-
-        Returns
-        -------
-        temp_interval: str
-           Read temperature interval.
-
+    @property
+    def temp_settings_interval(self):
+        """
+        Interval for sending temperature messages
+            Returns:
+                temperature_interval: int
         """
         return self.config[TEMP_SETTINGS][INTERVAL]
 
-    def get_load_settings_interval(self):
-        """Get load settings interval.
-
-        Returns
-        -------
-        load_interval: str
-           Read load interval.
-
+    @property
+    def load_settings_interval(self):
+        """
+        Interval for sending load messages
+            Returns:
+                load_interval: int
         """
         return self.config[LOAD_SETTINGS][INTERVAL]
 
-    def get_time_format(self):
-        """Get gateway time format.
+    @property
+    def fuel_settings_interval(self):
+        """
+        Interval for sending fuel messages
+            Returns:
+                fuel_interval: int
+        """
+        return self.config[FUEL_SETTINGS][INTERVAL]
 
-        Returns
-        -------
-        time_format: str
-           Read time format.
-
+    @property
+    def time_format(self):
+        """
+        Time format
+            Returns:
+                time_format: str
         """
         return self.config[TIME_FORMAT]
 
-    def get_fuel_settings_level_limit(self):
-        """Get fuel settings level limit.
-
-        Returns
-        -------
-        fuel_level_limit: str
-           Read fuel level limit.
-
+    @property
+    def fuel_settings_level_limit(self):
+        """
+        Fuel level limit
+            Returns:
+                fuel_level_limit: int
         """
         return self.config[FUEL_SETTINGS][LEVEL_LIMIT]
 
-    def get_gateway_cloud_broker_iot_username(self):
-        """Get gateway-cloud broker username.
-
-        Returns
-        -------
-        username: str
-           Read username.
-
+    @property
+    def gateway_cloud_broker_iot_username(self):
+        """
+        Gateway cloud MQTT broker username
+            Returns:
+                username: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][USERNAME]
 
-    def get_gateway_cloud_broker_iot_password(self):
-        """Get gateway-cloud broker password.
-
-        Returns
-        -------
-        password: str
-           Read password.
-
+    @property
+    def gateway_cloud_broker_iot_password(self):
+        """
+        Gateway cloud MQTT broker password
+            Returns:
+                password: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][PASSWORD]
 
-    def get_gateway_cloud_broker_address(self):
-        """Get gateway-cloud broker address.
-
-        Returns
-        -------
-        address: str
-           Read address.
-
+    @property
+    def gateway_cloud_broker_address(self):
+        """
+        Gateway cloud MQTT broker address
+            Returns:
+                address: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][ADDRESS]
 
-    def get_gateway_cloud_broker_port(self):
-        """Get gateway-cloud broker port.
-
-        Returns
-        -------
-        port: int
-           Read port.
-
+    @property
+    def gateway_cloud_broker_port(self):
+        """
+        Gateway cloud MQTT broker port
+            Returns:
+                port: int
         """
         return self.config[GATEWAY_CLOUD_BROKER][PORT]
 
-    def get_temp_settings(self):
-        """Get temperature settings.
-
-        Returns
-        -------
-        temp_settings: dict
-           Read temperature settings.
-
+    @property
+    def temp_settings(self):
+        """
+        Temperature settings
+            Returns:
+                temp_settings: str
         """
         return self.config[TEMP_SETTINGS]
 
-    def get_load_settings(self):
-        """Get load settings.
-
-        Returns
-        -------
-        load_settings: dict
-           Read load settings.
-
+    @property
+    def load_settings(self):
+        """
+        Load settings
+            Returns:
+                load_settings: str
         """
         return self.config[LOAD_SETTINGS]
 
-    def get_fuel_settings(self):
-        """Get fuel settings.
-
-        Returns
-        -------
-        fuel_settings: dict
-           Read fuel settings.
-
+    @property
+    def fuel_settings(self):
+        """
+        Fuel settings
+            Returns:
+                fuel_settings: str
         """
         return self.config[FUEL_SETTINGS]
 
-    def set_temp_settings(self, temp_settings_set):
-        """Set temp settings.
-
-        Parameters
-        ----------
-        temp_settings_set: dict
-           New temperature settings value.
-
+    @temp_settings.setter
+    def temp_settings(self, temp_settings_set):
+        """
+        Setter for temperature settings
+            Args:
+                temp_settings_set: str
+                    New temperature settings
         """
         self.config[TEMP_SETTINGS] = temp_settings_set
 
-    def set_load_settings(self, load_settings_set):
-        """Set load settings.
-
-        Parameters
-        ----------
-        load_settings_set: dict
-           New load settings value.
-
+    @load_settings.setter
+    def load_settings(self, load_settings_set):
+        """
+        Setter for load settings
+            Args:
+                load_settings_set: str
+                    New load settings
         """
         self.config[LOAD_SETTINGS] = load_settings_set
 
-    def set_fuel_settings(self, fuel_settings_set):
-        """Set fuel settings.
-
-        Parameters
-        ----------
-        fuel_settings_set: dict
-           New fuel settings value.
-
+    @fuel_settings.setter
+    def fuel_settings(self, fuel_settings_set):
+        """
+        Setter for fuel settings
+            Args:
+                fuel_settings_set: str
+                    New fuel settings
         """
         self.config[FUEL_SETTINGS] = fuel_settings_set
 
-    def get_rest_api_host(self):
-        """Get gateway rest api host.
-
-        Returns
-        -------
-        rest_api_host: str
-           Read rest api host.
-
+    @property
+    def rest_api_host(self):
+        """
+        Gateway REST API hostname
+            Returns:
+                hostname: str
         """
         return self.config[REST_API][HOST]
 
-    def get_rest_api_port(self):
-        """Get gateway rest api post.
-
-        Returns
-        -------
-        rest_api_host: int
-           Read rest api port.
-
+    @property
+    def rest_api_port(self):
+        """
+        Gateway REST API port
+            Returns:
+                port: int
         """
         return self.config[REST_API][PORT]
