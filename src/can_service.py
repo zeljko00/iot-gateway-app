@@ -54,7 +54,6 @@ _l: str
     Fuel measuring unit
 qos: int
     Quality of service of MQTT.
-    
 """
 import can
 import logging.config
@@ -500,7 +499,6 @@ def on_connect_fuel_sensor(client, userdata, flags, rc, props):
 
 
 class CANListener (Listener):
-
     """
     A class that accepts messages from the CAN bus.
 
