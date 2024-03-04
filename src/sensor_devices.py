@@ -786,15 +786,12 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
 
 
 class InitFlags:
-    """
-        A class that encapsulates four flags that keep track which threads have been initiated
-        Methods:
-            __init__(): Class constructor for initializing class objects
-    """
+    """A class that encapsulates four flags that keep track which threads have been initiated"""
+
     def __init__(self):
         """
-            Constructor that initializes an MQTT object.
-            None of the threads are initiated at first.
+        Constructor that initializes an MQTT object.
+        None of the threads are initiated at first.
         """
         self.can_initiated = False
         self.temp_simulator_initiated = False
@@ -807,13 +804,6 @@ def main():
     Used for testing sensors.
 
     Creates and executes 3 sensor subprocesses. Contains logic for user requested sensors' shutdown.
-
-    Parameters
-    ----------
-
-    Returns
-    -------
-    None
     """
     temp_simulation_flag = Event()
     load_simulation_flag = Event()
@@ -883,7 +873,7 @@ def shutdown_controller(
         fuel_handler_flag,
         can_flag,
         main_execution_flag):
-    '''
+    """
     Handles user request for sensor shutdown.
 
     When user requests shutdown, sets sensor processes' stop tokens.
@@ -899,7 +889,8 @@ def shutdown_controller(
 
     Returns
     -------
-    '''
+    None
+    """
     # waiting for shutdown signal
     input("")
     infoLogger.info("Dispatcher app shutting down! Please wait")
