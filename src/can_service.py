@@ -119,6 +119,7 @@ TEMP_ALARM_TOPIC = "alarms/temperature"
 LOAD_ALARM_TOPIC = "alarms/load"
 FUEL_ALARM_TOPIC = "alarms/fuel"
 
+
 def read_can(execution_flag, config_flag, init_flags, can_lock):
     """
     Thread execution function from sensor_devices main() for CAN communication
@@ -334,7 +335,7 @@ def init_mqtt_clients(
         fuel_client.connect()
     return temp_client, load_client, fuel_client
 
-  
+
 def on_publish(topic, payload, qos):
     """
     Event handler for published messages to a MQTT topic

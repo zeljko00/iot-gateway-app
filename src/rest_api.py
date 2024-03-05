@@ -32,7 +32,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
-from config_util import Config, write_conf, TEMP_SETTINGS, LOAD_SETTINGS, FUEL_SETTINGS, CONF_PATH
+from config_util import Config, TEMP_SETTINGS, LOAD_SETTINGS, FUEL_SETTINGS, CONF_PATH
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')

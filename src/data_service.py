@@ -54,8 +54,24 @@ LOAD_ALARM_TOPIC = "alarms/load"
 FUEL_ALARM_TOPIC = "alarms/fuel"
 
 
-def parse_incoming_data(data, type):
+def parse_incoming_data(data, data_type):
+    """
+    Parsing all types of data that come from sources
 
+    Args:
+    ----
+        data: str
+            Data to be parsed
+        data_type: str
+            Data type (Temperature, Load, Fuel) for console output
+
+    Returns:
+    -------
+        data_sum: double
+            Parsed data value
+        unit: str
+            Unit of the parsed data
+    """
     data_sum = 0.0
     # summarizing colleceted data
     # for item in data:
@@ -63,12 +79,12 @@ def parse_incoming_data(data, type):
         tokens = data.split(" ")
         data_sum += float(tokens[1].split("=")[1])
     except BaseException:
-        errorLogger.error("Invalid " + type + " data format! - " + data)
+        errorLogger.error("Invalid " + data_type + " data format! - " + data)
     unit = "unknown"
     try:
         unit = data.split(" ")[6].split("=")[1]
     except BaseException:
-        errorLogger.error("Invalid " + type + " data format! - " + data)
+        errorLogger.error("Invalid " + data_type + " data format! - " + data)
     return data_sum, unit
 
 # [REST/MQTT] [New parameter from mqtt client added to all handle functions]

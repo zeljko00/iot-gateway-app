@@ -357,16 +357,19 @@ class Config:
                 fuel_settings(fuel_settings_set): Setter for fuel settings
 
     """
+
     def __init__(self, path, error_logger=None, custom_logger=None):
         """
-            Constructor that initializes a Config object.
-                Args:
-                    path: str
-                        File path to the configuration file
-                    error_logger: Logger
-                        An error logger
-                    custom_logger: Logger
-                        A standard output (console) logger
+        Constructor that initializes a Config object.
+
+        Args:
+        ----
+            path: str
+                File path to the configuration file
+            error_logger: Logger
+                An error logger
+            custom_logger: Logger
+                A standard output (console) logger
         """
         self.path = path
         self.config = None
@@ -375,7 +378,7 @@ class Config:
 
     def try_open(self):
         """
-            Method that tries to open and read the configuration from the configuration file.
+        Method that tries to open and read the configuration from the configuration file.
         """
         try:
             conf_file = open(self.path)
@@ -396,7 +399,7 @@ class Config:
 
     def write(self):
         """
-            Method that writes the current configuration to the configuration file
+        Method that writes the current configuration to the configuration file
         """
         try:
             with open(self.path, 'w') as json_file:
@@ -411,8 +414,10 @@ class Config:
     def temp_mode(self):
         """
         Temperature mode. Indicates the source of the temperature data.
-            Returns:
-                temp_mode: str
+
+        Returns:
+        -------
+            temp_mode: str
         """
         return self.config[TEMP_SETTINGS][MODE]
 
@@ -420,8 +425,10 @@ class Config:
     def load_mode(self):
         """
         Load mode. Indicates the source of the load data.
-            Returns:
-                load_mode: str
+
+        Returns:
+        -------
+            load_mode: str
         """
         return self.config[LOAD_SETTINGS][MODE]
 
@@ -429,8 +436,10 @@ class Config:
     def fuel_mode(self):
         """
         Fuel mode. Indicates the source of the fuel data.
-            Returns:
-                fuel_mode: str
+
+        Returns:
+        -------
+            fuel_mode: str
         """
         return self.config[FUEL_SETTINGS][MODE]
 
@@ -460,8 +469,10 @@ class Config:
     def can_bitrate(self):
         """
         CAN bitrate
-            Returns:
-                bitrate: int
+
+        Returns:
+        -------
+            bitrate: int
         """
         return self.config[CAN_GENERAL_SETTINGS][BITRATE]
 
@@ -469,8 +480,10 @@ class Config:
     def mqtt_broker_username(self):
         """
         MQTT broker client username
-            Returns:
-                username: str
+
+        Returns:
+        -------
+            username: str
         """
         return self.config[MQTT_BROKER][USERNAME]
 
@@ -478,8 +491,10 @@ class Config:
     def mqtt_broker_password(self):
         """
         MQTT broker client password
-            Returns:
-                password: str
+
+        Returns:
+        -------
+            password: str
         """
         return self.config[MQTT_BROKER][PASSWORD]
 
@@ -487,8 +502,10 @@ class Config:
     def mqtt_broker_address(self):
         """
         MQTT broker client address
-            Returns:
-                address: str
+
+        Returns:
+        -------
+            address: str
         """
         return self.config[MQTT_BROKER][ADDRESS]
 
@@ -496,8 +513,10 @@ class Config:
     def mqtt_broker_port(self):
         """
         MQTT broker client port
-            Returns:
-                port: int
+
+        Returns:
+        -------
+            port: int
         """
         return self.config[MQTT_BROKER][PORT]
 
@@ -505,8 +524,10 @@ class Config:
     def server_url(self):
         """
         Cloud service URL
-            Returns:
-                server_url: str
+
+        Returns:
+        -------
+            server_url: str
         """
         return self.config[SERVER_URL]
 
@@ -514,8 +535,10 @@ class Config:
     def iot_username(self):
         """
         IoT device username
-            Returns:
-                username: str
+
+        Returns:
+        -------
+            username: str
         """
         return self.config[USERNAME]
 
@@ -523,8 +546,10 @@ class Config:
     def iot_password(self):
         """
         IoT device password
-            Returns:
-                password: str
+
+        Returns:
+        -------
+            password: str
         """
         return self.config[PASSWORD]
 
@@ -532,8 +557,10 @@ class Config:
     def api_key(self):
         """
         Cloud service API key
-            Returns:
-                api_key: str
+
+        Returns:
+        -------
+            api_key: str
         """
         return self.config[API_KEY]
 
@@ -541,8 +568,10 @@ class Config:
     def server_time_format(self):
         """
         Cloud service time format
-            Returns:
-                server_time_format: str
+
+        Returns:
+        -------
+            server_time_format: str
         """
         return self.config[SERVER_TIME_FORMAT]
 
@@ -550,8 +579,10 @@ class Config:
     def auth_interval(self):
         """
         Interval for cloud service authentication attempts
-            Returns:
-                interval: int
+
+        Returns:
+        -------
+            interval: int
         """
         return self.config[AUTH_INTERVAL]
 
@@ -559,8 +590,10 @@ class Config:
     def temp_settings_interval(self):
         """
         Interval for sending temperature messages
-            Returns:
-                temperature_interval: int
+
+        Returns:
+        -------
+            temperature_interval: int
         """
         return self.config[TEMP_SETTINGS][INTERVAL]
 
@@ -568,8 +601,10 @@ class Config:
     def load_settings_interval(self):
         """
         Interval for sending load messages
-            Returns:
-                load_interval: int
+
+        Returns:
+        -------
+            load_interval: int
         """
         return self.config[LOAD_SETTINGS][INTERVAL]
 
@@ -577,8 +612,10 @@ class Config:
     def fuel_settings_interval(self):
         """
         Interval for sending fuel messages
-            Returns:
-                fuel_interval: int
+
+        Returns:
+        -------
+            fuel_interval: int
         """
         return self.config[FUEL_SETTINGS][INTERVAL]
 
@@ -586,8 +623,10 @@ class Config:
     def time_format(self):
         """
         Time format
-            Returns:
-                time_format: str
+
+        Returns:
+        -------
+            time_format: str
         """
         return self.config[TIME_FORMAT]
 
@@ -595,8 +634,10 @@ class Config:
     def fuel_settings_level_limit(self):
         """
         Fuel level limit
-            Returns:
-                fuel_level_limit: int
+
+        Returns:
+        -------
+            fuel_level_limit: int
         """
         return self.config[FUEL_SETTINGS][LEVEL_LIMIT]
 
@@ -604,8 +645,10 @@ class Config:
     def gateway_cloud_broker_iot_username(self):
         """
         Gateway cloud MQTT broker username
-            Returns:
-                username: str
+
+        Returns:
+        -------
+            username: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][USERNAME]
 
@@ -613,8 +656,10 @@ class Config:
     def gateway_cloud_broker_iot_password(self):
         """
         Gateway cloud MQTT broker password
-            Returns:
-                password: str
+
+        Returns:
+        -------
+            password: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][PASSWORD]
 
@@ -622,8 +667,10 @@ class Config:
     def gateway_cloud_broker_address(self):
         """
         Gateway cloud MQTT broker address
-            Returns:
-                address: str
+
+        Returns:
+        -------
+            address: str
         """
         return self.config[GATEWAY_CLOUD_BROKER][ADDRESS]
 
@@ -631,8 +678,10 @@ class Config:
     def gateway_cloud_broker_port(self):
         """
         Gateway cloud MQTT broker port
-            Returns:
-                port: int
+
+        Returns:
+        -------
+            port: int
         """
         return self.config[GATEWAY_CLOUD_BROKER][PORT]
 
@@ -640,8 +689,10 @@ class Config:
     def temp_settings(self):
         """
         Temperature settings
-            Returns:
-                temp_settings: str
+
+        Returns:
+        -------
+            temp_settings: str
         """
         return self.config[TEMP_SETTINGS]
 
@@ -649,8 +700,10 @@ class Config:
     def load_settings(self):
         """
         Load settings
-            Returns:
-                load_settings: str
+
+        Returns:
+        -------
+            load_settings: str
         """
         return self.config[LOAD_SETTINGS]
 
@@ -658,8 +711,10 @@ class Config:
     def fuel_settings(self):
         """
         Fuel settings
-            Returns:
-                fuel_settings: str
+
+        Returns:
+        -------
+            fuel_settings: str
         """
         return self.config[FUEL_SETTINGS]
 
@@ -667,9 +722,11 @@ class Config:
     def temp_settings(self, temp_settings_set):
         """
         Setter for temperature settings
-            Args:
-                temp_settings_set: str
-                    New temperature settings
+
+        Args:
+        ----
+            temp_settings_set: str
+                New temperature settings
         """
         self.config[TEMP_SETTINGS] = temp_settings_set
 
@@ -677,9 +734,11 @@ class Config:
     def load_settings(self, load_settings_set):
         """
         Setter for load settings
-            Args:
-                load_settings_set: str
-                    New load settings
+
+        Args:
+        ----
+            load_settings_set: str
+                 New load settings
         """
         self.config[LOAD_SETTINGS] = load_settings_set
 
@@ -687,9 +746,11 @@ class Config:
     def fuel_settings(self, fuel_settings_set):
         """
         Setter for fuel settings
-            Args:
-                fuel_settings_set: str
-                    New fuel settings
+
+        Args:
+        ----
+            fuel_settings_set: str
+                New fuel settings
         """
         self.config[FUEL_SETTINGS] = fuel_settings_set
 
@@ -697,8 +758,10 @@ class Config:
     def rest_api_host(self):
         """
         Gateway REST API hostname
-            Returns:
-                hostname: str
+
+        Returns:
+        -------
+            hostname: str
         """
         return self.config[REST_API][HOST]
 
@@ -706,7 +769,9 @@ class Config:
     def rest_api_port(self):
         """
         Gateway REST API port
-            Returns:
-                port: int
+
+        Returns:
+        -------
+            port: int
         """
         return self.config[REST_API][PORT]
