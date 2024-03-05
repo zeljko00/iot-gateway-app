@@ -438,8 +438,10 @@ class Config:
     def can_interface(self):
         """
         CAN interface name.
-            Returns:
-                interface: str
+
+        Returns:
+        -------
+            interface: str
         """
         return self.config[CAN_GENERAL_SETTINGS][INTERFACE]
 
@@ -447,8 +449,10 @@ class Config:
     def can_channel(self):
         """
         CAN channel name.
-            Returns:
-                channel: str
+
+        Returns:
+        -------
+            channel: str
         """
         return self.config[CAN_GENERAL_SETTINGS][CHANNEL]
 

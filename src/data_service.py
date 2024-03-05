@@ -76,29 +76,29 @@ def parse_incoming_data(data, type):
 
 def handle_temperature_data(data, url, jwt, username, time_format, mqtt_client):
     """
-       Summarizes and sends collected temperature data.
+    Summarizes and sends collected temperature data.
 
-       Triggered periodically.
+    Triggered periodically.
 
-       Parameters
-       ----------
-       data: list
-            Collected temperature data.
-       url: str
-            Cloud services' URL.
-       jwt: str
-            JSON wen auth token
-       username: str
-            Username of the IoT device
-       time_format: str
-            Cloud services' time format.
-       mqtt_client: paho.mqtt.client.Client
-            Gateway IoT broker client
-       Returns
-       -------
-       http status code
-       """
+    Parameters
+    ----------
+    data: list
+        Collected temperature data.
+    url: str
+        Cloud services' URL.
+    jwt: str
+        JSON wen auth token
+    username: str
+        Username of the IoT device
+    time_format: str
+        Cloud services' time format.
+    mqtt_client: paho.mqtt.client.Client
+        Gateway IoT broker client
 
+    Returns
+    -------
+    http status code
+    """
     data_sum = 0.0
     unit = "Unknown"
     for info in data:
@@ -181,32 +181,32 @@ def handle_load_data(data, url, jwt, username, time_format, mqtt_client):
 
 def handle_fuel_data(data, limit, url, jwt, username, time_format, alarm_client, mqtt_client):
     """
-     Sends filtered fuel data.
+    Sends filtered fuel data.
 
-     Triggered periodically.
+    Triggered periodically.
 
-     Parameters
-     ----------
-     data: list
-         Collected load data.
-     limit: double
-         Critical fuel level.
-     url: str
-         Cloud services' URL.
-     jwt: str
-         JSON web auth token.
-     username: str
-        Username of the IoT device
-     time_format: str
-         Cloud services' time format.
-     alarm_client: MQTTClient
-         MQTT broker alarm client
-     mqtt_client: paho.mqtt.client.Client
-         MQTT client used to send data to gateway-cloud broker.
+    Parameters
+    ----------
+    data: list
+     Collected load data.
+    limit: double
+     Critical fuel level.
+    url: str
+     Cloud services' URL.
+    jwt: str
+     JSON web auth token.
+    username: str
+    Username of the IoT device
+    time_format: str
+     Cloud services' time format.
+    alarm_client: MQTTClient
+     MQTT broker alarm client
+    mqtt_client: paho.mqtt.client.Client
+     MQTT client used to send data to gateway-cloud broker.
 
-     Returns
-     -------
-     http status code
+    Returns
+    -------
+    http status code
     """
     try:
         tokens = data.split(" ")
