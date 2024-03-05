@@ -377,9 +377,7 @@ class Config:
         self.custom_logger = custom_logger
 
     def try_open(self):
-        """
-        Method that tries to open and read the configuration from the configuration file.
-        """
+        """Method that tries to open and read the configuration from the configuration file."""
         try:
             conf_file = open(self.path)
             self.config = json.load(conf_file)
@@ -398,9 +396,7 @@ class Config:
                 }}
 
     def write(self):
-        """
-        Method that writes the current configuration to the configuration file
-        """
+        """Method that writes the current configuration to the configuration file"""
         try:
             with open(self.path, 'w') as json_file:
                 json.dump(self.config, json_file)
