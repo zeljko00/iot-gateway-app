@@ -2,17 +2,17 @@
  "username":"iotdevice1",
  "password":"28061914",
  "fuel_settings": {
-  "level_limit": 200,
+  "level_limit": 20,
   "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
  },
  "temp_settings": {
   "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
  },
  "load_settings": {
  "interval": 20,
-  "mode": "SIMULATOR"
+  "mode": "CAN"
 },
  "can_general_settings": {
   "interface": "pcan",

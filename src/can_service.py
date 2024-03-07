@@ -281,10 +281,10 @@ def init_mqtt_clients(
             "load-can-sensor-mqtt-client",
             transport_protocol=TRANSPORT_PROTOCOL,
             protocol_version=mqtt.MQTTv5,
-            mqtt_username=config.get_mqtt_broker_username(),
-            mqtt_pass=config.get_mqtt_broker_password(),
-            broker_address=config.get_mqtt_broker_address(),
-            broker_port=config.get_mqtt_broker_port(),
+            mqtt_username=config.mqtt_broker_username,
+            mqtt_pass=config.mqtt_broker_password,
+            broker_address=config.mqtt_broker_address,
+            broker_port=config.mqtt_broker_port,
             keepalive=config.load_settings_interval,
             infoLogger=infoLogger,
             errorLogger=errorLogger,
@@ -417,7 +417,7 @@ def on_subscribe_fuel_alarm(client, userdata, flags, rc, props):
             "CAN Load alarm client successfully established connection with MQTT broker!")
         customLogger.debug(
             "CAN Load alarm client successfully established connection with MQTT broker!")
-        client.subscribe(FUEL_ALARM_TOPIC, qos=QOS)
+        # client.subscribe(FUEL_ALARM_TOPIC, qos=QOS)
     else:
         errorLogger.error(
             "CAN Load alarm client failed to establish connection with MQTT broker!")
