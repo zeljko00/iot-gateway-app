@@ -1,6 +1,7 @@
-'''
-sensor_devices
-============
+"""Stats service utilities.
+
+stats_service
+=============
 Module that contains logic used for collecting stats about savings in sensor data sent over the internet.
 
 Classes
@@ -17,12 +18,12 @@ Functions
 Constants
 ---------
 
-'''
+"""
+import json
 import time
-import requests
 import logging.config
 
-from mqtt_util import *
+from mqtt_util import GCB_STATS_TOPIC, GCB_QOS
 
 # setting up loggers
 logging.config.fileConfig('logging.conf')
@@ -31,37 +32,33 @@ customLogger = logging.getLogger('customConsoleLogger')
 
 
 class Stats:
-    '''
+    """
     Represents single sensor stats regarding data collected and transmitted over network.
 
     Attributes
-    ---------
+    ----------
     dataBytes: int
         Amount of collected sensor data in bytes.
     dataBytesForwarded: int
         Amount of sensor data sent to cloud services in bytes.
     dataRequests: int
         Number of requests to cloud services.
+
     Methods
-    ---------
+    -------
     update_data(self, bytes, forwarded, requests)
         Updating stats data.
-    '''
+    """
 
     def __init__(self):
-        '''
-        Initializes Stats object.
-
-        Parameters
-        ----------
-        '''
+        """Initialize Stats object."""
         self.dataBytes = 0
         self.dataBytesForwarded = 0
         self.dataRequests = 0
 
     def update_data(self, bytes, forwarded, requests):
-        '''
-        Updates current stats  with new collected sensor data.
+        """
+        Update current stats  with new collected sensor data.
 
         Parameters
         ----------
@@ -73,19 +70,20 @@ class Stats:
             Number of made cloud service requests.
 
         Returns
-        ----------
-        '''
+        -------
+        None
+        """
         self.dataBytes += bytes
         self.dataBytesForwarded += forwarded
         self.dataRequests += requests
 
 
 class OverallStats:
-    '''
+    """
     Represents overall IoT gateway stats regarding data collected and transmitted over network.
 
     Attributes
-    ---------
+    ----------
     time_pattern: str
         Server date-time format.
     url: str
@@ -115,18 +113,26 @@ class OverallStats:
         Number of requests to fuel stats service.
 
     Methods
-    ---------
+    -------
     combine_stats(self, temp_stats, load_stats, fuel_stats)
         Combines stats from different sensors into overall stats.
     send_stats(self):
         Sends collected stats dato to stats cloud service.
-    '''
+    """
+
     # [REST/MQTT] New parameter for mqtt publisher client
 
     def __init__(self, url, jwt, username, time_pattern, mqtt_client):
-        '''
-        Initializes OverallStats object.
-        '''
+        """Init OverallStats object.
+
+        Parameters
+        ----------
+        url
+        jwt
+        username
+        time_pattern
+        mqtt_client
+        """
         self.time_pattern = time_pattern
         self.url = url
         self.jwt = jwt
@@ -145,11 +151,11 @@ class OverallStats:
         self.fuelDataRequests = 0
 
     def combine_stats(self, temp_stats, load_stats, fuel_stats):
-        '''
-        Combining stats from different sensors into overall stats.
+        """
+        Combine stats from different sensors into overall stats.
 
         Parameters
-        ---------
+        ----------
         temp_stats: Stats
             Temperature stats data.
         load_stats: Stats
@@ -158,8 +164,9 @@ class OverallStats:
             Fuel stats data.
 
         Returns
-        ---------
-        '''
+        -------
+        None
+        """
         self.tempDataBytes = temp_stats.dataBytes
         self.tempDataBytesForwarded = temp_stats.dataBytesForwarded
         self.tempDataRequests = temp_stats.dataRequests
@@ -171,15 +178,7 @@ class OverallStats:
         self.fuelDataRequests = fuel_stats.dataRequests
 
     def send_stats(self):
-        '''
-        Sending collected stats to cloud stats service.
-
-        Parameters
-        ---------
-
-        Returns
-        ---------
-        '''
+        """Send collected stats to cloud stats service."""
         # recording end stats time
         self.endTime = time.strftime(self.time_pattern, time.localtime())
         payload = {"startTime": self.startTime, "endTime": self.endTime, "tempDataBytes": self.tempDataBytes,
@@ -197,7 +196,7 @@ class OverallStats:
             try:
                 # [REST/MQTT]
                 mqtt_payload = {"username": self.username, "payload": payload}
-                self.mqtt_client.publish(gcb_stats_topic, json.dumps(mqtt_payload), gcb_qos)
+                self.mqtt_client.publish(GCB_STATS_TOPIC, json.dumps(mqtt_payload), GCB_QOS)
 
                 # post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
                 # if post_req.status_code == 200:

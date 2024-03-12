@@ -2,7 +2,8 @@
  "username":"iotdevice1",
  "password":"28061914",
  "fuel_settings": {
-  "level_limit": 200,
+  "level_limit": 20,
+  "interval": 20,
   "mode": "CAN"
  },
  "temp_settings": {
@@ -30,13 +31,13 @@
   "password": "10060509"
  },
  "gateway_cloud_broker": {
-  "address": "gateway-cloud-broker",
+  "address": "localhost",
   "port": 1884,
   "username": "iot-device",
   "password": "10060509"
  },
  "rest_api": {
-  "host": "0.0.0.0",
+  "host": "localhost",
   "port": 9876
  }
 }
