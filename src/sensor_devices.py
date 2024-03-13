@@ -806,7 +806,7 @@ def main():
                                            can_flag,
                                            main_execution_flag
                                        ))
-    shutdown_thread.start()
+    #shutdown_thread.start()
     initial = True
     sensors = []
 
@@ -838,7 +838,7 @@ def main():
         time.sleep(2)
     for sensor in sensors:
         sensor.join()
-    shutdown_thread.join()
+    #shutdown_thread.join()
     app_config_observer.stop()
     app_config_observer.join()
     infoLogger.info("Sensor system shutdown!")

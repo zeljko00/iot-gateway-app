@@ -151,14 +151,17 @@ def start_rest_api(host, port):
         try:
             config = Config(CONF_PATH, errorLogger, customLogger)
             config.try_open()
-            config.fuel_settings(jsonable_encoder(fluid_config.fuel_settings))
-            config.temp_settings(jsonable_encoder(fluid_config.temp_settings))
-            config.load_settings(jsonable_encoder(fluid_config.load_settings))
+            temp = jsonable_encoder(fluid_config.fuel_settings)
+            temp['interval'] = config.fuel_settings_interval;
+            config.fuel_settings = temp 
+            config.temp_settings = jsonable_encoder(fluid_config.temp_settings)
+            config.load_settings = jsonable_encoder(fluid_config.load_settings)
             config.write()
             return {TEMP_SETTINGS: config.temp_settings,
                     LOAD_SETTINGS: config.load_settings,
                     FUEL_SETTINGS: config.fuel_settings, }
-        except BaseException:
+        except BaseException as e:
+            print(e)
             return None
 
     uvicorn.run(app, host=host, port=port)

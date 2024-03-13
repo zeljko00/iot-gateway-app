@@ -19,11 +19,8 @@ Constants
 ---------
 
 """
-import json
 import time
 import logging.config
-
-from mqtt_util import GCB_STATS_TOPIC, GCB_QOS
 
 # setting up loggers
 logging.config.fileConfig('logging.conf')
@@ -120,9 +117,7 @@ class OverallStats:
         Sends collected stats dato to stats cloud service.
     """
 
-    # [REST/MQTT] New parameter for mqtt publisher client
-
-    def __init__(self, url, jwt, username, time_pattern, mqtt_client):
+    def __init__(self, time_pattern):
         """Init OverallStats object.
 
         Parameters
@@ -134,10 +129,6 @@ class OverallStats:
         mqtt_client
         """
         self.time_pattern = time_pattern
-        self.url = url
-        self.jwt = jwt
-        self.username = username
-        self.mqtt_client = mqtt_client
         self.startTime = time.strftime(self.time_pattern, time.localtime())
         self.endTime = ""
         self.tempDataBytes = 0
@@ -177,11 +168,10 @@ class OverallStats:
         self.fuelDataBytesForwarded = fuel_stats.dataBytesForwarded
         self.fuelDataRequests = fuel_stats.dataRequests
 
-    def send_stats(self):
-        """Send collected stats to cloud stats service."""
-        # recording end stats time
         self.endTime = time.strftime(self.time_pattern, time.localtime())
-        payload = {"startTime": self.startTime, "endTime": self.endTime, "tempDataBytes": self.tempDataBytes,
+        payload = {"startTime": self.startTime,
+                   "endTime": self.endTime,
+                   "tempDataBytes": self.tempDataBytes,
                    "tempDataBytesForwarded": self.tempDataBytesForwarded,
                    "tempDataRequests": self.tempDataRequests,
                    "loadDataBytes": self.loadDataBytes,
@@ -190,20 +180,5 @@ class OverallStats:
                    "fuelDataBytes": self.fuelDataBytes,
                    "fuelDataBytesForwarded": self.fuelDataBytesForwarded,
                    "fuelDataRequests": self.fuelDataRequests}
+        return payload
 
-        # trying to send stats data 5 times
-        for i in range(0, 5):
-            try:
-                # [REST/MQTT]
-                mqtt_payload = {"username": self.username, "payload": payload}
-                self.mqtt_client.publish(GCB_STATS_TOPIC, json.dumps(mqtt_payload), GCB_QOS)
-
-                # post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
-                # if post_req.status_code == 200:
-                #    break
-                # else:
-                #    errorLogger.error("problem with Stats Cloud service!")
-                #    customLogger.critical("Stats service unavailable!")
-            except BaseException:
-                errorLogger.error("Stats Cloud service unavailable!")
-                customLogger.critical("Stats service unavailable!")

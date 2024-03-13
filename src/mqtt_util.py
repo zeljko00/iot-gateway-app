@@ -56,9 +56,12 @@ GCB_STATS_TOPIC
     Stats topic identifier.
 
 """
+import json
 import time
 import logging.config
 import paho.mqtt.client as mqtt
+from threading import Thread, Event
+from queue import Queue
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -308,3 +311,50 @@ def gcb_disconnect(client):
     """
     client.loop_stop()
     client.disconnect()
+
+class GcbService:
+    def __init__(self, username: str, client_id: str, conf: MQTTConf):
+        self.username = username
+        self.client_id = client_id
+        self.conf = conf
+        # In some sense, queue has two aspects.
+        # 1. It relays data from processes to mqtt service
+        # 2. It serves as an identifier for service (this allows creation of functions like
+        #    static push_message(...) where, by passing queue, we are essentially requesting
+        #    specific service that has that queue.
+        self.queue = Queue()
+        self.stop_flag = Event()
+        self.publishing_thread = Thread(target=self.__publishing_procedure__)
+        self.client = gcb_init_publisher(client_id, conf.username, conf.password)
+
+    def start(self):
+        gcb_connect(self.client, self.conf.address, self.conf.port)
+        self.publishing_thread.start()
+
+    def stop(self):
+        self.stop_flag.set()
+        gcb_disconnect(self.client)
+
+    @staticmethod
+    def push_message(queue: Queue, topic: str, data):
+        queue.put({
+            "topic": topic,
+            "data": data
+        })
+
+    def __publishing_procedure__(self):
+        while not self.stop_flag.is_set():
+            # This blocks until there is a new message, so we don't have busy wait.
+            item = self.queue.get()
+            final_payload = {
+                "username": self.username,
+                "payload": item["data"]
+            }
+            self.client.publish(item["topic"], json.dumps(final_payload), 2)
+
+        # We are here if stop() is called.
+        # Clear flag to make it ready for potential next call to start() on this same service.
+        self.stop_flag.clear()
+
+    def __del__(self):
+        self.stop()
