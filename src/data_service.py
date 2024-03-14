@@ -124,6 +124,7 @@ def handle_load_data(data, time_format):
         Collected load data.
     time_format: str
         Cloud services' time format.
+
     Returns
     -------
     payload: dict
