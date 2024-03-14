@@ -68,8 +68,7 @@ def parse_incoming_data(data, data_type):
             Unit of the parsed data
     """
     data_sum = 0.0
-    # summarizing colleceted data
-    # for item in data:
+    # summarizing collected data
     try:
         tokens = data.split(" ")
         data_sum += float(tokens[1].split("=")[1])
@@ -167,8 +166,7 @@ def handle_fuel_data(data, limit, time_format, alarm_client):
         tokens = data.split(" ")
         value = float(tokens[1].split("=")[1])
 
-        if value <= limit:  # ASK same limit as his or a different one?
-            # sound the alarm! ask him what do I send #ASK
+        if value <= limit:
             customLogger.info("Fuel is below the designated limit! Sounding the alarm")
 
             alarm_client.publish(FUEL_ALARM_TOPIC, True, QOS)

@@ -336,7 +336,7 @@ def collect_temperature_data(config, flag, conf_flag, stats_queue, gcb_queue):
             data_value, unit = data_service.parse_incoming_data(
                 str(data), "temperature")
             if data_value > 95:
-                # sound the alarm! ask him what do I send #ASK
+                # sound the alarm! ask him what do I send
                 customLogger.info(
                     "Temperature of " + str(data_value) + " C is too high! Sounding the alarm!")
                 client.publish(TEMP_ALARM_TOPIC, True, QOS)
@@ -365,7 +365,7 @@ def collect_temperature_data(config, flag, conf_flag, stats_queue, gcb_queue):
         for i in old_data:
             data.append(i)
         old_data.clear()
-        # send request to Cloud only if there is available data
+        # send payload to Cloud only if there is available data
         if len(data) > 0:
             payload = data_service.handle_temperature_data(data, config.time_format)
             if payload != EMPTY_PAYLOAD:
@@ -419,7 +419,7 @@ def collect_load_data(config, flag, conf_flag, stats_queue, gcb_queue):
         mqtt_pass=config.mqtt_broker_password,
         broker_address=config.mqtt_broker_address,
         broker_port=config.mqtt_broker_port,
-        keepalive=config.load_settings_interval * 3,  # ASK HERE
+        keepalive=config.load_settings_interval * 3,
         infoLogger=infoLogger,
         errorLogger=errorLogger,
         flag=flag,
@@ -444,7 +444,6 @@ def collect_load_data(config, flag, conf_flag, stats_queue, gcb_queue):
             customLogger.info("Received load data: " + str(data))
             data_sum, unit = data_service.parse_incoming_data(
                 str(data), "load")
-            # ASK this is the time from the gateway, not the sensor
             if data_sum > 1000:
                 # sound the alarm!
                 customLogger.info("Load of " + str(data_sum) + " kg is too high! Sounding the alarm!")

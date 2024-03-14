@@ -152,7 +152,7 @@ def start_rest_api(host, port):
             config = Config(CONF_PATH, errorLogger, customLogger)
             config.try_open()
             temp = jsonable_encoder(fluid_config.fuel_settings)
-            # Sets non-fluid part of fuel configuration ie. part that exists as part of
+            # Sets non-fluid part of fuel configuration i.e. part that exists as part of
             # configuration, but should not be set from outside (front app).
             temp[INTERVAL] = config.fuel_settings_interval
             config.fuel_settings = temp
