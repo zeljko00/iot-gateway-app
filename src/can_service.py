@@ -157,23 +157,23 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
                 config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
                 config.try_open()
                 stop_can(notifier, bus, temp_client, load_client, fuel_client)
-                
+
                 interface_value = config.can_interface
                 channel_value = config.can_channel
                 bitrate_value = config.can_bitrate
-            
+
                 is_can_temp = True if config.temp_mode == "CAN" else False
                 is_can_load = True if config.load_mode == "CAN" else False
                 is_can_fuel = True if config.fuel_mode == "CAN" else False
-                
+
                 if (is_can_temp is False) and (
                         is_can_load is False) and (is_can_fuel is False):
                     break
-                
+
                 bus = Bus(interface=interface_value,
                           channel=channel_value,
                           bitrate=bitrate_value)
-                
+
                 temp_client, load_client, fuel_client = init_mqtt_clients(
                     bus, is_can_temp, is_can_load, is_can_fuel, config, execution_flag)
                 notifier = can.Notifier(bus, [], timeout=period)
@@ -181,12 +181,12 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
                 notifier.add_listener(can_listener)
                 initial = False
                 config_flag.clear()
-        
+
             time.sleep(period)
     except Exception:
         errorLogger.error("CAN device not available.")
         customLogger.debug("CAN device not available.")
-    
+
     can_lock.acquire()
     init_flags.can_initiated = False
     can_lock.release()

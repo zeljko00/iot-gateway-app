@@ -19,23 +19,20 @@ Constants
 ---------
 DATA_PATTERN
     Request body data pattern.
-HTTP_NOT_FOUND
-    Http status code.
-HTTP_OK
-    Http status code.
-HTTP_NO_CONTENT
-    Http status code.
-qos
-    Quality of Service of MQTT broker
-temp_alarm_topic: str
-    MQTT alarm topic for temperature alarms
-load_alarm_topic: str
-    MQTT alarm topic for load alarms
-fuel_alarm_topic: str
-    MQTT alarm topic for fuel alarms
+
+QOS
+    Quality of Service of MQTT broker.
+TEMP_ALARM_TOPIC: str
+    MQTT alarm topic for temperature alarms.
+LOAD_ALARM_TOPIC: str
+    MQTT alarm topic for load alarms.
+FUEL_ALARM_TOPIC: str
+    MQTT alarm topic for fuel alarms.
+EMPTY_PAYLOAD: dict
+    Empty dictionary that is returned if there is some kind of error
+    in data processing.
 """
 import time
-import json
 import logging.config
 
 logging.config.fileConfig('logging.conf')
@@ -43,9 +40,6 @@ errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger('customConsoleLogger')
 
 DATA_PATTERN = "[ value={} , time={} , unit={} ]"
-HTTP_NOT_FOUND = 404
-HTTP_OK = 200
-HTTP_NO_CONTENT = 204
 
 QOS = 2
 TEMP_ALARM_TOPIC = "alarms/temperature"
@@ -53,6 +47,7 @@ LOAD_ALARM_TOPIC = "alarms/load"
 FUEL_ALARM_TOPIC = "alarms/fuel"
 
 EMPTY_PAYLOAD = {}
+
 
 def parse_incoming_data(data, data_type):
     """
@@ -90,7 +85,7 @@ def parse_incoming_data(data, data_type):
 
 def handle_temperature_data(data, time_format):
     """
-    Summarizes and sends collected temperature data.
+    Summarizes collected temperature data and forms payload.
 
     Triggered periodically.
 
@@ -98,20 +93,12 @@ def handle_temperature_data(data, time_format):
     ----------
     data: list
         Collected temperature data.
-    url: str
-        Cloud services' URL.
-    jwt: str
-        JSON wen auth token
-    username: str
-        Username of the IoT device
     time_format: str
         Cloud services' time format.
-    mqtt_client: paho.mqtt.client.Client
-        Gateway IoT broker client
 
     Returns
     -------
-    http status code
+    payload: dict
     """
     data_sum = 0.0
     unit = "Unknown"
@@ -127,7 +114,7 @@ def handle_temperature_data(data, time_format):
 
 def handle_load_data(data, time_format):
     """
-    Summarizes and sends collected load data.
+    Summarizes collected load data and forms payload.
 
     Triggered periodically  (variable interval).
 
@@ -135,19 +122,11 @@ def handle_load_data(data, time_format):
     ----------
     data: list
         Collected load data.
-    url: str
-        Cloud services' URL.
-    jwt: str
-        JSON wen auth token
-    username: str
-        Username of the IoT device
     time_format: str
         Cloud services' time format.
-    mqtt_client: paho.mqtt.client.Client
-        Gateway IoT broker client
     Returns
     -------
-    http status code
+    payload: dict
     """
     data_sum = 0.0
     unit = "Unknown"
@@ -163,7 +142,8 @@ def handle_load_data(data, time_format):
 
 def handle_fuel_data(data, limit, time_format, alarm_client):
     """
-    Sends filtered fuel data.
+
+    Summarizes collected fuel, forms payload and sends alarm.
 
     Triggered periodically.
 
@@ -173,18 +153,10 @@ def handle_fuel_data(data, limit, time_format, alarm_client):
      Collected load data.
     limit: double
      Critical fuel level.
-    url: str
-     Cloud services' URL.
-    jwt: str
-     JSON web auth token.
-    username: str
-    Username of the IoT device
     time_format: str
      Cloud services' time format.
     alarm_client: MQTTClient
      MQTT broker alarm client
-    mqtt_client: paho.mqtt.client.Client
-     MQTT client used to send data to gateway-cloud broker.
 
     Returns
     -------

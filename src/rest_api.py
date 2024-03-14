@@ -32,7 +32,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
-from config_util import Config, TEMP_SETTINGS, LOAD_SETTINGS, FUEL_SETTINGS, CONF_PATH
+from config_util import Config, TEMP_SETTINGS, LOAD_SETTINGS, FUEL_SETTINGS, CONF_PATH, INTERVAL
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -152,8 +152,10 @@ def start_rest_api(host, port):
             config = Config(CONF_PATH, errorLogger, customLogger)
             config.try_open()
             temp = jsonable_encoder(fluid_config.fuel_settings)
-            temp['interval'] = config.fuel_settings_interval;
-            config.fuel_settings = temp 
+            # Sets non-fluid part of fuel configuration ie. part that exists as part of
+            # configuration, but should not be set from outside (front app).
+            temp[INTERVAL] = config.fuel_settings_interval
+            config.fuel_settings = temp
             config.temp_settings = jsonable_encoder(fluid_config.temp_settings)
             config.load_settings = jsonable_encoder(fluid_config.load_settings)
             config.write()

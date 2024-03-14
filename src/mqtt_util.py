@@ -10,6 +10,8 @@ Classes
 
 MqttConf
     Wrapper for mqtt configuration that includes address, port, username and password.
+GcbService
+    Service that establishes a way to publish mqtt information in a centralized manner.
 
 Functions
 ---------
@@ -312,8 +314,39 @@ def gcb_disconnect(client):
     client.loop_stop()
     client.disconnect()
 
+
 class GcbService:
+    """Service that is used to publish mqtt information in a centralized manner.
+
+    Attributes
+    ----------
+    username: str
+       Identifier for the device that sends information (gateway in this context).
+    client_id: int
+       Identifier for client that is responsible for publishing information.
+    conf: MQTTConf
+       Configuration for mqtt broker that will be used by this service.
+    queue: queue.Queue
+       Holds mqtt messages. This queue is passed to any thread that wants
+       to publish mqtt message using this service.
+    stop_flag: threading.Event
+       Flag used internally as an indicator for stopping publishing thread.
+    client: paho.mqtt.client.Client
+       Mqtt client that is used for publishing.
+    """
+
     def __init__(self, username: str, client_id: str, conf: MQTTConf):
+        """Create gcb service for publishing mqtt messages in centralized manner.
+
+        Parameters
+        ----------
+        username: str
+           Identifier for the device that sends information (gateway in this context).
+        client_id: str
+           Identifier for client that is responsible for publishing information.
+        conf: MQTTConf
+           Configuration for mqtt broker that will be used by this service.
+        """
         self.username = username
         self.client_id = client_id
         self.conf = conf
@@ -328,21 +361,42 @@ class GcbService:
         self.client = gcb_init_publisher(client_id, conf.username, conf.password)
 
     def start(self):
+        """Start gcb service by connecting gcb client and starting publishing thread.
+
+        """
         gcb_connect(self.client, self.conf.address, self.conf.port)
         self.publishing_thread.start()
 
     def stop(self):
+        """Stop publishing thread by setting indicator flag, and disconnect mqtt client.
+
+        """
         self.stop_flag.set()
         gcb_disconnect(self.client)
 
     @staticmethod
     def push_message(queue: Queue, topic: str, data):
+        """Push payload to queue in order to send it to mqtt broker.
+
+        Parameters
+        ----------
+        queue: queue.Queue
+           Queue that belongs to instance of GcbService that we are using
+           to send information.
+        topic: str
+           Topic to which we are sending payload.
+        data:
+           Payload that we are sending.
+        """
         queue.put({
             "topic": topic,
             "data": data
         })
 
     def __publishing_procedure__(self):
+        """Take payload constantly from queue (if it is present) and send it to broker.
+
+        """
         while not self.stop_flag.is_set():
             # This blocks until there is a new message, so we don't have busy wait.
             item = self.queue.get()
@@ -357,4 +411,7 @@ class GcbService:
         self.stop_flag.clear()
 
     def __del__(self):
+        """Delete this instance of gcb service and stop the background thread.
+
+        """
         self.stop()

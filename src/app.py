@@ -81,11 +81,10 @@ import data_service
 import time
 import logging.config
 import paho.mqtt.client as mqtt
-from multiprocessing import Process
 from threading import Thread, Event
 from queue import Queue
-from mqtt_util import MQTTConf, GcbService, GCB_TEMP_TOPIC, GCB_LOAD_TOPIC, GCB_FUEL_TOPIC, \
-    gcb_init_publisher, gcb_connect, gcb_disconnect
+from mqtt_util import MQTTConf, GcbService, \
+    GCB_TEMP_TOPIC, GCB_LOAD_TOPIC, GCB_FUEL_TOPIC, GCB_STATS_TOPIC
 from config_util import ConfFlags, get_temp_interval, get_fuel_level_limit, \
     start_config_observer
 from mqtt_utils import MQTTClient
@@ -283,16 +282,15 @@ def collect_temperature_data(config, flag, conf_flag, stats_queue, gcb_queue):
     ----------
     config: Config
         Configuration object
-    url: str
-        Cloud services' URL.
-    jwt: str
-        JSON web auth token.
     flag: multithreading.Event
         Object used for stopping temperature sensor process.
     conf_flag: multithreading.Event
         Object used for signalling configuration changes
     stats_queue: multithreading.Queue
         Stats data wrapper.
+    gcb_queue: queue.Queue
+        Belongs to some GcbService instance and is used to queue payload that is to
+        be sent via mqtt.
     """
     new_data = []
     old_data = []
@@ -397,16 +395,15 @@ def collect_load_data(config, flag, conf_flag, stats_queue, gcb_queue):
     ----------
     config: Config
         Configuration object
-    url: str
-       Cloud services' URL.
-    jwt: str
-       JSON web auth token.
     flag: multithreading.Event
        Object used for stopping temperature sensor process.
     conf_flag: multithreading.Event
         Object used for signalling configuration changes
     stats_queue: multithreading.Queue
         Stats data wrapper.
+    gcb_queue: queue.Queue
+        Belongs to some GcbService instance and is used to queue payload that is to
+        be sent via mqtt.
     """
     new_data = []
     old_data = []
@@ -506,16 +503,15 @@ def collect_fuel_data(config, flag, conf_flag, stats_queue, gcb_queue):
     ----------
     config: Config
         Configuration object
-    url: str
-      Cloud services' URL.
-    jwt: str
-      JSON web auth token.
     flag: multithreading.Event
       Object used for stopping temperature sensor process.
     conf_flag: multithreading.Event
       Object used for signalling configuration changes
     stats_queue: multithreading.Queue
        Stats data wrapper.
+    gcb_queue: queue.Queue
+        Belongs to some GcbService instance and is used to queue payload that is to
+        be sent via mqtt.
     """
     # initializing stats object
 
@@ -559,13 +555,12 @@ def collect_fuel_data(config, flag, conf_flag, stats_queue, gcb_queue):
                 conf_flag.clear()
 
             customLogger.info("Received fuel data: " + str(message.payload.decode("utf-8")))
-            
             payload = data_service.handle_fuel_data(
                 str(message.payload.decode("utf-8")),
                 config.fuel_settings_level_limit,
                 config.time_format,
                 sensors_broker_client)
-            
+
             if payload != EMPTY_PAYLOAD:
                 GcbService.push_message(gcb_queue, GCB_FUEL_TOPIC, payload)
                 stats.update_data(4, 4, 1)
@@ -647,9 +642,9 @@ def main():
             load_handler_flag = Event()
             fuel_handler_flag = Event()
             # shutdown thread
-            shutdown_controller_worker = Thread(
-                target=shutdown_controller, args=(
-                    temp_handler_flag, load_handler_flag, fuel_handler_flag))
+            # shutdown_controller_worker = Thread(
+            #     target=shutdown_controller, args=(
+            #         temp_handler_flag, load_handler_flag, fuel_handler_flag))
 
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
@@ -688,7 +683,7 @@ def main():
             fuel_data_handler.start()
             time.sleep(1)
             # waiting fow workers to stop
-            #shutdown_controller_worker.start()
+            # shutdown_controller_worker.start()
             temperature_data_handler.join()
             load_data_handler.join()
             fuel_data_handler.join()
@@ -708,7 +703,7 @@ def main():
             )
 
             if stats_payload != EMPTY_PAYLOAD:
-                GcbService.push_message(gcb_service.queue, GCB_STATS_TOPIC, payload)
+                GcbService.push_message(gcb_service.queue, GCB_STATS_TOPIC, stats_payload)
 
             customLogger.debug("Sending device stats data!")
             # checking jwt, if jwt has expired  app will restart
