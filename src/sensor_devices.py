@@ -50,6 +50,7 @@ import time
 import random
 from pathlib import Path
 
+import signal
 import numpy
 import json
 import math
@@ -62,6 +63,7 @@ from can_service import read_can
 from config_util import ConfFlags, start_config_observer
 from mqtt_utils import MQTTClient
 from config_util import Config
+from signal_control import BetterSignalHandler
 
 # setting up loggers
 logging_path = Path(__file__).parent / 'logging.conf'
@@ -789,6 +791,12 @@ def main():
     can_flag = Event()
 
     main_execution_flag = Event()
+
+    BetterSignalHandler(signal.SIGTERM, [temp_simulation_flag,
+                                         load_simulation_flag,
+                                         fuel_simulation_flag,
+                                         can_flag,
+                                         main_execution_flag])
 
     temp_lock = threading.Lock()
     load_lock = threading.Lock()
