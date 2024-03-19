@@ -34,6 +34,7 @@ class BetterSignalHandler:
        Handler that is executed on received signal.
 
     """
+
     def __init__(self, sig, flags):
         """Create signal handler.
 
