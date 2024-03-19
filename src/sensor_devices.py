@@ -791,13 +791,15 @@ def main():
     can_flag = Event()
 
     main_execution_flag = Event()
-
-    BetterSignalHandler(signal.SIGTERM, [temp_simulation_flag,
-                                         load_simulation_flag,
-                                         fuel_simulation_flag,
-                                         can_flag,
-                                         main_execution_flag])
-
+    
+    BetterSignalHandler([signal.SIGINT,
+                         signal.SIGTERM],
+                        [temp_simulation_flag,
+                         load_simulation_flag,
+                         fuel_simulation_flag,
+                         can_flag,
+                         main_execution_flag])
+    
     temp_lock = threading.Lock()
     load_lock = threading.Lock()
     fuel_lock = threading.Lock()
@@ -806,6 +808,15 @@ def main():
     app_config_flags = ConfFlags()
     init_flags = InitFlags()
     app_config_observer = start_config_observer(app_config_flags)
+    # shutdown_thread = threading.Thread(target=shutdown_controller,
+    #                                    args=(
+    #                                        temp_simulation_flag,
+    #                                        load_simulation_flag,
+    #                                        fuel_simulation_flag,
+    #                                        can_flag,
+    #                                        main_execution_flag
+    #                                    ))
+    # shutdown_thread.start()
     initial = True
     sensors = []
 
@@ -837,11 +848,47 @@ def main():
         time.sleep(2)
     for sensor in sensors:
         sensor.join()
-
+    # shutdown_thread.join()
     app_config_observer.stop()
     app_config_observer.join()
     infoLogger.info("Sensor system shutdown!")
     customLogger.debug("Sensor system shutdown!")
+
+
+def shutdown_controller(
+        temp_handler_flag,
+        load_handler_flag,
+        fuel_handler_flag,
+        can_flag,
+        main_execution_flag):
+    """
+    Handles user request for sensor shutdown.
+
+    When user requests shutdown, sets sensor processes' stop tokens.
+
+    Parameters
+    ----------
+    temp_handler_flag: multiprocessing.Event
+        Token used for stopping temperature sensor process.
+    load_handler_flag: multiprocessing.Event
+        Token used for stopping load sensor process.
+    fuel_handler_flag: multiprocessing.Event
+        Token used for stopping fuel sensor process.
+
+    Returns
+    -------
+    None
+    """
+    # waiting for shutdown signal
+    input("")
+    infoLogger.info("Dispatcher app shutting down! Please wait")
+    customLogger.debug("Dispatcher app shutting down! Please wait")
+    # shutting down handler processes
+    temp_handler_flag.set()
+    load_handler_flag.set()
+    fuel_handler_flag.set()
+    can_flag.set()
+    main_execution_flag.set()
 
 
 if __name__ == '__main__':
