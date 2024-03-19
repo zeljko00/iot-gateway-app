@@ -8,7 +8,7 @@ Classes
 -------
 
 BetterSignalHandler
-    Class used to set given control flags when specific interrupt occurs.
+    Class used to set given control flags when specific signals are received.
 
 """
 import signal
@@ -21,12 +21,12 @@ class BetterSignalHandler:
 
     Attributes
     ----------
-    sig:
-       Signal that is monitored.
+    sigs:
+       Signals that is monitored.
     flags:
        Application control flags that will be set when signal is received.
-    original_handler:
-       Original handler for this signal so that it can be reassigned.
+    original_handlers:
+       Original handlers for all chosen signals.
 
     Methods
     -------
@@ -35,20 +35,22 @@ class BetterSignalHandler:
 
     """
 
-    def __init__(self, sig, flags):
+    def __init__(self, sigs, flags):
         """Create signal handler.
 
         Parameters
         ----------
-        sig:
-           Signal to be monitored.
+        sigs:
+           Signals to be monitored.
         flags:
            Control flags to be set on received signal.
         """
-        self.sig = sig
+        self.sigs = sigs
         self.flags = flags
-        self.original_handler = signal.getsignal(self.sig)
-        signal.signal(self.sig, self.handler)
+        self.original_handlers = []
+        for sig in self.sigs:
+            self.original_handlers.append(signal.getsignal(sig))
+            signal.signal(sig, self.handler)
 
     def handler(self, signum, frame):
         """Handle signal.
@@ -61,4 +63,5 @@ class BetterSignalHandler:
         """
         for flag in self.flags:
             flag.set()
-        signal.signal(self.sig, self.original_handler)
+        for sig, original_handler in zip(self.sigs, self.original_handlers):
+            signal.signal(sig, original_handler)
