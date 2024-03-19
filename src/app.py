@@ -8,8 +8,6 @@ Functions
 ---------
 signup_periodically(key, username, password, time_pattern, url, interval)
     Periodically initiates device signup on cloud services.
-shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
-    Shuts down all sensors.
 on_connect_temp_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting temperature sensor to MQTT broker.
 on_connect_load_handler(client, userdata, flags, rc,props)
@@ -167,33 +165,6 @@ def signup_periodically(key, username, password, time_pattern, url, interval):
         time.sleep(interval)
     customLogger.debug("Successful sign up!")
     return jwt
-
-
-def shutdown_controller(
-        temp_handler_flag,
-        load_handler_flag,
-        fuel_handler_flag):
-    """Handle user request for sensor shutdown.
-
-    When user requests shutdown, sets sensor processes' stop tokens.
-
-    Parameters
-    ----------
-    temp_handler_flag: multiprocessing.Event
-        Token used for stopping temperature sensor process.
-    load_handler_flag: multiprocessing.Event
-        Token used for stopping load sensor process.
-    fuel_handler_flag: multiprocessing.Event
-        Token used for stopping fuel sensor process.
-    """
-    # waiting for shutdown signal
-    input("")
-    infoLogger.info("IoT Gateway app shutting down! Please wait")
-    customLogger.debug("IoT Gateway app shutting down! Please wait")
-    # shutting down handler processes
-    temp_handler_flag.set()
-    load_handler_flag.set()
-    fuel_handler_flag.set()
 
 
 def on_connect_temp_handler(client, userdata, flags, rc, props):
