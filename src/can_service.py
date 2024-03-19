@@ -149,38 +149,44 @@ def read_can(execution_flag, config_flag, init_flags, can_lock):
     fuel_client = None
 
     bus = None
-    while not execution_flag.is_set():
-        if config_flag.is_set() or initial:
 
-            config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
-            config.try_open()
-            stop_can(notifier, bus, temp_client, load_client, fuel_client)
+    try:
+        while not execution_flag.is_set():
+            if config_flag.is_set() or initial:
 
-            interface_value = config.can_interface
-            channel_value = config.can_channel
-            bitrate_value = config.can_bitrate
+                config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
+                config.try_open()
+                stop_can(notifier, bus, temp_client, load_client, fuel_client)
 
-            is_can_temp = True if config.temp_mode == "CAN" else False
-            is_can_load = True if config.load_mode == "CAN" else False
-            is_can_fuel = True if config.fuel_mode == "CAN" else False
+                interface_value = config.can_interface
+                channel_value = config.can_channel
+                bitrate_value = config.can_bitrate
 
-            if (is_can_temp is False) and (
-                    is_can_load is False) and (is_can_fuel is False):
-                break
+                is_can_temp = True if config.temp_mode == "CAN" else False
+                is_can_load = True if config.load_mode == "CAN" else False
+                is_can_fuel = True if config.fuel_mode == "CAN" else False
 
-            bus = Bus(interface=interface_value,
-                      channel=channel_value,
-                      bitrate=bitrate_value)
+                if (is_can_temp is False) and (
+                        is_can_load is False) and (is_can_fuel is False):
+                    break
 
-            temp_client, load_client, fuel_client = init_mqtt_clients(
-                bus, is_can_temp, is_can_load, is_can_fuel, config, execution_flag)
-            notifier = can.Notifier(bus, [], timeout=period)
-            can_listener = CANListener(temp_client, load_client, fuel_client)
-            notifier.add_listener(can_listener)
-            initial = False
-            config_flag.clear()
+                bus = Bus(interface=interface_value,
+                          channel=channel_value,
+                          bitrate=bitrate_value)
 
-        time.sleep(period)
+                temp_client, load_client, fuel_client = init_mqtt_clients(
+                    bus, is_can_temp, is_can_load, is_can_fuel, config, execution_flag)
+                notifier = can.Notifier(bus, [], timeout=period)
+                can_listener = CANListener(temp_client, load_client, fuel_client)
+                notifier.add_listener(can_listener)
+                initial = False
+                config_flag.clear()
+
+            time.sleep(period)
+    except Exception:
+        errorLogger.error("CAN device not available.")
+        customLogger.debug("CAN device not available.")
+
     can_lock.acquire()
     init_flags.can_initiated = False
     can_lock.release()

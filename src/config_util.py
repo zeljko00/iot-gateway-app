@@ -263,7 +263,7 @@ def get_temp_interval(config):
 
     Parameters
     ----------
-    config: dict
+    config: Config
        Configuration dictionary from which to extract temperature interval.
 
     Returns
@@ -282,7 +282,7 @@ def get_load_interval(config):
 
     Parameters
     ----------
-    config: dict
+    config: Config
        Configuration dictionary from which to extract load interval.
 
     Returns
@@ -301,7 +301,7 @@ def get_fuel_level_limit(config):
 
     Parameters
     ----------
-    config: dict
+    config: Config
        Configuration dictionary from which to extract fuel level limit.
 
     Returns

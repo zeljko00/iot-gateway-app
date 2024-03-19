@@ -71,53 +71,53 @@ errorLogger = logging.getLogger('customErrorLogger')
 customLogger = logging.getLogger("customConsoleLogger")
 
 # keywords used in sensors' config file
-mode = "mode"
-temp_settings = "temp_settings"
-load_settings = "load_settings"
-fuel_settings = "fuel_settings"
-can_general_settings = "can_general_settings"
-channel = "channel"
-interface = "interface"
-bitrate = "bitrate"
+MODE = "mode"
+TEMP_SETTINGS = "temp_settings"
+LOAD_SETTINGS = "load_settings"
+FUEL_SETTINGS = "fuel_settings"
+CAN_GENERAL_SETTINGS = "can_general_settings"
+CHANNEL = "channel"
+INTERFACE = "interface"
+BITRATE = "bitrate"
 
-temp_sensor = "temp_sensor"
-arm_sensor = "arm_sensor"
-arm_min_t = "min_t"
-arm_max_t = "max_t"
-fuel_sensor = "fuel_sensor"
-fuel_consumption = "consumption"
-fuel_capacity = "capacity"
-fuel_efficiency = "efficiency"
-fuel_refill = "refill"
-interval = "period"
-mqtt_user = "username"
-mqtt_password = "password"
-max = "max_val"
-min = "min_val"
-avg = "avg_val"
-mqtt_broker = "mqtt_broker"
-address = "address"
-port = "port"
+TEMP_SENSOR = "temp_sensor"
+ARM_SENSOR = "arm_sensor"
+ARM_MIN_T = "min_t"
+ARM_MAX_T = "max_t"
+FUEL_SENSOR = "fuel_sensor"
+FUEL_CONSUMPTION = "consumption"
+FUEL_CAPACITY = "capacity"
+FUEL_EFFICIENCY = "efficiency"
+FUEL_REFILL = "refill"
+INTERVAL = "period"
+MQTT_USER = "username"
+MQTT_PASSWORD = "password"
+MAX = "max_val"
+MIN = "min_val"
+AVG = "avg_val"
+MQTT_BROKER = "mqtt_broker"
+ADDRESS = "address"
+PORT = "port"
 
 # sensors config file
-conf_file_path = "configuration/sensor_conf.json"
-app_conf_file_path = "configuration/app_conf.json"
+CONF_FILE_PATH = "configuration/sensor_conf.json"
+APP_CONF_FILE_PATH = "configuration/app_conf.json"
 
 # mqtt config data
-transport_protocol = "tcp"
-qos = 2
+TRANSPORT_PROTOCOL = "tcp"
+QOS = 2
 
 # REST APIs
-temp_topic = "sensors/temperature"
-load_topic = "sensors/arm-load"
-fuel_topic = "sensors/fuel-level"
+TEMP_TOPIC = "sensors/temperature"
+LOAD_TOPIC = "sensors/arm-load"
+FUEL_TOPIC = "sensors/fuel-level"
 
-data_pattern = "[ value={} , time={} , unit={} ]"
-time_format = "%d.%m.%Y %H:%M:%S"
+DATA_PATTERN = "[ value={} , time={} , unit={} ]"
+TIME_FORMAT = "%d.%m.%Y %H:%M:%S"
 
-celzius = "C"
-kg = "kg"
-liter = "l"
+CELZIUS = "C"
+KG = "kg"
+LITER = "l"
 
 
 def on_publish(client, userdata, result):
@@ -278,7 +278,7 @@ def measure_temperature_periodically(
     # establishing connection with MQTT broker
     temp_client = MQTTClient(
         "temp-sensor-mqtt-client",
-        transport_protocol=transport_protocol,
+        transport_protocol=TRANSPORT_PROTOCOL,
         protocol_version=mqtt.MQTTv5,
         mqtt_username=mqtt_username,
         mqtt_pass=mqtt_pass,
@@ -304,7 +304,7 @@ def measure_temperature_periodically(
     while not flag.is_set():
 
         if config_flag.is_set():
-            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
             config.try_open()
             if config.temp_mode == "CAN":
                 temp_lock.acquire()
@@ -326,19 +326,19 @@ def measure_temperature_periodically(
                 value = avg_val + data[counter % values_count]
                 counter += 1
             customLogger.error(
-                "Temperature: " + data_pattern.format(
+                "Temperature: " + DATA_PATTERN.format(
                     "{:.2f}".format(value),
                     str(
                         time.strftime(
-                            time_format,
+                            TIME_FORMAT,
                             time.localtime())),
-                    celzius))
+                    CELZIUS))
             # send data to MQTT broker
             temp_client.publish(
-                temp_topic, data_pattern.format(
+                TEMP_TOPIC, DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), celzius), qos=qos)
+                            TIME_FORMAT, time.localtime())), CELZIUS), qos=QOS)
         except BaseException:
             errorLogger.error(
                 "Connection between temperature sensor and MQTT broker is broken!")
@@ -407,7 +407,7 @@ def measure_load_randomly(
     # establishing connection with MQTT broker
     load_client = MQTTClient(
         "arm-load-sensor-mqtt-client",
-        transport_protocol=transport_protocol,
+        transport_protocol=TRANSPORT_PROTOCOL,
         protocol_version=mqtt.MQTTv5,
         mqtt_username=mqtt_username,
         mqtt_pass=mqtt_pass,
@@ -433,7 +433,7 @@ def measure_load_randomly(
     while not flag.is_set():
 
         if config_flag.is_set():
-            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
             config.try_open()
             if config.load_mode == "CAN":
                 load_lock.acquire()
@@ -446,12 +446,12 @@ def measure_load_randomly(
         # check connection to mqtt broker
         load_client.try_reconnect()
         try:
-            customLogger.info("Load: " + data_pattern.format("{:.2f}".format(data[counter % values_count]),
-                                                             str(time.strftime(time_format, time.localtime())),
-                                                             kg))
+            customLogger.info("Load: " + DATA_PATTERN.format("{:.2f}".format(data[counter % values_count]),
+                                                             str(time.strftime(TIME_FORMAT, time.localtime())),
+                                                             KG))
             # send data to MQTT broker
-            load_client.publish(load_topic, data_pattern.format("{:.2f}".format(data[counter % values_count]), str(
-                time.strftime(time_format, time.localtime())), kg), qos=qos)
+            load_client.publish(LOAD_TOPIC, DATA_PATTERN.format("{:.2f}".format(data[counter % values_count]), str(
+                time.strftime(TIME_FORMAT, time.localtime())), KG), qos=QOS)
         except BaseException:
             errorLogger.error(
                 "Connection between arm load sensor and MQTT broker is broken!")
@@ -525,7 +525,7 @@ def measure_fuel_periodically(
     # establishing connection with MQTT broker
     fuel_client = MQTTClient(
         "fuel-sensor-mqtt-client",
-        transport_protocol=transport_protocol,
+        transport_protocol=TRANSPORT_PROTOCOL,
         protocol_version=mqtt.MQTTv5,
         mqtt_username=mqtt_username,
         mqtt_pass=mqtt_pass,
@@ -548,7 +548,7 @@ def measure_fuel_periodically(
     while not flag.is_set():
 
         if config_flag.is_set():
-            config = Config(app_conf_file_path, errorLogger, customLogger)
+            config = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
             config.try_open()
             if config.fuel_mode == "CAN":
                 fuel_lock.acquire()
@@ -578,19 +578,19 @@ def measure_fuel_periodically(
         fuel_client.try_reconnect()
         try:
             customLogger.warning(
-                "Fuel: " + data_pattern.format(
+                "Fuel: " + DATA_PATTERN.format(
                     "{:.2f}".format(value),
                     str(
                         time.strftime(
-                            time_format,
+                            TIME_FORMAT,
                             time.localtime())),
-                    liter))
+                    LITER))
             # send data to MQTT broker
             fuel_client.publish(
-                fuel_topic, data_pattern.format(
+                FUEL_TOPIC, DATA_PATTERN.format(
                     "{:.2f}".format(value), str(
                         time.strftime(
-                            time_format, time.localtime())), liter), qos=qos)
+                            TIME_FORMAT, time.localtime())), LITER), qos=QOS)
         except BaseException:
             errorLogger.error(
                 "Connection between fuel level sensor and MQTT broker is broken!")
@@ -611,39 +611,39 @@ def read_conf():
     """
     data = None
     try:
-        conf_file = open(conf_file_path)
+        conf_file = open(CONF_FILE_PATH)
         data = json.load(conf_file)
     except BaseException:
         errorLogger.critical(
             "Using default config! Can't read sensor config file - ",
-            conf_file_path,
+            CONF_FILE_PATH,
             " !")
         customLogger.critical(
             "Using default config! Can't read sensor config file - ",
-            conf_file_path,
+            CONF_FILE_PATH,
             " !")
 
         data = {
-            temp_sensor: {
-                interval: 5,
-                min: -10,
-                avg: 100},
-            arm_sensor: {
-                arm_min_t: 10,
-                arm_max_t: 100,
-                min: 0,
-                max: 800},
-            fuel_sensor: {
-                interval: 5,
-                fuel_capacity: 300,
-                fuel_consumption: 3000,
-                fuel_efficiency: 0.6,
-                fuel_refill: 0.02},
-            mqtt_broker: {
-                address: "localhost",
-                port: 1883,
-                mqtt_user: "iot-device",
-                mqtt_password: "password"}}
+            TEMP_SENSOR: {
+                INTERVAL: 5,
+                MIN: -10,
+                AVG: 100},
+            ARM_SENSOR: {
+                ARM_MIN_T: 10,
+                ARM_MAX_T: 100,
+                MIN: 0,
+                MAX: 800},
+            FUEL_SENSOR: {
+                INTERVAL: 5,
+                FUEL_CAPACITY: 300,
+                FUEL_CONSUMPTION: 3000,
+                FUEL_EFFICIENCY: 0.6,
+                FUEL_REFILL: 0.02},
+            MQTT_BROKER: {
+                ADDRESS: "localhost",
+                PORT: 1883,
+                MQTT_USER: "iot-device",
+                MQTT_PASSWORD: "password"}}
     return data
 
 
@@ -666,7 +666,7 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
     """
     conf_data = read_conf()
     # app_conf_data = read_app_conf()
-    app_conf = Config(app_conf_file_path, errorLogger, customLogger)
+    app_conf = Config(APP_CONF_FILE_PATH, errorLogger, customLogger)
     app_conf.try_open()
 
     sensors = []
@@ -701,13 +701,13 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             simulation_temperature_sensor = threading.Thread(
                 target=measure_temperature_periodically,
                 args=(
-                    conf_data[temp_sensor][interval],
-                    conf_data[temp_sensor][min],
-                    conf_data[temp_sensor][avg],
-                    conf_data[mqtt_broker][address],
-                    conf_data[mqtt_broker][port],
-                    conf_data[mqtt_broker][mqtt_user],
-                    conf_data[mqtt_broker][mqtt_password],
+                    conf_data[TEMP_SENSOR][INTERVAL],
+                    conf_data[TEMP_SENSOR][MIN],
+                    conf_data[TEMP_SENSOR][AVG],
+                    conf_data[MQTT_BROKER][ADDRESS],
+                    conf_data[MQTT_BROKER][PORT],
+                    conf_data[MQTT_BROKER][MQTT_USER],
+                    conf_data[MQTT_BROKER][MQTT_PASSWORD],
                     temp_flag,
                     config_flags.temp_flag,
                     init_flags,
@@ -721,14 +721,14 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             simulation_load_sensor = threading.Thread(
                 target=measure_load_randomly,
                 args=(
-                    conf_data[arm_sensor][arm_min_t],
-                    conf_data[arm_sensor][arm_max_t],
-                    conf_data[arm_sensor][min],
-                    conf_data[arm_sensor][max],
-                    conf_data[mqtt_broker][address],
-                    conf_data[mqtt_broker][port],
-                    conf_data[mqtt_broker][mqtt_user],
-                    conf_data[mqtt_broker][mqtt_password],
+                    conf_data[ARM_SENSOR][ARM_MIN_T],
+                    conf_data[ARM_SENSOR][ARM_MAX_T],
+                    conf_data[ARM_SENSOR][MIN],
+                    conf_data[ARM_SENSOR][MAX],
+                    conf_data[MQTT_BROKER][ADDRESS],
+                    conf_data[MQTT_BROKER][PORT],
+                    conf_data[MQTT_BROKER][MQTT_USER],
+                    conf_data[MQTT_BROKER][MQTT_PASSWORD],
                     load_flag,
                     config_flags.load_flag,
                     init_flags,
@@ -743,15 +743,15 @@ def sensors_devices(temp_flag, load_flag, fuel_flag, can_flag, config_flags,
             simulation_fuel_sensor = threading.Thread(
                 target=measure_fuel_periodically,
                 args=(
-                    conf_data[fuel_sensor][interval],
-                    conf_data[fuel_sensor][fuel_capacity],
-                    conf_data[fuel_sensor][fuel_consumption],
-                    conf_data[fuel_sensor][fuel_efficiency],
-                    conf_data[fuel_sensor][fuel_refill],
-                    conf_data[mqtt_broker][address],
-                    conf_data[mqtt_broker][port],
-                    conf_data[mqtt_broker][mqtt_user],
-                    conf_data[mqtt_broker][mqtt_password],
+                    conf_data[FUEL_SENSOR][INTERVAL],
+                    conf_data[FUEL_SENSOR][FUEL_CAPACITY],
+                    conf_data[FUEL_SENSOR][FUEL_CONSUMPTION],
+                    conf_data[FUEL_SENSOR][FUEL_EFFICIENCY],
+                    conf_data[FUEL_SENSOR][FUEL_REFILL],
+                    conf_data[MQTT_BROKER][ADDRESS],
+                    conf_data[MQTT_BROKER][PORT],
+                    conf_data[MQTT_BROKER][MQTT_USER],
+                    conf_data[MQTT_BROKER][MQTT_PASSWORD],
                     fuel_flag,
                     config_flags.fuel_flag,
                     init_flags,
@@ -798,15 +798,15 @@ def main():
     app_config_flags = ConfFlags()
     init_flags = InitFlags()
     app_config_observer = start_config_observer(app_config_flags)
-    shutdown_thread = threading.Thread(target=shutdown_controller,
-                                       args=(
-                                           temp_simulation_flag,
-                                           load_simulation_flag,
-                                           fuel_simulation_flag,
-                                           can_flag,
-                                           main_execution_flag
-                                       ))
-    shutdown_thread.start()
+    # shutdown_thread = threading.Thread(target=shutdown_controller,
+    #                                    args=(
+    #                                        temp_simulation_flag,
+    #                                        load_simulation_flag,
+    #                                        fuel_simulation_flag,
+    #                                        can_flag,
+    #                                        main_execution_flag
+    #                                    ))
+    # shutdown_thread.start()
     initial = True
     sensors = []
 
@@ -838,7 +838,7 @@ def main():
         time.sleep(2)
     for sensor in sensors:
         sensor.join()
-    shutdown_thread.join()
+    # shutdown_thread.join()
     app_config_observer.stop()
     app_config_observer.join()
     infoLogger.info("Sensor system shutdown!")
