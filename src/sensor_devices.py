@@ -791,7 +791,7 @@ def main():
     can_flag = Event()
 
     main_execution_flag = Event()
-    
+
     BetterSignalHandler([signal.SIGINT,
                          signal.SIGTERM],
                         [temp_simulation_flag,
@@ -799,7 +799,7 @@ def main():
                          fuel_simulation_flag,
                          can_flag,
                          main_execution_flag])
-    
+
     temp_lock = threading.Lock()
     load_lock = threading.Lock()
     fuel_lock = threading.Lock()

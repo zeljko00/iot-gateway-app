@@ -76,7 +76,6 @@ mqtt_broker_local: str
     Reference of local mqtt broker
 """
 import signal
-import sys
 import auth
 import stats_service
 import data_service
@@ -588,14 +587,14 @@ def collect_fuel_data(config, flag, conf_flag, stats_queue, gcb_queue):
 
     customLogger.debug("Fuel level data handler shutdown!")
 
-    
+
 def main():
     """Start IoT gateway app entrypoint."""
     # used for restarting device due to jwt expiration
 
     # used as an indicator for termination request for main loop
     main_execution_flag = Event()
-    
+
     while not main_execution_flag.is_set():
         config = Config(CONF_PATH, errorLogger, customLogger)
         config.try_open()
@@ -653,7 +652,7 @@ def main():
                                  load_handler_flag,
                                  fuel_handler_flag,
                                  main_execution_flag])
-            
+
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
 
@@ -708,9 +707,9 @@ def main():
                 load_stats_queue.get(),
                 fuel_stats_queue.get()
             )
-            
+
             customLogger.debug("Sending device stats data!")
-            
+
             if stats_payload != EMPTY_PAYLOAD:
                 GcbService.push_message(gcb_service.queue, GCB_STATS_TOPIC, stats_payload)
                 print("STATS PUBLISHED: " + str(stats_payload))
