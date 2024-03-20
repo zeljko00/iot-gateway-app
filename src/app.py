@@ -8,8 +8,6 @@ Functions
 ---------
 signup_periodically(key, username, password, time_pattern, url, interval)
     Periodically initiates device signup on cloud services.
-shutdown_controller(temp_handler_flag,load_handler_flag, fuel_handler_flag):
-    Shuts down all sensors.
 on_connect_temp_handler(client, userdata, flags, rc,props)
     Logic executed after successfully connecting temperature sensor to MQTT broker.
 on_connect_load_handler(client, userdata, flags, rc,props)
@@ -75,6 +73,7 @@ QOS: int
 mqtt_broker_local: str
     Reference of local mqtt broker
 """
+import signal
 import auth
 import stats_service
 import data_service
@@ -90,6 +89,7 @@ from config_util import ConfFlags, get_temp_interval, get_fuel_level_limit, \
 from mqtt_utils import MQTTClient
 from config_util import Config
 from data_service import EMPTY_PAYLOAD
+from signal_control import BetterSignalHandler
 
 logging.config.fileConfig('logging.conf')
 infoLogger = logging.getLogger('customInfoLogger')
@@ -165,33 +165,6 @@ def signup_periodically(key, username, password, time_pattern, url, interval):
         time.sleep(interval)
     customLogger.debug("Successful sign up!")
     return jwt
-
-
-def shutdown_controller(
-        temp_handler_flag,
-        load_handler_flag,
-        fuel_handler_flag):
-    """Handle user request for sensor shutdown.
-
-    When user requests shutdown, sets sensor processes' stop tokens.
-
-    Parameters
-    ----------
-    temp_handler_flag: multiprocessing.Event
-        Token used for stopping temperature sensor process.
-    load_handler_flag: multiprocessing.Event
-        Token used for stopping load sensor process.
-    fuel_handler_flag: multiprocessing.Event
-        Token used for stopping fuel sensor process.
-    """
-    # waiting for shutdown signal
-    input("")
-    infoLogger.info("IoT Gateway app shutting down! Please wait")
-    customLogger.debug("IoT Gateway app shutting down! Please wait")
-    # shutting down handler processes
-    temp_handler_flag.set()
-    load_handler_flag.set()
-    fuel_handler_flag.set()
 
 
 def on_connect_temp_handler(client, userdata, flags, rc, props):
@@ -589,8 +562,11 @@ def collect_fuel_data(config, flag, conf_flag, stats_queue, gcb_queue):
 def main():
     """Start IoT gateway app entrypoint."""
     # used for restarting device due to jwt expiration
-    reset = True
-    while reset:
+
+    # used as an indicator for termination request for main loop
+    main_execution_flag = Event()
+
+    while not main_execution_flag.is_set():
         config = Config(CONF_PATH, errorLogger, customLogger)
         config.try_open()
         # if config is read successfully, start app logic
@@ -640,10 +616,13 @@ def main():
             temp_handler_flag = Event()
             load_handler_flag = Event()
             fuel_handler_flag = Event()
-            # shutdown thread
-            # shutdown_controller_worker = Thread(
-            #     target=shutdown_controller, args=(
-            #         temp_handler_flag, load_handler_flag, fuel_handler_flag))
+
+            BetterSignalHandler([signal.SIGINT,
+                                 signal.SIGTERM],
+                                [temp_handler_flag,
+                                 load_handler_flag,
+                                 fuel_handler_flag,
+                                 main_execution_flag])
 
             customLogger.debug("Starting workers!")
             # creates and starts data handling workers
@@ -682,7 +661,6 @@ def main():
             fuel_data_handler.start()
             time.sleep(1)
             # waiting fow workers to stop
-            # shutdown_controller_worker.start()
             temperature_data_handler.join()
             load_data_handler.join()
             fuel_data_handler.join()
@@ -701,21 +679,12 @@ def main():
                 fuel_stats_queue.get()
             )
 
+            customLogger.debug("Sending device stats data!")
+
             if stats_payload != EMPTY_PAYLOAD:
                 GcbService.push_message(gcb_service.queue, GCB_STATS_TOPIC, stats_payload)
+                print("STATS PUBLISHED: " + str(stats_payload))
 
-            customLogger.debug("Sending device stats data!")
-            # checking jwt, if jwt has expired  app will restart
-            jwt_code = auth.check_jwt(
-                jwt, config.server_url + "/auth/jwt-check")
-            if jwt_code == HTTP_OK:
-                reset = False
-                infoLogger.info("IoT Gateway app shutdown!")
-                customLogger.debug("IoT Gateway app shutdown!")
-            else:
-                reset = True
-                infoLogger.info("IoT Gateway app restart!")
-                customLogger.debug("IoT Gateway app restart!")
         else:
             customLogger.critical("Cant read config file! Aborting...")
 
