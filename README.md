@@ -24,3 +24,13 @@
  
 ## Developer Documentation
     docs/output/index.html
+
+## Testing
+Only once:
+```commandline
+   pip install pytest
+   ```
+Every time, from root folder:
+```commandline
+    pytest
+```
