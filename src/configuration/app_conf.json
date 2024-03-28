@@ -1,0 +1,43 @@
+{
+ "username":"iotdevice1",
+ "password":"28061914",
+ "fuel_settings": {
+  "level_limit": 20,
+  "interval": 20,
+  "mode": "CAN"
+ },
+ "temp_settings": {
+  "interval": 20,
+  "mode": "CAN"
+ },
+ "load_settings": {
+ "interval": 20,
+  "mode": "CAN"
+},
+ "can_general_settings": {
+  "interface": "pcan",
+  "bitrate": 500000,
+  "channel": "PCAN_USBBUS1"
+ },
+ "server_url":"http://localhost:8080/iot-cloud-platform",
+ "auth_interval": 5,
+ "server_time_format": "dd.MM.yyyy HH:mm:ss",
+ "time_format":"%d.%m.%Y %H:%M:%S",
+ "api_key": "bazinga00",
+ "mqtt_broker": {
+  "address": "localhost",
+  "port": 1883,
+  "username": "iot-device",
+  "password": "10060509"
+ },
+ "gateway_cloud_broker": {
+  "address": "localhost",
+  "port": 1884,
+  "username": "iot-device",
+  "password": "10060509"
+ },
+ "rest_api": {
+  "host": "localhost",
+  "port": 9876
+ }
+}

@@ -1,6 +1,7 @@
-'''
-sensor_devices
-============
+"""Stats service utilities.
+
+stats_service
+=============
 Module that contains logic used for collecting stats about savings in sensor data sent over the internet.
 
 Classes
@@ -17,47 +18,44 @@ Functions
 Constants
 ---------
 
-'''
+"""
 import time
-import requests
 import logging.config
 
 # setting up loggers
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger('customConsoleLogger')
+customLogger = logging.getLogger('customConsoleLogger')
+
 
 class Stats:
-    '''
+    """
     Represents single sensor stats regarding data collected and transmitted over network.
 
     Attributes
-    ---------
+    ----------
     dataBytes: int
         Amount of collected sensor data in bytes.
     dataBytesForwarded: int
         Amount of sensor data sent to cloud services in bytes.
     dataRequests: int
         Number of requests to cloud services.
+
     Methods
-    ---------
+    -------
     update_data(self, bytes, forwarded, requests)
         Updating stats data.
-    '''
-    def __init__(self):
-        '''
-        Initializes Stats object.
+    """
 
-        Parameters
-        ----------
-        '''
+    def __init__(self):
+        """Initialize Stats object."""
         self.dataBytes = 0
         self.dataBytesForwarded = 0
         self.dataRequests = 0
 
     def update_data(self, bytes, forwarded, requests):
-        '''
-        Updates current stats  with new collected sensor data.
+        """
+        Update current stats  with new collected sensor data.
 
         Parameters
         ----------
@@ -69,24 +67,22 @@ class Stats:
             Number of made cloud service requests.
 
         Returns
-        ----------
-        '''
+        -------
+        None
+        """
         self.dataBytes += bytes
         self.dataBytesForwarded += forwarded
         self.dataRequests += requests
 
 
 class OverallStats:
-    '''
+    """
     Represents overall IoT gateway stats regarding data collected and transmitted over network.
 
     Attributes
-    ---------
+    ----------
     time_pattern: str
         Server date-time format.
-    url: str
-        Stats cloud service URL.
-    jwt: str
     startTime: str
         Start of collecting stats.
     endTime: str
@@ -111,19 +107,21 @@ class OverallStats:
         Number of requests to fuel stats service.
 
     Methods
-    ---------
+    -------
     combine_stats(self, temp_stats, load_stats, fuel_stats)
         Combines stats from different sensors into overall stats.
     send_stats(self):
         Sends collected stats dato to stats cloud service.
-    '''
-    def __init__(self, url, jwt, time_pattern):
-        '''
-        Initializes OverallStats object.
-        '''
+    """
+
+    def __init__(self, time_pattern):
+        """Init OverallStats object.
+
+        Parameters
+        ----------
+        time_pattern
+        """
         self.time_pattern = time_pattern
-        self.url = url
-        self.jwt = jwt
         self.startTime = time.strftime(self.time_pattern, time.localtime())
         self.endTime = ""
         self.tempDataBytes = 0
@@ -137,11 +135,12 @@ class OverallStats:
         self.fuelDataRequests = 0
 
     def combine_stats(self, temp_stats, load_stats, fuel_stats):
-        '''
-        Combining stats from different sensors into overall stats.
+        """
+        Combine stats from different sensors into overall stats and return
+        it as payload.
 
         Parameters
-        ---------
+        ----------
         temp_stats: Stats
             Temperature stats data.
         load_stats: Stats
@@ -150,8 +149,10 @@ class OverallStats:
             Fuel stats data.
 
         Returns
-        ---------
-        '''
+        -------
+        payload: dict
+            Payload that represents combined stats data.
+        """
         self.tempDataBytes = temp_stats.dataBytes
         self.tempDataBytesForwarded = temp_stats.dataBytesForwarded
         self.tempDataRequests = temp_stats.dataRequests
@@ -162,19 +163,10 @@ class OverallStats:
         self.fuelDataBytesForwarded = fuel_stats.dataBytesForwarded
         self.fuelDataRequests = fuel_stats.dataRequests
 
-    def send_stats(self):
-        '''
-        Sending collected stats to cloud stats service.
-
-        Parameters
-        ---------
-
-        Returns
-        ---------
-        '''
-        # recording end stats time
         self.endTime = time.strftime(self.time_pattern, time.localtime())
-        payload = {"startTime": self.startTime, "endTime": self.endTime, "tempDataBytes": self.tempDataBytes,
+        payload = {"startTime": self.startTime,
+                   "endTime": self.endTime,
+                   "tempDataBytes": self.tempDataBytes,
                    "tempDataBytesForwarded": self.tempDataBytesForwarded,
                    "tempDataRequests": self.tempDataRequests,
                    "loadDataBytes": self.loadDataBytes,
@@ -183,17 +175,4 @@ class OverallStats:
                    "fuelDataBytes": self.fuelDataBytes,
                    "fuelDataBytesForwarded": self.fuelDataBytesForwarded,
                    "fuelDataRequests": self.fuelDataRequests}
-
-        # trying to send stats data 5 times
-        for i in range(0, 5):
-            try:
-                post_req = requests.post(self.url, json=payload, headers={"Authorization": "Bearer " + self.jwt})
-                if post_req.status_code == 200:
-                    break
-                else:
-                    errorLogger.error("problem with Stats Cloud service!")
-                    customLogger.critical("Stats service unavailable!")
-            except:
-                errorLogger.error("Stats Cloud service unavailable!")
-                customLogger.critical("Stats service unavailable!")
-
+        return payload

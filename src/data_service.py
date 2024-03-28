@@ -1,4 +1,5 @@
-'''
+"""Data service utilities.
+
 data_services
 ============
 Module containing logic for sending collected and processed data to cloud services.
@@ -11,82 +12,108 @@ handle_load_data(data, url, jwt, time_format)
     Summarizing load temperature data and forwarding result to cloud service.
 handle_fuel_data(data, limit, url, jwt, time_format)
     Filtering collected temperature data and forwarding result to cloud service.
+parse_incoming_data(data, type)
+    Parsing all types of data that come from sources
 
 Constants
 ---------
-data_pattern
+DATA_PATTERN
     Request body data pattern.
-http_not_found
-    Http status code.
-http_ok
-    Http status code.
-http_no_content
-    Http status code.
 
-'''
+QOS
+    Quality of Service of MQTT broker.
+TEMP_ALARM_TOPIC: str
+    MQTT alarm topic for temperature alarms.
+LOAD_ALARM_TOPIC: str
+    MQTT alarm topic for load alarms.
+FUEL_ALARM_TOPIC: str
+    MQTT alarm topic for fuel alarms.
+EMPTY_PAYLOAD: dict
+    Empty dictionary that is returned if there is some kind of error
+    in data processing.
+"""
 import time
-import requests
 import logging.config
 
 logging.config.fileConfig('logging.conf')
 errorLogger = logging.getLogger('customErrorLogger')
-customLogger=logging.getLogger('customConsoleLogger')
+customLogger = logging.getLogger('customConsoleLogger')
 
-data_pattern = "[ value={} , time={} , unit={} ]"
-http_not_found = 404
-http_ok = 200
-http_no_content = 204
-def handle_temperature_data(data, url, jwt, time_format):
-    '''
-       Summarizes and sends collected temperature data.
+DATA_PATTERN = "[ value={} , time={} , unit={} ]"
 
-       Triggered periodically.
+QOS = 2
+TEMP_ALARM_TOPIC = "alarms/temperature"
+LOAD_ALARM_TOPIC = "alarms/load"
+FUEL_ALARM_TOPIC = "alarms/fuel"
 
-       Parameters
-       ----------
-       data: list
-            Collected temperature data.
-       url: str
-            Cloud services' URL.
-       jwt: str
-            JSON wen auth token
-       time_format: str
-            Cloud services' time format.
+EMPTY_PAYLOAD = {}
 
-       Returns
-       -------
-       http status code
-       '''
+
+def parse_incoming_data(data, data_type):
+    """
+    Parsing all types of data that come from sources
+
+    Args:
+    ----
+        data: str
+            Data to be parsed
+        data_type: str
+            Data type (Temperature, Load, Fuel) for console output
+
+    Returns:
+    -------
+        data_sum: double
+            Parsed data value
+        unit: str
+            Unit of the parsed data
+    """
     data_sum = 0.0
-    # summarizing colleceted data
-    for item in data:
-        try:
-            tokens=item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid temperature data format! - "+item)
-    time_value = time.strftime(time_format, time.localtime())
-    unit="unknown"
+    # summarizing collected data
     try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid temperature data format! - "+data[0])
-    # creating request payload
-    payload = {"value": round(data_sum / len(data),2), "time": time_value, "unit": unit}
-    customLogger.warning("Forwarding temperature data: " + str(payload))
+        tokens = data.split(" ")
+        data_sum += float(tokens[1].split("=")[1])
+    except BaseException:
+        errorLogger.error("Invalid " + data_type + " data format! - " + data)
+    unit = "unknown"
     try:
-        post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code != http_ok:
-            errorLogger.error("Problem with temperature Cloud service! - Http status code: "+ str(post_req.status_code))
-        return post_req.status_code
-    except:
-        errorLogger.error("Temperature Cloud service cant be reached!")
-        customLogger.critical("Temperature Cloud service cant be reached!")
-        return http_not_found
+        unit = data.split(" ")[6].split("=")[1]
+    except BaseException:
+        errorLogger.error("Invalid " + data_type + " data format! - " + data)
+    return data_sum, unit
 
-def handle_load_data(data, url, jwt, time_format):
-    '''
-    Summarizes and sends collected load data.
+
+def handle_temperature_data(data, time_format):
+    """
+    Summarizes collected temperature data and forms payload.
+
+    Triggered periodically.
+
+    Parameters
+    ----------
+    data: list
+        Collected temperature data.
+    time_format: str
+        Cloud services' time format.
+
+    Returns
+    -------
+    payload: dict
+    """
+    data_sum = 0.0
+    unit = "Unknown"
+    for info in data:
+        data_value, parsed_unit = parse_incoming_data(info, "temperature")
+        unit = parsed_unit
+        data_sum += data_value
+
+    time_value = time.strftime(time_format, time.localtime())
+    payload = {"value": round(data_sum / len(data), 2), "time": time_value, "unit": unit}
+    return payload
+
+
+def handle_load_data(data, time_format):
+    """
+    Summarizes collected load data and forms payload.
 
     Triggered periodically  (variable interval).
 
@@ -94,97 +121,67 @@ def handle_load_data(data, url, jwt, time_format):
     ----------
     data: list
         Collected load data.
-    url: str
-        Cloud services' URL.
-    jwt: str
-        JSON wen auth token
     time_format: str
         Cloud services' time format.
 
     Returns
     -------
-    http status code
-   '''
+    payload: dict
+    """
     data_sum = 0.0
-    # summarizing collected load aata
-    for item in data:
-        try:
-            tokens = item.split(" ")
-            data_sum += float(tokens[1].split("=")[1])
-        except:
-            errorLogger.error("Invalid load data format! - "+ item)
+    unit = "Unknown"
+    for info in data:
+        data_value, parsed_unit = parse_incoming_data(info, "load")
+        unit = parsed_unit
+        data_sum += data_value
+
     time_value = time.strftime(time_format, time.localtime())
-    unit = "unknown"
-    try:
-        unit = data[0].split(" ")[6].split("=")[1]
-    except:
-        errorLogger.error("Invalid load data format! - "+data[0])
-    # request payload
-    payload = {"value": round(data_sum,2), "time": time_value, "unit": unit}
-    customLogger.warning("Forwarding load data: " +str(payload))
-    try:
-        post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-        if post_req.status_code != http_ok:
-            errorLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
-            customLogger.error("Problem with arm load Cloud service! - Http status code: " + str(post_req.status_code))
-        return post_req.status_code
-    except:
-        errorLogger.error("Arm load Cloud service cant be reached!")
-        customLogger.critical("Arm load Cloud service cant be reached!")
-        return http_not_found
+    payload = {"value": round(data_sum, 2), "time": time_value, "unit": unit}
+    return payload
 
 
-def handle_fuel_data(data, limit, url, jwt, time_format):
-    '''
-     Sends filtered fuel data.
+def handle_fuel_data(data, limit, time_format, alarm_client):
+    """
 
-     Triggered periodically.
+    Summarizes collected fuel, forms payload and sends alarm.
 
-     Parameters
-     ----------
-     data: list
-         Collected load data.
-     limit: double
-         Critical fuel level.
-     url: str
-         Cloud services' URL.
-     jwt: str
-         JSON web auth token.
-     time_format: str
-         Cloud services' time format.
+    Triggered periodically.
 
-     Returns
-     -------
-     http status code
-    '''
+    Parameters
+    ----------
+    data: list
+     Collected load data.
+    limit: double
+     Critical fuel level.
+    time_format: str
+     Cloud services' time format.
+    alarm_client: MQTTClient
+     MQTT broker alarm client
+
+    Returns
+    -------
+    http status code
+    """
     try:
         tokens = data.split(" ")
-        value=float(tokens[1].split("=")[1])
-        # sends data to cloud services only if it is value of interest
-        if value<=limit:
+        value = float(tokens[1].split("=")[1])
+
+        if value <= limit:
+            customLogger.info("Fuel is below the designated limit! Sounding the alarm")
+
+            alarm_client.publish(FUEL_ALARM_TOPIC, True, QOS)
+
             unit = "unknown"
             try:
                 unit = tokens[6].split("=")[1]
-            except:
+            except BaseException:
                 errorLogger.error("Invalid fuel data format! - " + data)
             time_value = time.strftime(time_format, time.localtime())
-            # request payload
-            payload = {"value": round(value,2), "time": time_value, "unit": unit}
-            customLogger.warning("Forwarding fuel data: " + str(payload))
-            try:
-                post_req = requests.post(url, json=payload, headers={"Authorization": "Bearer " + jwt})
-                if post_req.status_code != http_ok:
-                    errorLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                    customLogger.error("Problem with fuel Cloud service! - Http status code: " + str(post_req.status_code))
-                return post_req.status_code
-            except:
-                errorLogger.error("Fuel Cloud service cant be reached!")
-                customLogger.error("Fuel Cloud service cant be reached!")
-                return http_not_found
+
+            payload = {"value": round(value, 2), "time": time_value, "unit": unit}
+            return payload
         else:
-            # data is handled but is not sent because fuel level is over the limit
-            return http_no_content
-    except:
+            return EMPTY_PAYLOAD
+    except BaseException:
         errorLogger.error("Invalid fuel data format! - " + data)
-        # data can not be parsed, trying again to parse it and send in next iteration is redundant
-        return http_no_content
+        return EMPTY_PAYLOAD
