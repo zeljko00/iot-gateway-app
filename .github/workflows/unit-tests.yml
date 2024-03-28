@@ -27,5 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
+      - name: Run tests
+        run: |
           chmod +x ./unit_testing.sh
           sudo ./unit_testing.sh
